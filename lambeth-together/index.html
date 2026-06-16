@@ -892,21 +892,25 @@ function buildFormURL(data) {
     dates:    'ra225888bd3cd431ca087783808ed2daf'
   };
 
-  const url = new URL(MICROSOFT_FORM_URL);
-  url.searchParams.set(FIELD.org,     data.org);
-  url.searchParams.set(FIELD.contact, data.contact);
-  url.searchParams.set(FIELD.email,   data.email);
-  url.searchParams.set(FIELD.ranking, data.ranking);
+  // Build the query string manually using encodeURIComponent, which encodes
+  // spaces as %20. (URLSearchParams encodes spaces as '+', which Microsoft
+  // Forms does not accept for the multi-select date matching, and which also
+  // leaves ugly '+' signs in the text fields.)
+  const parts = [];
+  parts.push(FIELD.org     + '=' + encodeURIComponent(data.org || ''));
+  parts.push(FIELD.contact + '=' + encodeURIComponent(data.contact || ''));
+  parts.push(FIELD.email   + '=' + encodeURIComponent(data.email || ''));
+  parts.push(FIELD.ranking + '=' + encodeURIComponent(data.ranking || ''));
 
   // Multi-select dates: Microsoft expects a JSON-array-in-a-string with
   // NO spaces after commas, e.g.  "[\"label1\",\"label2\"]"
-  // Build it explicitly to guarantee the exact format (no engine variance).
   if (data.dateLabels && data.dateLabels.length) {
     const inner = '[' + data.dateLabels.map(function(l){ return JSON.stringify(l); }).join(',') + ']';
-    url.searchParams.set(FIELD.dates, JSON.stringify(inner));
+    parts.push(FIELD.dates + '=' + encodeURIComponent(JSON.stringify(inner)));
   }
 
-  return url.toString();
+  const sep = MICROSOFT_FORM_URL.indexOf('?') === -1 ? '?' : '&';
+  return MICROSOFT_FORM_URL + sep + parts.join('&');
 }
 
 /* UPDATE THESE with actual Solico availability */

@@ -538,6 +538,29 @@ header {
 }
 .prereading-prompt-done { color: #1a7a60; }
 
+/* submitted confirmation overlay */
+.submitted-overlay {
+  position: fixed; inset: 0; z-index: 9999;
+  background: rgba(43,0,49,0.55);
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+}
+.submitted-card {
+  background: #fff; border-radius: 16px; max-width: 460px; width: 100%;
+  padding: 36px 32px; text-align: center;
+  box-shadow: 0 20px 60px rgba(43,0,49,0.4);
+  border-top: 5px solid var(--coral);
+}
+.submitted-tick {
+  width: 56px; height: 56px; margin: 0 auto 18px;
+  background: #1a7a60; color: #fff; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px; font-weight: 700;
+}
+.submitted-card h2 { font-size: 20px; color: var(--black-purple); margin-bottom: 12px; }
+.submitted-card p { font-size: 14px; color: var(--text-mid); line-height: 1.55; margin-bottom: 10px; }
+.submitted-card .submitted-sub { font-size: 13px; color: var(--text-muted); }
+
 /* references block */
 .references {
   margin-top: 28px;
@@ -750,7 +773,7 @@ footer {
       <div class="step-circle" id="sc3">3</div>
       <div class="step-head-copy">
         <h2>Preferred dates</h2>
-        <p>Select one or two dates that work for you. Sessions are around 2–3 hours and can be split across two shorter visits if that's easier.</p>
+        <p>Please select <strong>all</strong> the dates you are available, not just your first choice. The more you can offer, the easier it is for us to find a slot that works. Sessions are around 2–3 hours and can be split across two shorter visits if that's easier.</p>
       </div>
     </div>
     <div class="date-grid" id="date-grid"></div>
@@ -889,7 +912,8 @@ function buildFormURL(data) {
     contact:  'r47ae458582db4feaace54ca36d01e320',
     email:    'r7deae86f3f5e457d833d59214b8cb20e',
     ranking:  'r7434f3bb237248df84c82f67e517f928',
-    dates:    'ra225888bd3cd431ca087783808ed2daf'
+    dates:    'ra225888bd3cd431ca087783808ed2daf',
+    comments: 'r74f1e59ccbe6415485f69262eb4cff53'
   };
 
   // Build the query string manually using encodeURIComponent, which encodes
@@ -901,6 +925,9 @@ function buildFormURL(data) {
   parts.push(FIELD.contact + '=' + encodeURIComponent(data.contact || ''));
   parts.push(FIELD.email   + '=' + encodeURIComponent(data.email || ''));
   parts.push(FIELD.ranking + '=' + encodeURIComponent(data.ranking || ''));
+  if (data.comments) {
+    parts.push(FIELD.comments + '=' + encodeURIComponent(data.comments));
+  }
 
   // Multi-select dates: Microsoft expects a JSON-array-in-a-string with
   // NO spaces after commas, e.g.  "[\"label1\",\"label2\"]"
@@ -987,6 +1014,7 @@ const DOMAINS = [
 const reviewed  = new Set();
 const openCards = new Set();
 let   rankOrder = DOMAINS.map(d => d.id);
+let   rankTouched = false;   // becomes true the first time the ranking is reordered
 const selDates  = new Set();
 
 /* ==========================================================
@@ -994,7 +1022,7 @@ const selDates  = new Set();
    ========================================================== */
 function renderMatrix() {
   document.getElementById('domain-cards').innerHTML = DOMAINS.map(d => `
-    <div class="domain-card">
+    <div class="domain-card" data-domain="${d.id}">
       <div class="d-header" onclick="toggleDomain('${d.id}')">
         <div class="d-check${reviewed.has(d.id) ? ' done' : ''}">
           ${reviewed.has(d.id) ? '&#10003;' : ''}
@@ -1028,9 +1056,26 @@ function renderMatrix() {
 }
 
 function toggleDomain(id) {
-  if (openCards.has(id)) { openCards.delete(id); }
-  else                   { openCards.add(id); reviewed.add(id); }
+  const wasOpen = openCards.has(id);
+  // Accordion behaviour: close all others, so only one is open at a time
+  openCards.clear();
+  if (!wasOpen) {
+    openCards.add(id);
+    reviewed.add(id);
+  }
   renderMatrix();
+  // Keep the page aligned: bring the just-opened card's header to a stable spot
+  if (!wasOpen) {
+    requestAnimationFrame(function(){
+      const card = document.querySelector('[data-domain="' + id + '"]');
+      if (card) {
+        const topbar = document.querySelector('.topbar');
+        const offset = (topbar ? topbar.offsetHeight : 0) + 12;
+        const y = card.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    });
+  }
 }
 
 /* ==========================================================
@@ -1060,6 +1105,11 @@ function moveRank(i, dir) {
   const j = i + dir;
   if (j < 0 || j >= rankOrder.length) return;
   [rankOrder[i], rankOrder[j]] = [rankOrder[j], rankOrder[i]];
+  // Mark the ranking step complete as soon as it's interacted with
+  if (!rankTouched) {
+    rankTouched = true;
+    setStepBar(2, 'done');
+  }
   renderRanking();
   updateSummary();
 }
@@ -1165,6 +1215,27 @@ function doSubmit() {
 
   window.open(buildFormURL(data), '_blank');
   setStepBar(5, 'done');
+  // Prevent resubmission: lock the page into a completed state
+  showSubmittedState();
+}
+
+function showSubmittedState() {
+  // Replace the submit step content with a confirmation and disable the button
+  const btn = document.getElementById('submit-btn');
+  if (btn) { btn.disabled = true; btn.textContent = 'Response submitted'; }
+
+  // Overlay a clear confirmation panel, and prevent further interaction
+  const panel = document.createElement('div');
+  panel.className = 'submitted-overlay';
+  panel.innerHTML =
+    '<div class="submitted-card">' +
+      '<div class="submitted-tick">&#10003;</div>' +
+      '<h2>Thank you &mdash; your response has been submitted</h2>' +
+      '<p>A Microsoft Forms tab has opened with your answers. Please make sure you click <strong>Submit</strong> in that tab to send your response to Solico.</p>' +
+      '<p class="submitted-sub">You can now close this page. If you need to send another response, please reopen the link.</p>' +
+    '</div>';
+  document.body.appendChild(panel);
+  document.body.style.overflow = 'hidden';
 }
 
 /* ==========================================================
@@ -1229,7 +1300,7 @@ const THEMES = [
 ];
 
 const SRC = {
-  proposal: { label:'Solico proposal', cls:'proposal' },
+  proposal: { label:'Solico thinking', cls:'proposal' },
   research: { label:'Research themes', cls:'research' },
   both:     { label:'Both documents',  cls:'both' }
 };

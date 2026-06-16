@@ -772,14 +772,14 @@ footer {
 
     <div class="references" id="references">
       <h3 class="references-title">References &amp; sources</h3>
-      <p class="references-intro">Full sources for the themes above. <!-- CHRIS: replace the placeholder lines below with the actual references / URLs to the source documents. --></p>
+      <p class="references-intro">The themes above draw on the following sources.</p>
       <ul class="references-list">
-        <li><a href="REPLACE_WITH_URL" target="_blank" rel="noopener">Saksena &amp; Mohanty (2021) &mdash; reciprocity in COVID-era public health initiatives [add full citation / URL]</a></li>
-        <li><a href="REPLACE_WITH_URL" target="_blank" rel="noopener">Somerset Open Mental Health Alliance &mdash; collective contracting model [add full citation / URL]</a></li>
-        <li><a href="REPLACE_WITH_URL" target="_blank" rel="noopener">ASHA community health worker model &mdash; cultural brokers [add full citation / URL]</a></li>
-        <li><a href="REPLACE_WITH_URL" target="_blank" rel="noopener">National Neighbourhood Health Improvement Plan (NNHIP) [add full citation / URL]</a></li>
-        <li><a href="REPLACE_WITH_URL" target="_blank" rel="noopener">Solico proposal &amp; Lambeth Ecology Group (LEG) documentation [add link]</a></li>
-        <li><a href="REPLACE_WITH_URL" target="_blank" rel="noopener">Additional source [add full citation / URL]</a></li>
+        <li>Daly, S. &amp; Allen, J. (2017). <em>Voluntary sector action on the social determinants of health: evidence review.</em> London: UCL Institute of Health Equity. <a href="https://www.instituteofhealthequity.org/resources-reports/voluntary-sector-action-on-the-social-determinants-of-health" target="_blank" rel="noopener">View</a></li>
+        <li>Saksena, G. &amp; Mohanty, A. (2021). Reimagining livelihoods: an ethnographic inquiry into anticipation, agency, and reflexivity as India&rsquo;s impact ecosystem responds to post-pandemic rebuilding. <em>EPIC Proceedings 2021</em>, 259&ndash;81. <a href="https://doi.org/10.1111/epic.12074" target="_blank" rel="noopener">View</a></li>
+        <li>Saksena, G. &amp; Mohanty, A. (2022). Information and liable relations of wellbeing during Covid19: an ethnographic exploration of disruption in London. <em>The SOAS Journal of Postgraduate Research</em>, 14, 25&ndash;50. <a href="https://doi.org/10.25501/SOAS.00037052" target="_blank" rel="noopener">View</a></li>
+        <li>Saprii, L., Richards, E., Kokho, P. &amp; Theobald, S. (2015). Community health workers in rural India: analysing the opportunities and challenges Accredited Social Health Activists (ASHAs) face in realising their multiple roles. <em>Human Resources for Health</em>, 13, 95. <a href="https://doi.org/10.1186/s12960-015-0094-3" target="_blank" rel="noopener">View</a></li>
+        <li>Ved, R., Scott, K., Gupta, G., Ummer, O., Singh, S., Srivastava, A. &amp; George, A.S. (2019). How are gender inequalities facing India&rsquo;s one million ASHAs being addressed? <em>Human Resources for Health</em>, 17:1, 3. <a href="https://doi.org/10.1186/s12960-018-0338-0" target="_blank" rel="noopener">View</a></li>
+        <li>Wardle, B. (2021). The voluntary sector &ndash; the secret weapon for integrated care? <em>Open Mental Health.</em> <a href="https://openmentalhealth.org.uk" target="_blank" rel="noopener">View</a></li>
       </ul>
     </div>
   </section>
@@ -824,9 +824,6 @@ footer {
     </button>
     <p class="submit-note">This will open the Solico response form in a new tab with your answers pre-filled. Review them, then click Submit in the form.</p>
 
-    <div class="form-not-configured" id="form-not-configured">
-      <strong>Form not yet configured.</strong> Chris — paste your Microsoft Forms URL into the <code>MICROSOFT_FORM_URL</code> constant at the top of the script block.
-    </div>
 
     <p class="privacy-note">Your responses are processed by Solico and used only for the purposes of this commission. They are stored within Solico's Microsoft 365 tenancy and will not be shared with other parties without your consent.</p>
   </section>
@@ -878,41 +875,51 @@ footer {
 
    ========================================================== */
 
-const MICROSOFT_FORM_URL = 'REPLACE_WITH_MICROSOFT_FORM_URL';
+const MICROSOFT_FORM_URL = 'https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=VS1QhF4YkEaa083sqmiT5wTg97H_1-5Kmteu0eYm-MxUOU1RVkpWNzFHTFhLSzUxVVZJMjVBNjFQMS4u';
 
 function buildFormURL(data) {
-  /* CURRENT BEHAVIOUR: opens the form without pre-fill.
-     This is the safe fallback until you configure pre-fill.
+  /* Pre-filled hand-off to Microsoft Forms.
+     Field IDs below are from the form's "Get pre-filled link".
+     Multi-select (dates) requires a JSON-array-in-a-string value:
+       "[\"Option label\",\"Option label\"]"
+     and the option labels must match the form options exactly. */
 
-     TO ENABLE PRE-FILL:
-     Once you have the "Get a pre-filled link" URL from
-     Microsoft Forms, replace the return statement below.
-     The pre-filled URL will look like:
-       https://forms.office.com/Pages/ResponsePage.aspx?id=LONGID
-         &rFIELD_ID_1=sample+value
-         &rFIELD_ID_2=another+sample
-     Map your data object properties to those field IDs like:
+  const FIELD = {
+    org:      'r8269b441e5bf444ea8ab81d560ee7bcc',
+    contact:  'r47ae458582db4feaace54ca36d01e320',
+    email:    'r7deae86f3f5e457d833d59214b8cb20e',
+    ranking:  'r7434f3bb237248df84c82f67e517f928',
+    dates:    'ra225888bd3cd431ca087783808ed2daf'
+  };
 
-       const url = new URL(MICROSOFT_FORM_URL);
-       url.searchParams.set('rFIELD_ID_ORG',     data.org);
-       url.searchParams.set('rFIELD_ID_CONTACT',  data.contact);
-       url.searchParams.set('rFIELD_ID_EMAIL',    data.email);
-       url.searchParams.set('rFIELD_ID_RANKING',  data.ranking);
-       url.searchParams.set('rFIELD_ID_DATES',    data.dates);
-       url.searchParams.set('rFIELD_ID_COMMENTS', data.comments);
-       return url.toString();
-  */
-  return MICROSOFT_FORM_URL;
+  const url = new URL(MICROSOFT_FORM_URL);
+  url.searchParams.set(FIELD.org,     data.org);
+  url.searchParams.set(FIELD.contact, data.contact);
+  url.searchParams.set(FIELD.email,   data.email);
+  url.searchParams.set(FIELD.ranking, data.ranking);
+
+  // Multi-select dates: Microsoft expects a JSON-array-in-a-string with
+  // NO spaces after commas, e.g.  "[\"label1\",\"label2\"]"
+  // Build it explicitly to guarantee the exact format (no engine variance).
+  if (data.dateLabels && data.dateLabels.length) {
+    const inner = '[' + data.dateLabels.map(function(l){ return JSON.stringify(l); }).join(',') + ']';
+    url.searchParams.set(FIELD.dates, JSON.stringify(inner));
+  }
+
+  return url.toString();
 }
 
 /* UPDATE THESE with actual Solico availability */
 const DATES = [
-  { id:'d1', day:'Tuesday 1 July 2026',    time:'10:00 – 12:00' },
-  { id:'d2', day:'Wednesday 2 July 2026',  time:'14:00 – 16:00' },
-  { id:'d3', day:'Monday 7 July 2026',     time:'10:00 – 12:00' },
-  { id:'d4', day:'Thursday 10 July 2026',  time:'13:00 – 15:00' },
-  { id:'d5', day:'Tuesday 15 July 2026',   time:'10:00 – 12:00' },
-  { id:'d6', day:'Wednesday 16 July 2026', time:'14:00 – 16:00' },
+  { id:'d1', day:'Tuesday 30 June 2026',   time:'10:00\u201316:00' },
+  { id:'d2', day:'Thursday 2 July 2026',   time:'13:00\u201316:00' },
+  { id:'d3', day:'Thursday 9 July 2026',   time:'10:00\u201316:00' },
+  { id:'d4', day:'Tuesday 14 July 2026',   time:'10:00\u201316:00' },
+  { id:'d5', day:'Thursday 16 July 2026',  time:'10:00\u201316:00' },
+  { id:'d6', day:'Monday 20 July 2026',    time:'10:00\u201316:00' },
+  { id:'d7', day:'Tuesday 21 July 2026',   time:'10:00\u201316:00' },
+  { id:'d8', day:'Wednesday 22 July 2026', time:'10:00\u201316:00' },
+  { id:'d9', day:'Thursday 23 July 2026',  time:'13:00\u201316:00' },
 ];
 
 /* ==========================================================
@@ -1133,28 +1140,23 @@ function updateSummary() {
 }
 
 function doSubmit() {
-  if (MICROSOFT_FORM_URL === 'REPLACE_WITH_MICROSOFT_FORM_URL') {
-    document.getElementById('form-not-configured').classList.add('show');
-    return;
-  }
-
   const rankingText = rankOrder.map((id, i) => {
     const d = DOMAINS.find(x => x.id === id);
     return (i + 1) + '. ' + d.name;
   }).join('\n');
 
-  const datesText = DATES
+  // Exact option labels for the chosen dates (must match the form options)
+  const dateLabels = DATES
     .filter(d => selDates.has(d.id))
-    .map(d => d.day + ', ' + d.time)
-    .join('\n');
+    .map(d => d.day + ', ' + d.time);
 
   const data = {
-    org:      document.getElementById('f-org').value.trim(),
-    contact:  document.getElementById('f-name').value.trim(),
-    email:    document.getElementById('f-email').value.trim(),
-    ranking:  rankingText,
-    dates:    datesText,
-    comments: document.getElementById('f-comments').value.trim(),
+    org:        document.getElementById('f-org').value.trim(),
+    contact:    document.getElementById('f-name').value.trim(),
+    email:      document.getElementById('f-email').value.trim(),
+    ranking:    rankingText,
+    dateLabels: dateLabels,
+    comments:   document.getElementById('f-comments').value.trim(),
   };
 
   window.open(buildFormURL(data), '_blank');

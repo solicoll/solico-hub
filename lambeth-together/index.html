@@ -538,6 +538,18 @@ header {
 }
 .prereading-prompt-done { color: #1a7a60; }
 
+/* matrix scoring note - gentle aside */
+.matrix-note {
+  font-size: 13px;
+  color: var(--text-mid);
+  background: var(--white-purple);
+  border-left: 3px solid var(--purple);
+  padding: 12px 14px;
+  border-radius: 0 8px 8px 0;
+  margin-top: 10px;
+  line-height: 1.55;
+}
+
 /* submitted confirmation overlay */
 .submitted-overlay {
   position: fixed; inset: 0; z-index: 9999;
@@ -746,6 +758,7 @@ footer {
       <div class="step-head-copy">
         <h2>Explore the maturity matrix</h2>
         <p>Open each domain to see what development looks like at each level. Read through all seven before moving on — this is the framework Solico will use to form its initial view.</p>
+        <p class="matrix-note">The three stages shown here — Emerging, Developing and Established — are a shared language for talking about maturity. When we carry out our first-pass assessment we use a slightly more detailed five-point scale that sits around these stages, so an initial score may land between or beyond them. Any score is only ever a starting point for discussion with you, never a fixed judgement.</p>
       </div>
     </div>
     <div id="domain-cards"></div>

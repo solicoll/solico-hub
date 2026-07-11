@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Partner Feedback | Lambeth Together · Solico</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;900&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================
+   SOLICO — LAMBETH TOGETHER · PARTNER FEEDBACK
+   hub.solico.org.uk/lambeth-together/partner-feedback
+   ========================================================== */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --purple:       #64009b;
+  --coral:        #ff4570;
+  --black-purple: #2b0031;
+  --white-purple: #edebf5;
+  --purple-faint: rgba(100,0,155,0.06);
+  --purple-light: rgba(100,0,155,0.12);
+  --purple-mid:   rgba(100,0,155,0.22);
+  --purple-border:rgba(100,0,155,0.18);
+  --purple-strong:rgba(100,0,155,0.4);
+  --text:         #2b0031;
+  --text-mid:     #6a3a78;
+  --text-muted:   #9a70a8;
+  --green:        #1a6020;
+  --green-bg:     #e6f4e6;
+  --radius-sm:    6px;
+  --radius-md:    10px;
+  --radius-lg:    16px;
+}
+
+body {
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--text);
+  background: #f5f2f9;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap { max-width: 740px; margin: 0 auto; padding: 0 24px; }
+
+/* ---- HEADER ---- */
+.topbar { position: sticky; top: 0; z-index: 100; }
+header {
+  background: var(--black-purple);
+  padding: 20px 0 0;
+  border-bottom: 3px solid var(--coral);
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 0 24px 20px 24px;
+  max-width: none;
+}
+.logo-lockup { display: flex; flex-direction: column; gap: 4px; padding-right: 20px; }
+.logo-img { margin-left: 16px; }
+.logo-designed-by {
+  font-size: 9px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.38);
+}
+.header-divider { width: 1px; height: 40px; background: rgba(255,255,255,0.18); flex-shrink: 0; margin: 0 20px; }
+.header-right { flex: 1; }
+.header-tag-title { font-size: 15px; font-weight: 700; color: rgba(255,255,255,0.9); letter-spacing: -0.1px; line-height: 1.2; }
+.header-tag-sub { font-size: 10px; font-weight: 500; color: rgba(255,255,255,0.45); letter-spacing: 0.04em; margin-top: 2px; }
+
+/* ---- STEP BAR (breadcrumb trail, mirrors main page) ---- */
+.step-bar {
+  background: var(--white-purple);
+  border-bottom: 1px solid var(--purple-border);
+  overflow-x: auto;
+}
+.step-bar-inner {
+  display: flex;
+  min-width: 480px;
+}
+.sp {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+  border-right: 1px solid var(--purple-border);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.12s;
+}
+.sp:hover { background: var(--purple-light); }
+.sp:last-child { border-right: none; }
+.sp-n {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--purple);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+.sp.done .sp-n { background: var(--green); }
+
+sup { font-size: 62%; line-height: 0; }
+
+/* ---- HERO ---- */
+.hero { background: var(--black-purple); padding: 44px 0 52px; color: #fff; }
+.hero-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--coral);
+  margin-bottom: 14px;
+}
+.hero h1 { font-size: 28px; font-weight: 900; line-height: 1.15; letter-spacing: -0.3px; margin-bottom: 16px; }
+.hero p { font-size: 14px; line-height: 1.75; color: rgba(255,255,255,0.72); max-width: 560px; }
+.hero-callout {
+  margin-top: 18px;
+  padding: 13px 16px;
+  border-left: 3px solid var(--coral);
+  background: rgba(255,255,255,0.07);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 13px;
+  color: rgba(255,255,255,0.78);
+  line-height: 1.65;
+}
+
+/* ---- MAIN ---- */
+.main-content { padding: 32px 0 72px; }
+
+.step-section {
+  background: #fff;
+  border: 1px solid var(--purple-border);
+  border-radius: var(--radius-lg);
+  padding: 28px 30px;
+  margin-bottom: 18px;
+  transition: opacity 0.25s, filter 0.25s;
+}
+.step-section.locked {
+  pointer-events: none;
+  background: #faf9fc;
+  border-color: rgba(100,0,155,0.1);
+}
+.step-section.locked .step-head-copy h2 { color: #b0a0b8; }
+.step-section.locked .step-head-copy p { color: #c8bcd0; }
+.step-section.locked .step-circle { background: #ddd6e4; color: #b0a0b8; }
+.step-section.locked .fields,
+.step-section.locked .org-grid,
+.step-section.locked .anon-panel,
+.step-section.locked #rel-chips { opacity: 0.35; filter: grayscale(0.4); }
+.step-head { display: flex; align-items: flex-start; gap: 15px; margin-bottom: 20px; }
+.step-circle {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--purple);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.step-head-copy h2 { font-size: 17px; font-weight: 900; color: var(--black-purple); letter-spacing: -0.2px; margin-bottom: 3px; }
+.step-head-copy p { font-size: 13px; color: var(--text-mid); }
+
+/* ---- ORG PICKER ---- */
+.org-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.org-card {
+  border: 1.5px solid var(--purple-border);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  cursor: pointer;
+  background: #fff;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  transition: border-color 0.15s, background 0.15s;
+}
+.org-card:hover { background: var(--purple-faint); border-color: var(--purple-mid); }
+.org-card.sel { background: var(--purple-light); border-color: var(--purple); }
+.org-tick {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1.5px solid var(--purple-mid);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+  color: transparent;
+  transition: all 0.15s;
+}
+.org-card.sel .org-tick { background: var(--purple); border-color: var(--purple); color: #fff; }
+.org-name { font-size: 13px; font-weight: 700; color: var(--black-purple); }
+.org-sub { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+
+/* ---- RELATIONSHIP CHIPS ---- */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: 99px;
+  border: 1.5px solid var(--purple-border);
+  background: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  color: var(--text);
+  margin: 3px;
+  font-family: 'Montserrat', sans-serif;
+  transition: all 0.12s;
+}
+.chip:hover { background: var(--purple-faint); border-color: var(--purple-mid); color: var(--purple); }
+.chip.on { background: var(--purple); border-color: var(--purple); color: #fff; }
+
+/* ---- FIELDS ---- */
+.fields { margin-top: 4px; }
+.field { margin-bottom: 15px; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.field label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.field label .opt { font-weight: 400; text-transform: none; letter-spacing: 0; color: var(--text-muted); }
+.field input, .field textarea {
+  width: 100%;
+  padding: 10px 13px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  border: 1.5px solid var(--purple-border);
+  border-radius: var(--radius-md);
+  background: #fff;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.15s;
+}
+.field input:focus, .field textarea:focus { border-color: var(--purple); }
+.field textarea { resize: vertical; min-height: 78px; }
+.field input.invalid { border-color: #c02040; }
+.email-error {
+  display: none;
+  font-size: 12px;
+  color: #c02040;
+  margin-top: 5px;
+}
+.email-error.show { display: block; }
+.field .hint { font-size: 12px; color: var(--text-muted); margin-top: 5px; line-height: 1.55; }
+
+/* ---- ANONYMITY PANEL ---- */
+.anon-panel {
+  background: var(--purple-faint);
+  border: 1px solid var(--purple-border);
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+  margin-bottom: 18px;
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--text);
+}
+.anon-panel strong { color: var(--black-purple); }
+
+/* ---- SUBMIT ---- */
+.btn-submit {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 26px;
+  background: var(--coral);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.01em;
+  transition: background 0.15s;
+}
+.btn-submit:hover:not(:disabled) { background: #e0304f; }
+.btn-submit:disabled { opacity: 0.4; cursor: default; }
+.submit-note { font-size: 12px; color: var(--text-muted); margin-top: 10px; line-height: 1.6; }
+
+.form-not-configured {
+  display: none;
+  margin-top: 12px;
+  padding: 12px 14px;
+  background: #fff8e1;
+  border: 1px solid #f0b800;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  color: #7a5000;
+}
+.form-not-configured.show { display: block; }
+
+.privacy-note {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--purple-border);
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* submitted confirmation overlay */
+.submitted-overlay {
+  position: fixed; inset: 0; z-index: 9999;
+  background: rgba(43,0,49,0.55);
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+}
+.submitted-card {
+  background: #fff; border-radius: 16px; max-width: 460px; width: 100%;
+  padding: 36px 32px; text-align: center;
+  box-shadow: 0 20px 60px rgba(43,0,49,0.4);
+  border-top: 5px solid var(--coral);
+}
+.submitted-tick {
+  width: 56px; height: 56px; margin: 0 auto 18px;
+  background: #1a7a60; color: #fff; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px; font-weight: 700;
+}
+.submitted-card h2 { font-size: 20px; color: var(--black-purple); margin-bottom: 12px; }
+.submitted-card p { font-size: 14px; color: var(--text-mid); line-height: 1.55; margin-bottom: 10px; }
+.submitted-card .submitted-sub { font-size: 13px; color: var(--text-muted); }
+
+/* ---- FOOTER ---- */
+footer { background: var(--black-purple); padding: 22px 0; }
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.45);
+}
+.footer-inner a { color: rgba(255,255,255,0.65); text-decoration: none; }
+.footer-inner a:hover { color: #fff; }
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 580px) {
+  .hero h1 { font-size: 22px; }
+  .step-section { padding: 20px 18px; }
+  .org-grid { grid-template-columns: 1fr; }
+  .field-row { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+<header>
+  <div class="header-inner">
+    <div class="logo-lockup">
+      <img class="logo-img" style="height:52px;width:auto;display:block;" alt="Solico" src="https://hub.solico.org.uk/assets/logo-on-dark.png">
+    </div>
+    <div class="header-divider"></div>
+    <div class="header-right">
+      <div class="header-tag-title">Lambeth Together</div>
+      <div class="header-tag-sub">Commission engagement</div>
+    </div>
+  </div>
+</header>
+
+<!-- ======================================================
+     STEP BAR (breadcrumb trail)
+     ====================================================== -->
+<div class="step-bar">
+  <div class="wrap">
+    <div class="step-bar-inner">
+      <div class="sp" id="sp1" onclick="goTo('step1')"><div class="sp-n" id="sn1">1</div>Which Thriving</div>
+      <div class="sp" id="sp2" onclick="goTo('step2')"><div class="sp-n" id="sn2">2</div>Your relationship</div>
+      <div class="sp" id="sp3" onclick="goTo('step3')"><div class="sp-n" id="sn3">3</div>Your feedback</div>
+      <div class="sp" id="sp4" onclick="goTo('step4')"><div class="sp-n" id="sn4">4</div>Who you are</div>
+    </div>
+  </div>
+</div>
+</div><!-- /topbar -->
+
+<section class="hero">
+  <div class="wrap">
+    <p class="hero-label">Thriving Communities · Lambeth</p>
+    <h1>Tell us about working<br>with a Thriving</h1>
+    <p>Lambeth Together has commissioned Solico to understand what Thriving Communities organisations need in order to engage with and deliver for Integrated Neighbourhood Teams. The organisations themselves are one part of that picture. The other part is how it feels to work alongside them, and that is where you come in.</p>
+    <div class="hero-callout">
+      Your name is captured so we can follow up if needed, but it stays with Solico. Everything we share with the Thrivings, Lambeth Together, or anyone else is anonymised. Nobody will know the feedback came from you.
+    </div>
+  </div>
+</section>
+
+<main class="main-content">
+<div class="wrap">
+
+  <!-- ===== STEP 1: WHICH THRIVING ===== -->
+  <section class="step-section" id="step1">
+    <div class="step-head">
+      <div class="step-circle">1</div>
+      <div class="step-head-copy">
+        <h2>Which Thriving is your feedback about?</h2>
+        <p>Pick the organisation you work with or alongside. If you work with more than one, please send a separate response for each.</p>
+      </div>
+    </div>
+    <div class="org-grid" id="org-grid"></div>
+  </section>
+
+  <!-- ===== STEP 2: YOUR RELATIONSHIP ===== -->
+  <section class="step-section locked" id="step2">
+    <div class="step-head">
+      <div class="step-circle">2</div>
+      <div class="step-head-copy">
+        <h2>How do you relate to them?</h2>
+        <p>This helps us read your feedback in context. It is never attached to your name in anything we share.</p>
+      </div>
+    </div>
+    <div id="rel-chips"></div>
+    <div class="field" id="rel-other-wrap" style="display:none; margin-top:14px;">
+      <label>Tell us more</label>
+      <input type="text" id="f-rel-other" placeholder="In a few words, how do you relate to them?" oninput="checkReady()">
+    </div>
+  </section>
+
+  <!-- ===== STEP 3: YOUR FEEDBACK ===== -->
+  <section class="step-section locked" id="step3">
+    <div class="step-head">
+      <div class="step-circle">3</div>
+      <div class="step-head-copy">
+        <h2>Your feedback</h2>
+        <p>Answer as many or as few as you like. Honest and rough is more useful than polished and careful.</p>
+      </div>
+    </div>
+    <div class="fields">
+      <div class="field">
+        <label>What do they do well?</label>
+        <textarea id="f-well" placeholder="What works about the relationship, and what would you not want to lose..." oninput="checkReady()"></textarea>
+      </div>
+      <div class="field">
+        <label>What is harder than it should be? <span class="opt">(optional)</span></label>
+        <textarea id="f-harder" placeholder="Friction, gaps, or things that get in the way of working together..."></textarea>
+      </div>
+      <div class="field">
+        <label>What would strengthen them as a neighbourhood partner? <span class="opt">(optional)</span></label>
+        <textarea id="f-strengthen" placeholder="What they would need, from you or from the wider system, to play a bigger role in neighbourhood health..."></textarea>
+      </div>
+      <div class="field">
+        <label>Anything else <span class="opt">(optional)</span></label>
+        <textarea id="f-else" placeholder="Anything we haven't asked about..."></textarea>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STEP 4: WHO YOU ARE ===== -->
+  <section class="step-section locked" id="step4">
+    <div class="step-head">
+      <div class="step-circle">4</div>
+      <div class="step-head-copy">
+        <h2>Who you are</h2>
+        <p>For Solico's eyes only.</p>
+      </div>
+    </div>
+    <div class="anon-panel">
+      <strong>How we protect your anonymity.</strong> Your name, organisation and email are held by Solico so we can verify responses and follow up if you are happy for us to. They are removed before anything is shared. Feedback appears in our reporting only in anonymised or aggregated form, and where a comment could identify you even without your name, we will paraphrase it or leave it out.
+    </div>
+    <div class="fields">
+      <div class="field-row">
+        <div class="field">
+          <label>Your name</label>
+          <input type="text" id="f-name" placeholder="Full name" oninput="checkReady()">
+        </div>
+        <div class="field">
+          <label>Email address</label>
+          <input type="email" id="f-email" placeholder="your@email.com" oninput="checkReady()">
+          <p class="email-error" id="email-error">Please enter a valid email address, e.g. name@organisation.org.uk</p>
+        </div>
+      </div>
+      <div class="field">
+        <label>Your organisation <span class="opt">(optional)</span></label>
+        <input type="text" id="f-org" placeholder="e.g. practice, service, or organisation name">
+      </div>
+    </div>
+
+    <button class="btn-submit" id="submit-btn" onclick="doSubmit()" disabled>
+      Send your feedback &rarr;
+    </button>
+    <div class="form-not-configured" id="form-not-configured">
+      The response form for this page has not been configured yet. Please email your feedback to us instead.
+    </div>
+    <div class="form-not-configured" id="submit-error">
+      Something went wrong while sending. Your answers are still here, please try again in a moment.
+    </div>
+    <p class="submit-note">Pressing send delivers your feedback directly and securely to Solico. Nothing else opens.</p>
+    <p class="privacy-note">Your responses are processed by Solico and used only for the purposes of this commission. They are stored within Solico's Microsoft 365 tenancy. Identifying details are never shared with the Thriving organisations, Lambeth Together, or any other party.</p>
+  </section>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <span>&copy; 2026 Solico &middot; <a href="https://solico.org.uk" target="_blank">solico.org.uk</a></span>
+      <span>A commission for Lambeth Together</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ==========================================================
+   CONFIGURATION — DIRECT SUBMISSION via Power Automate
+   ==========================================================
+   The page posts responses straight to a Solico Power Automate
+   flow (Hub Partner Feedback intake), which writes them to the
+   Partner Feedback list on the LambethThriving SharePoint site.
+   The token must match the value the flow's condition checks.
+   Leave url empty to show the not-configured notice instead.
+   ========================================================== */
+
+const SUBMIT = {
+  url: 'https://default84502d55185e46909ad3cdecaa6893.e7.environment.api.powerplatform.com:443/powerautomate/automations/direct/cu/06/workflows/45d509abaa64480c952490b282f87b7b/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=p2vfn2t7Nzz6Z4o27dckEo3urKK9I2mtmpXQP7_Bx4A',
+  token: 'solico-hub-k7m2'
+};
+
+const ORGS = [
+  { id:'stockwell',  name:'Thriving Stockwell',   sub:'Stockwell Partnership' },
+  { id:'bpt',        name:'Black Prince Trust',   sub:'Kennington' },
+  { id:'clapham',    name:'Clapham Park Project', sub:'Clapham Park' },
+  { id:'ccw',        name:'ClearCommunityWeb',    sub:'Borough-wide digital support' },
+  { id:'fiveways',   name:'Thriving Fiveways',    sub:'Loughborough Junction Action Group' },
+  { id:'norwood',    name:'Thriving Norwood',     sub:'Norwood Forum' },
+  { id:'streatham',  name:'Thriving Streatham',   sub:'Streatham' }
+];
+
+const RELATIONSHIPS = [
+  'GP or primary care',
+  'NHS or statutory service',
+  'Council',
+  'VCSE partner',
+  'Funder or commissioner',
+  'Housing provider',
+  'Faith or community group',
+  'Other'
+];
+
+/* ==========================================================
+   STATE
+   ========================================================== */
+let selOrg = null;
+let selRel = null;
+
+function goTo(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const topbar = document.querySelector('.topbar');
+  const offset = (topbar ? topbar.offsetHeight : 0) + 12;
+  const y = el.getBoundingClientRect().top + window.scrollY - offset;
+  window.scrollTo({ top: y, behavior: 'smooth' });
+}
+
+/* ---- gated step completion (green ticks + locking) ----
+   Each step unlocks when the previous one is complete, and
+   relocks if an earlier answer is cleared. */
+function setStepState(n, done) {
+  const bar = document.getElementById('sp' + n);
+  const num = document.getElementById('sn' + n);
+  if (!bar) return;
+  if (done) { bar.classList.add('done'); num.innerHTML = '&#10003;'; }
+  else      { bar.classList.remove('done'); num.textContent = n; }
+}
+
+function setSectionLocked(n, locked) {
+  const el = document.getElementById('step' + n);
+  if (el) el.classList.toggle('locked', locked);
+}
+
+function renderOrgs() {
+  document.getElementById('org-grid').innerHTML = ORGS.map(o => `
+    <div class="org-card${selOrg === o.id ? ' sel' : ''}" onclick="pickOrg('${o.id}')">
+      <div class="org-tick">${selOrg === o.id ? '&#10003;' : ''}</div>
+      <div>
+        <div class="org-name">${o.name}</div>
+        <div class="org-sub">${o.sub}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function pickOrg(id) {
+  selOrg = selOrg === id ? null : id;
+  renderOrgs();
+  checkReady();
+}
+
+function renderRels() {
+  document.getElementById('rel-chips').innerHTML = RELATIONSHIPS.map(r => `
+    <button class="chip${selRel === r ? ' on' : ''}" onclick="pickRel('${r.replace(/'/g, "\\'")}')">${r}</button>
+  `).join('');
+}
+
+function pickRel(r) {
+  selRel = selRel === r ? null : r;
+  renderRels();
+  const wrap = document.getElementById('rel-other-wrap');
+  wrap.style.display = selRel === 'Other' ? 'block' : 'none';
+  if (selRel === 'Other') document.getElementById('f-rel-other').focus();
+  checkReady();
+}
+
+function isValidEmail(v) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+}
+
+function checkReady() {
+  const name  = document.getElementById('f-name').value.trim();
+  const emailField = document.getElementById('f-email');
+  const email = emailField.value.trim();
+  const well  = document.getElementById('f-well').value.trim();
+  const harder = document.getElementById('f-harder').value.trim();
+  const strengthen = document.getElementById('f-strengthen').value.trim();
+  const anythingElse = document.getElementById('f-else').value.trim();
+  const hasFeedback = well || harder || strengthen || anythingElse;
+  const relOther = document.getElementById('f-rel-other').value.trim();
+  const relDone = !!selRel && (selRel !== 'Other' || !!relOther);
+  const emailOk = isValidEmail(email);
+  emailField.classList.toggle('invalid', !!email && !emailOk);
+  document.getElementById('email-error').classList.toggle('show', !!email && !emailOk);
+  const ready = selOrg && relDone && hasFeedback && name && emailOk;
+  setStepState(1, !!selOrg);
+  setStepState(2, relDone);
+  setStepState(3, !!hasFeedback);
+  setSectionLocked(2, !selOrg);
+  setSectionLocked(3, !(selOrg && relDone));
+  setSectionLocked(4, !(selOrg && relDone && hasFeedback));
+  document.getElementById('submit-btn').disabled = !ready;
+}
+
+function doSubmit() {
+  if (!SUBMIT.url) {
+    document.getElementById('form-not-configured').classList.add('show');
+    return;
+  }
+  const orgObj = ORGS.find(o => o.id === selOrg);
+  const relOther = document.getElementById('f-rel-other').value.trim();
+  const respOrg = document.getElementById('f-org').value.trim();
+  const answers = [
+    ['What they do well', document.getElementById('f-well').value.trim()],
+    ['What is harder', document.getElementById('f-harder').value.trim()],
+    ['What would strengthen', document.getElementById('f-strengthen').value.trim()],
+    ['Anything else', document.getElementById('f-else').value.trim()]
+  ];
+  const payload = {
+    token: SUBMIT.token,
+    website: '',  /* decoy field, must stay empty or the flow rejects the submission */
+    thriving:     orgObj ? orgObj.name : '',
+    relationship: selRel === 'Other' ? 'Other, ' + relOther : (selRel || ''),
+    feedback: answers.filter(a => a[1])
+                     .map(a => a[0] + ':\n' + a[1])
+                     .join('\n\n'),
+    name: document.getElementById('f-name').value.trim() +
+          (respOrg ? ' (' + respOrg + ')' : ''),
+    email: document.getElementById('f-email').value.trim()
+  };
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+  document.getElementById('submit-error').classList.remove('show');
+  /* Sent as text/plain so the browser skips the CORS preflight,
+     which Power Automate's HTTP trigger cannot answer. The flow
+     re-parses the body with json(triggerBody()). */
+  fetch(SUBMIT.url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'text/plain' },
+    body: JSON.stringify(payload)
+  })
+  .then(function (r) {
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    showSubmittedState();
+  })
+  .catch(function () {
+    btn.disabled = false;
+    btn.innerHTML = 'Send your feedback &rarr;';
+    document.getElementById('submit-error').classList.add('show');
+    checkReady();
+  });
+}
+
+function showSubmittedState() {
+  setStepState(4, true);
+  const btn = document.getElementById('submit-btn');
+  if (btn) { btn.disabled = true; btn.textContent = 'Feedback sent'; }
+  const panel = document.createElement('div');
+  panel.className = 'submitted-overlay';
+  panel.innerHTML =
+    '<div class="submitted-card">' +
+      '<div class="submitted-tick">&#10003;</div>' +
+      '<h2>Thank you &mdash; your feedback has been sent</h2>' +
+      '<p>Your feedback has been delivered securely to Solico. There is nothing more to do.</p>' +
+      '<p class="submitted-sub">If you work with more than one Thriving, please reopen this page to send another response.</p>' +
+    '</div>';
+  document.body.appendChild(panel);
+  document.body.style.overflow = 'hidden';
+}
+
+/* ---- init ---- */
+renderOrgs();
+renderRels();
+checkReady();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Deep Dive Reflection | Thriving Stockwell · Solico</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;900&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================
+   SOLICO — LAMBETH TOGETHER · DEEP DIVE REFLECTION PAGE
+   hub.solico.org.uk/lambeth-together/stockwell
+   TEMPLATE — all organisation-specific content lives in the
+   CONFIG object at the top of the script. To produce this
+   page for another Thriving, copy this file and edit CONFIG.
+   ========================================================== */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --purple:       #64009b;
+  --coral:        #ff4570;
+  --black-purple: #2b0031;
+  --white-purple: #edebf5;
+  --purple-faint: rgba(100,0,155,0.06);
+  --purple-light: rgba(100,0,155,0.12);
+  --purple-mid:   rgba(100,0,155,0.22);
+  --purple-border:rgba(100,0,155,0.18);
+  --purple-strong:rgba(100,0,155,0.4);
+  --text:         #2b0031;
+  --text-mid:     #6a3a78;
+  --text-muted:   #9a70a8;
+  --green:        #1a6020;
+  --green-bg:     #e6f4e6;
+  --radius-sm:    6px;
+  --radius-md:    10px;
+  --radius-lg:    16px;
+}
+
+body {
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--text);
+  background: #f5f2f9;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap { max-width: 740px; margin: 0 auto; padding: 0 24px; }
+
+/* ---- HEADER ---- */
+.topbar { position: sticky; top: 0; z-index: 100; }
+header {
+  background: var(--black-purple);
+  padding: 20px 0 0;
+  border-bottom: 3px solid var(--coral);
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 0 24px 20px 24px;
+  max-width: none;
+}
+.logo-lockup { display: flex; flex-direction: column; gap: 4px; padding-right: 20px; }
+.logo-img { margin-left: 16px; }
+.logo-designed-by {
+  font-size: 9px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.38);
+}
+.header-divider { width: 1px; height: 40px; background: rgba(255,255,255,0.18); flex-shrink: 0; margin: 0 20px; }
+.header-right { flex: 1; }
+.header-tag-title { font-size: 15px; font-weight: 700; color: rgba(255,255,255,0.9); letter-spacing: -0.1px; line-height: 1.2; }
+.header-tag-sub { font-size: 10px; font-weight: 500; color: rgba(255,255,255,0.45); letter-spacing: 0.04em; margin-top: 2px; }
+
+/* ---- STEP BAR (breadcrumb trail, mirrors main page) ---- */
+.step-bar {
+  background: var(--white-purple);
+  border-bottom: 1px solid var(--purple-border);
+  overflow-x: auto;
+}
+.step-bar-inner {
+  display: flex;
+  min-width: 480px;
+}
+.sp {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+  border-right: 1px solid var(--purple-border);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.12s;
+}
+.sp:hover { background: var(--purple-light); }
+.sp:last-child { border-right: none; }
+.sp-n {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--purple);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+.sp.done .sp-n { background: var(--green); }
+
+sup { font-size: 62%; line-height: 0; }
+
+/* ---- HERO ---- */
+.hero { background: var(--black-purple); padding: 44px 0 52px; color: #fff; }
+.hero-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--coral);
+  margin-bottom: 14px;
+}
+.hero h1 { font-size: 28px; font-weight: 900; line-height: 1.15; letter-spacing: -0.3px; margin-bottom: 16px; }
+.hero p { font-size: 14px; line-height: 1.75; color: rgba(255,255,255,0.72); max-width: 560px; }
+.hero-callout {
+  margin-top: 18px;
+  padding: 13px 16px;
+  border-left: 3px solid var(--coral);
+  background: rgba(255,255,255,0.07);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 13px;
+  color: rgba(255,255,255,0.78);
+  line-height: 1.65;
+}
+.hero-meta {
+  margin-top: 22px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.hero-meta span {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 99px;
+  background: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.75);
+}
+
+/* ---- MAIN ---- */
+.main-content { padding: 32px 0 72px; }
+
+.section {
+  background: #fff;
+  border: 1px solid var(--purple-border);
+  border-radius: var(--radius-lg);
+  padding: 28px 30px;
+  margin-bottom: 18px;
+  transition: opacity 0.25s, filter 0.25s;
+}
+.section.locked {
+  pointer-events: none;
+  background: #faf9fc;
+  border-color: rgba(100,0,155,0.1);
+}
+.section.locked .section-head-copy h2 { color: #b0a0b8; }
+.section.locked .section-head-copy p { color: #c8bcd0; }
+.section.locked .section-circle { background: #ddd6e4; color: #b0a0b8; }
+.section.locked .prose,
+.section.locked .two-col,
+.section.locked .pull-quote,
+.section.locked .essay-byline,
+.section.locked #domain-cards,
+.section.locked #metrics-list,
+.section.locked .aside-note,
+.section.locked .fields { opacity: 0.35; filter: grayscale(0.4); }
+.section-head { display: flex; align-items: flex-start; gap: 15px; margin-bottom: 18px; }
+.section-circle {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--purple);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.section-head-copy h2 { font-size: 17px; font-weight: 900; color: var(--black-purple); letter-spacing: -0.2px; margin-bottom: 3px; }
+.section-head-copy p { font-size: 13px; color: var(--text-mid); }
+.section .prose p { font-size: 14px; line-height: 1.75; color: var(--text); margin-bottom: 13px; }
+.section .prose p:last-child { margin-bottom: 0; }
+
+.aside-note {
+  font-size: 13px;
+  color: var(--text-mid);
+  background: var(--white-purple);
+  border-left: 3px solid var(--purple);
+  padding: 12px 14px;
+  border-radius: 0 8px 8px 0;
+  margin-top: 14px;
+  line-height: 1.55;
+}
+
+/* ---- PULL QUOTES ---- */
+.pull-quote {
+  margin: 18px 0;
+  padding: 16px 20px;
+  background: var(--purple-faint);
+  border-left: 3px solid var(--coral);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+.pull-quote .q-text { font-size: 15px; font-weight: 600; line-height: 1.6; color: var(--black-purple); }
+.pull-quote .q-who { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-muted); margin-top: 8px; }
+
+/* ---- DOMAIN CARDS (accordion, mirrors main page) ---- */
+.domain-card { border: 1px solid var(--purple-border); border-radius: var(--radius-md); margin-bottom: 7px; overflow: hidden; }
+.d-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 14px;
+  cursor: pointer;
+  background: #fff;
+  user-select: none;
+  transition: background 0.12s;
+}
+.d-header:hover { background: var(--purple-faint); }
+.d-check {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1.5px solid var(--purple-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  flex-shrink: 0;
+  transition: all 0.15s;
+  color: transparent;
+}
+.d-check.done { background: var(--green); border-color: var(--green); color: #fff; }
+.d-title { flex: 1; min-width: 0; }
+.d-name { font-size: 13px; font-weight: 700; color: var(--black-purple); }
+.d-sub { font-size: 11px; color: var(--text-muted); margin-top: 1px; }
+.d-pos {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 3px 10px;
+  border-radius: 99px;
+  background: var(--purple-light);
+  color: var(--purple);
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+.d-arrow { font-size: 16px; color: var(--text-muted); transition: transform 0.18s; flex-shrink: 0; }
+.d-arrow.open { transform: rotate(180deg); }
+.d-body { display: none; padding: 4px 14px 14px; background: var(--purple-faint); border-top: 1px solid var(--purple-border); }
+.d-body.open { display: block; }
+.d-row { display: flex; gap: 10px; margin-top: 11px; align-items: flex-start; }
+.d-tag {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 2px 8px;
+  border-radius: 99px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  white-space: nowrap;
+}
+.d-tag.first { background: #fff3e0; color: #804500; }
+.d-tag.heard { background: var(--green-bg); color: var(--green); }
+.d-row-desc { font-size: 13px; line-height: 1.6; color: var(--text); }
+
+/* ---- ENABLERS / INHIBITORS ---- */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 6px; }
+.col-panel { border: 1px solid var(--purple-border); border-radius: var(--radius-md); padding: 16px 18px; background: #fff; }
+.col-panel h3 {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: 10px;
+}
+.col-panel.enable h3 { color: var(--green); }
+.col-panel.inhibit h3 { color: #900030; }
+.col-panel ul { list-style: none; }
+.col-panel li { font-size: 13px; line-height: 1.6; color: var(--text); padding-left: 16px; position: relative; margin-bottom: 9px; }
+.col-panel li:last-child { margin-bottom: 0; }
+.col-panel li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 8px;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+}
+.col-panel.enable li::before { background: var(--green); }
+.col-panel.inhibit li::before { background: var(--coral); }
+
+/* ---- REFLECTION ESSAY ---- */
+.essay-byline { font-size: 12px; font-weight: 600; color: var(--text-muted); margin-bottom: 14px; }
+
+/* ---- METRICS ---- */
+.metric-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 12px 14px;
+  border: 1px solid var(--purple-border);
+  border-radius: var(--radius-md);
+  margin-bottom: 7px;
+  background: #fff;
+}
+.metric-domain { font-size: 11px; font-weight: 700; color: var(--purple); text-transform: uppercase; letter-spacing: 0.05em; width: 150px; flex-shrink: 0; padding-top: 2px; }
+.metric-copy { flex: 1; }
+.metric-name { font-size: 13px; font-weight: 700; color: var(--black-purple); }
+.metric-note { font-size: 12px; color: var(--text-mid); margin-top: 2px; line-height: 1.55; }
+.metric-pending {
+  font-size: 13px;
+  color: var(--text-mid);
+  background: var(--purple-faint);
+  border: 1px dashed var(--purple-mid);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  margin-top: 8px;
+}
+
+/* ---- RESPONSE FORM ---- */
+.fields { margin-top: 4px; }
+.field { margin-bottom: 15px; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.field label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.field label .opt { font-weight: 400; text-transform: none; letter-spacing: 0; color: var(--text-muted); }
+.field input, .field textarea {
+  width: 100%;
+  padding: 10px 13px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  border: 1.5px solid var(--purple-border);
+  border-radius: var(--radius-md);
+  background: #fff;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.15s;
+}
+.field input:focus, .field textarea:focus { border-color: var(--purple); }
+.field textarea { resize: vertical; min-height: 78px; }
+.field input.invalid { border-color: #c02040; }
+.email-error {
+  display: none;
+  font-size: 12px;
+  color: #c02040;
+  margin-top: 5px;
+}
+.email-error.show { display: block; }
+
+.btn-submit {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 26px;
+  background: var(--coral);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.01em;
+  transition: background 0.15s;
+}
+.btn-submit:hover:not(:disabled) { background: #e0304f; }
+.btn-submit:disabled { opacity: 0.4; cursor: default; }
+.submit-note { font-size: 12px; color: var(--text-muted); margin-top: 10px; line-height: 1.6; }
+
+.form-not-configured {
+  display: none;
+  margin-top: 12px;
+  padding: 12px 14px;
+  background: #fff8e1;
+  border: 1px solid #f0b800;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  color: #7a5000;
+}
+.form-not-configured.show { display: block; }
+
+.privacy-note {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--purple-border);
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* submitted confirmation overlay */
+.submitted-overlay {
+  position: fixed; inset: 0; z-index: 9999;
+  background: rgba(43,0,49,0.55);
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+}
+.submitted-card {
+  background: #fff; border-radius: 16px; max-width: 460px; width: 100%;
+  padding: 36px 32px; text-align: center;
+  box-shadow: 0 20px 60px rgba(43,0,49,0.4);
+  border-top: 5px solid var(--coral);
+}
+.submitted-tick {
+  width: 56px; height: 56px; margin: 0 auto 18px;
+  background: #1a7a60; color: #fff; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px; font-weight: 700;
+}
+.submitted-card h2 { font-size: 20px; color: var(--black-purple); margin-bottom: 12px; }
+.submitted-card p { font-size: 14px; color: var(--text-mid); line-height: 1.55; margin-bottom: 10px; }
+.submitted-card .submitted-sub { font-size: 13px; color: var(--text-muted); }
+
+/* ---- FOOTER ---- */
+footer { background: var(--black-purple); padding: 22px 0; }
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.45);
+}
+.footer-inner a { color: rgba(255,255,255,0.65); text-decoration: none; }
+.footer-inner a:hover { color: #fff; }
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 580px) {
+  .hero h1 { font-size: 22px; }
+  .section { padding: 20px 18px; }
+  .two-col { grid-template-columns: 1fr; }
+  .field-row { grid-template-columns: 1fr; }
+  .metric-item { flex-direction: column; gap: 4px; }
+  .metric-domain { width: auto; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+<header>
+  <div class="header-inner">
+    <div class="logo-lockup">
+      <img class="logo-img" style="height:52px;width:auto;display:block;" alt="Solico" src="https://hub.solico.org.uk/assets/logo-on-dark.png">
+    </div>
+    <div class="header-divider"></div>
+    <div class="header-right">
+      <div class="header-tag-title">Lambeth Together</div>
+      <div class="header-tag-sub">Commission engagement</div>
+    </div>
+  </div>
+</header>
+
+<!-- ======================================================
+     STEP BAR (breadcrumb trail)
+     ====================================================== -->
+<div class="step-bar">
+  <div class="wrap">
+    <div class="step-bar-inner">
+      <div class="sp" id="sp1" onclick="goTo('s-heard')"><div class="sp-n" id="sn1">1</div>What we heard</div>
+      <div class="sp" id="sp2" onclick="goTo('s-domains')"><div class="sp-n" id="sn2">2</div>Domain map</div>
+      <div class="sp" id="sp3" onclick="goTo('s-success')"><div class="sp-n" id="sn3">3</div>Success</div>
+      <div class="sp" id="sp4" onclick="goTo('s-enablers')"><div class="sp-n" id="sn4">4</div>Enablers</div>
+      <div class="sp" id="sp5" onclick="goTo('s-reflection')"><div class="sp-n" id="sn5">5</div>Reflection</div>
+      <div class="sp" id="sp6" onclick="goTo('s-metrics')"><div class="sp-n" id="sn6">6</div>Metrics</div>
+      <div class="sp" id="sp7" onclick="goTo('s-respond')"><div class="sp-n" id="sn7">7</div>Over to you</div>
+    </div>
+  </div>
+</div>
+</div><!-- /topbar -->
+
+<section class="hero">
+  <div class="wrap">
+    <p class="hero-label" id="hero-label"></p>
+    <h1 id="hero-title"></h1>
+    <p id="hero-intro"></p>
+    <div class="hero-callout" id="hero-callout"></div>
+    <div class="hero-meta" id="hero-meta"></div>
+  </div>
+</section>
+
+<main class="main-content">
+<div class="wrap">
+
+  <!-- ===== 1: WHAT WE HEARD ===== -->
+  <section class="section" id="s-heard">
+    <div class="section-head">
+      <div class="section-circle">1</div>
+      <div class="section-head-copy">
+        <h2>What we heard</h2>
+        <p>A short account of the session, as we experienced it.</p>
+      </div>
+    </div>
+    <div class="prose" id="heard-prose"></div>
+  </section>
+
+  <!-- ===== 2: DOMAIN MAP REVISITED ===== -->
+  <section class="section locked" id="s-domains">
+    <div class="section-head">
+      <div class="section-circle">2</div>
+      <div class="section-head-copy">
+        <h2>The domain map, revisited</h2>
+        <p>Where our first pass sat, and what the conversation added. Open each domain to see both.</p>
+      </div>
+    </div>
+    <div id="domain-cards"></div>
+    <p class="aside-note" id="domain-note"></p>
+  </section>
+
+  <!-- ===== 3: SUCCESS ===== -->
+  <section class="section locked" id="s-success">
+    <div class="section-head">
+      <div class="section-circle">3</div>
+      <div class="section-head-copy">
+        <h2>What success means to you</h2>
+        <p>Your words, from the session.</p>
+      </div>
+    </div>
+    <div class="prose" id="success-prose"></div>
+    <div id="success-quotes"></div>
+  </section>
+
+  <!-- ===== 4: ENABLERS AND INHIBITORS ===== -->
+  <section class="section locked" id="s-enablers">
+    <div class="section-head">
+      <div class="section-circle">4</div>
+      <div class="section-head-copy">
+        <h2>What will get you there, and what could get in the way</h2>
+        <p>The picture you painted of the road ahead.</p>
+      </div>
+    </div>
+    <div class="two-col">
+      <div class="col-panel enable">
+        <h3>Enablers</h3>
+        <ul id="enablers-list"></ul>
+      </div>
+      <div class="col-panel inhibit">
+        <h3>Possible inhibitors</h3>
+        <ul id="inhibitors-list"></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 5: REFLECTION ===== -->
+  <section class="section locked" id="s-reflection">
+    <div class="section-head">
+      <div class="section-circle">5</div>
+      <div class="section-head-copy">
+        <h2 id="reflection-title"></h2>
+        <p id="reflection-sub"></p>
+      </div>
+    </div>
+    <p class="essay-byline" id="reflection-byline"></p>
+    <div class="prose" id="reflection-prose"></div>
+  </section>
+
+  <!-- ===== 6: METRICS ===== -->
+  <section class="section locked" id="s-metrics">
+    <div class="section-head">
+      <div class="section-circle">6</div>
+      <div class="section-head-copy">
+        <h2>Measuring what matters</h2>
+        <p>The measures we discussed for tracking progress on your own terms.</p>
+      </div>
+    </div>
+    <div id="metrics-list"></div>
+  </section>
+
+  <!-- ===== 7: YOUR RESPONSE ===== -->
+  <section class="section locked" id="s-respond">
+    <div class="section-head">
+      <div class="section-circle">7</div>
+      <div class="section-head-copy">
+        <h2>Over to you</h2>
+        <p>This page is a record for you to react to, not a verdict. Tell us what we have read well, what we have missed, and what you would put differently.</p>
+      </div>
+    </div>
+    <div class="fields">
+      <div class="field-row">
+        <div class="field">
+          <label>Your name</label>
+          <input type="text" id="f-name" oninput="checkReady()">
+        </div>
+        <div class="field">
+          <label>Email address</label>
+          <input type="email" id="f-email" oninput="checkReady()">
+          <p class="email-error" id="email-error">Please enter a valid email address, e.g. name@organisation.org.uk</p>
+        </div>
+      </div>
+      <div class="field">
+        <label>Your reflection</label>
+        <textarea id="f-reflection" placeholder="What rings true, what doesn't, and anything you'd add..." oninput="checkReady()"></textarea>
+      </div>
+      <div class="field">
+        <label>Anything to correct <span class="opt">(optional)</span></label>
+        <textarea id="f-corrections" placeholder="Facts, figures, or emphasis you'd like us to change before this goes any further..."></textarea>
+      </div>
+    </div>
+    <button class="btn-submit" id="submit-btn" onclick="doSubmit()" disabled>
+      Send your reflection &rarr;
+    </button>
+    <div class="form-not-configured" id="form-not-configured">
+      The response form for this page has not been configured yet. Please email your reflection to us instead.
+    </div>
+    <div class="form-not-configured" id="submit-error">
+      Something went wrong while sending. Your answers are still here, please try again in a moment.
+    </div>
+    <p class="submit-note">Pressing send delivers your reflection directly and securely to Solico. Nothing else opens.</p>
+    <p class="privacy-note">This page has been prepared for you and is not linked from anywhere public. Your responses are processed by Solico and used only for the purposes of this commission. They are stored within Solico's Microsoft 365 tenancy and will not be shared with other parties without your consent.</p>
+  </section>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <span>&copy; 2026 Solico &middot; <a href="https://solico.org.uk" target="_blank">solico.org.uk</a></span>
+      <span>A commission for Lambeth Together</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ==========================================================
+   CONFIG — ALL ORGANISATION-SPECIFIC CONTENT LIVES HERE
+   ==========================================================
+   To produce this page for another Thriving, copy this file
+   and edit only this object. Markup and styles stay as-is.
+
+   BEFORE SHARING THIS PAGE:
+   1. Confirm the SUBMIT block at the bottom of CONFIG carries
+      the right Power Automate flow URL and token.
+   2. Abhishek to review the wording of the ethnographic
+      observations section, which is carried from the Deep
+      Dive write-up pending his final sign-off.
+   ========================================================== */
+
+const CONFIG = {
+
+  org: 'Thriving Stockwell',
+  host: 'Stockwell Partnership',
+  sessionDate: '2<sup>nd</sup> July 2026',
+  solicoTeam: 'Chris French and Abhishek Mohanty',
+  attendee: 'Steve Griffin',
+
+  hero: {
+    label: 'Thriving Communities · Lambeth',
+    title: 'Deep Dive reflection<br>Thriving Stockwell',
+    intro: 'Thank you for the afternoon you gave us on 2<sup>nd</sup> July. This page gathers up what we took from the session so you can see how we have understood it. Nothing here is fixed. It is a record for you to react to, and the response section at the end is there for exactly that.',
+    callout: 'Everything on this page comes from our conversation with you and the material you shared. Two things you asked us to hold in confidence do not appear here and will not appear anywhere else.',
+    meta: ['Session held 2<sup>nd</sup> July 2026', 'With Steve Griffin - Director', 'Solico · Chris French and Abhishek Mohanty']
+  },
+
+  heard: [
+    'We spent the afternoon with you at the Thriving Stockwell office, surrounded by the flyers, the noticeboards and the calçada portuguesa at the gate. What came through most strongly was the way Thriving Stockwell works as a network driven by a common sense of values rather than by structure. You described meetings that are light touch and humorous but where all the serious work gets done, and partners who come in because the whole thing is fleet of foot.',
+    'You talked us through the deliberate decision not to register Thriving Stockwell as an organisation in its own right, drawing on the lesson of the Lambeth Portuguese Wellbeing Partnership, where registration made things about the process of itself rather than the community. Thriving Stockwell instead sits under the aegis of Stockwell Partnership, which holds the regulatory side while the network keeps its early ethos.',
+    'And we heard about the two legs the whole model stands on. A community development organisation with deep roots, and a GP who gives a day a week to his community role, texts his patient register to start peer groups, and negotiated a free community room from a housing association. You called him an evergreen asset, and the phrase stuck with us.'
+  ],
+
+  domainNote: 'These positions use the same one to five scale as the preparation pack. The session held all seven where our first pass placed them. Your own reading of Stockwell lined up closely with ours throughout, and the value of the conversation was depth and honesty rather than correction. As ever, positions capture a moment in time and we would expect them to move as your work develops.',
+
+  /* firstPass: the position we brought to the session.
+     heard: what the conversation added, confirmed or moved. */
+  domains: [
+    {
+      name: 'Governance and structure',
+      sub: 'Organisation, leadership and decision-making',
+      firstPass: '4 · held',
+      heard: 'Held. You were candid that the informality is deliberate, a reaction against an earlier, more restrictive experience registering the Lambeth Portuguese Wellbeing Partnership as a CIC. You expect to be marked down for the lack of formal process and value the trust and flexibility it buys instead. New this session, the Thriving Stockwell name carries no formal protection, a gap you intend to look at, including trademarking and securing the digital presence.'
+    },
+    {
+      name: 'Resident engagement and trust',
+      sub: 'How residents shape and trust what you do',
+      firstPass: '4 · held',
+      heard: 'Firmly confirmed. The stories of doors opening unexpectedly, from the men’s group in the old laundry to national organisations turning up because they heard about you locally, speak to reach that is earned rather than engineered. What is new and important is that you named, entirely unprompted, that white working class residents are under-represented relative to their real weight in the area, and that you own this as a gap you want to close rather than something put to you.'
+    },
+    {
+      name: 'VCSE and partner connections',
+      sub: 'Relationships with partners and statutory organisations',
+      firstPass: '4 · held',
+      heard: 'Confirmed and verified in detail, including the Hyde Housing and GP room arrangement, which we could now hear about directly rather than infer. You ranked this your strongest domain, and put it above governance precisely because the trust and the powerful connection between founding partners is what makes the bedrock of the whole thing work. You also suggested it would be worth hearing whether partners see it the same way, which we are taking forward.'
+    },
+    {
+      name: 'Health and wellbeing programme delivery',
+      sub: 'Ability to run activities that improve local health',
+      firstPass: '4 · held',
+      heard: 'Confirmed. The delivery evidence was already strong on paper, and the session added the texture behind it. The North East African women’s group that answered a cardiovascular risk statistic with a community cookbook is as good an account of community-led health as we have heard anywhere. You also chose the promoter style metric yourself and set a target above the sector average Abhishek cited, which says something about your confidence in the relationships underpinning delivery.'
+    },
+    {
+      name: 'Data and learning',
+      sub: 'Understanding need and reflecting on impact',
+      firstPass: '3 · held',
+      heard: 'Confirmed, with the clearest root cause of any domain. Monitoring is funding led and project led rather than systematic, and that is a capacity question on a four day working week rather than a lack of will. You also made a considered case for the asset-based alternative to big needs surveys, where the more you do, the more people come in from angles you would never expect. The question we left with is how to evidence that approach without flattening it.'
+    },
+    {
+      name: 'Sustainability and funding',
+      sub: 'Stability beyond short-term funding',
+      firstPass: '3 · held',
+      heard: 'Confirmed, with far sharper detail than desk research could show. You described the funding position frankly, including the effective collapse of core council funding and the two newer grants currently doing the work of keeping things afloat. Core funding for the network function came through as the single most important ask, and the reserves position sits a little below your six month target.'
+    },
+    {
+      name: 'Shared vision and identity',
+      sub: 'Clarity and local recognition of your purpose',
+      firstPass: '4 · held',
+      heard: 'Confirmed, with strong personal ownership of the brand question, right down to the idea of physical plaques with QR codes on partner doors. Thriving Stockwell as a brand rather than a registration, rooted in place, recognisable to partners and residents alike. You are planning to send us the current vision document, and floated evolving it into something that also sets out how bids are made under the Thriving Stockwell name.'
+    }
+  ],
+
+  success: {
+    prose: [
+      'Asked what success means, your first answer was the simplest one on this page. Success means a healthier community. That is what you are after in Stockwell.',
+      'From there the picture grew. You see Thriving Stockwell in the vanguard of the shift from hospital to community, and you want to be able to demonstrate that the health and outlook of people in Stockwell has genuinely changed. You want the work sustainably funded so that it is not just chasing its tail every single year. And you were clear about the shape of the thing you are building. Not a big hub that everybody has to come to, but a distributed network where people find what they need, feed off it, break away to do their own thing, and come back when they need it.'
+    ],
+    quotes: [
+      { text: 'It’s a vision of efficiency whereby all the resources of the area, the assets of the area harmonise, in a way that then makes the community harmonise much better itself. And thrive.', who: 'Steve, on what success looks like' },
+      { text: 'A light in the darkness. A good example of how the health sector can truly move into seeing the voluntary sector as a public health provider.', who: 'Steve, on what Thriving Stockwell could show the system' }
+    ]
+  },
+
+  enablers: [
+    'Staying grassroots. Seven years of bottom up working, with a bit of fun along the way.',
+    'The two legged model. A rooted community development organisation and a genuinely community-facing GP, each holding up half the structure.',
+    'Trust and light touch culture as the participation engine. Partners join because it works and it is not onerous.',
+    'Core funding for the network function itself. The website, the comms, the meetings, the connective tissue.',
+    'Growing institutional awareness, particularly within the NHS, of what the network is already delivering.',
+    'Knowledge that spreads. The Vital Five moving from one GP to thirty people who each take it into their community.'
+  ],
+
+  inhibitors: [
+    'The funding environment. Local public sector funding has fallen away sharply, and the organisation lives with genuine year to year precarity.',
+    'Dependence on a small number of trusted individuals. You were honest that if either of the two people at the centre stepped away, it would be very difficult.',
+    'The brand is unprotected. Nothing currently stops a rogue partner bidding under the Thriving Stockwell name, and you are looking at trademarking as a result.',
+    'The structural tension. Incorporating Thriving Stockwell could give it protection and permanence, but your own history suggests it could also kill what makes it work.'
+  ],
+
+  /* This section carries Abhishek's own voice, taken from the
+     Deep Dive write-up. Awaiting his final review of the wording
+     before the page is shared. */
+  reflection: {
+    title: 'Ethnographic observations',
+    sub: 'This section carries Abhishek’s own voice and is kept distinct from the domain notes above by design.',
+    byline: 'Abhishek Mohanty, Solico',
+    prose: [
+      'For much of the afternoon, Steve alludes to how Thriving Stockwell is rooted in Stockwell’s particular character. He describes it working well as a network driven by a common sense of values, and speaks about learning from an earlier, more restrictive experience registering the Lambeth Portuguese Wellbeing Partnership as a CIC, an act he suggests stifled a prior flexibility. Governance, he suggests, took precedence over community. Thriving Stockwell has deliberately remained an informal collective under Stockwell Partnership rather than repeat that path.',
+      'Yet how might this character be understood? Steve recalls the Lambeth Portuguese Wellbeing Partnership fondly, a Portuguese neighbourhood group. The office carries visible signs of this, flyers with the flags of Lusophone countries, a wall notice in Portuguese, calçada portuguesa paving at the entrance. Asked directly whether the character he describes is inherently Portuguese, given this is also the dominant ethnic group locally, and offered the provocation of whether the same approach would build similar trust somewhere with a markedly different demographic, Steve is quick to describe Stockwell instead as a place-based community with a history of working together, rather than an ethnically defined one.',
+      'The idea of ethnicity returns later all the same, when Steve raises an ambition to reach the white working class more effectively, a group he feels has been comparatively overlooked, and clearly finds this a difficult thing to articulate. He is visibly working through a genuine tension here rather than making a claim about any group being roundly ignored, and it is worth noting there are working class Portuguese residents too, including those with roots in Madeira who describe a distinct relationship to mainland Portuguese identity, so the gap Steve is naming is better read as English white working class specifically.',
+      'There is no direct translation between being Portuguese and not being white working class enough, and yet both can be true at once. This points towards what anthropologists and STS scholars would recognise as a boundary object, a concept, method or artefact shared across communities of practice without needing one rigid, unified meaning, flexible enough to hold local nuance while remaining recognisable across settings. Thriving Stockwell fits this better than a single fixed identity would. It need not register as its own legal entity. With Stockwell Partnership carrying the regulatory weight, Thriving Stockwell can still operate as a brand in its own right, bid for funds, lead initiatives, become widely known locally, and stand as an example for other Thrivings, while being Portuguese, not white working class enough, and rooted in placeness, all at once. This is a way of working that privileges relationships over structure, trust over legal frameworks, and collective identity over incorporation, and it gives Thriving Stockwell a genuine answer to the identity question that does not require choosing.'
+    ]
+  },
+
+  /* METRICS — from the Deep Dive write-up, section 4.
+     Steve had the full metrics basket ahead of the session and
+     chose one target per domain in the room. */
+  metrics: [
+    {
+      domain: 'Governance and structure',
+      name: 'A defining document in place',
+      note: 'Charter style rather than a constitution, and not necessarily binding. Target within six months.'
+    },
+    {
+      domain: 'Resident engagement and trust',
+      name: 'Proportion of active engagement from underserved or protected groups',
+      note: 'Target 80 to 90%.'
+    },
+    {
+      domain: 'VCSE and partner connections',
+      name: 'Proportion of programmes reaching different communities',
+      note: 'Roughly 80% underserved focus, with 20 to 25% deliberately cross community.'
+    },
+    {
+      domain: 'Health and wellbeing delivery',
+      name: 'Promoter style, recommend us score',
+      note: 'Target 75%, a level you set above the sector average discussed in the session.'
+    },
+    {
+      domain: 'Data and learning',
+      name: 'Proportion of core delivery partners with relevant training or CPD',
+      note: 'Target roughly 50%.'
+    },
+    {
+      domain: 'Sustainability and funding',
+      name: 'Proportion of funding running three years or longer',
+      note: 'Target 75%.'
+    },
+    {
+      domain: 'Shared vision and identity',
+      name: 'A refreshed shared vision agreed with partners',
+      note: 'Target within six to twelve months.'
+    }
+  ],
+  metricsPending: 'These are the measures as we captured them in the room. If any of them, or any target, reads differently to how you remember it, the response section below is the place to say so.',
+
+  /* DIRECT SUBMISSION — Power Automate
+     The page posts responses straight to a Solico Power Automate
+     flow (Hub Deep Dive Reflections intake), which writes them to
+     the Deep Dive Reflections list on the LambethThriving
+     SharePoint site. The token must match the value the flow's
+     condition checks. Leave url empty to show the not-configured
+     notice instead. */
+  SUBMIT: {
+    url: 'https://default84502d55185e46909ad3cdecaa6893.e7.environment.api.powerplatform.com:443/powerautomate/automations/direct/cu/04/workflows/9e2317c511a34c8eb884ceff9d859508/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=H0D602V3hfz6O-oHfyd53T5OODCUCqfKjrFue03TvD4',
+    token: 'solico-hub-k7m2'
+  }
+};
+
+/* ==========================================================
+   RENDER — no organisation-specific content below this line
+   ========================================================== */
+
+function esc(s) { return s; } /* content is authored, not user input */
+
+function goTo(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const topbar = document.querySelector('.topbar');
+  const offset = (topbar ? topbar.offsetHeight : 0) + 12;
+  const y = el.getBoundingClientRect().top + window.scrollY - offset;
+  window.scrollTo({ top: y, behavior: 'smooth' });
+}
+
+/* ---- gated step completion (green ticks + locking) ----
+   Sections unlock in sequence. A section can only complete
+   once the one before it is done, and the response section
+   stays locked until sections 1 to 6 are all complete. */
+const SECTION_IDS = ['s-heard', 's-domains', 's-success', 's-enablers', 's-reflection', 's-metrics', 's-respond'];
+const doneSteps = new Set();
+
+function setStepDone(n) {
+  if (doneSteps.has(n)) return;
+  doneSteps.add(n);
+  const bar = document.getElementById('sp' + n);
+  const num = document.getElementById('sn' + n);
+  if (bar) bar.classList.add('done');
+  if (num) num.innerHTML = '&#10003;';
+  const next = document.getElementById(SECTION_IDS[n]); // unlock the following section
+  if (next) next.classList.remove('locked');
+  checkReady();
+}
+
+function canComplete(n) {
+  return n === 1 || doneSteps.has(n - 1);
+}
+
+/* Reading sections complete once scrolled through, in order.
+   The domain map (2) completes when all domains have been
+   opened, and the response (7) on submission. */
+const SCROLL_STEPS = [
+  ['s-heard', 1], ['s-success', 3], ['s-enablers', 4],
+  ['s-reflection', 5], ['s-metrics', 6]
+];
+function checkScrollProgress() {
+  const marker = window.scrollY + window.innerHeight * 0.6;
+  for (const [id, n] of SCROLL_STEPS) {
+    const el = document.getElementById(id);
+    if (el && canComplete(n) && marker > el.offsetTop + el.offsetHeight) setStepDone(n);
+  }
+}
+window.addEventListener('scroll', checkScrollProgress, { passive: true });
+window.addEventListener('resize', checkScrollProgress);
+
+function renderHero() {
+  document.getElementById('hero-label').textContent = CONFIG.hero.label;
+  document.getElementById('hero-title').innerHTML = CONFIG.hero.title;
+  document.getElementById('hero-intro').innerHTML = CONFIG.hero.intro;
+  document.getElementById('hero-callout').textContent = CONFIG.hero.callout;
+  document.getElementById('hero-meta').innerHTML =
+    CONFIG.hero.meta.map(m => `<span>${m}</span>`).join('');
+  document.title = 'Deep Dive Reflection | ' + CONFIG.org + ' · Solico';
+}
+
+function renderHeard() {
+  document.getElementById('heard-prose').innerHTML =
+    CONFIG.heard.map(p => `<p>${p}</p>`).join('');
+}
+
+const openCards = new Set();
+const viewedDomains = new Set();
+
+function renderDomains() {
+  document.getElementById('domain-cards').innerHTML = CONFIG.domains.map((d, i) => `
+    <div class="domain-card">
+      <div class="d-header" onclick="toggleDomain(${i})">
+        <div class="d-check${viewedDomains.has(i) ? ' done' : ''}">${viewedDomains.has(i) ? '&#10003;' : ''}</div>
+        <div class="d-title">
+          <div class="d-name">${d.name}</div>
+          <div class="d-sub">${d.sub}</div>
+        </div>
+        <span class="d-pos">${d.firstPass}</span>
+        <span class="d-arrow${openCards.has(i) ? ' open' : ''}">&#9660;</span>
+      </div>
+      <div class="d-body${openCards.has(i) ? ' open' : ''}">
+        <div class="d-row"><span class="d-tag heard">From the session</span><span class="d-row-desc">${d.heard}</span></div>
+      </div>
+    </div>
+  `).join('');
+  document.getElementById('domain-note').textContent = CONFIG.domainNote;
+}
+
+function toggleDomain(i) {
+  const wasOpen = openCards.has(i);
+  // Accordion behaviour: close all others, so only one is open at a time
+  openCards.clear();
+  if (!wasOpen) {
+    openCards.add(i);
+    viewedDomains.add(i);
+  }
+  if (viewedDomains.size === CONFIG.domains.length) setStepDone(2);
+  renderDomains();
+  // Keep the page aligned: bring the just-opened card's header to a stable spot
+  if (!wasOpen) {
+    requestAnimationFrame(function() {
+      const cards = document.querySelectorAll('.domain-card');
+      const card = cards[i];
+      if (card) {
+        const topbar = document.querySelector('.topbar');
+        const offset = (topbar ? topbar.offsetHeight : 0) + 12;
+        const y = card.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    });
+  }
+}
+
+function renderSuccess() {
+  document.getElementById('success-prose').innerHTML =
+    CONFIG.success.prose.map(p => `<p>${p}</p>`).join('');
+  document.getElementById('success-quotes').innerHTML =
+    CONFIG.success.quotes.map(q => `
+      <div class="pull-quote">
+        <div class="q-text">&ldquo;${q.text}&rdquo;</div>
+        <div class="q-who">${q.who}</div>
+      </div>`).join('');
+}
+
+function renderLists() {
+  document.getElementById('enablers-list').innerHTML =
+    CONFIG.enablers.map(e => `<li>${e}</li>`).join('');
+  document.getElementById('inhibitors-list').innerHTML =
+    CONFIG.inhibitors.map(e => `<li>${e}</li>`).join('');
+}
+
+function renderReflection() {
+  document.getElementById('reflection-title').textContent = CONFIG.reflection.title;
+  document.getElementById('reflection-sub').textContent = CONFIG.reflection.sub;
+  document.getElementById('reflection-byline').textContent = CONFIG.reflection.byline;
+  document.getElementById('reflection-prose').innerHTML =
+    CONFIG.reflection.prose.map(p => `<p>${p}</p>`).join('');
+}
+
+function renderMetrics() {
+  const list = CONFIG.metrics.map(m => `
+    <div class="metric-item">
+      <div class="metric-domain">${m.domain}</div>
+      <div class="metric-copy">
+        <div class="metric-name">${m.name}</div>
+        <div class="metric-note">${m.note}</div>
+      </div>
+    </div>`).join('');
+  const pending = CONFIG.metricsPending
+    ? `<div class="metric-pending">${CONFIG.metricsPending}</div>` : '';
+  document.getElementById('metrics-list').innerHTML = list + pending;
+}
+
+/* ---- response submission ---- */
+
+function isValidEmail(v) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+}
+
+function checkReady() {
+  const name  = document.getElementById('f-name').value.trim();
+  const emailField = document.getElementById('f-email');
+  const email = emailField.value.trim();
+  const refl  = document.getElementById('f-reflection').value.trim();
+  const emailOk = isValidEmail(email);
+  emailField.classList.toggle('invalid', !!email && !emailOk);
+  document.getElementById('email-error').classList.toggle('show', !!email && !emailOk);
+  const allRead = [1, 2, 3, 4, 5, 6].every(n => doneSteps.has(n));
+  document.getElementById('submit-btn').disabled = !(allRead && name && emailOk && refl);
+}
+
+function doSubmit() {
+  if (!CONFIG.SUBMIT.url) {
+    document.getElementById('form-not-configured').classList.add('show');
+    return;
+  }
+  const corrections = document.getElementById('f-corrections').value.trim();
+  const payload = {
+    token: CONFIG.SUBMIT.token,
+    website: '',  /* decoy field, must stay empty or the flow rejects the submission */
+    organisation: CONFIG.org,
+    name:  document.getElementById('f-name').value.trim(),
+    email: document.getElementById('f-email').value.trim(),
+    reflection: document.getElementById('f-reflection').value.trim() +
+      (corrections ? '\n\nCorrections requested:\n' + corrections : '')
+  };
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+  document.getElementById('submit-error').classList.remove('show');
+  /* Sent as text/plain so the browser skips the CORS preflight,
+     which Power Automate's HTTP trigger cannot answer. The flow
+     re-parses the body with json(triggerBody()). */
+  fetch(CONFIG.SUBMIT.url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'text/plain' },
+    body: JSON.stringify(payload)
+  })
+  .then(function (r) {
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    showSubmittedState();
+  })
+  .catch(function () {
+    btn.disabled = false;
+    btn.innerHTML = 'Send your reflection &rarr;';
+    document.getElementById('submit-error').classList.add('show');
+    checkReady();
+  });
+}
+
+function showSubmittedState() {
+  setStepDone(7);
+  const btn = document.getElementById('submit-btn');
+  if (btn) { btn.disabled = true; btn.textContent = 'Reflection sent'; }
+  const panel = document.createElement('div');
+  panel.className = 'submitted-overlay';
+  panel.innerHTML =
+    '<div class="submitted-card">' +
+      '<div class="submitted-tick">&#10003;</div>' +
+      '<h2>Thank you &mdash; your reflection has been sent</h2>' +
+      '<p>Your reflection has been delivered securely to Solico. There is nothing more to do.</p>' +
+      '<p class="submitted-sub">You can now close this page. If you want to send more, please reopen the link.</p>' +
+    '</div>';
+  document.body.appendChild(panel);
+  document.body.style.overflow = 'hidden';
+}
+
+/* ---- init ---- */
+renderHero();
+renderHeard();
+renderDomains();
+renderSuccess();
+renderLists();
+renderReflection();
+renderMetrics();
+checkScrollProgress();
+</script>
+
+</body>
+</html>

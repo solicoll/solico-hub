@@ -1,0 +1,1081 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Deep Dive Reflection | Black Prince Trust · Solico</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;900&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================
+   SOLICO — LAMBETH TOGETHER · DEEP DIVE REFLECTION PAGE
+   hub.solico.org.uk/black-prince-trust
+   TEMPLATE — all organisation-specific content lives in the
+   CONFIG object at the top of the script. To produce this
+   page for another Thriving, copy this file and edit CONFIG.
+   ========================================================== */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --purple:       #64009b;
+  --coral:        #ff4570;
+  --black-purple: #2b0031;
+  --white-purple: #edebf5;
+  --purple-faint: rgba(100,0,155,0.06);
+  --purple-light: rgba(100,0,155,0.12);
+  --purple-mid:   rgba(100,0,155,0.22);
+  --purple-border:rgba(100,0,155,0.18);
+  --purple-strong:rgba(100,0,155,0.4);
+  --text:         #2b0031;
+  --text-mid:     #6a3a78;
+  --text-muted:   #9a70a8;
+  --green:        #1a6020;
+  --green-bg:     #e6f4e6;
+  --radius-sm:    6px;
+  --radius-md:    10px;
+  --radius-lg:    16px;
+}
+
+body {
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--text);
+  background: #f5f2f9;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap { max-width: 740px; margin: 0 auto; padding: 0 24px; }
+
+/* ---- HEADER ---- */
+.topbar { position: sticky; top: 0; z-index: 100; }
+header {
+  background: var(--black-purple);
+  padding: 20px 0 0;
+  border-bottom: 3px solid var(--coral);
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 0 24px 20px 24px;
+  max-width: none;
+}
+.logo-lockup { display: flex; flex-direction: column; gap: 4px; padding-right: 20px; }
+.logo-img { margin-left: 16px; }
+.logo-designed-by {
+  font-size: 9px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.38);
+}
+.header-divider { width: 1px; height: 40px; background: rgba(255,255,255,0.18); flex-shrink: 0; margin: 0 20px; }
+.header-right { flex: 1; }
+.header-tag-title { font-size: 15px; font-weight: 700; color: rgba(255,255,255,0.9); letter-spacing: -0.1px; line-height: 1.2; }
+.header-tag-sub { font-size: 10px; font-weight: 500; color: rgba(255,255,255,0.45); letter-spacing: 0.04em; margin-top: 2px; }
+
+/* ---- STEP BAR (breadcrumb trail, mirrors main page) ---- */
+.step-bar {
+  background: var(--white-purple);
+  border-bottom: 1px solid var(--purple-border);
+  overflow-x: auto;
+}
+.step-bar-inner {
+  display: flex;
+  min-width: 480px;
+}
+.sp {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+  border-right: 1px solid var(--purple-border);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.12s;
+}
+.sp:hover { background: var(--purple-light); }
+.sp:last-child { border-right: none; }
+.sp-n {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--purple);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+.sp.done .sp-n { background: var(--green); }
+
+sup { font-size: 62%; line-height: 0; }
+
+/* ---- HERO ---- */
+.hero { background: var(--black-purple); padding: 44px 0 52px; color: #fff; }
+.hero-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--coral);
+  margin-bottom: 14px;
+}
+.hero h1 { font-size: 28px; font-weight: 900; line-height: 1.15; letter-spacing: -0.3px; margin-bottom: 16px; }
+.hero p { font-size: 14px; line-height: 1.75; color: rgba(255,255,255,0.72); max-width: 560px; }
+.hero-callout {
+  margin-top: 18px;
+  padding: 13px 16px;
+  border-left: 3px solid var(--coral);
+  background: rgba(255,255,255,0.07);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 13px;
+  color: rgba(255,255,255,0.78);
+  line-height: 1.65;
+}
+.hero-meta {
+  margin-top: 22px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.hero-meta span {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 99px;
+  background: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.75);
+}
+
+/* ---- MAIN ---- */
+.main-content { padding: 32px 0 72px; }
+
+.section {
+  background: #fff;
+  border: 1px solid var(--purple-border);
+  border-radius: var(--radius-lg);
+  padding: 28px 30px;
+  margin-bottom: 18px;
+  transition: opacity 0.25s, filter 0.25s;
+}
+.section.locked {
+  pointer-events: none;
+  background: #faf9fc;
+  border-color: rgba(100,0,155,0.1);
+}
+.section.locked .section-head-copy h2 { color: #b0a0b8; }
+.section.locked .section-head-copy p { color: #c8bcd0; }
+.section.locked .section-circle { background: #ddd6e4; color: #b0a0b8; }
+.section.locked .prose,
+.section.locked .two-col,
+.section.locked .pull-quote,
+.section.locked .essay-byline,
+.section.locked #domain-cards,
+.section.locked #metrics-list,
+.section.locked .aside-note,
+.section.locked .fields { opacity: 0.35; filter: grayscale(0.4); }
+.section-head { display: flex; align-items: flex-start; gap: 15px; margin-bottom: 18px; }
+.section-circle {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--purple);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.section-head-copy h2 { font-size: 17px; font-weight: 900; color: var(--black-purple); letter-spacing: -0.2px; margin-bottom: 3px; }
+.section-head-copy p { font-size: 13px; color: var(--text-mid); }
+.section .prose p { font-size: 14px; line-height: 1.75; color: var(--text); margin-bottom: 13px; }
+.section .prose p:last-child { margin-bottom: 0; }
+
+.aside-note {
+  font-size: 13px;
+  color: var(--text-mid);
+  background: var(--white-purple);
+  border-left: 3px solid var(--purple);
+  padding: 12px 14px;
+  border-radius: 0 8px 8px 0;
+  margin-top: 14px;
+  line-height: 1.55;
+}
+
+/* ---- PULL QUOTES ---- */
+.pull-quote {
+  margin: 18px 0;
+  padding: 16px 20px;
+  background: var(--purple-faint);
+  border-left: 3px solid var(--coral);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+.pull-quote .q-text { font-size: 15px; font-weight: 600; line-height: 1.6; color: var(--black-purple); }
+.pull-quote .q-who { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-muted); margin-top: 8px; }
+
+/* ---- DOMAIN CARDS (accordion, mirrors main page) ---- */
+.domain-card { border: 1px solid var(--purple-border); border-radius: var(--radius-md); margin-bottom: 7px; overflow: hidden; }
+.d-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 14px;
+  cursor: pointer;
+  background: #fff;
+  user-select: none;
+  transition: background 0.12s;
+}
+.d-header:hover { background: var(--purple-faint); }
+.d-check {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1.5px solid var(--purple-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  flex-shrink: 0;
+  transition: all 0.15s;
+  color: transparent;
+}
+.d-check.done { background: var(--green); border-color: var(--green); color: #fff; }
+.d-title { flex: 1; min-width: 0; }
+.d-name { font-size: 13px; font-weight: 700; color: var(--black-purple); }
+.d-sub { font-size: 11px; color: var(--text-muted); margin-top: 1px; }
+.d-pos {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 3px 10px;
+  border-radius: 99px;
+  background: var(--purple-light);
+  color: var(--purple);
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+.d-arrow { font-size: 16px; color: var(--text-muted); transition: transform 0.18s; flex-shrink: 0; }
+.d-arrow.open { transform: rotate(180deg); }
+.d-body { display: none; padding: 4px 14px 14px; background: var(--purple-faint); border-top: 1px solid var(--purple-border); }
+.d-body.open { display: block; }
+.d-row { display: flex; gap: 10px; margin-top: 11px; align-items: flex-start; }
+.d-tag {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 2px 8px;
+  border-radius: 99px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  white-space: nowrap;
+}
+.d-tag.first { background: #fff3e0; color: #804500; }
+.d-tag.heard { background: var(--green-bg); color: var(--green); }
+.d-row-desc { font-size: 13px; line-height: 1.6; color: var(--text); }
+
+/* ---- ENABLERS / INHIBITORS ---- */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 6px; }
+.col-panel { border: 1px solid var(--purple-border); border-radius: var(--radius-md); padding: 16px 18px; background: #fff; }
+.col-panel h3 {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: 10px;
+}
+.col-panel.enable h3 { color: var(--green); }
+.col-panel.inhibit h3 { color: #900030; }
+.col-panel ul { list-style: none; }
+.col-panel li { font-size: 13px; line-height: 1.6; color: var(--text); padding-left: 16px; position: relative; margin-bottom: 9px; }
+.col-panel li:last-child { margin-bottom: 0; }
+.col-panel li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 8px;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+}
+.col-panel.enable li::before { background: var(--green); }
+.col-panel.inhibit li::before { background: var(--coral); }
+
+/* ---- REFLECTION ESSAY ---- */
+.essay-byline { font-size: 12px; font-weight: 600; color: var(--text-muted); margin-bottom: 14px; }
+
+/* ---- METRICS ---- */
+.metric-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 12px 14px;
+  border: 1px solid var(--purple-border);
+  border-radius: var(--radius-md);
+  margin-bottom: 7px;
+  background: #fff;
+}
+.metric-domain { font-size: 11px; font-weight: 700; color: var(--purple); text-transform: uppercase; letter-spacing: 0.05em; width: 150px; flex-shrink: 0; padding-top: 2px; }
+.metric-copy { flex: 1; }
+.metric-name { font-size: 13px; font-weight: 700; color: var(--black-purple); }
+.metric-note { font-size: 12px; color: var(--text-mid); margin-top: 2px; line-height: 1.55; }
+.metric-pending {
+  font-size: 13px;
+  color: var(--text-mid);
+  background: var(--purple-faint);
+  border: 1px dashed var(--purple-mid);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  margin-top: 8px;
+}
+
+/* ---- RESPONSE FORM ---- */
+.fields { margin-top: 4px; }
+.field { margin-bottom: 15px; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.field label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.field label .opt { font-weight: 400; text-transform: none; letter-spacing: 0; color: var(--text-muted); }
+.field input, .field textarea {
+  width: 100%;
+  padding: 10px 13px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  border: 1.5px solid var(--purple-border);
+  border-radius: var(--radius-md);
+  background: #fff;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.15s;
+}
+.field input:focus, .field textarea:focus { border-color: var(--purple); }
+.field textarea { resize: vertical; min-height: 78px; }
+.field input.invalid { border-color: #c02040; }
+.email-error {
+  display: none;
+  font-size: 12px;
+  color: #c02040;
+  margin-top: 5px;
+}
+.email-error.show { display: block; }
+
+.btn-submit {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 26px;
+  background: var(--coral);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.01em;
+  transition: background 0.15s;
+}
+.btn-submit:hover:not(:disabled) { background: #e0304f; }
+.btn-submit:disabled { opacity: 0.4; cursor: default; }
+.submit-note { font-size: 12px; color: var(--text-muted); margin-top: 10px; line-height: 1.6; }
+
+.form-not-configured {
+  display: none;
+  margin-top: 12px;
+  padding: 12px 14px;
+  background: #fff8e1;
+  border: 1px solid #f0b800;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  color: #7a5000;
+}
+.form-not-configured.show { display: block; }
+
+.privacy-note {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--purple-border);
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* submitted confirmation overlay */
+.submitted-overlay {
+  position: fixed; inset: 0; z-index: 9999;
+  background: rgba(43,0,49,0.55);
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+}
+.submitted-card {
+  background: #fff; border-radius: 16px; max-width: 460px; width: 100%;
+  padding: 36px 32px; text-align: center;
+  box-shadow: 0 20px 60px rgba(43,0,49,0.4);
+  border-top: 5px solid var(--coral);
+}
+.submitted-tick {
+  width: 56px; height: 56px; margin: 0 auto 18px;
+  background: #1a7a60; color: #fff; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px; font-weight: 700;
+}
+.submitted-card h2 { font-size: 20px; color: var(--black-purple); margin-bottom: 12px; }
+.submitted-card p { font-size: 14px; color: var(--text-mid); line-height: 1.55; margin-bottom: 10px; }
+.submitted-card .submitted-sub { font-size: 13px; color: var(--text-muted); }
+
+/* ---- FOOTER ---- */
+footer { background: var(--black-purple); padding: 22px 0; }
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.45);
+}
+.footer-inner a { color: rgba(255,255,255,0.65); text-decoration: none; }
+.footer-inner a:hover { color: #fff; }
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 580px) {
+  .hero h1 { font-size: 22px; }
+  .section { padding: 20px 18px; }
+  .two-col { grid-template-columns: 1fr; }
+  .field-row { grid-template-columns: 1fr; }
+  .metric-item { flex-direction: column; gap: 4px; }
+  .metric-domain { width: auto; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+<header>
+  <div class="header-inner">
+    <div class="logo-lockup">
+      <img class="logo-img" style="height:52px;width:auto;display:block;" alt="Solico" src="https://hub.solico.org.uk/assets/logo-on-dark.png">
+    </div>
+    <div class="header-divider"></div>
+    <div class="header-right">
+      <div class="header-tag-title">Lambeth Together</div>
+      <div class="header-tag-sub">Commission engagement</div>
+    </div>
+  </div>
+</header>
+
+<!-- ======================================================
+     STEP BAR (breadcrumb trail)
+     ====================================================== -->
+<div class="step-bar">
+  <div class="wrap">
+    <div class="step-bar-inner">
+      <div class="sp" id="sp1" onclick="goTo('s-heard')"><div class="sp-n" id="sn1">1</div>What we heard</div>
+      <div class="sp" id="sp2" onclick="goTo('s-domains')"><div class="sp-n" id="sn2">2</div>Domain map</div>
+      <div class="sp" id="sp3" onclick="goTo('s-success')"><div class="sp-n" id="sn3">3</div>Success</div>
+      <div class="sp" id="sp4" onclick="goTo('s-enablers')"><div class="sp-n" id="sn4">4</div>The road ahead</div>
+      <div class="sp" id="sp5" onclick="goTo('s-reflection')"><div class="sp-n" id="sn5">5</div>Reflection</div>
+      <div class="sp" id="sp6" onclick="goTo('s-metrics')"><div class="sp-n" id="sn6">6</div>Metrics</div>
+      <div class="sp" id="sp7" onclick="goTo('s-respond')"><div class="sp-n" id="sn7">7</div>Over to you</div>
+    </div>
+  </div>
+</div>
+</div><!-- /topbar -->
+
+<section class="hero">
+  <div class="wrap">
+    <p class="hero-label" id="hero-label"></p>
+    <h1 id="hero-title"></h1>
+    <p id="hero-intro"></p>
+    <div class="hero-callout" id="hero-callout"></div>
+    <div class="hero-meta" id="hero-meta"></div>
+  </div>
+</section>
+
+<main class="main-content">
+<div class="wrap">
+
+  <!-- ===== 1: WHAT WE HEARD ===== -->
+  <section class="section" id="s-heard">
+    <div class="section-head">
+      <div class="section-circle">1</div>
+      <div class="section-head-copy">
+        <h2>What we heard</h2>
+        <p>A short account of the session, as we experienced it.</p>
+      </div>
+    </div>
+    <div class="prose" id="heard-prose"></div>
+  </section>
+
+  <!-- ===== 2: DOMAIN MAP REVISITED ===== -->
+  <section class="section locked" id="s-domains">
+    <div class="section-head">
+      <div class="section-circle">2</div>
+      <div class="section-head-copy">
+        <h2>The domain map, revisited</h2>
+        <p>Where our first pass sat, and what the conversation added. Open each domain to see both.</p>
+      </div>
+    </div>
+    <div id="domain-cards"></div>
+    <p class="aside-note" id="domain-note"></p>
+  </section>
+
+  <!-- ===== 3: SUCCESS ===== -->
+  <section class="section locked" id="s-success">
+    <div class="section-head">
+      <div class="section-circle">3</div>
+      <div class="section-head-copy">
+        <h2>What success means to you</h2>
+        <p>Your words, from the session.</p>
+      </div>
+    </div>
+    <div class="prose" id="success-prose"></div>
+    <div id="success-quotes"></div>
+  </section>
+
+  <!-- ===== 4: ENABLERS AND INHIBITORS ===== -->
+  <section class="section locked" id="s-enablers">
+    <div class="section-head">
+      <div class="section-circle">4</div>
+      <div class="section-head-copy">
+        <h2>What will get you there, and what could get in the way</h2>
+        <p>The picture you painted of the road ahead.</p>
+      </div>
+    </div>
+    <div class="two-col">
+      <div class="col-panel enable">
+        <h3>Enablers</h3>
+        <ul id="enablers-list"></ul>
+      </div>
+      <div class="col-panel inhibit">
+        <h3>Possible inhibitors</h3>
+        <ul id="inhibitors-list"></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 5: REFLECTION ===== -->
+  <section class="section locked" id="s-reflection">
+    <div class="section-head">
+      <div class="section-circle">5</div>
+      <div class="section-head-copy">
+        <h2 id="reflection-title"></h2>
+        <p id="reflection-sub"></p>
+      </div>
+    </div>
+    <p class="essay-byline" id="reflection-byline"></p>
+    <div class="prose" id="reflection-prose"></div>
+  </section>
+
+  <!-- ===== 6: METRICS ===== -->
+  <section class="section locked" id="s-metrics">
+    <div class="section-head">
+      <div class="section-circle">6</div>
+      <div class="section-head-copy">
+        <h2>Measuring what matters</h2>
+        <p>The measures we discussed for tracking progress on your own terms.</p>
+      </div>
+    </div>
+    <div id="metrics-list"></div>
+  </section>
+
+  <!-- ===== 7: YOUR RESPONSE ===== -->
+  <section class="section locked" id="s-respond">
+    <div class="section-head">
+      <div class="section-circle">7</div>
+      <div class="section-head-copy">
+        <h2>Over to you</h2>
+        <p>This page is a record for you to react to, not a verdict. Tell us what we have read well, what we have missed, and what you would put differently.</p>
+      </div>
+    </div>
+    <div class="fields">
+      <div class="field-row">
+        <div class="field">
+          <label>Your name</label>
+          <input type="text" id="f-name" oninput="checkReady()">
+        </div>
+        <div class="field">
+          <label>Email address</label>
+          <input type="email" id="f-email" oninput="checkReady()">
+          <p class="email-error" id="email-error">Please enter a valid email address, e.g. name@organisation.org.uk</p>
+        </div>
+      </div>
+      <div class="field">
+        <label>Your reflection</label>
+        <textarea id="f-reflection" placeholder="What rings true, what doesn't, any further thoughts on the metric measures, and anything you'd add..." oninput="checkReady()"></textarea>
+      </div>
+      <div class="field">
+        <label>Anything to correct <span class="opt">(optional)</span></label>
+        <textarea id="f-corrections" placeholder="Facts, figures, or emphasis you'd like us to change before this goes any further..."></textarea>
+      </div>
+    </div>
+    <button class="btn-submit" id="submit-btn" onclick="doSubmit()" disabled>
+      Send your reflection &rarr;
+    </button>
+    <div class="form-not-configured" id="form-not-configured">
+      The response form for this page has not been configured yet. Please email your reflection to us instead.
+    </div>
+    <div class="form-not-configured" id="submit-error">
+      Something went wrong while sending. Your answers are still here, please try again in a moment.
+    </div>
+    <p class="submit-note">Pressing send delivers your reflection directly and securely to Solico.</p>
+    <p class="privacy-note">This page has been prepared for you and is not linked from anywhere public. Your responses are processed by Solico and used only for the purposes of this commission. They are stored within Solico's Microsoft 365 tenancy and will not be shared with other parties without your consent.</p>
+  </section>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <span>&copy; 2026 Solico &middot; <a href="https://solico.org.uk" target="_blank">solico.org.uk</a></span>
+      <span>A commission for Lambeth Together</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ==========================================================
+   CONFIG — ALL ORGANISATION-SPECIFIC CONTENT LIVES HERE
+   ==========================================================
+   To produce this page for another Thriving, copy this file
+   and edit only this object. Markup and styles stay as-is.
+
+   BEFORE SHARING THIS PAGE:
+   1. Confirm the SUBMIT block at the bottom of CONFIG carries
+      the right Power Automate flow URL and token.
+   2. Abhishek to review the wording of the ethnographic
+      observations section, which is carried from the Deep
+      Dive write-up pending his final sign-off.
+   ========================================================== */
+
+const CONFIG = {
+
+  org: 'Black Prince Trust',
+  host: 'Black Prince Trust',
+  sessionDate: '10<sup>th</sup> July 2026',
+  solicoTeam: 'Chris French and Abhishek Mohanty',
+  attendee: 'Beverley de Valmency and Richard Joyce',
+
+  hero: {
+    label: 'Thriving Communities · Lambeth',
+    title: 'Deep Dive reflection<br>Black Prince Trust',
+    intro: 'Thank you both for the afternoon you gave us on 10<sup>th</sup> July. This page gathers up what we took from the session so you can see how we have understood it. Nothing here is fixed. It is a record for you to react to, and the response section at the end is there for exactly that. Beverley and Richard, you are each welcome to send your own reflection separately, whenever suits you.',
+    callout: 'Everything on this page comes from our conversation with you both and the material you shared.',
+    meta: ['Session held 10<sup>th</sup> July 2026', 'With Beverley de Valmency, Health &amp; Wellbeing Projects Manager, and Richard Joyce, CEO', 'Solico · Chris French and Abhishek Mohanty']
+  },
+
+  heard: [
+    'We spent the afternoon with you both at the Black Prince Community Hub in Vauxhall. It is a site that gives Black Prince Trust something none of the other Thrivings have, a genuine home of its own. What came through most strongly was how naturally the organisation moves between sport, health, and something as fundamental as making sure people have enough to eat. Partway through our conversation a resident walked in asking about the foodbank. Beverley handled it without missing a beat, and it told us more about how the place actually works than anything we could have asked directly.',
+    'You told us how the move into food began. Children fainted during sport sessions, and the cause turned out to be hunger rather than fitness. That single moment reshaped what Black Prince Trust sees itself as being for, and it clearly still matters to you both.',
+    'And we heard about two different kinds of trust holding the organisation up. One is the trust residents place in you, built over years of people finding their place there. The other is the trust commissioners place in you. The NHS and the council keep choosing Black Prince Trust, and Richard had his own phrase for it, trusted provider credibility. It stuck with us.'
+  ],
+
+  domainNote: 'These positions use the same one to five scale as the preparation pack. The session held all seven where our first pass placed them. Your own reading of Black Prince Trust lined up closely with ours throughout, and the value of the conversation was depth rather than correction. As ever, positions capture a moment in time and we would expect them to move as your work develops.',
+
+  domains: [
+    {
+      name: 'Governance and structure',
+      sub: 'Organisation, leadership and decision-making',
+      firstPass: '4 · held',
+      heard: 'Held. Richard was candid that governance is having to catch up with real growth, from four staff to around fifteen or sixteen. An external governance review, commissioned some months ago, has just landed with him. The board is expanding beyond its current nine, and HR expertise is the specific gap Richard named, rather than legal or safeguarding, which are already covered.'
+    },
+    {
+      name: 'Resident engagement and trust',
+      sub: 'How residents shape and trust what you do',
+      firstPass: '4 · held',
+      heard: 'Firmly confirmed, and the domain Beverley herself ranked first. What the session added was hearing two different kinds of trust in the room at once, the trust residents place in you, and the trust commissioners place in you. The weight management programme, thriving on site three years on after failing at a leisure centre, was the clearest evidence of the first.'
+    },
+    {
+      name: 'VCSE and partner connections',
+      sub: 'Relationships with partners and statutory organisations',
+      firstPass: '4 · held',
+      heard: 'Confirmed with real texture. The reciprocal partnerships with Steel Warriors and Brockwell were the clearest examples, each side genuinely giving the other something it lacks, rather than one side simply hosting the other.'
+    },
+    {
+      name: 'Health and wellbeing programme delivery',
+      sub: 'Ability to run activities that improve local health',
+      firstPass: '5 · held',
+      heard: 'Confirmed, and Chris said as much unprompted in the room, tied specifically to Black Prince Trust being the only one of the seven Thrivings with a dedicated site of its own. You chose a recommend-us style metric yourselves and settled on a target of 75%, against a sector average of 50%.'
+    },
+    {
+      name: 'Data and learning',
+      sub: 'Understanding need and reflecting on impact',
+      firstPass: '3 · held',
+      heard: 'Confirmed, with a clearer picture than desk research alone could give. Beverley is genuinely strong at knowing what to collect, food intolerances among the newest additions, but is candid that interpreting and acting on it is not her strength. You are already talking to an external consultant about this.'
+    },
+    {
+      name: 'Sustainability and funding',
+      sub: 'Stability beyond short-term funding',
+      firstPass: '4 · held',
+      heard: 'Held. Richard\u2019s own instinct on this one, given unprompted, was that it sits between a three and a four, and we have kept it at 4. Several funding lines expire within the year, but in his four years the organisation has never stopped a well-engaged programme for lack of funds. Funding gets stretched and bridged rather than cut off.'
+    },
+    {
+      name: 'Shared vision and identity',
+      sub: 'Clarity and local recognition of your purpose',
+      firstPass: '4 · held',
+      heard: 'Confirmed. A new strategy document is currently being circulated internally and is going down well, though it is competing for attention against the day to day pressure of delivery. Its rollout is itself the working measure for this domain, see the metrics step below.'
+    }
+  ],
+
+  success: {
+    prose: [
+      'Asked what success means, Beverley\u2019s answer was grounded in what she sees week to week. Inquiries, people wanting to come here in the first place, and then sustained attendance over time.',
+      'She illustrated it with one participant who comes and goes on her own terms, skipping the parts of a session she does not enjoy, but who has kept coming back for a couple of years all the same. In that time she has lost two stone, is no longer pre-diabetic, and her blood pressure is back in a normal range. For Beverley, that is the point. Even someone who is not doing it by the book still gets the good outcomes, as long as they keep coming back.',
+      'Richard came at the same question from a wider angle. Black Prince Trust\u2019s new strategy is moving away from treating health and wellbeing as a single, boxed-off programme, and towards seeing almost everything the organisation does as contributing to it. The holiday programme is one of his clearest examples. It is not badged as a health intervention, but it gives children who would otherwise be at home three or four hours of free sport and lunch every day, in the same weeks other families are paying thirty pounds a session elsewhere. For Richard, that is social determinants of health in practice, whether or not anyone calls it that on the day.'
+    ],
+    quotes: [
+      { text: 'Success to us is inquiries, people wanting to come here. And continued, sustained attendance, retention.', who: 'Beverley, Health &amp; Wellbeing Projects Manager, on what success looks like' },
+      { text: 'The ultimate goal is a healthier community, whether that is tackling isolation through the seniors programme, getting kids here every day through the school holidays, or giving Muslim women a safe space to play on a Friday evening.', who: 'Richard, CEO, on what it all comes back to' }
+    ]
+  },
+
+  enablers: [
+    'A relationship with Vodafone giving residents six months of free data and calls, small but genuinely useful for people trying to stay in touch or find work.',
+    'Facility hire alone generates a significant income stream in its own right, separate from grants and less exposed to the funding cycle.',
+    'A genuinely two-way partnership model, Steel Warriors and Brockwell among them, where each side brings something the other lacks rather than one simply hosting the other.'
+  ],
+
+  inhibitors: [
+    'Governance still catching up with fast growth, from four staff to around fifteen or sixteen in a short space of time.',
+    'Several funding lines expiring within the year, even if none have proved fatal so far.',
+    'A specific skills gap on the board, HR expertise in particular.',
+    'Turning good data collection into real interpretation and use, rather than collection alone.'
+  ],
+
+  /* This section carries Abhishek's own voice, given as he wrote
+     it. Images from his original document are intentionally left
+     out of this page. */
+  reflection: {
+    title: 'The sociality of space',
+    sub: 'Reflections on the Black Prince Trust deep dive session, 10th July 2026',
+    byline: 'Abhishek Mohanty',
+    prose: [
+      'Set back from the main thoroughfare, the expansive premises of the Black Prince Trust (BPT) at Vauxhall are difficult to visualise from the outside. Once there, it is not just the scale that is impossible to ignore, but also the placeness it evokes. Multiple football pitches with young people braving the heat and humidity. Cavernous basketball courts we can only discern from the echoing whoops and cries that accompany a game. Even the generous hall where we are seated, chairs lined up against the wall, our eyes and bodies needing to adjust having stepped in from the bright afternoon sun, is fittingly called \u2018The Space\u2019.',
+      'Lefebvre (1991) theorises the <em>social space</em>, describing the socialities catalysed by the built environment. By socialities are implied relations, interactions, and encounters. And it is these that saturate our conversations. Bev herself started out with BPT leading walking groups. Together with Rich, she speaks of the courts, the Foundry, Brockwell Hall, and the Caf\u00e9 that is run by a charity that trains students with disabilities. They are particularly proud of the roles these play in driving community and wellbeing. Young people\u2019s health is about getting them <em>out</em> of their homes during school holidays. The courts are modified with blinds on the windows so that Muslim women can come in and play in a safe space on a Friday. And ongoing deliberations about taking their activities beyond their current premises have them thinking about schools and churches.',
+      'In other words, upping capacity (space) is about placemaking (socialities). And in turn, this urges BPT to turn their focus back onto questions of space. Bev is focusing on converting the end of lounge kitchenette into an FSA certified meal prep area. Her reasoning is rooted in the logic that this will increase their capacity to cook for a larger number of children and young people, providing them with nourishing meals (\u2018we cannot make a child that hasn\u2019t eaten breakfast do a sport\u2019), and thereby take a larger number onto their programmes and activities. \u2018If we have more money,\u2019 she tables in response to our prompts, \u2018it would be to have more use of the whole site\u2019.',
+      'Where space begets such socialities, BPT approaches space in the sense of an impetus, a springboard, a point of departure, a means of effectuation (Sarasvathy 2001), generative of hope. To do their work, they need the space. Yet the socialities of the space also impel their work and frame their ambitions. They also urge a reputation of trust, stability, and solidity in the community. Whilst we are there, in fact, a middle-aged woman comes knocking, asking if there might be anything left from the food distribution in the morning. She has been round to the Caf\u00e9 already. There is nothing, yet Bev sends her to one of her colleagues who she also rings, asking them to check if there is anything in the freezer still. About thirty minutes later, the woman reappears carrying a bag heavy with a lot of boxes. She is here to thank Bev. \u2018I\u2019ve got myself minced beef pie\u2019.',
+      'In providing them with terms of recognition, space urges newer possibilities for BPT and drives their capacity to aspire (Appadurai 2004). Because having the space means that it will be utilised. For the folks at BPT, space is a means of centring their efforts at health and wellbeing. They exist because of their premises. Equally, they exist for the activities and initiatives they run out of their facilities. In turn, they see growing their work portfolio and community footprint as existing in a causal relationship with, and derived from, investments in their sites.',
+      'Space is certainly not the final frontier.',
+      '<div style="margin-top:28px;padding-top:18px;border-top:1px solid var(--purple-border);font-size:13px;color:var(--text-mid);line-height:1.6;"><strong style="color:var(--text);">Sources</strong><br>Lefebvre, H. (1991). <em>The Production of Space.</em> <a href="https://archive.org/details/productionofspac00lefe_0" target="_blank" rel="noopener">archive.org/details/productionofspac00lefe_0</a><br>Sarasvathy, S. (2001). Causation and effectuation processes. <a href="https://effectuation.org/hubfs/Journal%20Articles/2017/05/Causation-and-effectuation-processes.pdf?hsLang=en" target="_blank" rel="noopener">effectuation.org</a><br>Appadurai, A. (2004). The capacity to aspire. <a href="https://ictlogy.net/bibliography/reports/projects.php?idp=5933" target="_blank" rel="noopener">ictlogy.net</a></div>'
+    ]
+  },
+
+  metrics: [
+    {
+      domain: 'Governance and structure',
+      name: 'Proportion of trustees with relevant, necessary skills appointed',
+      note: 'No number set yet. HR expertise is the current gap.'
+    },
+    {
+      domain: 'Resident engagement and trust',
+      name: 'Proportion of active residents from underserved groups with protected characteristics',
+      note: 'No number set yet.'
+    },
+    {
+      domain: 'VCSE and partner connections',
+      name: 'Quality and number of genuinely joint delivery projects with partners',
+      note: 'No number set yet.'
+    },
+    {
+      domain: 'Health and wellbeing delivery',
+      name: 'Recommend-us, promoter style score',
+      note: 'Target 75%, against a sector average of 50%.'
+    },
+    {
+      domain: 'Data and learning',
+      name: 'Frequency and use of internal reporting',
+      note: 'Moving toward a twice-yearly reporting cycle.'
+    },
+    {
+      domain: 'Sustainability and funding',
+      name: 'Proportion of funding secured longer term',
+      note: 'No number set yet.'
+    },
+    {
+      domain: 'Shared vision and identity',
+      name: 'Rollout and embedding of the new strategy',
+      note: 'In progress. The rollout itself is the metric.'
+    }
+  ],
+  metricsPending: 'These are the measures as we captured them in the room. If any of them, or any target, reads differently to how you remember it, the response section below is the place to say so.',
+
+  /* DIRECT SUBMISSION — Power Automate
+     Reusing the same flow and token as Thriving Stockwell's page,
+     since the flow is shared across organisations and keyed by
+     the organisation field in the payload. Confirm this is right
+     before sharing the page. */
+  SUBMIT: {
+    url: 'https://default84502d55185e46909ad3cdecaa6893.e7.environment.api.powerplatform.com:443/powerautomate/automations/direct/cu/04/workflows/9e2317c511a34c8eb884ceff9d859508/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=H0D602V3hfz6O-oHfyd53T5OODCUCqfKjrFue03TvD4',
+    token: 'solico-hub-k7m2'
+  }
+};
+
+/* ==========================================================
+   RENDER — no organisation-specific content below this line
+   ========================================================== */
+
+function esc(s) { return s; } /* content is authored, not user input */
+
+function goTo(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  const topbar = document.querySelector('.topbar');
+  const offset = (topbar ? topbar.offsetHeight : 0) + 12;
+  const y = el.getBoundingClientRect().top + window.scrollY - offset;
+  window.scrollTo({ top: y, behavior: 'smooth' });
+}
+
+/* ---- gated step completion (green ticks + locking) ----
+   Sections unlock in sequence. A section can only complete
+   once the one before it is done, and the response section
+   stays locked until sections 1 to 6 are all complete. */
+const SECTION_IDS = ['s-heard', 's-domains', 's-success', 's-enablers', 's-reflection', 's-metrics', 's-respond'];
+const doneSteps = new Set();
+
+function setStepDone(n) {
+  if (doneSteps.has(n)) return;
+  doneSteps.add(n);
+  const bar = document.getElementById('sp' + n);
+  const num = document.getElementById('sn' + n);
+  if (bar) bar.classList.add('done');
+  if (num) num.innerHTML = '&#10003;';
+  const next = document.getElementById(SECTION_IDS[n]); // unlock the following section
+  if (next) next.classList.remove('locked');
+  checkReady();
+}
+
+function canComplete(n) {
+  return n === 1 || doneSteps.has(n - 1);
+}
+
+/* Reading sections complete once scrolled through, in order.
+   The domain map (2) completes when all domains have been
+   opened, and the response (7) on submission. */
+const SCROLL_STEPS = [
+  ['s-heard', 1], ['s-success', 3], ['s-enablers', 4],
+  ['s-reflection', 5], ['s-metrics', 6]
+];
+function checkScrollProgress() {
+  const marker = window.scrollY + window.innerHeight * 0.6;
+  for (const [id, n] of SCROLL_STEPS) {
+    const el = document.getElementById(id);
+    if (el && canComplete(n) && marker > el.offsetTop + el.offsetHeight) setStepDone(n);
+  }
+}
+window.addEventListener('scroll', checkScrollProgress, { passive: true });
+window.addEventListener('resize', checkScrollProgress);
+
+function renderHero() {
+  document.getElementById('hero-label').textContent = CONFIG.hero.label;
+  document.getElementById('hero-title').innerHTML = CONFIG.hero.title;
+  document.getElementById('hero-intro').innerHTML = CONFIG.hero.intro;
+  document.getElementById('hero-callout').textContent = CONFIG.hero.callout;
+  document.getElementById('hero-meta').innerHTML =
+    CONFIG.hero.meta.map(m => `<span>${m}</span>`).join('');
+  document.title = 'Deep Dive Reflection | ' + CONFIG.org + ' · Solico';
+}
+
+function renderHeard() {
+  document.getElementById('heard-prose').innerHTML =
+    CONFIG.heard.map(p => `<p>${p}</p>`).join('');
+}
+
+const openCards = new Set();
+const viewedDomains = new Set();
+
+function renderDomains() {
+  document.getElementById('domain-cards').innerHTML = CONFIG.domains.map((d, i) => `
+    <div class="domain-card">
+      <div class="d-header" onclick="toggleDomain(${i})">
+        <div class="d-check${viewedDomains.has(i) ? ' done' : ''}">${viewedDomains.has(i) ? '&#10003;' : ''}</div>
+        <div class="d-title">
+          <div class="d-name">${d.name}</div>
+          <div class="d-sub">${d.sub}</div>
+        </div>
+        <span class="d-pos">${d.firstPass}</span>
+        <span class="d-arrow${openCards.has(i) ? ' open' : ''}">&#9660;</span>
+      </div>
+      <div class="d-body${openCards.has(i) ? ' open' : ''}">
+        <div class="d-row"><span class="d-tag heard">From the session</span><span class="d-row-desc">${d.heard}</span></div>
+      </div>
+    </div>
+  `).join('');
+  document.getElementById('domain-note').textContent = CONFIG.domainNote;
+}
+
+function toggleDomain(i) {
+  const wasOpen = openCards.has(i);
+  // Accordion behaviour: close all others, so only one is open at a time
+  openCards.clear();
+  if (!wasOpen) {
+    openCards.add(i);
+    viewedDomains.add(i);
+  }
+  if (viewedDomains.size === CONFIG.domains.length) setStepDone(2);
+  renderDomains();
+  // Keep the page aligned: bring the just-opened card's header to a stable spot
+  if (!wasOpen) {
+    requestAnimationFrame(function() {
+      const cards = document.querySelectorAll('.domain-card');
+      const card = cards[i];
+      if (card) {
+        const topbar = document.querySelector('.topbar');
+        const offset = (topbar ? topbar.offsetHeight : 0) + 12;
+        const y = card.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    });
+  }
+}
+
+function renderSuccess() {
+  document.getElementById('success-prose').innerHTML =
+    CONFIG.success.prose.map(p => `<p>${p}</p>`).join('');
+  document.getElementById('success-quotes').innerHTML =
+    CONFIG.success.quotes.map(q => `
+      <div class="pull-quote">
+        <div class="q-text">&ldquo;${q.text}&rdquo;</div>
+        <div class="q-who">${q.who}</div>
+      </div>`).join('');
+}
+
+function renderLists() {
+  document.getElementById('enablers-list').innerHTML =
+    CONFIG.enablers.map(e => `<li>${e}</li>`).join('');
+  document.getElementById('inhibitors-list').innerHTML =
+    CONFIG.inhibitors.map(e => `<li>${e}</li>`).join('');
+}
+
+function renderReflection() {
+  document.getElementById('reflection-title').textContent = CONFIG.reflection.title;
+  document.getElementById('reflection-sub').textContent = CONFIG.reflection.sub;
+  document.getElementById('reflection-byline').textContent = CONFIG.reflection.byline;
+  document.getElementById('reflection-prose').innerHTML =
+    CONFIG.reflection.prose.map(p => `<p>${p}</p>`).join('');
+}
+
+function renderMetrics() {
+  const list = CONFIG.metrics.map(m => `
+    <div class="metric-item">
+      <div class="metric-domain">${m.domain}</div>
+      <div class="metric-copy">
+        <div class="metric-name">${m.name}</div>
+        <div class="metric-note">${m.note}</div>
+      </div>
+    </div>`).join('');
+  const pending = CONFIG.metricsPending
+    ? `<div class="metric-pending">${CONFIG.metricsPending}</div>` : '';
+  document.getElementById('metrics-list').innerHTML = list + pending;
+}
+
+/* ---- response submission ---- */
+
+function isValidEmail(v) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+}
+
+function checkReady() {
+  const name  = document.getElementById('f-name').value.trim();
+  const emailField = document.getElementById('f-email');
+  const email = emailField.value.trim();
+  const refl  = document.getElementById('f-reflection').value.trim();
+  const emailOk = isValidEmail(email);
+  emailField.classList.toggle('invalid', !!email && !emailOk);
+  document.getElementById('email-error').classList.toggle('show', !!email && !emailOk);
+  const allRead = [1, 2, 3, 4, 5, 6].every(n => doneSteps.has(n));
+  document.getElementById('submit-btn').disabled = !(allRead && name && emailOk && refl);
+}
+
+function doSubmit() {
+  if (!CONFIG.SUBMIT.url) {
+    document.getElementById('form-not-configured').classList.add('show');
+    return;
+  }
+  const corrections = document.getElementById('f-corrections').value.trim();
+  const payload = {
+    token: CONFIG.SUBMIT.token,
+    website: '',  /* decoy field, must stay empty or the flow rejects the submission */
+    organisation: CONFIG.org,
+    name:  document.getElementById('f-name').value.trim(),
+    email: document.getElementById('f-email').value.trim(),
+    reflection: document.getElementById('f-reflection').value.trim() +
+      (corrections ? '\n\nCorrections requested:\n' + corrections : '')
+  };
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+  document.getElementById('submit-error').classList.remove('show');
+  /* Sent as text/plain so the browser skips the CORS preflight,
+     which Power Automate's HTTP trigger cannot answer. The flow
+     re-parses the body with json(triggerBody()). */
+  fetch(CONFIG.SUBMIT.url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'text/plain' },
+    body: JSON.stringify(payload)
+  })
+  .then(function (r) {
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    showSubmittedState();
+  })
+  .catch(function () {
+    btn.disabled = false;
+    btn.innerHTML = 'Send your reflection &rarr;';
+    document.getElementById('submit-error').classList.add('show');
+    checkReady();
+  });
+}
+
+function showSubmittedState() {
+  setStepDone(7);
+  const btn = document.getElementById('submit-btn');
+  if (btn) { btn.disabled = true; btn.textContent = 'Reflection sent'; }
+  const panel = document.createElement('div');
+  panel.className = 'submitted-overlay';
+  panel.innerHTML =
+    '<div class="submitted-card">' +
+      '<div class="submitted-tick">&#10003;</div>' +
+      '<h2>Thank you &mdash; your reflection has been sent</h2>' +
+      '<p>Your reflection has been delivered securely to Solico. There is nothing more to do.</p>' +
+      '<p class="submitted-sub">You can now close this page. If you want to send more, please reopen the link.</p>' +
+    '</div>';
+  document.body.appendChild(panel);
+  document.body.style.overflow = 'hidden';
+}
+
+/* ---- init ---- */
+renderHero();
+renderHeard();
+renderDomains();
+renderSuccess();
+renderLists();
+renderReflection();
+renderMetrics();
+checkScrollProgress();
+</script>
+
+</body>
+</html>

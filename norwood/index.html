@@ -864,9 +864,9 @@ const CONFIG = {
       domain: 'Governance and structure',
       description: 'Leadership, decision-making, coordination, and how the work aligns with INT and NWDA structures.',
       options: [
-        { text: 'The number of decision-makers, such as directors, trustees or their equivalent', note: 'This was one of two options Kim was weighing directly in the session, alongside the skills measure below.', inputType: 'number', unit: 'decision-makers', placeholder: 'e.g. 12', hover: 'A simple headcount of everyone with a formal vote or sign-off role, regardless of background.' },
-        { text: 'The proportion of the necessary skills represented on the board or decision-making body', note: 'Finance and mental health expertise were the two gaps named directly in the session.', inputType: 'percent', placeholder: 'e.g. 80', hover: 'Not a headcount, this is about coverage. Do you have the skills you actually need, finance, HR, safeguarding, somewhere on the board?' },
-        { text: 'Whether a defining document is in place, such as a charter or constitution, along with the relevant policies', note: 'Norwood Forum already holds a formal constitution and AGM process. Thriving Norwood\u2019s own equivalent is what the CIC planning is building toward.', inputType: 'text', placeholder: 'e.g. constitution agreed, policies signed off by...', hover: 'A yes or no. Plus which ones you hold, constitution, charter, safeguarding policy, and so on.' },
+        { text: 'The number of decision-makers, such as directors, trustees or their equivalent', inputType: 'number', unit: 'decision-makers', placeholder: 'e.g. 12', hover: 'A simple headcount of everyone with a formal vote or sign-off role, regardless of background.' },
+        { text: 'The proportion of the necessary skills represented on the board or decision-making body', inputType: 'percent', placeholder: 'e.g. 80', hover: 'Not a headcount, this is about coverage. Do you have the skills you actually need, finance, HR, safeguarding, somewhere on the board?' },
+        { text: 'Whether a defining document is in place, such as a charter or constitution, along with the relevant policies', inputType: 'text', placeholder: 'e.g. constitution agreed, policies signed off by...', hover: 'A yes or no. Plus which ones you hold, constitution, charter, safeguarding policy, and so on.' },
         { text: 'The proportion of independent decision-makers', inputType: 'percent', placeholder: 'e.g. 40', hover: 'Of your total decision-makers, what share have no other paid role or stake in the organisation? A different question from the headcount above.' },
         { text: 'The number of relevant local plans you are aligned or engaged with', inputType: 'number', unit: 'plans', placeholder: 'e.g. 3', hover: 'Plans your work is actively linked to, such as the Lambeth Health and Wellbeing Plan or an integrated neighbourhood team plan.' }
       ]
@@ -877,7 +877,7 @@ const CONFIG = {
       options: [
         { text: 'The number of residents you reach', inputType: 'number', unit: 'residents', placeholder: 'e.g. 500', hover: 'Everyone who has come into contact with you in some way. Attended something, joined a mailing list, or simply walked through the door.' },
         { text: 'The proportion who are actively engaged, rather than simply on a list', inputType: 'percent', placeholder: 'e.g. 30', hover: 'Of that reach, how many do more than just receive information? This means attending, contributing, or taking part regularly.' },
-        { text: 'The proportion of active residents from under-served groups or with protected characteristics', note: 'Kim raised diversity directly and unprompted, describing the current team as all white women and hoping the Sport England steering group and a future CIC board will help address it.', inputType: 'percent', placeholder: 'e.g. 50', hover: 'Of your actively engaged residents, what share come from groups you would consider under-served locally, or who share a protected characteristic?' },
+        { text: 'The proportion of active residents from under-served groups or with protected characteristics', inputType: 'percent', placeholder: 'e.g. 50', hover: 'Of your actively engaged residents, what share come from groups you would consider under-served locally, or who share a protected characteristic?' },
         { text: 'The number of resident or community events', inputType: 'number', unit: 'events', placeholder: 'e.g. 12', hover: 'A simple count of events you have run or hosted, of any size.' },
         { text: 'The number of council or NHS contracts or funded activities', inputType: 'number', unit: 'contracts', placeholder: 'e.g. 5', hover: 'Formal funded relationships specifically. Distinct from the informal partnership work below.' }
       ]
@@ -886,11 +886,11 @@ const CONFIG = {
       domain: 'VCSE and partner connections',
       description: 'The breadth and strength of relationships across community, statutory, and voluntary partners.',
       options: [
-        { text: 'The number of joint projects', note: 'The Business Improvement District partnership and the Sport England steering group are the clearest live examples.', inputType: 'number', unit: 'projects', placeholder: 'e.g. 4', hover: 'Genuine collaborations where you and a partner both contribute. Not referrals or one-off favours.' },
+        { text: 'The number of joint projects', inputType: 'number', unit: 'projects', placeholder: 'e.g. 4', hover: 'Genuine collaborations where you and a partner both contribute. Not referrals or one-off favours.' },
         { text: 'Resources shared with others, such as staff, equipment or space', inputType: 'text', placeholder: 'e.g. what, and with whom', hover: 'What you lend or share out to other organisations. Not what you receive from them.' },
         { text: 'Learning shared through forums, seminars, talks or documents', inputType: 'number', unit: 'instances', placeholder: 'e.g. 6', hover: 'Times you have actively presented, written up, or passed on what you have learned.' },
-        { text: 'The number of volunteers engaged from the community', note: 'West Norwood Feast, a 70 stall market run entirely by volunteers for fifteen years, is the clearest evidence of what is possible locally.', inputType: 'number', unit: 'volunteers', placeholder: 'e.g. 20', hover: 'People giving time unpaid. Distinct from staff or paid sessional workers.' },
-        { text: 'The proportion of programmes reaching different communities', note: 'The hub and spoke model, connecting into communities such as the local Portuguese and Brazilian community, speaks directly to this.', inputType: 'percent', placeholder: 'e.g. 60', hover: 'Of your programmes, what share are aimed at distinct communities, rather than the same group repeatedly?' }
+        { text: 'The number of volunteers engaged from the community', inputType: 'number', unit: 'volunteers', placeholder: 'e.g. 20', hover: 'People giving time unpaid. Distinct from staff or paid sessional workers.' },
+        { text: 'The proportion of programmes reaching different communities', inputType: 'percent', placeholder: 'e.g. 60', hover: 'Of your programmes, what share are aimed at distinct communities, rather than the same group repeatedly?' }
       ]
     },
     {
@@ -901,14 +901,14 @@ const CONFIG = {
         { text: 'The proportion of people enrolled against your reach', inputType: 'percent', placeholder: 'e.g. 40', hover: 'Of everyone you reach, what share actually sign up?' },
         { text: 'The proportion of enrolled people who attend', inputType: 'percent', placeholder: 'e.g. 70', hover: 'Of those who sign up, what share turn up at least once?' },
         { text: 'The proportion who complete the programme', inputType: 'percent', placeholder: 'e.g. 60', hover: 'Of those who attend, what share see it through to the end?' },
-        { text: 'The proportion of promoters, from a recommend-us style question', note: 'Discussed at length in the session. Sector reference points of roughly 50% on an absolute basis and 30% net were given, though no firm target was agreed. Worth checking whether you settled on one at your own follow-up meeting.', inputType: 'percent', placeholder: 'e.g. 75', hover: 'The share who\u2019d rate you 9 or 10 out of 10 if asked how likely they are to recommend you.' }
+        { text: 'The proportion of promoters, from a recommend-us style question', inputType: 'percent', placeholder: 'e.g. 75', hover: 'The share who\u2019d rate you 9 or 10 out of 10 if asked how likely they are to recommend you.' }
       ]
     },
     {
       domain: 'Data and learning',
       description: 'The use of data, reflection, and learning to improve practice and show impact.',
       options: [
-        { text: 'The proportion of people with relevant health and wellbeing training or certification', note: 'Raised directly as an option in the session.', inputType: 'percent', placeholder: 'e.g. 50', hover: 'Of your staff or volunteers, what share hold a relevant qualification or have completed relevant training?' },
+        { text: 'The proportion of people with relevant health and wellbeing training or certification', inputType: 'percent', placeholder: 'e.g. 50', hover: 'Of your staff or volunteers, what share hold a relevant qualification or have completed relevant training?' },
         { text: 'The number of relevant datasets used or requested', inputType: 'number', unit: 'datasets', placeholder: 'e.g. 3', hover: 'External data you have pulled in or asked for. Not data you generate yourselves.' },
         { text: 'The number of reports produced', inputType: 'number', unit: 'reports', placeholder: 'e.g. 2', hover: 'Formal write-ups or summaries, for funders, your board, or thought leadership pieces you have put out yourselves.' },
         { text: 'The number of surveys undertaken', inputType: 'number', unit: 'surveys', placeholder: 'e.g. 2', hover: 'Any structured survey you have run, of residents, participants or staff.' },
@@ -920,17 +920,17 @@ const CONFIG = {
       description: 'The ability to sustain the work beyond short-term funding, including future planning.',
       options: [
         { text: 'The number of months of reserves you hold', inputType: 'number', unit: 'months', placeholder: 'e.g. 6', hover: 'How many months could you keep running on savings alone, if all funding stopped tomorrow?' },
-        { text: 'The proportion of funding that is longer-term', note: 'The Sport England project is a genuine third funding stream, alongside the original Gipsy Hill grant and the Changing Lives funding.', inputType: 'percent', placeholder: 'e.g. 50', hover: 'Of your total funding, what share is secured for more than a year, rather than single-year grants?' },
+        { text: 'The proportion of funding that is longer-term', inputType: 'percent', placeholder: 'e.g. 50', hover: 'Of your total funding, what share is secured for more than a year, rather than single-year grants?' },
         { text: 'The number of projects in the pipeline', inputType: 'number', unit: 'projects', placeholder: 'e.g. 3', hover: 'Funding bids or opportunities you are actively pursuing, but have not yet secured.' },
         { text: 'Actual spend against budget', inputType: 'percent', placeholder: 'e.g. 95', hover: 'How closely what you have spent tracks what you planned to, as a percentage.' },
-        { text: 'The number of relevant qualified or experienced staff, for example in finance or bid writing', note: 'Finance expertise was named directly as a gap the current team does not cover.', inputType: 'number', unit: 'staff', placeholder: 'e.g. 2', hover: 'People with real capability in the specific skills that keep the organisation financially sustainable.' }
+        { text: 'The number of relevant qualified or experienced staff, for example in finance or bid writing', inputType: 'number', unit: 'staff', placeholder: 'e.g. 2', hover: 'People with real capability in the specific skills that keep the organisation financially sustainable.' }
       ]
     },
     {
       domain: 'Shared vision and identity',
       description: 'The clarity, local recognition, and shared ownership of the Thriving\u2019s purpose.',
       options: [
-        { text: 'A time-bound goal to put a shared vision in place, which matters most where one is still forming', note: 'Close to where you already are. Kim gave the clearest articulation yet of what Thriving Norwood is not, in her words, not all things to all people, unlike Norwood Forum.', inputType: 'text', placeholder: 'e.g. agreed and shared by spring', hover: 'A deadline you set yourselves for getting a shared vision agreed and written down. Most relevant if you do not have one yet, or are planning to renew the one you have.' },
+        { text: 'A time-bound goal to put a shared vision in place, which matters most where one is still forming', inputType: 'text', placeholder: 'e.g. agreed and shared by spring', hover: 'A deadline you set yourselves for getting a shared vision agreed and written down. Most relevant if you do not have one yet, or are planning to renew the one you have.' },
         { text: 'An internal staff or team survey on clarity and shared ownership of the vision', inputType: 'text', placeholder: 'e.g. survey run, most people clear on it', hover: 'Do your own people know what the organisation stands for, and feel ownership of it?' },
         { text: 'An external resident or community survey on recognition and how well the vision is understood', inputType: 'text', placeholder: 'e.g. survey run, most residents recognise us', hover: 'Do residents or the wider community recognise you, and understand what you are for?' }
       ]

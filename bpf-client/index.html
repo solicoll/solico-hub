@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Pathway Programme | British Pakistan Foundation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================
+   BPF PATHWAY PROGRAMME — CLIENT VIEW
+   hub.solico.org.uk/bpf-client
+
+   Branded to the British Pakistan Foundation. Palette, type
+   and marks taken from britishpakistanfoundation.com.
+     navy   #032240   primary text and dark surfaces
+     teal   #01796B   accent
+     blue   #3333CC   secondary accent, from the B mark
+     red    #E01028   alert, from the F mark
+     lime   #C5E74B   emphasis
+     pale   #EAF4F9   panels
+   Type is Poppins throughout, as on their own site.
+
+   Solico appears twice and quietly. A lockup in the header
+   and an intellectual property line in the footer. The system
+   should read as the Foundation's, delivered by Solico.
+   ========================================================== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#032240; --teal:#01796B; --blue:#3333CC; --red:#E01028;
+  --lime:#C5E74B; --pale:#EAF4F9; --border:#E0E5EB; --muted:#507495;
+  --deep-teal:#023B36; --wash:#F3F5F7;
+  --r-sm:6px; --r-md:12px; --r-lg:18px; --r-pill:99px;
+}
+body{font-family:'Poppins',system-ui,sans-serif;font-size:14px;line-height:1.65;color:var(--navy);background:var(--wash);-webkit-font-smoothing:antialiased}
+sup{font-size:62%;line-height:0}
+button{font-family:inherit}
+
+/* ---- top rule, three segments as on their site ---- */
+.rule{display:flex;height:5px}
+.rule i{flex:1}
+.rule i:nth-child(1){background:var(--teal)}
+.rule i:nth-child(2){background:var(--blue)}
+.rule i:nth-child(3){background:var(--red)}
+
+/* ---- header ---- */
+header{background:#fff;border-bottom:1px solid var(--border)}
+.hdr{max-width:1180px;margin:0 auto;padding:16px 28px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:13px;flex:1;min-width:0}
+.brand .mark{height:46px;width:auto;display:block;flex-shrink:0}
+.brand .div{width:1px;height:34px;background:var(--border);flex-shrink:0}
+.brand .txt .t{font-size:15px;font-weight:700;letter-spacing:-.2px;line-height:1.25}
+.brand .txt .s{font-size:10.5px;font-weight:500;text-transform:uppercase;letter-spacing:.13em;color:var(--muted);margin-top:2px}
+
+.by{display:flex;align-items:center;gap:11px;background:var(--navy);border-radius:var(--r-pill);padding:8px 17px 8px 15px;flex-shrink:0}
+.by .lbl{font-size:8.5px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.5);line-height:1.35}
+.by img{height:22px;width:auto;display:block}
+
+/* ---- tabs ---- */
+.tabs{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:40}
+.tabs-in{max-width:1180px;margin:0 auto;padding:0 28px;display:flex;gap:4px;overflow-x:auto}
+.tab{padding:14px 18px;font-size:13.5px;font-weight:600;color:var(--muted);cursor:pointer;white-space:nowrap;border-bottom:3px solid transparent;background:none;border-top:none;border-left:none;border-right:none}
+.tab:hover{color:var(--navy)}
+.tab.on{color:var(--navy);border-bottom-color:var(--teal)}
+
+/* ---- hero ---- */
+.hero{background:var(--navy);color:#fff;padding:38px 0 42px}
+.hero-in{max-width:1180px;margin:0 auto;padding:0 28px}
+.hero .eyebrow{font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.16em;color:var(--lime);margin-bottom:12px}
+.hero h1{font-size:31px;font-weight:800;text-transform:uppercase;letter-spacing:-.6px;line-height:1.12;margin-bottom:12px}
+.hero h1 em{font-style:normal;color:var(--lime)}
+.hero p{font-size:14.5px;color:rgba(255,255,255,.74);max-width:640px;line-height:1.7}
+.hero .meta{margin-top:20px;display:flex;gap:8px;flex-wrap:wrap}
+.hero .meta span{font-size:11px;font-weight:500;padding:6px 14px;border-radius:var(--r-pill);background:rgba(255,255,255,.11);color:rgba(255,255,255,.8)}
+
+/* ---- layout ---- */
+.wrap{max-width:1180px;margin:0 auto;padding:26px 28px 70px}
+.card{background:#fff;border:1px solid var(--border);border-radius:var(--r-lg);padding:24px 26px;margin-bottom:18px}
+.card h2{font-size:16px;font-weight:700;letter-spacing:-.2px;margin-bottom:3px}
+.card .sub{font-size:12.5px;color:var(--muted);margin-bottom:18px}
+.grid{display:grid;gap:14px}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:1000px){.g3,.g4{grid-template-columns:1fr 1fr}}
+@media(max-width:680px){.g3,.g4{grid-template-columns:1fr}.hero h1{font-size:24px}.wrap,.hdr,.tabs-in,.hero-in{padding-left:16px;padding-right:16px}}
+
+.stat{background:#fff;border:1px solid var(--border);border-radius:var(--r-md);padding:17px 18px}
+.stat .n{font-size:29px;font-weight:800;color:var(--teal);line-height:1;letter-spacing:-.5px}
+.stat .l{font-size:11.5px;color:var(--navy);margin-top:6px;line-height:1.45;font-weight:500}
+.stat .src{font-size:9.5px;color:var(--muted);margin-top:9px;padding-top:7px;border-top:1px solid var(--border);line-height:1.45}
+.bar{height:6px;background:var(--pale);border-radius:var(--r-pill);overflow:hidden;margin-top:9px}
+.bar i{display:block;height:100%;background:var(--teal);border-radius:var(--r-pill)}
+.bar i.over{background:var(--lime)}
+
+/* ---- tables ---- */
+.tw{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:13px;background:#fff}
+th,td{padding:11px 13px;text-align:left;border:1px solid var(--border);vertical-align:top}
+thead th{background:var(--navy);color:#fff;font-weight:600;font-size:10.5px;text-transform:uppercase;letter-spacing:.08em}
+tbody tr:nth-child(even) td{background:var(--wash)}
+
+/* ---- notes ---- */
+.note{background:var(--pale);border-left:4px solid var(--teal);border-radius:0 var(--r-sm) var(--r-sm) 0;padding:15px 17px;font-size:12.8px;color:var(--navy);line-height:1.7;margin-top:16px}
+.note strong{font-weight:700}
+.note.lime{background:#FAFCEB;border-left-color:var(--lime)}
+.note.red{background:#FDF0F2;border-left-color:var(--red)}
+.demo{background:#FAFCEB;border:1px solid var(--lime);border-radius:var(--r-md);padding:13px 17px;font-size:12.3px;line-height:1.65;margin-bottom:20px;color:var(--navy)}
+
+/* ---- footer ---- */
+footer{background:var(--navy);color:rgba(255,255,255,.55);padding:26px 0}
+.ft{max-width:1180px;margin:0 auto;padding:0 28px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:11.5px;line-height:1.7}
+footer a{color:rgba(255,255,255,.8);text-decoration:none}
+footer a:hover{color:#fff}
+.ft .ip{max-width:560px}
+
+/* ---- gate ---- */
+.gate{position:fixed;inset:0;z-index:999;background:var(--navy);display:flex;align-items:center;justify-content:center;padding:22px}
+.gate-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:var(--r-lg);max-width:390px;width:100%;padding:34px 30px;text-align:center}
+.gate-card .glogo{margin-bottom:20px}
+.gate-card h2{font-size:19px;font-weight:700;color:#fff;margin-bottom:8px}
+.gate-card p{font-size:13px;color:rgba(255,255,255,.6);margin-bottom:20px;line-height:1.6}
+.gate-card input{width:100%;padding:12px 14px;border-radius:var(--r-md);border:1.5px solid rgba(255,255,255,.2);background:rgba(255,255,255,.95);font-size:15px;font-family:inherit;text-align:center;margin-bottom:12px;outline:none}
+.gate-card input:focus{border-color:var(--lime)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:12px;border:none;border-radius:var(--r-pill);background:var(--teal);color:#fff;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit}
+.btn:hover{background:var(--deep-teal)}
+.gerr{color:#FF8FA0;font-size:12px;margin-top:10px;display:none}
+.gerr.on{display:block}
+
+/* ---- commentary toggle ---- */
+.cm-toggle{display:flex;align-items:center;gap:9px;font-size:11px;color:var(--muted);cursor:pointer;user-select:none}
+.cm-toggle .sw{width:32px;height:18px;border-radius:var(--r-pill);background:var(--border);position:relative;transition:background .15s;flex-shrink:0}
+.cm-toggle .sw i{position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;background:#fff;transition:left .15s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.cm-toggle.on .sw{background:var(--teal)}
+.cm-toggle.on .sw i{left:16px}
+.cm{background:#fff;border:1px solid var(--border);border-top:3px solid var(--blue);border-radius:var(--r-sm);padding:13px 15px;font-size:12.3px;line-height:1.65;margin-top:14px;color:var(--navy)}
+.cm .k{font-size:8.5px;font-weight:700;text-transform:uppercase;letter-spacing:.11em;color:var(--blue);margin-bottom:5px}
+</style>
+</head>
+<body>
+
+<div class="gate" id="gate">
+  <div class="gate-card">
+    <div class="glogo" id="glogo"></div>
+    <h2>Pathway Programme</h2>
+    <p>A preview prepared for the Foundation. The password was shared with you separately.</p>
+    <input type="password" id="pw" placeholder="Password" autocomplete="off">
+    <button class="btn" onclick="checkPw()">Continue &rarr;</button>
+    <p class="gerr" id="gerr">That doesn&rsquo;t look right, please try again.</p>
+  </div>
+</div>
+
+<div id="app" style="display:none">
+
+<div class="rule"><i></i><i></i><i></i></div>
+
+<header>
+  <div class="hdr">
+    <div class="brand">
+      <span id="bpf-mark"></span>
+      <span class="div"></span>
+      <div class="txt">
+        <div class="t">Pathway Programme</div>
+        <div class="s">Foundation view</div>
+      </div>
+    </div>
+    <div class="by">
+      <div class="lbl">Designed and<br>delivered by</div>
+      <img alt="Solico" src="https://hub.solico.org.uk/assets/logo-on-dark.png">
+    </div>
+  </div>
+</header>
+
+<div class="tabs"><div class="tabs-in">
+  <button class="tab on" id="t-progress" onclick="go('progress')">Progress</button>
+  <button class="tab" id="t-access" onclick="go('access')">What you cannot see</button>
+  <div style="margin-left:auto;display:flex;align-items:center;padding:0 4px">
+    <div class="cm-toggle" id="cm-toggle" onclick="toggleCm()"><span class="sw"><i></i></span><span>Solico commentary</span></div>
+  </div>
+</div></div>
+
+<section class="hero">
+  <div class="hero-in">
+    <p class="eyebrow" id="eyebrow"></p>
+    <h1 id="htitle"></h1>
+    <p id="hbody"></p>
+    <div class="meta" id="hmeta"></div>
+  </div>
+</section>
+
+<div class="wrap" id="view"></div>
+
+<footer>
+  <div class="ft">
+    <span>&copy; 2027 British Pakistan Foundation</span>
+    <span class="ip">Pathway Programme delivered by Solico London Limited. The readiness instrument, the mapping method and this reporting format remain Solico intellectual property and are licensed to the Foundation for use in this programme. <a href="https://solico.org.uk" target="_blank">solico.org.uk</a></span>
+  </div>
+</footer>
+
+</div>
+<script>
+/* ==========================================================
+   All content lives in CONFIG. Illustrative throughout.
+   ========================================================== */
+
+const PW = 'pathway2027';
+
+/* The Foundation's own mark, rebuilt inline from their brand
+   colours so this page renders with nothing hot-linked. If the
+   real file is dropped at hub.solico.org.uk/assets/bpf-logo-full.svg
+   the page picks it up automatically and uses that instead. */
+const BPF_SVG = ''
+ + '<svg viewBox="0 0 300 118" width="150" height="59" role="img" aria-label="British Pakistan Foundation">'
+ +   '<g>'
+ +     '<circle cx="46" cy="42" r="34" fill="#3333CC"/>'
+ +     '<circle cx="104" cy="42" r="34" fill="#01796B" opacity="0.94"/>'
+ +     '<circle cx="162" cy="42" r="34" fill="#E01028" opacity="0.94"/>'
+ +     '<text x="46"  y="56" text-anchor="middle" font-family="Poppins,sans-serif" font-size="42" font-weight="800" fill="#fff">B</text>'
+ +     '<text x="104" y="56" text-anchor="middle" font-family="Poppins,sans-serif" font-size="42" font-weight="800" fill="#fff">P</text>'
+ +     '<text x="162" y="56" text-anchor="middle" font-family="Poppins,sans-serif" font-size="42" font-weight="800" fill="#fff">F</text>'
+ +   '</g>'
+ +   '<text x="12" y="102" font-family="Poppins,sans-serif" font-size="15.5" font-weight="700" letter-spacing="0.4" fill="LOGOTEXT">British Pakistan Foundation</text>'
+ + '</svg>';
+
+function bpfMark(colour){
+  return BPF_SVG.replace('LOGOTEXT', colour);
+}
+
+/* Use the Foundation's real mark if we can find it, in this order.
+     1. bpf-logo-full.svg sitting next to this page, which is how
+        you preview it locally before anything is uploaded
+     2. the same file in the hub assets folder, once it is there
+     3. the inline recreation above, if neither exists
+   Nothing is ever hot-linked from their own site. */
+function tryRealLogo(){
+  const candidates = ['bpf-logo-full.svg', 'https://hub.solico.org.uk/assets/bpf-logo-full.svg'];
+  (function attempt(i){
+    if (i >= candidates.length) return;
+    const img = new Image();
+    img.onload = function(){
+      document.querySelectorAll('[data-logo]').forEach(el => {
+        el.innerHTML = '<img class="mark" src="' + candidates[i] + '" alt="British Pakistan Foundation" style="height:' + el.getAttribute('data-h') + 'px;width:auto;display:block">';
+      });
+    };
+    img.onerror = function(){ attempt(i + 1); };
+    img.src = candidates[i];
+  })(0);
+}
+
+const KPI = [
+  { k:'Identify 10 potential candidates', now:12, tgt:10, src:'Applications list, count progressed to the Explore stage.' },
+  { k:'Train 3 to 5 candidates per year', now:5, tgt:5, src:'Participants list, count with at least one completed programme module.' },
+  { k:'Deliver 2 leadership programmes annually', now:1, tgt:2, src:'Activity list, records of type Leadership programme.' },
+  { k:'Support 3 to 5 in campaigns or advancement', now:2, tgt:3, src:'Participants list, count with an active support package.' },
+  { k:'Identify top 1 to 2 for progression', now:2, tgt:2, src:'Participants list, filtered on Layer = Top.' },
+  { k:'Establish a mentoring network', now:5, tgt:5, src:'Contributors list, count with status Active.', unit:' contributors' }
+];
+
+const VOLUMES = [
+  { n:'4',  l:'Mentoring sessions logged', src:'Activity list, type Mentoring session.' },
+  { n:'2',  l:'Readiness conversations held', src:'Activity list, type Readiness conversation.' },
+  { n:'1',  l:'Leadership programme delivered', src:'Activity list, type Leadership programme.' },
+  { n:'6',  l:'Recorded decisions, each with reasons', src:'Decisions list, all records.' }
+];
+
+const WITHHELD = [
+  ['Individual readiness positions','Programme team, and each participant for their own',
+   'A board that can see individual positions is a board that can be lobbied about them. The pipeline stops being trusted by the people inside it within one cycle.'],
+  ['Participant party affiliation','Programme team only',
+   'A political opinion is special category data under Article 9 of the UK GDPR. It is held to manage conflicts and to evidence that support is party independent. It is never published.'],
+  ['Mentoring session content','The mentor and the participant',
+   'A mentoring relationship in which the notes travel upwards is not a mentoring relationship.'],
+  ['Participant contact details','Programme team only',
+   'Data minimisation. There is no purpose that requires trustees to hold them.'],
+  ['Which participant is which','Programme team only',
+   'Anonymisation at the point of reporting is what makes everything else on this page defensible.']
+];
+
+const CM = {
+  progress:'Every figure on this page is counted from the pipeline itself rather than reported separately, so there is no version of the numbers that can differ from the records behind them. The source of each is named under the tile. In the live build each is a view of a list in the Foundation&rsquo;s own tenancy.',
+  kpi:'These are the Foundation&rsquo;s own Workplan KPIs, unchanged. Nothing here asks the Board to adopt a target it has not already agreed. What the structure adds is the ability to count them automatically and to show movement rather than only activity.',
+  access:'Most suppliers give trustees everything and call it transparency. This page exists because the opposite is true. Setting out what is withheld, and why, is what lets a Board discharge its duties without holding information it has no lawful purpose for.',
+  volumes:'Volumes rather than content. The Board can see that four mentoring sessions happened without seeing what was said in them, which is the distinction that keeps mentoring usable.'
+};
+</script>
+<script>
+/* ==========================================================
+   APP
+   ========================================================== */
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let PAGE = 'progress', COMMENTARY = false;
+
+function checkPw(){
+  if ($('pw').value.trim().toLowerCase() === PW.toLowerCase()){
+    $('gate').style.display='none'; $('app').style.display='';
+    $('bpf-mark').setAttribute('data-logo',''); $('bpf-mark').setAttribute('data-h','46');
+    $('bpf-mark').innerHTML = bpfMark('#032240');
+    tryRealLogo();
+    go('progress');
+  } else $('gerr').classList.add('on');
+}
+$('pw').addEventListener('keydown', e => { if (e.key==='Enter') checkPw(); });
+$('glogo').innerHTML = bpfMark('#FFFFFF');
+
+function toggleCm(){ COMMENTARY = !COMMENTARY; $('cm-toggle').classList.toggle('on', COMMENTARY); go(PAGE); }
+function cm(key){
+  if (!COMMENTARY) return '';
+  return '<div class="cm"><div class="k">Solico commentary, not part of the live system</div>' + CM[key] + '</div>';
+}
+
+const HERO = {
+  progress:{ e:'Pathway Programme · Foundation view',
+    t:'BUILDING THE LEADERS<br>OF <em>TOMORROW</em>',
+    b:'Progress against the Workplan, counted from the programme itself. Twelve people in the first cohort, five mapped against the readiness framework, two with a live opportunity in front of them ahead of May 2027.',
+    m:['First cohort, 2026 to 2027','Prepared 14<sup>th</sup> March 2027','Delivered with Solico'] },
+  access:{ e:'Governance · Foundation view',
+    t:'WHAT THIS VIEW<br><em>DOES NOT</em> SHOW YOU',
+    b:'Trustees carry the accountability, so the instinct is to give them everything. That instinct is what breaks programmes of this kind. Every field withheld from this view is listed below, with the reason and with who does see it.',
+    m:['Written down, not left to be discovered','Reviewed annually by the Board'] }
+};
+
+function go(p){
+  PAGE = p;
+  $('t-progress').classList.toggle('on', p==='progress');
+  $('t-access').classList.toggle('on', p==='access');
+  const h = HERO[p];
+  $('eyebrow').innerHTML = h.e; $('htitle').innerHTML = h.t; $('hbody').innerHTML = h.b;
+  $('hmeta').innerHTML = h.m.map(x => '<span>' + x + '</span>').join('');
+  $('view').innerHTML = BANNER + (p==='progress' ? viewProgress() : viewAccess());
+  window.scrollTo(0,0);
+}
+
+const BANNER = '<div class="demo"><strong>Preview.</strong> Every figure, participant and decision behind this page is illustrative and describes no real person. It shows the shape of what the Foundation would receive rather than any actual result. Turn on Solico commentary above to see the reasoning behind each design choice.</div>';
+
+function viewProgress(){
+  let h = '<div class="card"><h2>Progress against the Workplan</h2>' +
+    '<div class="sub">Your own objectives and KPIs, counted from the pipeline rather than reported separately.</div>' +
+    '<div class="grid g3">' + KPI.map(k => {
+      const pct = Math.min(100, Math.round(k.now/k.tgt*100));
+      return '<div class="stat"><div class="n">' + k.now + (k.unit||'') + '</div>' +
+        '<div class="l">' + esc(k.k) + '</div>' +
+        '<div class="bar"><i class="' + (k.now>=k.tgt?'over':'') + '" style="width:' + pct + '%"></i></div>' +
+        '<div class="src">' + esc(k.src) + '</div></div>';
+    }).join('') + '</div>' + cm('kpi') +
+    '<div class="note"><strong>The measure the Workplan does not yet have.</strong> Everything above counts activity. None of it shows whether anybody became more ready. The readiness framework adds that, and it is the difference between reporting what was done and evidencing what changed. It is also the question every funder eventually asks.</div>' +
+    cm('progress') + '</div>';
+
+  h += '<div class="card"><h2>Activity this cycle</h2><div class="sub">Volumes only. The content of each sits with the programme team.</div>' +
+    '<div class="grid g4">' + VOLUMES.map(v =>
+      '<div class="stat"><div class="n">' + v.n + '</div><div class="l">' + esc(v.l) + '</div>' +
+      '<div class="src">' + esc(v.src) + '</div></div>').join('') + '</div>' + cm('volumes') + '</div>';
+
+  h += '<div class="card"><h2>Where the first cohort sits</h2><div class="sub">Twelve people in the Explore stage, five carried far enough to be mapped, two with a live opportunity ahead of May 2027.</div>' +
+    '<div class="tw"><table><thead><tr><th>Layer</th><th>Who is in it</th><th style="width:110px">This cohort</th><th>Your Workplan target</th></tr></thead><tbody>' +
+    [['Base','Everyone testing the ambition or building foundations. Open entry.','12','Identify 10 potential candidates'],
+     ['Middle','Actively pursuing a next stage opportunity, with one to one mentoring.','3','Train 3 to 5 candidates per year'],
+     ['Top','Demonstrated readiness and a real, live, plausible opportunity.','2','Identify top 1 to 2 for progression']
+    ].map(r => '<tr><td><strong>' + r[0] + '</strong></td><td>' + r[1] + '</td><td><strong style="color:var(--teal);font-size:17px">' + r[2] + '</strong></td><td>' + r[3] + '</td></tr>').join('') +
+    '</tbody></table></div>' +
+    '<div class="note lime"><strong>These are the Foundation&rsquo;s own numbers.</strong> The Workplan already commits to identifying ten, training three to five, and progressing the top one to two. That is a base, a middle and a top, written down and agreed internally before anybody called it a structure. Nothing here asks the Board to adopt a new target.</div></div>';
+  return h;
+}
+
+function viewAccess(){
+  let h = '<div class="card"><h2>Withheld from this view</h2><div class="sub">Each field, who does see it, and the reason.</div>' +
+    '<div class="tw"><table><thead><tr><th style="width:24%">Not shown here</th><th style="width:24%">Who does see it</th><th>Why</th></tr></thead><tbody>' +
+    WITHHELD.map(r => '<tr><td><strong>' + r[0] + '</strong></td><td>' + r[1] + '</td><td>' + r[2] + '</td></tr>').join('') +
+    '</tbody></table></div>' + cm('access') + '</div>';
+
+  h += '<div class="card"><h2>What the Board can see, and should look at</h2><div class="sub">Everything a trustee needs in order to discharge their duties, without holding anything they have no purpose for.</div>' +
+    '<div class="tw"><table><thead><tr><th style="width:32%">Available to you</th><th>The question it answers</th></tr></thead><tbody>' +
+    [['Progress against every Workplan KPI','Is the programme delivering what the Foundation agreed it would?'],
+     ['The full decisions log, anonymised, with reasons','Is the reasoning consistent, and was more than one person involved in each decision?'],
+     ['Cohort readiness as a distribution','Is anybody actually becoming more ready, or is the programme only generating activity?'],
+     ['Progression patterns by gender, geography and age','Is the programme reaching and progressing people fairly?'],
+     ['Participant support by category and total','Is money being spent inside the categories the Board approved?'],
+     ['Safeguarding and complaints, by volume and status','Is anything going wrong that the Board needs to know about?']
+    ].map(r => '<tr><td><strong>' + r[0] + '</strong></td><td>' + r[1] + '</td></tr>').join('') +
+    '</tbody></table></div>' +
+    '<div class="note red"><strong>One category that does not exist.</strong> There is no campaign funding line anywhere in this system, and it cannot be added. Money given to a candidate to promote an election is a controlled donation under electoral law, reportable on that candidate&rsquo;s public expenses return, and charity law does not generally permit a charity to make one. The programme funds development. The absence of the category is what enforces that, rather than a policy nobody reads.</div>' +
+    '<div class="note"><strong>Reviewed, not fixed.</strong> This list is a Board decision and can be changed by the Board. What matters is that it is a decision, recorded with reasons, rather than an accident of how somebody built a spreadsheet.</div></div>';
+  return h;
+}
+</script>
+
+</body>
+</html>

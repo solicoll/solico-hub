@@ -1,0 +1,1783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Cohort readiness review | British Pakistan Foundation &middot; Solico</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================
+   SOLICO — LAMBETH TOGETHER · COMMISSION REVIEW PAGE
+   hub.solico.org.uk/lambeth-together-review
+   Commissioner-facing. Shares the brand system, password gate
+   and step mechanic with the Thriving reflection pages. All
+   content lives in the CONFIG object at the top of the script.
+   ========================================================== */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --purple:       #64009b;
+  --coral:        #ff4570;
+  --black-purple: #2b0031;
+  --white-purple: #edebf5;
+  --purple-faint: rgba(100,0,155,0.06);
+  --purple-light: rgba(100,0,155,0.12);
+  --purple-mid:   rgba(100,0,155,0.22);
+  --purple-border:rgba(100,0,155,0.18);
+  --purple-strong:rgba(100,0,155,0.4);
+  --text:         #2b0031;
+  --text-mid:     #6a3a78;
+  --text-muted:   #9a70a8;
+  --green:        #1a6020;
+  --green-bg:     #e6f4e6;
+  --radius-sm:    6px;
+  --radius-md:    10px;
+  --radius-lg:    16px;
+}
+
+body {
+  font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--text);
+  background: #f5f2f9;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap { max-width: 740px; margin: 0 auto; padding: 0 24px; }
+
+/* ---- HEADER ---- */
+.topbar { position: sticky; top: 0; z-index: 100; }
+header {
+  background: var(--black-purple);
+  padding: 20px 0 0;
+  border-bottom: 3px solid var(--coral);
+}
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 0 24px 20px 24px;
+  max-width: none;
+}
+.logo-lockup { display: flex; flex-direction: column; gap: 4px; padding-right: 20px; }
+.logo-img { margin-left: 16px; }
+.logo-designed-by {
+  font-size: 9px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.38);
+}
+.header-divider { width: 1px; height: 40px; background: rgba(255,255,255,0.18); flex-shrink: 0; margin: 0 20px; }
+.header-right { flex: 1; }
+.header-tag-title { font-size: 15px; font-weight: 700; color: rgba(255,255,255,0.9); letter-spacing: -0.1px; line-height: 1.2; }
+.header-tag-sub { font-size: 10px; font-weight: 500; color: rgba(255,255,255,0.45); letter-spacing: 0.04em; margin-top: 2px; }
+
+/* ---- STEP BAR (breadcrumb trail, mirrors main page) ---- */
+.step-bar {
+  background: var(--white-purple);
+  border-bottom: 1px solid var(--purple-border);
+  overflow-x: auto;
+}
+.step-bar-inner {
+  display: flex;
+  min-width: 620px;
+}
+.sp {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+  border-right: 1px solid var(--purple-border);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.12s;
+}
+.sp:hover { background: var(--purple-light); }
+.sp:last-child { border-right: none; }
+.sp-n {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--purple);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+.sp.done .sp-n { background: var(--green); }
+
+sup { font-size: 62%; line-height: 0; }
+
+/* ---- HERO ---- */
+.hero { background: var(--black-purple); padding: 44px 0 52px; color: #fff; }
+.hero-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--coral);
+  margin-bottom: 14px;
+}
+.hero h1 { font-size: 28px; font-weight: 900; line-height: 1.15; letter-spacing: -0.3px; margin-bottom: 16px; }
+.hero p { font-size: 14px; line-height: 1.75; color: rgba(255,255,255,0.72); max-width: 560px; }
+.hero-callout {
+  margin-top: 18px;
+  padding: 13px 16px;
+  border-left: 3px solid var(--coral);
+  background: rgba(255,255,255,0.07);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-size: 13px;
+  color: rgba(255,255,255,0.78);
+  line-height: 1.65;
+}
+.hero-meta {
+  margin-top: 22px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.hero-meta span {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 99px;
+  background: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.75);
+}
+
+/* ---- MAIN ---- */
+.main-content { padding: 32px 0 72px; }
+
+.section {
+  background: #fff;
+  border: 1px solid var(--purple-border);
+  border-radius: var(--radius-lg);
+  padding: 28px 30px;
+  margin-bottom: 18px;
+  transition: opacity 0.25s, filter 0.25s;
+}
+.section.locked {
+  pointer-events: none;
+  background: #faf9fc;
+  border-color: rgba(100,0,155,0.1);
+}
+.section.locked .section-head-copy h2 { color: #b0a0b8; }
+.section.locked .section-head-copy p { color: #c8bcd0; }
+.section.locked .section-circle { background: #ddd6e4; color: #b0a0b8; }
+.section.locked .prose,
+.section.locked .two-col,
+.section.locked .pull-quote,
+.section.locked .essay-byline,
+.section.locked #domain-cards,
+.section.locked #metrics-list,
+.section.locked .aside-note,
+.section.locked .fields { opacity: 0.35; filter: grayscale(0.4); }
+.section-head { display: flex; align-items: flex-start; gap: 15px; margin-bottom: 18px; }
+.section-circle {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--purple);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.section-head-copy h2 { font-size: 17px; font-weight: 900; color: var(--black-purple); letter-spacing: -0.2px; margin-bottom: 3px; }
+.section-head-copy p { font-size: 13px; color: var(--text-mid); }
+.section .prose p { font-size: 14px; line-height: 1.75; color: var(--text); margin-bottom: 13px; }
+.section .prose p:last-child { margin-bottom: 0; }
+
+.aside-note {
+  font-size: 13px;
+  color: var(--text-mid);
+  background: var(--white-purple);
+  border-left: 3px solid var(--purple);
+  padding: 12px 14px;
+  border-radius: 0 8px 8px 0;
+  margin-top: 14px;
+  line-height: 1.55;
+}
+
+/* ---- PULL QUOTES ---- */
+.pull-quote {
+  margin: 18px 0;
+  padding: 16px 20px;
+  background: var(--purple-faint);
+  border-left: 3px solid var(--coral);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+.pull-quote .q-text { font-size: 15px; font-weight: 600; line-height: 1.6; color: var(--black-purple); }
+.pull-quote .q-who { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-muted); margin-top: 8px; }
+
+/* ---- DOMAIN CARDS (accordion, mirrors main page) ---- */
+.domain-card { border: 1px solid var(--purple-border); border-radius: var(--radius-md); margin-bottom: 7px; overflow: hidden; }
+.d-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 14px;
+  cursor: pointer;
+  background: #fff;
+  user-select: none;
+  transition: background 0.12s;
+}
+.d-header:hover { background: var(--purple-faint); }
+.d-check {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1.5px solid var(--purple-strong);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  flex-shrink: 0;
+  transition: all 0.15s;
+  color: transparent;
+}
+.d-check.done { background: var(--green); border-color: var(--green); color: #fff; }
+.d-title { flex: 1; min-width: 0; }
+.d-name { font-size: 13px; font-weight: 700; color: var(--black-purple); }
+.d-sub { font-size: 11px; color: var(--text-muted); margin-top: 1px; }
+.d-pos {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 3px 10px;
+  border-radius: 99px;
+  background: var(--purple-light);
+  color: var(--purple);
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+.d-arrow { font-size: 16px; color: var(--text-muted); transition: transform 0.18s; flex-shrink: 0; }
+.d-arrow.open { transform: rotate(180deg); }
+.d-body { display: none; padding: 4px 14px 14px; background: var(--purple-faint); border-top: 1px solid var(--purple-border); }
+.d-body.open { display: block; }
+.d-row { display: flex; gap: 10px; margin-top: 11px; align-items: flex-start; }
+.d-tag {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 2px 8px;
+  border-radius: 99px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  white-space: nowrap;
+}
+.d-tag.first { background: #fff3e0; color: #804500; }
+.d-tag.heard { background: var(--green-bg); color: var(--green); }
+.d-row-desc { font-size: 13px; line-height: 1.6; color: var(--text); }
+
+/* ---- ENABLERS / INHIBITORS ---- */
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 6px; }
+.col-panel { border: 1px solid var(--purple-border); border-radius: var(--radius-md); padding: 16px 18px; background: #fff; }
+.col-panel h3 {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: 10px;
+}
+.col-panel.enable h3 { color: var(--green); }
+.col-panel.inhibit h3 { color: #900030; }
+.col-panel ul { list-style: none; }
+.col-panel li { font-size: 13px; line-height: 1.6; color: var(--text); padding-left: 16px; position: relative; margin-bottom: 9px; }
+.col-panel li:last-child { margin-bottom: 0; }
+.col-panel li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 8px;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+}
+.col-panel.enable li::before { background: var(--green); }
+.col-panel.inhibit li::before { background: var(--coral); }
+
+/* ---- REFLECTION ESSAY ---- */
+.essay-byline { font-size: 12px; font-weight: 600; color: var(--text-muted); margin-bottom: 14px; }
+
+/* ---- METRICS ---- */
+.metric-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 12px 14px;
+  border: 1px solid var(--purple-border);
+  border-radius: var(--radius-md);
+  margin-bottom: 7px;
+  background: #fff;
+}
+.metric-domain { font-size: 11px; font-weight: 700; color: var(--purple); text-transform: uppercase; letter-spacing: 0.05em; width: 150px; flex-shrink: 0; padding-top: 2px; }
+.metric-copy { flex: 1; }
+.metric-name { font-size: 13px; font-weight: 700; color: var(--black-purple); }
+.metric-note { font-size: 12px; color: var(--text-mid); margin-top: 2px; line-height: 1.55; }
+.metric-pending {
+  font-size: 13px;
+  color: var(--text-mid);
+  background: var(--purple-faint);
+  border: 1px dashed var(--purple-mid);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  margin-top: 8px;
+}
+
+/* ---- RESPONSE FORM ---- */
+.fields { margin-top: 4px; }
+.field { margin-bottom: 15px; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.field label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.field label .opt { font-weight: 400; text-transform: none; letter-spacing: 0; color: var(--text-muted); }
+.field input, .field textarea {
+  width: 100%;
+  padding: 10px 13px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  border: 1.5px solid var(--purple-border);
+  border-radius: var(--radius-md);
+  background: #fff;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.15s;
+}
+.field input:focus, .field textarea:focus { border-color: var(--purple); }
+.field textarea { resize: vertical; min-height: 78px; }
+.field input.invalid { border-color: #c02040; }
+.email-error {
+  display: none;
+  font-size: 12px;
+  color: #c02040;
+  margin-top: 5px;
+}
+.email-error.show { display: block; }
+
+.btn-submit {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 26px;
+  background: var(--coral);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.01em;
+  transition: background 0.15s;
+}
+.btn-submit:hover:not(:disabled) { background: #e0304f; }
+.btn-submit:disabled { opacity: 0.4; cursor: default; }
+.submit-note { font-size: 12px; color: var(--text-muted); margin-top: 10px; line-height: 1.6; }
+
+.form-not-configured {
+  display: none;
+  margin-top: 12px;
+  padding: 12px 14px;
+  background: #fff8e1;
+  border: 1px solid #f0b800;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  color: #7a5000;
+}
+.form-not-configured.show { display: block; }
+
+.privacy-note {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--purple-border);
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* submitted confirmation overlay */
+.submitted-overlay {
+  position: fixed; inset: 0; z-index: 9999;
+  background: rgba(43,0,49,0.55);
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+}
+.submitted-card {
+  background: #fff; border-radius: 16px; max-width: 460px; width: 100%;
+  padding: 36px 32px; text-align: center;
+  box-shadow: 0 20px 60px rgba(43,0,49,0.4);
+  border-top: 5px solid var(--coral);
+}
+.submitted-tick {
+  width: 56px; height: 56px; margin: 0 auto 18px;
+  background: #1a7a60; color: #fff; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px; font-weight: 700;
+}
+.submitted-card h2 { font-size: 20px; color: var(--black-purple); margin-bottom: 12px; }
+.submitted-card p { font-size: 14px; color: var(--text-mid); line-height: 1.55; margin-bottom: 10px; }
+.submitted-card .submitted-sub { font-size: 13px; color: var(--text-muted); }
+
+/* ---- FOOTER ---- */
+footer { background: var(--black-purple); padding: 22px 0; }
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.45);
+}
+.footer-inner a { color: rgba(255,255,255,0.65); text-decoration: none; }
+.footer-inner a:hover { color: #fff; }
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 580px) {
+  .hero h1 { font-size: 22px; }
+  .section { padding: 20px 18px; }
+  .two-col { grid-template-columns: 1fr; }
+  .field-row { grid-template-columns: 1fr; }
+  .metric-item { flex-direction: column; gap: 4px; }
+  .metric-domain { width: auto; }
+}
+
+/* ---- PASSWORD GATE ---- */
+.pw-gate {
+  position: fixed; inset: 0; z-index: 9999;
+  background: var(--black-purple);
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+}
+.pw-card {
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14);
+  border-radius: var(--radius-lg);
+  max-width: 360px; width: 100%; padding: 32px 28px;
+  text-align: center;
+}
+.pw-card img { height: 34px; margin-bottom: 18px; }
+.pw-card h2 { font-size: 18px; color: #fff; margin-bottom: 8px; }
+.pw-card p { font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 20px; line-height: 1.5; }
+.pw-card input {
+  width: 100%; padding: 12px 14px; border-radius: var(--radius-md);
+  border: 1.5px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.95);
+  font-size: 15px; font-family: 'Montserrat', sans-serif; text-align: center;
+  margin-bottom: 12px; outline: none;
+}
+.pw-card input:focus { border-color: var(--coral); }
+.pw-card input.invalid { border-color: var(--coral); }
+.pw-card button {
+  width: 100%; padding: 12px; border: none; border-radius: var(--radius-md);
+  background: var(--coral); color: #fff; font-family: 'Montserrat', sans-serif;
+  font-weight: 700; font-size: 14px; cursor: pointer;
+}
+.pw-card button:hover { opacity: 0.92; }
+.pw-error { color: var(--coral); font-size: 12px; margin-top: 10px; display: none; }
+.pw-error.show { display: block; }
+/* ==========================================================
+   COMMISSIONER PAGE ADDITIONS
+   Layout components unique to this page. Brand tokens above
+   are unchanged and do all the colour work.
+   ========================================================== */
+
+/* ---- status strip ---- */
+.status-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 22px 0 6px; }
+.status-card {
+  background: #fff; border: 1px solid var(--purple-border);
+  border-radius: var(--radius-md); padding: 16px 16px 14px;
+}
+.status-card .n { font-size: 30px; font-weight: 900; color: var(--purple); line-height: 1; }
+.status-card .l { font-size: 12px; color: var(--text-mid); margin-top: 6px; line-height: 1.45; }
+.status-card.pending .n { color: var(--coral); }
+@media (max-width: 620px) { .status-grid { grid-template-columns: 1fr; } }
+
+/* ---- organisation cards ---- */
+.org-card {
+  background: #fff; border: 1px solid var(--purple-border);
+  border-left: 3px solid var(--purple);
+  border-radius: var(--radius-md); padding: 18px 20px; margin-bottom: 12px;
+}
+.org-card h3 { font-size: 15px; font-weight: 700; color: var(--purple); margin-bottom: 8px; }
+.org-card p { font-size: 14px; color: var(--text); margin-bottom: 10px; }
+.org-card .oq {
+  border-left: 2px solid var(--coral); padding: 2px 0 2px 14px;
+  font-size: 14px; font-style: italic; color: var(--text-mid); margin-top: 12px;
+}
+.org-card .oq cite { display: block; font-style: normal; font-size: 12px; color: var(--text-muted); margin-top: 6px; }
+
+/* ---- ranking + matrix tables ---- */
+.tbl-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 18px 0 8px; }
+.swipe-hint { display: none; }
+@media (max-width: 760px) {
+  .swipe-hint {
+    display: block; font-size: 12px; color: var(--text-muted);
+    font-style: italic; margin: -2px 0 14px;
+  }
+}
+table.grid { border-collapse: collapse; width: 100%; min-width: 620px; font-size: 13px; background: #fff; }
+table.grid th, table.grid td { padding: 9px 10px; text-align: center; border: 1px solid var(--purple-border); }
+table.grid thead th { background: var(--black-purple); color: #fff; font-weight: 600; font-size: 12px; }
+table.grid tbody th {
+  text-align: left; background: var(--purple-faint); font-weight: 600;
+  color: var(--text); white-space: nowrap;
+}
+table.grid td.r1 { font-weight: 700; color: var(--purple); }
+.pos { display: inline-block; min-width: 26px; padding: 3px 0; border-radius: var(--radius-sm); font-weight: 700; }
+.pos-3 { background: rgba(255,69,112,0.14); color: #b3244a; }
+.pos-4 { background: var(--purple-light); color: var(--purple); }
+.pos-5 { background: var(--purple); color: #fff; }
+.pos-moved { position: relative; }
+.pos-moved::after {
+  content: '▼'; font-size: 8px; color: var(--coral);
+  position: absolute; top: -2px; right: -9px;
+}
+
+/* ---- interactive matrix rows ---- */
+table.grid tbody tr.clickable { cursor: pointer; }
+table.grid tbody tr.clickable:hover th,
+table.grid tbody tr.clickable:hover td { background: var(--purple-light); }
+table.grid tbody tr.active th { background: var(--purple); color: #fff; }
+table.grid tbody tr.active td { background: var(--purple-faint); }
+.matrix-panel {
+  background: var(--white-purple); border: 1px solid var(--purple-mid);
+  border-radius: var(--radius-md); padding: 18px 20px; margin-top: 4px;
+  font-size: 14px; line-height: 1.6;
+}
+.matrix-panel h4 { font-size: 14px; color: var(--purple); margin-bottom: 8px; font-weight: 700; }
+.matrix-panel .hint { color: var(--text-muted); font-size: 13px; font-style: italic; }
+
+/* ---- worked examples ---- */
+.worked {
+  background: #fff; border: 1px solid var(--purple-border);
+  border-left: 3px solid var(--purple);
+  border-radius: var(--radius-md); padding: 20px 22px; margin: 0 0 14px;
+}
+.worked.moved { border-left-color: var(--coral); }
+.worked-tag {
+  display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--purple); background: var(--purple-light);
+  padding: 4px 10px; border-radius: var(--radius-sm); margin-bottom: 12px;
+}
+.worked.moved .worked-tag { color: #b3244a; background: rgba(255,69,112,0.14); }
+.worked h3 { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+.worked-move {
+  font-size: 13px; color: var(--text-muted); margin-bottom: 14px;
+  padding-bottom: 12px; border-bottom: 1px solid var(--purple-light);
+}
+.worked p { font-size: 14px; margin-bottom: 10px; }
+.worked p:last-child { margin-bottom: 0; }
+
+/* ---- finding blocks ---- */
+.finding {
+  background: #fff; border: 1px solid var(--purple-border);
+  border-radius: var(--radius-md); padding: 20px 22px; margin-bottom: 14px;
+}
+.finding h3 {
+  font-size: 15px; font-weight: 700; color: var(--purple);
+  margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid var(--purple-light);
+}
+.finding p { font-size: 14px; margin-bottom: 10px; }
+.finding p:last-child { margin-bottom: 0; }
+
+/* ---- pull quote ---- */
+.pull {
+  border-left: 3px solid var(--coral); background: var(--purple-faint);
+  padding: 14px 18px; border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  margin: 16px 0; font-size: 15px; font-style: italic; color: var(--text);
+}
+.pull cite { display: block; font-style: normal; font-size: 12px; color: var(--text-muted); margin-top: 8px; }
+
+/* ---- ranking widget ---- */
+.rank-intro { font-size: 14px; color: var(--text-mid); margin-bottom: 14px; }
+.rank-list { list-style: none; }
+.rank-item {
+  display: flex; align-items: center; gap: 14px;
+  background: #fff; border: 1px solid var(--purple-border);
+  border-radius: var(--radius-md); padding: 13px 16px; margin-bottom: 9px;
+  cursor: pointer; transition: border-color 0.15s, background 0.15s;
+}
+.rank-item:hover { border-color: var(--purple-strong); background: var(--purple-faint); }
+.rank-item.picked { border-color: var(--purple); background: var(--purple-faint); cursor: default; }
+.rank-badge {
+  flex: 0 0 30px; height: 30px; border-radius: 50%;
+  background: var(--purple-light); color: var(--purple);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 13px;
+}
+.rank-item.picked .rank-badge { background: var(--purple); color: #fff; }
+.rank-label { font-size: 14px; line-height: 1.5; }
+.rank-actions { margin-top: 12px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+.rank-status { font-size: 13px; color: var(--text-mid); }
+.rank-status.complete { color: var(--green); font-weight: 600; }
+.btn-reset {
+  background: none; border: 1px solid var(--purple-border); color: var(--text-mid);
+  border-radius: var(--radius-sm); padding: 6px 14px; font-family: inherit;
+  font-size: 12px; cursor: pointer;
+}
+.btn-reset:hover { border-color: var(--purple-strong); color: var(--purple); }
+
+/* ---- two-option choice ---- */
+.choice-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0 6px; }
+@media (max-width: 560px) { .choice-row { grid-template-columns: 1fr; } }
+.choice {
+  background: #fff; border: 1px solid var(--purple-border); border-radius: var(--radius-md);
+  padding: 16px 18px; cursor: pointer; text-align: left; font-family: inherit;
+  transition: border-color 0.15s, background 0.15s;
+}
+.choice:hover { border-color: var(--purple-strong); background: var(--purple-faint); }
+.choice.sel { border-color: var(--purple); background: var(--purple-faint); box-shadow: inset 0 0 0 1px var(--purple); }
+.choice strong { display: block; font-size: 14px; color: var(--purple); margin-bottom: 5px; }
+.choice span { font-size: 13px; color: var(--text-mid); line-height: 1.5; }
+
+/* ---- inline ask box ---- */
+.ask {
+  background: var(--white-purple); border: 1px solid var(--purple-mid);
+  border-radius: var(--radius-md); padding: 20px 22px; margin-top: 20px;
+}
+.ask h4 { font-size: 14px; font-weight: 700; color: var(--purple); margin-bottom: 8px; }
+.ask p { font-size: 14px; color: var(--text); margin-bottom: 12px; }
+.ask textarea {
+  width: 100%; min-height: 96px; resize: vertical; font-family: inherit; font-size: 14px;
+  padding: 11px 13px; border: 1px solid var(--purple-border); border-radius: var(--radius-sm);
+  background: #fff; color: var(--text); line-height: 1.6;
+}
+.ask textarea:focus { outline: none; border-color: var(--purple); }
+
+/* ---- caveat note ---- */
+.note-panel {
+  border: 1px dashed var(--purple-mid); border-radius: var(--radius-md);
+  padding: 16px 18px; margin-top: 16px; background: var(--purple-faint);
+  font-size: 13px; color: var(--text-mid); line-height: 1.6;
+}
+.note-panel strong { color: var(--text); }
+
+</style>
+<style>
+/* ==========================================================
+   BPF DEMONSTRATOR ADDITIONS
+   Brand tokens above are unchanged and do all the colour work.
+   ========================================================== */
+
+.sub-head {
+  font-size: 13px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.07em; color: var(--purple);
+  margin: 28px 0 12px; padding-top: 20px;
+  border-top: 1px solid var(--purple-light);
+}
+
+/* ---- illustrative notice ---- */
+.demo-banner {
+  background: #fff8e1; border: 1px solid #f0b800;
+  border-radius: var(--radius-md); padding: 14px 18px;
+  margin-bottom: 18px; font-size: 13px; color: #7a5000; line-height: 1.6;
+}
+.demo-banner strong { color: #5c3c00; }
+
+/* ---- extra position swatches ---- */
+.pos-1 { background: rgba(255,69,112,0.30); color: #8c0a2c; }
+.pos-2 { background: rgba(255,69,112,0.22); color: #a01438; }
+
+/* ---- pyramid layers ---- */
+.layer {
+  background: #fff; border: 1px solid var(--purple-border);
+  border-radius: var(--radius-md); padding: 18px 20px; margin-bottom: 10px;
+}
+.layer.top    { border-left: 4px solid var(--purple); }
+.layer.middle { border-left: 4px solid var(--purple-strong); }
+.layer.base   { border-left: 4px solid var(--purple-mid); }
+.layer-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-bottom: 8px; }
+.layer-name { font-size: 14px; font-weight: 900; color: var(--purple); text-transform: uppercase; letter-spacing: 0.06em; }
+.layer-who {
+  font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 99px;
+  background: var(--purple-light); color: var(--purple);
+}
+.layer p { font-size: 14px; line-height: 1.7; margin-bottom: 9px; }
+.layer p:last-child { margin-bottom: 0; }
+.layer-ceiling { font-size: 12px; color: var(--text-muted); margin-top: 10px; padding-top: 9px; border-top: 1px solid var(--purple-light); }
+
+/* ---- locked preview of the full review ---- */
+.preview-card {
+  background: #faf9fc; border: 1px dashed var(--purple-mid);
+  border-radius: var(--radius-md); padding: 16px 18px; margin-bottom: 9px;
+  display: flex; gap: 14px; align-items: flex-start;
+}
+.preview-lock {
+  width: 26px; height: 26px; border-radius: 50%; flex-shrink: 0;
+  background: var(--purple-light); color: var(--purple);
+  display: flex; align-items: center; justify-content: center; font-size: 13px;
+}
+.preview-copy h4 { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
+.preview-copy p { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+
+/* ---- booking prompt ---- */
+.booking {
+  background: var(--black-purple); border-radius: var(--radius-lg);
+  padding: 26px 28px; margin-top: 20px; color: #fff;
+}
+.booking h3 { font-size: 17px; font-weight: 900; margin-bottom: 8px; }
+.booking p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.72); margin-bottom: 16px; }
+.btn-book {
+  display: inline-block; padding: 13px 26px; background: var(--coral);
+  color: #fff; border-radius: var(--radius-md); text-decoration: none;
+  font-size: 14px; font-weight: 700;
+}
+.btn-book:hover { background: #e0304f; }
+
+/* ---- IP notice ---- */
+.ip-note {
+  margin-top: 18px; padding: 14px 16px;
+  border: 1px solid var(--purple-border); border-radius: var(--radius-md);
+  background: var(--purple-faint); font-size: 12px; color: var(--text-mid); line-height: 1.6;
+}
+
+/* ---- handoff into the Foundation's own view ---- */
+.handoff-box {
+  margin-top: 18px; padding: 22px 24px;
+  background: var(--black-purple); border-radius: var(--radius-lg); text-align: center;
+}
+.handoff-after { margin-top: 13px; font-size: 12px; color: rgba(255,255,255,0.52); line-height: 1.6; }
+.preview-card .preview-lock { background: var(--coral); color: #fff; font-size: 10px; }
+</style>
+
+</head>
+
+<body>
+
+<div class="pw-gate" id="pw-gate">
+  <div class="pw-card">
+    <img alt="Solico" src="https://hub.solico.org.uk/assets/logo-on-dark.png">
+    <h2>This page is just for you</h2>
+    <p>We have kept this private. The password was shared with you separately, drop us a line if you need it again.</p>
+    <input type="password" id="pw-input" placeholder="Password" autocomplete="off">
+    <button onclick="checkPassword()">Continue &rarr;</button>
+    <p class="pw-error" id="pw-error">That doesn&rsquo;t look right, please try again.</p>
+  </div>
+</div>
+
+<div class="topbar">
+<header>
+  <div class="header-inner">
+    <div class="logo-lockup">
+      <img class="logo-img" style="height:52px;width:auto;display:block;" alt="Solico" src="https://hub.solico.org.uk/assets/logo-on-dark.png">
+    </div>
+    <div class="header-divider"></div>
+    <div class="header-right">
+      <div class="header-tag-title" id="hdr-title">British Pakistan Foundation</div>
+      <div class="header-tag-sub" id="hdr-sub">Cohort readiness review &middot; demonstration</div>
+    </div>
+  </div>
+</header>
+
+<div class="step-bar">
+  <div class="wrap">
+    <div class="step-bar-inner" id="step-bar-inner"></div>
+  </div>
+</div>
+</div><!-- /topbar -->
+
+<section class="hero">
+  <div class="wrap">
+    <p class="hero-label" id="hero-label"></p>
+    <h1 id="hero-title"></h1>
+    <p id="hero-intro"></p>
+    <div class="hero-callout" id="hero-callout"></div>
+    <div class="hero-meta" id="hero-meta"></div>
+  </div>
+</section>
+
+<main class="main-content">
+<div class="wrap">
+
+  <div class="demo-banner" id="demo-banner"></div>
+
+  <!-- ===== 1: WHERE THIS STANDS ===== -->
+  <section class="section" id="s-where">
+    <div class="section-head">
+      <div class="section-circle" id="c-where">1</div>
+      <div class="section-head-copy">
+        <h2>What this is, and what it is not</h2>
+        <p>Told straight, including what has been invented and why.</p>
+      </div>
+    </div>
+    <div class="status-grid" id="status-grid"></div>
+    <div class="prose" id="where-prose"></div>
+  </section>
+
+  <!-- ===== 2: THE COHORT ===== -->
+  <section class="section locked" id="s-cohort">
+    <div class="section-head">
+      <div class="section-circle" id="c-cohort">2</div>
+      <div class="section-head-copy">
+        <h2>The five participants</h2>
+        <p>Each in their own character, and what they told us mattered most.</p>
+      </div>
+    </div>
+    <div id="org-cards"></div>
+    <h3 class="sub-head">What they told us mattered most</h3>
+    <div class="prose" id="rank-lead"></div>
+    <div class="tbl-scroll" id="rank-table"></div>
+    <p class="swipe-hint">Swipe the table sideways to see every participant.</p>
+    <div class="prose" id="rank-findings"></div>
+    <div class="note-panel" id="rank-caveat"></div>
+  </section>
+
+  <!-- ===== 3: HOW WE GOT HERE ===== -->
+  <section class="section locked" id="s-method">
+    <div class="section-head">
+      <div class="section-circle" id="c-method">3</div>
+      <div class="section-head-copy">
+        <h2>How we arrived at these positions</h2>
+        <p>What the framework did, and what the conversations did to it.</p>
+      </div>
+    </div>
+    <div class="prose" id="method-prose"></div>
+    <div id="worked-examples"></div>
+    <div class="prose" id="method-close"></div>
+  </section>
+
+  <!-- ===== 4: THE MAP ===== -->
+  <section class="section locked" id="s-map">
+    <div class="section-head">
+      <div class="section-circle" id="c-map">4</div>
+      <div class="section-head-copy">
+        <h2>Where the five participants sit</h2>
+        <p>Select any domain to see how it reads across the whole cohort.</p>
+      </div>
+    </div>
+    <div class="tbl-scroll" id="matrix-table"></div>
+    <p class="swipe-hint">Swipe the table sideways to see every participant.</p>
+    <div class="matrix-panel" id="matrix-panel">
+      <p class="hint">Select a domain row above to read across the cohort.</p>
+    </div>
+    <div class="prose" id="map-prose"></div>
+  </section>
+
+  <!-- ===== GLIMPSE ONLY: THE DOOR INTO THE FOUNDATION'S VIEW ===== -->
+  <section class="section locked" id="s-preview">
+    <div class="section-head">
+      <div class="section-circle" id="c-preview">5</div>
+      <div class="section-head-copy">
+        <h2>What the Foundation would see</h2>
+        <p>The same programme, in your colours, reporting to your own Workplan.</p>
+      </div>
+    </div>
+    <div class="prose" id="preview-lead"></div>
+    <div id="preview-cards"></div>
+    <div class="handoff-box">
+      <a class="btn-book" id="handoff-link" href="#" target="_blank" rel="noopener"></a>
+      <p class="handoff-after" id="handoff-after"></p>
+    </div>
+  </section>
+
+  <!-- ===== 5: THE PYRAMID ===== -->
+  <section class="section locked" id="s-pyramid">
+    <div class="section-head">
+      <div class="section-circle" id="c-pyramid">5</div>
+      <div class="section-head-copy">
+        <h2>Where support should concentrate</h2>
+        <p>The pyramid applied to this cohort, and the one build that serves every layer.</p>
+      </div>
+    </div>
+    <div class="prose" id="pyramid-prose"></div>
+    <div id="pyramid-layers"></div>
+    <div class="prose" id="pyramid-close"></div>
+    <div class="ask">
+      <h4 id="ask-title"></h4>
+      <p id="ask-body"></p>
+      <textarea id="f-pyramid" placeholder="Where you would set the ceiling, and what would need to be true first..."></textarea>
+    </div>
+  </section>
+
+  <!-- ===== 6: WHAT IS HOLDING ===== -->
+  <section class="section locked" id="s-holding">
+    <div class="section-head">
+      <div class="section-circle" id="c-holding">6</div>
+      <div class="section-head-copy">
+        <h2>What is holding across the cohort</h2>
+        <p>Patterns appearing in four or five of the five.</p>
+      </div>
+    </div>
+    <div id="findings"></div>
+  </section>
+
+  <!-- ===== 7: NON-PARTISANSHIP ===== -->
+  <section class="section locked" id="s-neutral">
+    <div class="section-head">
+      <div class="section-circle" id="c-neutral">7</div>
+      <div class="section-head-copy">
+        <h2>Non-partisanship in practice</h2>
+        <p>Not a disclaimer. A set of operating rules with consequences.</p>
+      </div>
+    </div>
+    <div class="prose" id="neutral-prose"></div>
+    <div class="two-col">
+      <div class="col-panel enable">
+        <h3>What the programme does</h3>
+        <ul id="neutral-does"></ul>
+      </div>
+      <div class="col-panel inhibit">
+        <h3>What the programme never does</h3>
+        <ul id="neutral-never"></ul>
+      </div>
+    </div>
+    <div class="prose" id="neutral-close" style="margin-top:16px;"></div>
+    <div class="choice-row">
+      <button class="choice" id="ch-yes" onclick="pickLens('publish')">
+        <strong>Publish the party spread</strong>
+        <span>Transparency is the strongest defence of neutrality.</span>
+      </button>
+      <button class="choice" id="ch-no" onclick="pickLens('withhold')">
+        <strong>Hold it internally</strong>
+        <span>Publishing it invites the wrong kind of arithmetic.</span>
+      </button>
+    </div>
+    <div class="ask" style="margin-top:14px;">
+      <h4>Anything you would add</h4>
+      <p>Optional, and the reasoning is more useful to us than the answer.</p>
+      <textarea id="f-lens" placeholder="Where you would draw the line, and what BPF's governance would need..."></textarea>
+    </div>
+  </section>
+
+  <!-- ===== FINAL: OVER TO YOU ===== -->
+  <section class="section locked" id="s-respond">
+    <div class="section-head">
+      <div class="section-circle" id="c-respond">8</div>
+      <div class="section-head-copy">
+        <h2>Over to you</h2>
+        <p id="respond-sub">One question, and then we would rather talk than write.</p>
+      </div>
+    </div>
+
+    <div class="ask">
+      <h4 id="q-title"></h4>
+      <p id="q-body"></p>
+      <textarea id="f-main" placeholder="The domain, and what would make moving it worth BPF's while..." oninput="checkReady()"></textarea>
+    </div>
+
+    <div class="fields" style="margin-top:20px;">
+      <div class="field-row">
+        <div class="field">
+          <label>Your name</label>
+          <input type="text" id="f-name" oninput="checkReady()">
+        </div>
+        <div class="field">
+          <label>Email address</label>
+          <input type="email" id="f-email" oninput="checkReady()">
+          <p class="email-error" id="email-error">Please enter a valid email address, e.g. name@organisation.org.uk</p>
+        </div>
+      </div>
+      <div class="field" id="extra-field">
+        <label>Anything else <span class="opt">optional</span></label>
+        <textarea id="f-reflection" placeholder="What reads well, what we have missed, and what you would put differently..."></textarea>
+      </div>
+    </div>
+
+    <button class="btn-submit" id="submit-btn" onclick="doSubmit()" disabled>
+      Send your response &rarr;
+    </button>
+    <div class="form-not-configured" id="form-not-configured">
+      The response form for this page has not been configured yet. Please email your response to us instead.
+    </div>
+    <div class="form-not-configured" id="submit-error">
+      Something went wrong while sending. Your answers are still here, please try again in a moment.
+    </div>
+    <p class="submit-note">Pressing send delivers your response directly and securely to Solico.</p>
+
+    <div class="booking" id="booking-block">
+      <h3 id="booking-title"></h3>
+      <p id="booking-body"></p>
+      <a class="btn-book" id="booking-link" href="#">Arrange the walkthrough &rarr;</a>
+    </div>
+
+    <p class="privacy-note">This page has been prepared for you and is not linked from anywhere public. Your response is processed by Solico and used only in connection with this proposal. It is stored within Solico&rsquo;s Microsoft 365 tenancy and will not be shared with other parties without your consent.</p>
+    <div class="ip-note" id="ip-note"></div>
+  </section>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <span>&copy; 2026 Solico &middot; <a href="https://solico.org.uk" target="_blank">solico.org.uk</a></span>
+      <span id="footer-right">Prepared for the British Pakistan Foundation</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ==========================================================
+   CONFIG — ALL CONTENT LIVES HERE
+   ==========================================================
+   BPF pathway readiness demonstrator.
+
+   Built on the same brand system, password gate and step
+   mechanic as the Lambeth Together commission review page.
+   The architecture it demonstrates comes from the transferable
+   Underrepresented Leadership and Candidate Pathway Framework.
+
+   MODE controls which build this file is:
+     'glimpse' — sections 1 to 4, then a locked preview of the
+                 rest, then one question and a booking prompt.
+     'full'    — all eight sections.
+
+   BEFORE SHARING THIS PAGE:
+   1. Change the password below from the default.
+   2. Confirm the SUBMIT block carries the right Power Automate
+      flow URL and token. Carried across from the Lambeth pages,
+      not independently reverified for this build.
+   3. Set booking.url to a real calendar link if you have one.
+      It currently falls back to email.
+   ========================================================== */
+
+const CONFIG = {
+
+  MODE: 'glimpse',
+
+  org: 'BPF Pathway Demonstrator',
+  password: 'pathway2027',
+  recipient: 'Asif',
+
+  hero: {
+    label: 'Illustrative demonstration &middot; British Pakistan Foundation',
+    title: 'What a readiness<br>review looks like',
+    intro: 'Asif, this is short and it is not a report. It shows the diagnostic underneath the pathway programme, using invented people, so the method can be judged on its own terms rather than described. Four sections, about six minutes. At the end there is a door into what the Foundation&rsquo;s own view of it would look like, and one question we would like back from you.',
+    callout: 'Everything in this demonstration is illustrative. No participant, position or quotation describes a real person.',
+    meta: ['Illustrative demonstration', 'Six minutes', 'Solico &middot; Christopher French']
+  },
+
+  banner: '<strong>Please read this first.</strong> The five participants below do not exist. Their positions, rankings and quotations were written for this demonstration. Nothing here is a finding about BPF, about any organisation, or about any individual. What is real is the method, the seven domains, the scoring discipline and the reporting format.',
+
+  status: [
+    { n: '5', l: 'Illustrative participants mapped across seven readiness domains' },
+    { n: '35', l: 'Positions tested, of which four moved' },
+    { n: '2', l: 'Meeting the intensive layer test on current evidence', pending: true }
+  ],
+
+  where: [
+    'This page shows what a cohort readiness review looks like in practice. The architecture is the one set out in the transferable pathway framework, a three stage Pathway, a managed Pipeline and a three layer Pyramid. The reporting format is the one Solico is currently using on a live commission for an NHS and local authority partnership in Lambeth, where seven organisations are being mapped against a seven domain readiness framework for a commissioner audience.',
+    'The illustrative cohort is five participants from a hypothetical first intake. Forty expressions of interest, twelve into the Access stage, five carried far enough to be mapped. They are identified by letter and by role only.',
+    'That is not a shortcut taken for the demonstration. It is how the real thing would need to work. A pipeline that names and positions named individuals in a document that then circulates is a pipeline that will lose the trust of the people inside it, and the framework is explicit that the pipeline must never become a secret ranking list. Anonymised at the point of reporting, identifiable only to the people running the programme, is the discipline that makes the rest of this defensible.',
+    'So this is two things at once. It is a demonstration of a diagnostic, and it is an argument about how a diagnostic ought to behave.'
+  ],
+
+  cohort: ['A', 'B', 'C', 'D', 'E'],
+
+  orgs: [
+    {
+      name: 'Participant A &middot; Councillor, second term, West Midlands',
+      body: 'The furthest along and the most process literate in the cohort. Through party approval and a contested selection twice. Eight years of competent ward work that has produced almost no public argument, and no record of it in any form a selection panel could weigh.',
+      quote: 'I know exactly how to get selected. I have no idea how to be known.',
+      who: 'Illustrative &middot; Participant A, readiness conversation'
+    },
+    {
+      name: 'Participant B &middot; NHS clinical lead, Greater Manchester',
+      body: 'The clearest case of a structural barrier mistaken for a lack of commitment. A rotational clinical schedule makes evening branch activity inaccessible rather than inconvenient, and our first pass had assumed seniority implied schedule control. It does not.',
+      quote: 'Every branch meeting I have ever been invited to has been on a Tuesday evening. I have never once been free on a Tuesday evening.',
+      who: 'Illustrative &middot; Participant B, readiness conversation'
+    },
+    {
+      name: 'Participant C &middot; Family business director, Luton',
+      body: 'The only one who could self fund a selection contest, and the only one whose local standing is three decades deep. The conversation established that none of it reaches the population that actually selects candidates, a distinction he understood better than we did.',
+      quote: 'Everyone in my town knows me. Nobody in the party does.',
+      who: 'Illustrative &middot; Participant C, readiness conversation'
+    },
+    {
+      name: 'Participant D &middot; Solicitor and school governor, Bradford',
+      body: 'The most evenly balanced and, for that reason, the hardest to place. Nothing below a 2 and nothing above a 4. Not a capability gap but an absence of argument, which is why a decade of encouragement has never converted into a decision.',
+      quote: 'I keep being told I would make a strong candidate. Nobody has yet told me what for.',
+      who: 'Illustrative &middot; Participant D, readiness conversation'
+    },
+    {
+      name: 'Participant E &middot; Charity chief executive, East London',
+      body: 'The strongest purpose and delivery record, paired with the thinnest personal capacity. Has built and funded a programme with published outcomes, much of it without waiting for permission. Has no financial runway at all for a contested selection.',
+      quote: 'I can run a campaign. I cannot afford to.',
+      who: 'Illustrative &middot; Participant E, readiness conversation'
+    }
+  ],
+
+  rankLead: 'Before mapping, each participant ranked the seven domains, most important to their own progress first. Nobody saw anyone else&rsquo;s answer.',
+
+  rankRows: [
+    ['Public voice', 'Party process', 'Party process', 'Party process', 'Party process'],
+    ['Party process', 'Local base', 'Public voice', 'Purpose', 'Capacity'],
+    ['Local base', 'Capacity', 'Local base', 'Local base', 'Local base'],
+    ['Issue focus', 'Purpose', 'Purpose', 'Public voice', 'Public voice'],
+    ['Purpose', 'Issue focus', 'Issue focus', 'Issue focus', 'Issue focus'],
+    ['Capacity', 'Public voice', 'Evidence', 'Capacity', 'Purpose'],
+    ['Evidence', 'Evidence', 'Capacity', 'Evidence', 'Evidence']
+  ],
+
+  rankFindings: [
+    '<strong>Party process literacy is top two for every participant.</strong> Unanimous. It is also the domain where the mapping finds the widest spread, from a 5 down to a 2. Universally wanted and unevenly held is precisely the shape a structured pathway exists to close, and it is the most teachable domain in the framework.',
+    '<strong>Evidence and self-documentation is ranked last by four of the five, and sixth by the other.</strong> It is also a 2 at four of the five. Nobody wants it and almost nobody has it. Section 5 argues that this makes it the programme&rsquo;s first build rather than its last.',
+    '<strong>Capacity and resilience splits the cohort, and the split is instructive.</strong> Three participants placed it in their bottom two. The two who ranked it highest are the two whose positions in it are lowest. People being squeezed by capacity name it. People who are not, discount it, and are the ones most likely to be surprised by it six weeks into a selection contest.'
+  ],
+
+  rankCaveat: '<strong>How to read these.</strong> The question asked for most important first, and in conversation it became clear that participants answered it differently. Some ranked on importance, some on felt deficit, and in two cases a domain placed low was then described as the thing most likely to stop them. The rankings are directionally useful and the three patterns above hold regardless.',
+
+  method: {
+    lead: [
+      'Before any conversation we wrote a first pass reading for each participant, drawn from their application, their public record and whatever they had already published or delivered. It set out where we thought they sat across the seven domains, and it said in its own opening that it was a starting point for discussion rather than a verdict, and not a pass or fail. Nobody was asked to score themselves.',
+      'A structured readiness conversation then tested it. Ninety minutes, the participant&rsquo;s own account, and a position that either survived that or did not.',
+      '<strong>Thirty five positions were tested across five participants. Thirty one held. Four moved.</strong> All four moved down, and all four sat with just two participants.',
+      'That ratio is the point, and it is worth being precise about what it does and does not mean. It does not mean the conversations added little. Almost everything useful we understand about these five came out of the conversation rather than off a form. What it means is that the framework&rsquo;s thresholds are doing real work, and that a conversation which adds a great deal of understanding does not automatically move a number. A diagnostic that moved most of its positions after one conversation would not be a diagnostic. It would be an interview with a scoring sheet attached.',
+      'Two worked examples, one of each.'
+    ],
+    examples: [
+      {
+        tag: 'A position that held',
+        title: 'Participant E &middot; Issue focus and delivery record',
+        move: 'First pass 5, held at 5',
+        held: true,
+        body: [
+          'From outside we could see a decade of delivery, a named programme with published outcomes, and a track record of getting things funded and finished. We flagged in the first pass that we could not tell how much of that belonged to the organisation and how much to the individual, and we said so rather than assuming.',
+          'The conversation answered it. The programme design, the funding case and the delivery relationships were hers, and a good deal of it had been built before anyone had formally agreed she could. That is a better signal in a prospective candidate than a well ordered CV, and it is not something a first pass reading can see.',
+          'It did not move the position. A 5 in this domain describes a sustained, evidenced record of delivering change for an identifiable public, which is exactly what we found. There was nothing above it to move to. The conversation made the position far better understood without making it different.'
+        ]
+      },
+      {
+        tag: 'A position that moved',
+        title: 'Participant C &middot; Local base and relationships',
+        move: 'First pass 5, now 4',
+        held: false,
+        body: [
+          'The first pass read a very large and genuinely deep local network as a strong position. Business association, mosque committee, school governing body, three decades in one town, and a name that opens doors across the whole of it.',
+          'The conversation established that this network and the party selectorate are two different populations with almost no overlap. Standing in the first does not convert into votes in the second, and the participant was considerably clearer about that than our reading had been.',
+          'This is not a downgrade of the person. It is a correction of our reading, which is a distinction the format has to keep making if it is going to stay usable. A 5 in this domain requires relationships that reach the people who make the relevant decision, and on the evidence they do not yet. It is also the most fixable position in the cohort, which is why it places C in the middle layer of the pyramid rather than anywhere lower.'
+        ]
+      }
+    ],
+    close: [
+      'So the positions in the next section are not self assessments, and they are not impressions from an application form either. They are first readings that have been through ninety minutes of the participant&rsquo;s own account and either survived it or did not.'
+    ]
+  },
+
+  /* row index : column indexes that moved down */
+  moved: { 1: [1], 2: [1, 2], 3: [2] },
+
+  matrix: [
+    {
+      domain: 'Purpose and motivation clarity',
+      pos: [4, 4, 3, 4, 5],
+      read: 'The strongest domain in the cohort and the one where the framework is least useful, because everyone here has already thought hard about why they want this. The single 3 belongs to the participant who has been told most often that he would make a good candidate and least often what for. That is a different problem from lacking motivation. Being wanted by other people is not the same as having decided something, and it will not survive a hostile selection meeting.'
+    },
+    {
+      domain: 'Capacity, finance and resilience',
+      pos: [3, 2, 5, 3, 2],
+      read: 'The widest and most consequential spread in the map. One participant could self fund a contested selection tomorrow. Two could not take three weeks of leave in a May without material consequence, and one of those is on a clinical rota that makes ordinary evening party activity structurally inaccessible rather than merely inconvenient. This is the domain where a programme can act fastest, through practical access support, and the domain where doing nothing quietly selects for wealth and for jobs with flexible hours. It is also the domain most often left out of programme budgets on the grounds that it is not development.'
+    },
+    {
+      domain: 'Party process literacy',
+      pos: [5, 2, 2, 3, 3],
+      read: 'The widest spread of any domain and the one every single participant ranked in their top two. One has been through approval and selection twice and could teach it. Two are working from what they were told by people who last did it a decade ago, which in practice is worse than knowing nothing. This is the most teachable domain in the framework and the one where a programme has to be most disciplined, because the rules belong to the parties, differ between them and change without notice. The correct move is to teach transferable preparation and link to each party&rsquo;s current authorised guidance, never to reproduce or arbitrate rules that will be out of date within a cycle.'
+    },
+    {
+      domain: 'Local base and relationships',
+      pos: [4, 3, 4, 3, 4],
+      read: 'Every participant has a base. Not every base reaches the people who make the decision. The three 4s are held for quite different reasons, one built inside a party over years, one built outside it over decades and only recently pointed at it, one built through delivery rather than membership. The distinction between community standing and selectorate reach is the most common misreading in this domain and it accounts for one of the four movements in the map.'
+    },
+    {
+      domain: 'Issue focus and delivery record',
+      pos: [4, 4, 3, 3, 5],
+      read: 'Consistently solid, and the domain where the cohort would look most credible to an outside observer. The two 3s are not weak records. They are records without a through line, activity that reads as a series of good things done rather than as an argument about what ought to change. That is closer to a communications problem than a delivery one, which is why it tends to move quickly with the right support, and why it is often mistaken for a deeper deficit than it is.'
+    },
+    {
+      domain: 'Public voice and visibility',
+      pos: [3, 3, 4, 3, 4],
+      read: 'The domain most often mistaken for a marketing task. Nobody here is at 5 and nobody should be expected to be at this stage. The two 4s belong to the participants who have had to argue publicly for something and then be disagreed with in public afterwards. The 3s belong to people who are well regarded and rarely tested. Visibility that has never survived disagreement is a thinner asset than it looks on paper, and it is the first thing a contested selection will find.'
+    },
+    {
+      domain: 'Evidence and self-documentation',
+      pos: [2, 2, 2, 2, 3],
+      read: 'A 2 at four of the five, and the only domain where nobody exceeds a 3. Everybody here is doing things. Almost nobody is capturing them in any form a selection panel, an assessor or a funder could use. The cause is capacity and habit rather than intent, in every single case. This is the clearest signal the demonstration produces, and section 5 argues it should be the programme&rsquo;s first build rather than its last.'
+    }
+  ],
+
+  mapProse: [
+    'The four movements sit with two participants and are marked above. All four moved down. Three of them were corrections to our reading rather than judgements about the person, which is a distinction this format has to keep making explicitly if it is going to stay usable by the people it describes.',
+    'Where a domain sits at nearly the same position across the whole cohort, as evidence and self-documentation does, that is five separate readings arriving independently at the same place rather than a default being applied.'
+  ],
+
+  pyramid: {
+    lead: [
+      'The pyramid is a resource allocation model, not a ranking of human worth. Its purpose is to stop a programme spreading thin support evenly across everyone and calling that fairness. A healthy programme keeps a broad base, an active middle and a focussed top, with movement between them, published criteria for that movement, and dignified alternative routes for people who do not move.',
+      'Applied to this illustrative cohort, and to the wider intake behind it, the distribution looks like this.'
+    ],
+    layers: [
+      {
+        cls: 'top',
+        name: 'Top &middot; Intensive opportunity',
+        who: 'A and E',
+        body: [
+          'Both meet the three part entry test on current evidence. Demonstrated readiness, a real and plausible opportunity within the next cycle, and commitment evidenced by completed actions rather than stated intent.',
+          'Support here is bespoke and expensive. A named lead, a coordinated support team, specialist input against the specific gap, and a published budget ceiling with frequent review. The two of them need almost opposite things, which is the point of building the support around the person rather than around the layer. A needs a public argument and something to show for eight years. E needs the financial floor that would let her contest anything at all.'
+        ],
+        ceiling: 'Entry time-limited and reviewed. Two reviewers minimum on any resource decision, recorded with reasons.'
+      },
+      {
+        cls: 'middle',
+        name: 'Middle &middot; Active progression',
+        who: 'B, C and D',
+        body: [
+          'Actively pursuing a next stage opportunity without yet having a live one in front of them. One to one mentoring, process preparation, opportunity mapping and ethical relationship building.',
+          'C is the clearest case for movement upward within a cycle, because the gap is a specific and addressable one rather than a general absence of readiness. B is the clearest case for the programme having to change its own shape rather than the participant, because no amount of mentoring resolves a rota. D needs the least support and the most honest conversation.'
+        ],
+        ceiling: 'Reviewed each stage. Movement upward requires evidence against published criteria, not proximity to the programme.'
+      },
+      {
+        cls: 'base',
+        name: 'Base &middot; Exploration and preparation',
+        who: 'The other thirty five',
+        body: [
+          'Everyone testing the ambition, building foundations or preparing for an entry gate. Orientation to the routes, self assessment, group learning and peer connection.',
+          'The base is where a programme earns the right to exist. It is also where cost per head is lowest and where the single largest number of people encounter it, which makes it the wrong place to economise even though it is always the first place a squeezed budget looks.'
+        ],
+        ceiling: 'Open entry. No progression implied by participation, and that stated plainly at the point of entry.'
+      }
+    ],
+    close: [
+      '<strong>One build serves every layer at once.</strong> Evidence and self-documentation is a 2 across almost the whole cohort and was ranked last by four of the five. That combination is normally read as low priority, and we would read it the other way round.',
+      'It is the one domain where a single, cheap, programme level build serves the base, the middle and the top simultaneously, and where nothing whatever will happen if it is left to individuals, because it is nobody&rsquo;s urgent task on any given Tuesday. It is also the only domain that makes this diagnostic repeatable. Without it, the second review is another round of first pass readings rather than a measurement of movement, and a programme that cannot measure movement cannot evidence its own contribution to a funder.',
+      'That is the argument for building it in year one rather than year three, and it is an argument that comes out of the map rather than out of a consultant&rsquo;s preference.'
+    ]
+  },
+
+  ask: {
+    title: 'One thing that would help us',
+    body: 'If BPF set a ceiling on intensive support per participant, where would you want it to sit, and what would need to be true before you were comfortable signing it off?'
+  },
+
+  findings: [
+    {
+      title: 'The domain everyone wants is the domain nobody controls',
+      body: [
+        'Party process literacy was in every participant&rsquo;s top two and shows the widest spread in the map, from a 5 to a 2.',
+        'It is also the domain where the programme has the least authority. The rules belong to the parties, differ between them, and change without notice. A programme that reproduces those rules in its own materials will be teaching something out of date within a cycle, and a programme that appears to arbitrate them is making a claim about decision rights that it does not hold.',
+        'The workable position is narrow but genuinely useful. Teach transferable preparation, which is most of what actually determines the outcome. Link to each party&rsquo;s current authorised guidance rather than restating it. Be explicit, in writing and at the point of entry, that participation confers no access to any party process and no advantage within one. That last point is not a legal formality. It is the thing that keeps the programme welcome in more than one party at a time.'
+      ]
+    },
+    {
+      title: 'Capacity is selecting the cohort before the programme does',
+      body: [
+        'Two participants sit at 2 in capacity, finance and resilience, and their reasons have nothing in common except the effect.',
+        'One cannot attend the evening activity through which party literacy is conventionally acquired, because a clinical rota is not negotiable. One could not survive a month of reduced income during a contested selection. Neither of these is a development need and neither responds to mentoring.',
+        'A programme that funds training and mentoring but not access support is not neutral about who progresses. It selects, quietly and quite efficiently, for people with flexible jobs and financial cushions, and it will then report a cohort that looks a great deal like the existing candidate pool while wondering why. Travel, childcare, lost income during selection windows and reasonable adjustment are the least glamorous lines in a programme budget and the ones that most determine who is left at the end.'
+      ]
+    },
+    {
+      title: 'Three of the five rest on one or two relationships',
+      body: [
+        'In three of the five conversations, the participant&rsquo;s reach into their community or into a party rests on one or two named individuals rather than on anything structural.',
+        'One depends on a single sympathetic local officer for access to a party process. One depends on a relationship with a single institution that is itself in transition. One depends on a family reputation that would not survive being tested by a person who did not already hold it.',
+        'This is fragile in the ordinary way that all personal networks are fragile, and it matters here for a specific reason. A pipeline built on individual relationships cannot be handed over, cannot be evaluated and cannot be replicated in another town. The pattern is the finding, and institutionalising what currently sits with individuals is one of the few things a programme can do that an individual cannot do for themselves.'
+      ]
+    },
+    {
+      title: 'Nobody can evidence what they have already done',
+      body: [
+        'Four of the five sit at 2 in evidence and self-documentation, and the fifth sits at 3. Nobody exceeds it.',
+        'The consequence runs in two directions and both of them cost. A selection panel asks for evidence of local campaigning, community delivery or public advocacy, and receives an account rather than a record. Separately, a programme that cannot show what its participants were doing before it started cannot later demonstrate that anything it did made a difference.',
+        'The cause was capacity and habit in every case, never intent. Nobody in this cohort thinks documenting their work is beneath them. They think it is the thing that gets dropped when the week runs out, which is exactly right, and exactly why it has to be a programme level build rather than a personal development objective.'
+      ]
+    }
+  ],
+
+  neutral: {
+    lead: [
+      'The illustrative cohort spans three political parties, with one participant undecided. The support offered to each is identical, and the mapping framework makes no reference to party anywhere in its seven domains.',
+      'That is not a presentational choice. For BPF it is a governance requirement, and for you personally it is the difference between a programme that is straightforwardly defensible and one that generates a conversation nobody wants to have. It is worth setting out as operating rules rather than as a disclaimer, because a disclaimer is something you write once and rules are something you can be held to.'
+    ],
+    does: [
+      'Prepares people to navigate whichever party process they choose, using transferable skills.',
+      'Links to each party&rsquo;s own current authorised guidance rather than restating it.',
+      'Draws contributors and mentors from varied political and civic backgrounds, with affiliations disclosed.',
+      'Keeps funding, progression and intensive support criteria wholly independent of party preference.',
+      'States plainly, at the point of entry, that participation is not endorsement and confers no access to any party process.',
+      'Records progression decisions with reasons, reviewed by more than one person.'
+    ],
+    never: [
+      'Steers a participant toward or away from any party.',
+      'Describes BPF as endorsing a candidate, in any material, at any stage.',
+      'Arbitrates, interprets or reproduces a party&rsquo;s own selection rules.',
+      'Lets a private individual&rsquo;s political activity appear anywhere in the programme&rsquo;s governance or records.',
+      'Uses a readiness position as a substitute for a party&rsquo;s own independent decision.',
+      'Publishes a participant&rsquo;s party affiliation without their explicit and current consent.'
+    ],
+    close: [
+      'The awkward case is the useful one to plan for. If a participant in the intensive layer is selected for a winnable seat, the programme will be asked, by somebody, whether BPF supports them. The answer has to have been written down long before the question arrives, and it has to be the same answer regardless of which party asks.',
+      'One design question sits underneath all of this, and it is genuinely a judgement call rather than a rule.'
+    ]
+  },
+
+  handoff: {
+    lead: [
+      'That is the diagnostic. What it produces, for the Foundation, is a view of its own programme that counts progress against the Workplan automatically and shows movement rather than activity.',
+      'We have built that view in the Foundation&rsquo;s own colours so you can see it as yours rather than as ours. It is two pages and it takes two minutes.'
+    ],
+    button: 'Open the Foundation&rsquo;s view &rarr;',
+    url: 'https://hub.solico.org.uk/bpf-client/',
+    after: 'The password is the same as this page. It opens in a new tab, so you can come back here afterwards.',
+    cards: [
+      { t: 'Progress against your own KPIs', d: 'The six Workplan commitments, counted from the pipeline itself rather than reported separately, with the source of every figure named underneath it.' },
+      { t: 'What the Board cannot see, and why', d: 'Every field withheld from trustees, who does see it, and the reason. Most suppliers give a board everything and call it transparency. This is the argument for the opposite.' }
+    ]
+  },
+
+  question: {
+    title: 'One question before we meet',
+    body: 'Looking at the map in section 4, which single domain would the Foundation most want to be seen to move, and why that one? There is no right answer, and your reasoning is more useful to us than the choice.'
+  },
+
+  booking: {
+    title: 'Two conversations, in that order',
+    body: 'First a walkthrough with you and Zara, about forty minutes, with the map open in front of us. Most of the useful conversation happens when you push back on a position. Then, if it still looks right, the introduction to Faria and the trustees that you offered. There are two things in the design that need a Board decision rather than ours, and they are better raised early than late.',
+    url: 'mailto:chris@solico.org.uk?subject=BPF%20pathway%20demonstrator%20walkthrough&body=Chris%2C%20let%27s%20find%20a%20time%20to%20go%20through%20the%20full%20version.',
+    label: 'Let&rsquo;s find a time &rarr;'
+  },
+
+  ipNote: '<strong>A note on what this is.</strong> The seven domain readiness framework, the first pass and test method, the pyramid entry tests and this reporting format are Solico&rsquo;s own work and remain Solico&rsquo;s intellectual property. They are shared here so that BPF can judge the approach properly before commissioning it. The underlying pathway architecture is set out in the organisation neutral framework document accompanying our proposal, which BPF is free to adopt and adapt in its own name.',
+
+  SUBMIT: {
+    url: 'https://default84502d55185e46909ad3cdecaa6893.e7.environment.api.powerplatform.com:443/powerautomate/automations/direct/cu/04/workflows/9e2317c511a34c8eb884ceff9d859508/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=H0D602V3hfz6O-oHfyd53T5OODCUCqfKjrFue03TvD4',
+    token: 'solico-hub-k7m2'
+  }
+};
+
+
+/* ==========================================================
+   PAGE LOGIC — no content below this line
+   ========================================================== */
+
+const STEPS_GLIMPSE = [
+  ['s-where',   'What this is'],
+  ['s-cohort',  'The five'],
+  ['s-method',  'How we got here'],
+  ['s-map',     'The map'],
+  ['s-preview', 'Your view'],
+  ['s-respond', 'Over to you']
+];
+
+const STEPS_FULL = [
+  ['s-where',   'What this is'],
+  ['s-cohort',  'The five'],
+  ['s-method',  'How we got here'],
+  ['s-map',     'The map'],
+  ['s-pyramid', 'Where support goes'],
+  ['s-holding', 'What is holding'],
+  ['s-neutral', 'Non-partisanship'],
+  ['s-respond', 'Over to you']
+];
+
+const GLIMPSE = CONFIG.MODE !== 'full';
+const STEPS = GLIMPSE ? STEPS_GLIMPSE : STEPS_FULL;
+const ALL_SECTIONS = ['s-where', 's-cohort', 's-method', 's-map', 's-preview', 's-pyramid', 's-holding', 's-neutral', 's-respond'];
+
+/* how each section is completed. anything unlisted completes on scroll */
+const COMPLETE_BY = { 's-map': 'interact', 's-neutral': 'choice', 's-respond': 'submit' };
+
+const CIRCLE_ID = {
+  's-where': 'c-where', 's-cohort': 'c-cohort', 's-method': 'c-method', 's-map': 'c-map',
+  's-preview': 'c-preview', 's-pyramid': 'c-pyramid', 's-holding': 'c-holding',
+  's-neutral': 'c-neutral', 's-respond': 'c-respond'
+};
+
+const doneSteps = new Set();
+
+function goTo(id) {
+  const el = document.getElementById(id);
+  if (el) window.scrollTo({ top: el.offsetTop - 90, behavior: 'smooth' });
+}
+
+function buildFrame() {
+  /* hide any section not used by this build, and number the rest */
+  ALL_SECTIONS.forEach(function (id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const idx = STEPS.findIndex(function (s) { return s[0] === id; });
+    if (idx === -1) { el.style.display = 'none'; return; }
+    const c = document.getElementById(CIRCLE_ID[id]);
+    if (c) c.textContent = String(idx + 1);
+  });
+
+  document.getElementById('step-bar-inner').innerHTML = STEPS.map(function (s, i) {
+    return '<div class="sp" id="sp' + (i + 1) + '" onclick="goTo(\'' + s[0] + '\')">' +
+             '<div class="sp-n" id="sn' + (i + 1) + '">' + (i + 1) + '</div>' + s[1] +
+           '</div>';
+  }).join('');
+
+  document.getElementById('hdr-sub').innerHTML = GLIMPSE
+    ? 'Cohort readiness review &middot; preview'
+    : 'Cohort readiness review &middot; full';
+  document.getElementById('respond-sub').textContent = GLIMPSE
+    ? 'One question, and then we would rather talk than write.'
+    : 'One question, and anything else you want to put back to us.';
+  const bk = document.getElementById('booking-block');
+  if (bk && !GLIMPSE) bk.style.display = 'none';
+}
+
+function setStepDone(n) {
+  if (doneSteps.has(n)) return;
+  doneSteps.add(n);
+  const bar = document.getElementById('sp' + n);
+  const num = document.getElementById('sn' + n);
+  if (bar) bar.classList.add('done');
+  if (num) num.innerHTML = '&#10003;';
+  if (n < STEPS.length) {
+    const next = document.getElementById(STEPS[n][0]);
+    if (next) next.classList.remove('locked');
+  }
+  checkReady();
+}
+
+function canComplete(n) {
+  return n === 1 || doneSteps.has(n - 1);
+}
+
+function checkScrollProgress() {
+  const marker = window.scrollY + window.innerHeight * 0.6;
+  STEPS.forEach(function (s, i) {
+    if (COMPLETE_BY[s[0]]) return;
+    const n = i + 1;
+    const el = document.getElementById(s[0]);
+    if (el && canComplete(n) && marker > el.offsetTop + el.offsetHeight) setStepDone(n);
+  });
+}
+window.addEventListener('scroll', checkScrollProgress, { passive: true });
+window.addEventListener('resize', checkScrollProgress);
+
+function stepNumberOf(id) {
+  return STEPS.findIndex(function (s) { return s[0] === id; }) + 1;
+}
+
+/* ---- renderers ---- */
+
+function renderHero() {
+  document.getElementById('hero-label').innerHTML = CONFIG.hero.label;
+  document.getElementById('hero-title').innerHTML = CONFIG.hero.title;
+  document.getElementById('hero-intro').innerHTML = CONFIG.hero.intro;
+  document.getElementById('hero-callout').textContent = CONFIG.hero.callout;
+  document.getElementById('hero-meta').innerHTML =
+    CONFIG.hero.meta.map(function (m) { return '<span>' + m + '</span>'; }).join('');
+  document.getElementById('demo-banner').innerHTML = CONFIG.banner;
+}
+
+function renderWhere() {
+  document.getElementById('status-grid').innerHTML = CONFIG.status.map(function (s) {
+    return '<div class="status-card' + (s.pending ? ' pending' : '') + '">' +
+             '<div class="n">' + s.n + '</div><div class="l">' + s.l + '</div></div>';
+  }).join('');
+  document.getElementById('where-prose').innerHTML =
+    CONFIG.where.map(function (p) { return '<p>' + p + '</p>'; }).join('');
+}
+
+function renderCohort() {
+  document.getElementById('org-cards').innerHTML = CONFIG.orgs.map(function (o) {
+    return '<div class="org-card"><h3>' + o.name + '</h3><p>' + o.body + '</p>' +
+           '<div class="oq">&ldquo;' + o.quote + '&rdquo;<cite>' + o.who + '</cite></div></div>';
+  }).join('');
+
+  document.getElementById('rank-lead').innerHTML = '<p>' + CONFIG.rankLead + '</p>';
+
+  let t = '<table class="grid"><thead><tr><th>Rank</th>' +
+    CONFIG.cohort.map(function (c) { return '<th>' + c + '</th>'; }).join('') +
+    '</tr></thead><tbody>';
+  CONFIG.rankRows.forEach(function (row, i) {
+    t += '<tr><th>' + (i + 1) + '</th>' +
+      row.map(function (c) { return '<td' + (i === 0 ? ' class="r1"' : '') + '>' + c + '</td>'; }).join('') +
+      '</tr>';
+  });
+  t += '</tbody></table>';
+  document.getElementById('rank-table').innerHTML = t;
+
+  document.getElementById('rank-findings').innerHTML =
+    CONFIG.rankFindings.map(function (p) { return '<p>' + p + '</p>'; }).join('');
+  document.getElementById('rank-caveat').innerHTML = CONFIG.rankCaveat;
+}
+
+function renderMethod() {
+  document.getElementById('method-prose').innerHTML =
+    CONFIG.method.lead.map(function (p) { return '<p>' + p + '</p>'; }).join('');
+  document.getElementById('worked-examples').innerHTML = CONFIG.method.examples.map(function (e) {
+    return '<div class="worked' + (e.held ? ' held' : ' moved') + '">' +
+             '<div class="worked-tag">' + e.tag + '</div>' +
+             '<h3>' + e.title + '</h3>' +
+             '<div class="worked-move">' + e.move + '</div>' +
+             e.body.map(function (p) { return '<p>' + p + '</p>'; }).join('') +
+           '</div>';
+  }).join('');
+  document.getElementById('method-close').innerHTML =
+    CONFIG.method.close.map(function (p) { return '<p>' + p + '</p>'; }).join('');
+}
+
+function renderMatrix() {
+  let t = '<table class="grid"><thead><tr><th style="text-align:left;">Domain</th>' +
+    CONFIG.cohort.map(function (c) { return '<th>' + c + '</th>'; }).join('') +
+    '</tr></thead><tbody>';
+  CONFIG.matrix.forEach(function (d, i) {
+    const movedCols = CONFIG.moved[i] || [];
+    t += '<tr class="clickable" id="mrow' + i + '" onclick="showDomain(' + i + ')">' +
+      '<th>' + d.domain + '</th>' +
+      d.pos.map(function (p, j) {
+        const m = movedCols.indexOf(j) !== -1;
+        return '<td><span class="pos pos-' + p + (m ? ' pos-moved' : '') + '">' + p + '</span></td>';
+      }).join('') + '</tr>';
+  });
+  t += '</tbody></table>';
+  document.getElementById('matrix-table').innerHTML = t;
+  document.getElementById('map-prose').innerHTML =
+    CONFIG.mapProse.map(function (p) { return '<p>' + p + '</p>'; }).join('');
+}
+
+const domainsSeen = new Set();
+
+function showDomain(i) {
+  CONFIG.matrix.forEach(function (d, k) {
+    const r = document.getElementById('mrow' + k);
+    if (r) r.classList.toggle('active', k === i);
+  });
+  const d = CONFIG.matrix[i];
+  document.getElementById('matrix-panel').innerHTML = '<h4>' + d.domain + '</h4><p>' + d.read + '</p>';
+  domainsSeen.add(i);
+  const n = stepNumberOf('s-map');
+  if (domainsSeen.size === CONFIG.matrix.length && canComplete(n)) setStepDone(n);
+}
+
+function renderPreview() {
+  if (!GLIMPSE) return;
+  document.getElementById('preview-lead').innerHTML =
+    CONFIG.handoff.lead.map(function (p) { return '<p>' + p + '</p>'; }).join('');
+  document.getElementById('preview-cards').innerHTML = CONFIG.handoff.cards.map(function (c) {
+    return '<div class="preview-card"><div class="preview-lock">&#9654;</div>' +
+           '<div class="preview-copy"><h4>' + c.t + '</h4><p>' + c.d + '</p></div></div>';
+  }).join('');
+  var a = document.getElementById('handoff-link');
+  a.href = CONFIG.handoff.url;
+  a.innerHTML = CONFIG.handoff.button;
+  document.getElementById('handoff-after').innerHTML = CONFIG.handoff.after;
+}
+
+function renderPyramid() {
+  if (GLIMPSE) return;
+  document.getElementById('pyramid-prose').innerHTML =
+    CONFIG.pyramid.lead.map(function (p) { return '<p>' + p + '</p>'; }).join('');
+  document.getElementById('pyramid-layers').innerHTML = CONFIG.pyramid.layers.map(function (l) {
+    return '<div class="layer ' + l.cls + '">' +
+             '<div class="layer-head"><span class="layer-name">' + l.name + '</span>' +
+             '<span class="layer-who">' + l.who + '</span></div>' +
+             l.body.map(function (p) { return '<p>' + p + '</p>'; }).join('') +
+             '<div class="layer-ceiling">' + l.ceiling + '</div></div>';
+  }).join('');
+  document.getElementById('pyramid-close').innerHTML =
+    CONFIG.pyramid.close.map(function (p) { return '<p>' + p + '</p>'; }).join('');
+  document.getElementById('ask-title').textContent = CONFIG.ask.title;
+  document.getElementById('ask-body').textContent = CONFIG.ask.body;
+}
+
+function renderFindings() {
+  if (GLIMPSE) return;
+  document.getElementById('findings').innerHTML = CONFIG.findings.map(function (f) {
+    return '<div class="finding"><h3>' + f.title + '</h3>' +
+           f.body.map(function (p) { return '<p>' + p + '</p>'; }).join('') + '</div>';
+  }).join('');
+}
+
+let lensChoice = '';
+
+function renderNeutral() {
+  if (GLIMPSE) return;
+  document.getElementById('neutral-prose').innerHTML =
+    CONFIG.neutral.lead.map(function (p) { return '<p>' + p + '</p>'; }).join('');
+  document.getElementById('neutral-does').innerHTML =
+    CONFIG.neutral.does.map(function (p) { return '<li>' + p + '</li>'; }).join('');
+  document.getElementById('neutral-never').innerHTML =
+    CONFIG.neutral.never.map(function (p) { return '<li>' + p + '</li>'; }).join('');
+  document.getElementById('neutral-close').innerHTML =
+    CONFIG.neutral.close.map(function (p) { return '<p>' + p + '</p>'; }).join('');
+}
+
+function pickLens(v) {
+  lensChoice = v;
+  document.getElementById('ch-yes').classList.toggle('sel', v === 'publish');
+  document.getElementById('ch-no').classList.toggle('sel', v === 'withhold');
+  const n = stepNumberOf('s-neutral');
+  if (n > 0 && canComplete(n)) setStepDone(n);
+}
+
+function renderRespond() {
+  document.getElementById('q-title').textContent = CONFIG.question.title;
+  document.getElementById('q-body').textContent = CONFIG.question.body;
+  document.getElementById('booking-title').innerHTML = CONFIG.booking.title;
+  document.getElementById('booking-body').innerHTML = CONFIG.booking.body;
+  const a = document.getElementById('booking-link');
+  a.href = CONFIG.booking.url;
+  a.innerHTML = CONFIG.booking.label;
+  document.getElementById('ip-note').innerHTML = CONFIG.ipNote;
+}
+
+/* ---- response submission ---- */
+
+function isValidEmail(v) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+}
+
+function checkReady() {
+  const nameEl = document.getElementById('f-name');
+  if (!nameEl) return;
+  const name = nameEl.value.trim();
+  const emailField = document.getElementById('f-email');
+  const email = emailField.value.trim();
+  const main = document.getElementById('f-main').value.trim();
+  const emailOk = isValidEmail(email);
+  emailField.classList.toggle('invalid', !!email && !emailOk);
+  document.getElementById('email-error').classList.toggle('show', !!email && !emailOk);
+  let allRead = true;
+  for (let n = 1; n < STEPS.length; n++) { if (!doneSteps.has(n)) allRead = false; }
+  document.getElementById('submit-btn').disabled = !(allRead && name && emailOk && main);
+}
+
+function doSubmit() {
+  if (!CONFIG.SUBMIT.url) {
+    document.getElementById('form-not-configured').classList.add('show');
+    return;
+  }
+  const val = function (id) {
+    const el = document.getElementById(id);
+    return el ? el.value.trim() : '';
+  };
+  const parts = ['Which domain BPF would most want to move:\n' + (val('f-main') || 'None given.')];
+  if (!GLIMPSE) {
+    parts.push('Ceiling on intensive support:\n' + (val('f-pyramid') || 'None given.'));
+    parts.push('Publishing the party spread:\n' + (lensChoice || 'No selection') +
+      (val('f-lens') ? '\n' + val('f-lens') : ''));
+  }
+  parts.push('Anything else:\n' + (val('f-reflection') || 'None given.'));
+
+  const payload = {
+    token: CONFIG.SUBMIT.token,
+    website: '',  /* decoy field, must stay empty or the flow rejects the submission */
+    organisation: CONFIG.org + ' (' + CONFIG.MODE + ')',
+    name: val('f-name'),
+    email: val('f-email'),
+    reflection: parts.join('\n\n')
+  };
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+  document.getElementById('submit-error').classList.remove('show');
+  /* Sent as text/plain so the browser skips the CORS preflight,
+     which Power Automate's HTTP trigger cannot answer. The flow
+     re-parses the body with json(triggerBody()). */
+  fetch(CONFIG.SUBMIT.url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'text/plain' },
+    body: JSON.stringify(payload)
+  })
+  .then(function (r) {
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    showSubmittedState();
+  })
+  .catch(function () {
+    btn.disabled = false;
+    btn.innerHTML = 'Send your response &rarr;';
+    document.getElementById('submit-error').classList.add('show');
+    checkReady();
+  });
+}
+
+function showSubmittedState() {
+  setStepDone(STEPS.length);
+  const btn = document.getElementById('submit-btn');
+  if (btn) { btn.disabled = true; btn.textContent = 'Response sent'; }
+  const panel = document.createElement('div');
+  panel.className = 'submitted-overlay';
+  panel.innerHTML =
+    '<div class="submitted-card">' +
+      '<div class="submitted-tick">&#10003;</div>' +
+      '<h2>Thank you, ' + CONFIG.recipient + '</h2>' +
+      '<p>That has come straight through to us and we will pick it up before we meet.</p>' +
+      '<p class="submitted-sub">You can close this page now. If you want to add anything, please reopen the link.</p>' +
+    '</div>';
+  document.body.appendChild(panel);
+  document.body.style.overflow = 'hidden';
+}
+
+/* ---- init ---- */
+function renderPage() {
+  buildFrame();
+  renderHero();
+  renderWhere();
+  renderCohort();
+  renderMethod();
+  renderMatrix();
+  renderPreview();
+  renderPyramid();
+  renderFindings();
+  renderNeutral();
+  renderRespond();
+  checkScrollProgress();
+}
+
+/* ---- password gate ----
+   Front-end only. This is obscurity, not real security, the
+   underlying content still sits in this file's source. It is
+   meant to stop a casual, unintended viewer, not a determined one. */
+const PW_KEY = 'pw-unlocked-' + CONFIG.org.replace(/\s+/g, '-').toLowerCase() + '-' + CONFIG.MODE;
+
+function unlockPage() {
+  document.getElementById('pw-gate').style.display = 'none';
+  document.body.style.overflow = '';
+  renderPage();
+}
+
+function checkPassword() {
+  const input = document.getElementById('pw-input');
+  const val = input.value.trim().toLowerCase();
+  if (val === CONFIG.password.toLowerCase()) {
+    sessionStorage.setItem(PW_KEY, '1');
+    unlockPage();
+  } else {
+    input.classList.add('invalid');
+    document.getElementById('pw-error').classList.add('show');
+  }
+}
+
+document.getElementById('pw-input').addEventListener('keydown', function (e) {
+  if (e.key === 'Enter') checkPassword();
+});
+
+document.body.style.overflow = 'hidden';
+if (sessionStorage.getItem(PW_KEY) === '1') {
+  unlockPage();
+}
+</script>
+
+</body>
+</html>

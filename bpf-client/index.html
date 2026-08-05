@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Pathway Programme | British Pakistan Foundation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================
+   BPF PATHWAY PROGRAMME — CLIENT VIEW
+   hub.solico.org.uk/bpf-client
+
+   Branded to the British Pakistan Foundation. Palette, type
+   and marks taken from britishpakistanfoundation.com.
+     navy   #032240   primary text and dark surfaces
+     teal   #01796B   accent
+     blue   #3333CC   secondary accent, from the B mark
+     red    #E01028   alert, from the F mark
+     lime   #C5E74B   emphasis
+     pale   #EAF4F9   panels
+   Type is Poppins throughout, as on their own site.
+
+   Solico appears twice and quietly. A lockup in the header
+   and an intellectual property line in the footer. The system
+   should read as the Foundation's, delivered by Solico.
+   ========================================================== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#032240; --teal:#01796B; --blue:#3333CC; --red:#E01028;
+  --lime:#C5E74B; --pale:#EAF4F9; --border:#E0E5EB; --muted:#507495;
+  --deep-teal:#023B36; --wash:#F3F5F7;
+  --r-sm:6px; --r-md:12px; --r-lg:18px; --r-pill:99px;
+}
+body{font-family:'Poppins',system-ui,sans-serif;font-size:14px;line-height:1.65;color:var(--navy);background:var(--wash);-webkit-font-smoothing:antialiased}
+sup{font-size:62%;line-height:0}
+button{font-family:inherit}
+
+/* ---- top rule, three segments as on their site ---- */
+.rule{display:flex;height:5px}
+.rule i{flex:1}
+.rule i:nth-child(1){background:var(--teal)}
+.rule i:nth-child(2){background:var(--blue)}
+.rule i:nth-child(3){background:var(--red)}
+
+/* ---- header ---- */
+header{background:#fff;border-bottom:1px solid var(--border)}
+.hdr{max-width:1180px;margin:0 auto;padding:16px 28px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:13px;flex:1;min-width:0}
+.brand .mark{height:46px;width:auto;display:block;flex-shrink:0}
+.brand .div{width:1px;height:34px;background:var(--border);flex-shrink:0}
+.brand .txt .t{font-size:15px;font-weight:700;letter-spacing:-.2px;line-height:1.25}
+.brand .txt .s{font-size:10.5px;font-weight:500;text-transform:uppercase;letter-spacing:.13em;color:var(--muted);margin-top:2px}
+
+.by{display:flex;align-items:center;gap:11px;background:var(--navy);border-radius:var(--r-pill);padding:8px 17px 8px 15px;flex-shrink:0}
+.by .lbl{font-size:8.5px;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.5);line-height:1.35}
+.by img{height:22px;width:auto;display:block}
+
+/* ---- tabs ---- */
+.tabs{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:40}
+.tabs-in{max-width:1180px;margin:0 auto;padding:0 28px;display:flex;gap:4px;overflow-x:auto}
+.tab{padding:14px 18px;font-size:13.5px;font-weight:600;color:var(--muted);cursor:pointer;white-space:nowrap;border-bottom:3px solid transparent;background:none;border-top:none;border-left:none;border-right:none}
+.tab:hover{color:var(--navy)}
+.tab.on{color:var(--navy);border-bottom-color:var(--teal)}
+
+/* ---- hero ---- */
+.hero{background:var(--navy);color:#fff;padding:38px 0 42px}
+.hero-in{max-width:1180px;margin:0 auto;padding:0 28px}
+.hero .eyebrow{font-size:10.5px;font-weight:600;text-transform:uppercase;letter-spacing:.16em;color:var(--lime);margin-bottom:12px}
+.hero h1{font-size:31px;font-weight:800;text-transform:uppercase;letter-spacing:-.6px;line-height:1.12;margin-bottom:12px}
+.hero h1 em{font-style:normal;color:var(--lime)}
+.hero p{font-size:14.5px;color:rgba(255,255,255,.74);max-width:640px;line-height:1.7}
+.hero .meta{margin-top:20px;display:flex;gap:8px;flex-wrap:wrap}
+.hero .meta span{font-size:11px;font-weight:500;padding:6px 14px;border-radius:var(--r-pill);background:rgba(255,255,255,.11);color:rgba(255,255,255,.8)}
+
+/* ---- layout ---- */
+.wrap{max-width:1180px;margin:0 auto;padding:26px 28px 70px}
+.card{background:#fff;border:1px solid var(--border);border-radius:var(--r-lg);padding:24px 26px;margin-bottom:18px}
+.card h2{font-size:16px;font-weight:700;letter-spacing:-.2px;margin-bottom:3px}
+.card .sub{font-size:12.5px;color:var(--muted);margin-bottom:18px}
+.grid{display:grid;gap:14px}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:1000px){.g3,.g4{grid-template-columns:1fr 1fr}}
+@media(max-width:680px){.g3,.g4{grid-template-columns:1fr}.hero h1{font-size:24px}.wrap,.hdr,.tabs-in,.hero-in{padding-left:16px;padding-right:16px}}
+
+.stat{background:#fff;border:1px solid var(--border);border-radius:var(--r-md);padding:17px 18px}
+.stat .n{font-size:29px;font-weight:800;color:var(--teal);line-height:1;letter-spacing:-.5px}
+.stat .l{font-size:11.5px;color:var(--navy);margin-top:6px;line-height:1.45;font-weight:500}
+.stat .src{font-size:9.5px;color:var(--muted);margin-top:9px;padding-top:7px;border-top:1px solid var(--border);line-height:1.45}
+.bar{height:6px;background:var(--pale);border-radius:var(--r-pill);overflow:hidden;margin-top:9px}
+.bar i{display:block;height:100%;background:var(--teal);border-radius:var(--r-pill)}
+.bar i.over{background:var(--lime)}
+
+/* ---- tables ---- */
+.tw{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:13px;background:#fff}
+th,td{padding:11px 13px;text-align:left;border:1px solid var(--border);vertical-align:top}
+thead th{background:var(--navy);color:#fff;font-weight:600;font-size:10.5px;text-transform:uppercase;letter-spacing:.08em}
+tbody tr:nth-child(even) td{background:var(--wash)}
+
+/* ---- notes ---- */
+.note{background:var(--pale);border-left:4px solid var(--teal);border-radius:0 var(--r-sm) var(--r-sm) 0;padding:15px 17px;font-size:12.8px;color:var(--navy);line-height:1.7;margin-top:16px}
+.note strong{font-weight:700}
+.note.lime{background:#FAFCEB;border-left-color:var(--lime)}
+.note.red{background:#FDF0F2;border-left-color:var(--red)}
+.demo{background:#FAFCEB;border:1px solid var(--lime);border-radius:var(--r-md);padding:13px 17px;font-size:12.3px;line-height:1.65;margin-bottom:20px;color:var(--navy)}
+
+/* ---- footer ---- */
+footer{background:var(--navy);color:rgba(255,255,255,.55);padding:26px 0}
+.ft{max-width:1180px;margin:0 auto;padding:0 28px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:11.5px;line-height:1.7}
+footer a{color:rgba(255,255,255,.8);text-decoration:none}
+footer a:hover{color:#fff}
+.ft .ip{max-width:560px}
+
+/* ---- gate ---- */
+.gate{position:fixed;inset:0;z-index:999;background:var(--navy);display:flex;align-items:center;justify-content:center;padding:22px}
+.gate-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:var(--r-lg);max-width:390px;width:100%;padding:34px 30px;text-align:center}
+.gate-card .glogo{margin-bottom:20px}
+.gate-card h2{font-size:19px;font-weight:700;color:#fff;margin-bottom:8px}
+.gate-card p{font-size:13px;color:rgba(255,255,255,.6);margin-bottom:20px;line-height:1.6}
+.gate-card input{width:100%;padding:12px 14px;border-radius:var(--r-md);border:1.5px solid rgba(255,255,255,.2);background:rgba(255,255,255,.95);font-size:15px;font-family:inherit;text-align:center;margin-bottom:12px;outline:none}
+.gate-card input:focus{border-color:var(--lime)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:12px;border:none;border-radius:var(--r-pill);background:var(--teal);color:#fff;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit}
+.btn:hover{background:var(--deep-teal)}
+.gerr{color:#FF8FA0;font-size:12px;margin-top:10px;display:none}
+.gerr.on{display:block}
+
+/* ---- commentary toggle ---- */
+.cm-toggle{display:flex;align-items:center;gap:9px;font-size:11px;color:var(--muted);cursor:pointer;user-select:none}
+.cm-toggle .sw{width:32px;height:18px;border-radius:var(--r-pill);background:var(--border);position:relative;transition:background .15s;flex-shrink:0}
+.cm-toggle .sw i{position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;background:#fff;transition:left .15s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.cm-toggle.on .sw{background:var(--teal)}
+.cm-toggle.on .sw i{left:16px}
+.cm{background:#fff;border:1px solid var(--border);border-top:3px solid var(--blue);border-radius:var(--r-sm);padding:13px 15px;font-size:12.3px;line-height:1.65;margin-top:14px;color:var(--navy)}
+.cm .k{font-size:8.5px;font-weight:700;text-transform:uppercase;letter-spacing:.11em;color:var(--blue);margin-bottom:5px}
+</style>
+</head>
+<body>
+
+<div class="gate" id="gate">
+  <div class="gate-card">
+    <div class="glogo" id="glogo"></div>
+    <h2>Pathway Programme</h2>
+    <p>A preview prepared for the Foundation. The password was shared with you separately.</p>
+    <input type="password" id="pw" placeholder="Password" autocomplete="off">
+    <button class="btn" onclick="checkPw()">Continue &rarr;</button>
+    <p class="gerr" id="gerr">That doesn&rsquo;t look right, please try again.</p>
+  </div>
+</div>
+
+<div id="app" style="display:none">
+
+<div class="rule"><i></i><i></i><i></i></div>
+
+<header>
+  <div class="hdr">
+    <div class="brand">
+      <span id="bpf-mark"></span>
+      <span class="div"></span>
+      <div class="txt">
+        <div class="t">Pathway Programme</div>
+        <div class="s">Foundation view</div>
+      </div>
+    </div>
+    <div class="by">
+      <div class="lbl">Designed and<br>delivered by</div>
+      <img alt="Solico" src="https://hub.solico.org.uk/assets/logo-on-dark.png">
+    </div>
+  </div>
+</header>
+
+<div class="tabs"><div class="tabs-in">
+  <button class="tab on" id="t-progress" onclick="go('progress')">Progress</button>
+  <button class="tab" id="t-access" onclick="go('access')">What you cannot see</button>
+  <div style="margin-left:auto;display:flex;align-items:center;padding:0 4px">
+    <div class="cm-toggle" id="cm-toggle" onclick="toggleCm()"><span class="sw"><i></i></span><span>Solico commentary</span></div>
+  </div>
+</div></div>
+
+<section class="hero">
+  <div class="hero-in">
+    <p class="eyebrow" id="eyebrow"></p>
+    <h1 id="htitle"></h1>
+    <p id="hbody"></p>
+    <div class="meta" id="hmeta"></div>
+  </div>
+</section>
+
+<div class="wrap" id="view"></div>
+
+<footer>
+  <div class="ft">
+    <span>&copy; 2027 British Pakistan Foundation</span>
+    <span class="ip">Pathway Programme delivered by Solico London Limited. The readiness instrument, the mapping method and this reporting format remain Solico intellectual property and are licensed to the Foundation for use in this programme. <a href="https://solico.org.uk" target="_blank">solico.org.uk</a></span>
+  </div>
+</footer>
+
+</div>
+<script>
+/* ==========================================================
+   All content lives in CONFIG. Illustrative throughout.
+   ========================================================== */
+
+const PW = 'pathway2027';
+
+/* ----------------------------------------------------------
+   The Foundation's own mark, embedded.
+
+   Their published file is a flattened PNG on a black
+   background. It has been keyed to transparency, trimmed and
+   resized here, so the page carries the real mark rather than
+   an approximation and depends on no external asset at all.
+   Two treatments, as any brand guideline would provide.
+     BPF_LOGO      navy wordmark, for light backgrounds
+     BPF_LOGO_REV  white wordmark, for the navy panels
+   ---------------------------------------------------------- */
+const BPF_LOGO     = 'data:image/png;base64,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';
+const BPF_LOGO_REV = 'data:image/png;base64,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';
+
+function bpfMark(reversed, heightPx){
+  return '<img src="' + (reversed ? BPF_LOGO_REV : BPF_LOGO) + '" alt="British Pakistan Foundation" ' +
+         'style="height:' + heightPx + 'px;width:auto;display:block">';
+}
+
+const KPI = [
+  { k:'Identify 10 potential candidates', now:12, tgt:10, src:'Applications list, count progressed to the Explore stage.' },
+  { k:'Train 3 to 5 candidates per year', now:5, tgt:5, src:'Participants list, count with at least one completed programme module.' },
+  { k:'Deliver 2 leadership programmes annually', now:1, tgt:2, src:'Activity list, records of type Leadership programme.' },
+  { k:'Support 3 to 5 in campaigns or advancement', now:2, tgt:3, src:'Participants list, count with an active support package.' },
+  { k:'Identify top 1 to 2 for progression', now:2, tgt:2, src:'Participants list, filtered on Layer = Top.' },
+  { k:'Establish a mentoring network', now:5, tgt:5, src:'Contributors list, count with status Active.', unit:' contributors' }
+];
+
+const VOLUMES = [
+  { n:'4',  l:'Mentoring sessions logged', src:'Activity list, type Mentoring session.' },
+  { n:'2',  l:'Readiness conversations held', src:'Activity list, type Readiness conversation.' },
+  { n:'1',  l:'Leadership programme delivered', src:'Activity list, type Leadership programme.' },
+  { n:'6',  l:'Recorded decisions, each with reasons', src:'Decisions list, all records.' }
+];
+
+const WITHHELD = [
+  ['Individual readiness positions','Programme team, and each participant for their own',
+   'A board that can see individual positions is a board that can be lobbied about them. The pipeline stops being trusted by the people inside it within one cycle.'],
+  ['Participant party affiliation','Programme team only',
+   'A political opinion is special category data under Article 9 of the UK GDPR. It is held to manage conflicts and to evidence that support is party independent. It is never published.'],
+  ['Mentoring session content','The mentor and the participant',
+   'A mentoring relationship in which the notes travel upwards is not a mentoring relationship.'],
+  ['Participant contact details','Programme team only',
+   'Data minimisation. There is no purpose that requires trustees to hold them.'],
+  ['Which participant is which','Programme team only',
+   'Anonymisation at the point of reporting is what makes everything else on this page defensible.']
+];
+
+const CM = {
+  progress:'Every figure on this page is counted from the pipeline itself rather than reported separately, so there is no version of the numbers that can differ from the records behind them. The source of each is named under the tile. In the live build each is a view of a list in the Foundation&rsquo;s own tenancy.',
+  kpi:'These are the Foundation&rsquo;s own Workplan KPIs, unchanged. Nothing here asks the Board to adopt a target it has not already agreed. What the structure adds is the ability to count them automatically and to show movement rather than only activity.',
+  access:'Most suppliers give trustees everything and call it transparency. This page exists because the opposite is true. Setting out what is withheld, and why, is what lets a Board discharge its duties without holding information it has no lawful purpose for.',
+  volumes:'Volumes rather than content. The Board can see that four mentoring sessions happened without seeing what was said in them, which is the distinction that keeps mentoring usable.'
+};
+</script>
+<script>
+/* ==========================================================
+   APP
+   ========================================================== */
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let PAGE = 'progress', COMMENTARY = false;
+
+function checkPw(){
+  if ($('pw').value.trim().toLowerCase() === PW.toLowerCase()){
+    $('gate').style.display='none'; $('app').style.display='';
+    $('bpf-mark').innerHTML = bpfMark(false, 48);
+    go('progress');
+  } else $('gerr').classList.add('on');
+}
+$('pw').addEventListener('keydown', e => { if (e.key==='Enter') checkPw(); });
+$('glogo').innerHTML = '<div style="display:flex;justify-content:center">' + bpfMark(true, 62) + '</div>';
+
+function toggleCm(){ COMMENTARY = !COMMENTARY; $('cm-toggle').classList.toggle('on', COMMENTARY); go(PAGE); }
+function cm(key){
+  if (!COMMENTARY) return '';
+  return '<div class="cm"><div class="k">Solico commentary, not part of the live system</div>' + CM[key] + '</div>';
+}
+
+const HERO = {
+  progress:{ e:'Pathway Programme · Foundation view',
+    t:'BUILDING THE LEADERS<br>OF <em>TOMORROW</em>',
+    b:'Progress against the Workplan, counted from the programme itself. Twelve people in the first cohort, five mapped against the readiness framework, two with a live opportunity in front of them ahead of May 2027.',
+    m:['First cohort, 2026 to 2027','Prepared 14<sup>th</sup> March 2027','Delivered with Solico'] },
+  access:{ e:'Governance · Foundation view',
+    t:'WHAT THIS VIEW<br><em>DOES NOT</em> SHOW YOU',
+    b:'Trustees carry the accountability, so the instinct is to give them everything. That instinct is what breaks programmes of this kind. Every field withheld from this view is listed below, with the reason and with who does see it.',
+    m:['Written down, not left to be discovered','Reviewed annually by the Board'] }
+};
+
+function go(p){
+  PAGE = p;
+  $('t-progress').classList.toggle('on', p==='progress');
+  $('t-access').classList.toggle('on', p==='access');
+  const h = HERO[p];
+  $('eyebrow').innerHTML = h.e; $('htitle').innerHTML = h.t; $('hbody').innerHTML = h.b;
+  $('hmeta').innerHTML = h.m.map(x => '<span>' + x + '</span>').join('');
+  $('view').innerHTML = BANNER + (p==='progress' ? viewProgress() : viewAccess());
+  window.scrollTo(0,0);
+}
+
+const BANNER = '<div class="demo"><strong>Preview.</strong> Every figure, participant and decision behind this page is illustrative and describes no real person. It shows the shape of what the Foundation would receive rather than any actual result. Turn on Solico commentary above to see the reasoning behind each design choice.</div>';
+
+function viewProgress(){
+  let h = '<div class="card"><h2>Progress against the Workplan</h2>' +
+    '<div class="sub">Your own objectives and KPIs, counted from the pipeline rather than reported separately.</div>' +
+    '<div class="grid g3">' + KPI.map(k => {
+      const pct = Math.min(100, Math.round(k.now/k.tgt*100));
+      return '<div class="stat"><div class="n">' + k.now + (k.unit||'') + '</div>' +
+        '<div class="l">' + esc(k.k) + '</div>' +
+        '<div class="bar"><i class="' + (k.now>=k.tgt?'over':'') + '" style="width:' + pct + '%"></i></div>' +
+        '<div class="src">' + esc(k.src) + '</div></div>';
+    }).join('') + '</div>' + cm('kpi') +
+    '<div class="note"><strong>The measure the Workplan does not yet have.</strong> Everything above counts activity. None of it shows whether anybody became more ready. The readiness framework adds that, and it is the difference between reporting what was done and evidencing what changed. It is also the question every funder eventually asks.</div>' +
+    cm('progress') + '</div>';
+
+  h += '<div class="card"><h2>Activity this cycle</h2><div class="sub">Volumes only. The content of each sits with the programme team.</div>' +
+    '<div class="grid g4">' + VOLUMES.map(v =>
+      '<div class="stat"><div class="n">' + v.n + '</div><div class="l">' + esc(v.l) + '</div>' +
+      '<div class="src">' + esc(v.src) + '</div></div>').join('') + '</div>' + cm('volumes') + '</div>';
+
+  h += '<div class="card"><h2>Where the first cohort sits</h2><div class="sub">Twelve people in the Explore stage, five carried far enough to be mapped, two with a live opportunity ahead of May 2027.</div>' +
+    '<div class="tw"><table><thead><tr><th>Layer</th><th>Who is in it</th><th style="width:110px">This cohort</th><th>Your Workplan target</th></tr></thead><tbody>' +
+    [['Base','Everyone testing the ambition or building foundations. Open entry.','12','Identify 10 potential candidates'],
+     ['Middle','Actively pursuing a next stage opportunity, with one to one mentoring.','3','Train 3 to 5 candidates per year'],
+     ['Top','Demonstrated readiness and a real, live, plausible opportunity.','2','Identify top 1 to 2 for progression']
+    ].map(r => '<tr><td><strong>' + r[0] + '</strong></td><td>' + r[1] + '</td><td><strong style="color:var(--teal);font-size:17px">' + r[2] + '</strong></td><td>' + r[3] + '</td></tr>').join('') +
+    '</tbody></table></div>' +
+    '<div class="note lime"><strong>These are the Foundation&rsquo;s own numbers.</strong> The Workplan already commits to identifying ten, training three to five, and progressing the top one to two. That is a base, a middle and a top, written down and agreed internally before anybody called it a structure. Nothing here asks the Board to adopt a new target.</div></div>';
+  return h;
+}
+
+function viewAccess(){
+  let h = '<div class="card"><h2>Withheld from this view</h2><div class="sub">Each field, who does see it, and the reason.</div>' +
+    '<div class="tw"><table><thead><tr><th style="width:24%">Not shown here</th><th style="width:24%">Who does see it</th><th>Why</th></tr></thead><tbody>' +
+    WITHHELD.map(r => '<tr><td><strong>' + r[0] + '</strong></td><td>' + r[1] + '</td><td>' + r[2] + '</td></tr>').join('') +
+    '</tbody></table></div>' + cm('access') + '</div>';
+
+  h += '<div class="card"><h2>What the Board can see, and should look at</h2><div class="sub">Everything a trustee needs in order to discharge their duties, without holding anything they have no purpose for.</div>' +
+    '<div class="tw"><table><thead><tr><th style="width:32%">Available to you</th><th>The question it answers</th></tr></thead><tbody>' +
+    [['Progress against every Workplan KPI','Is the programme delivering what the Foundation agreed it would?'],
+     ['The full decisions log, anonymised, with reasons','Is the reasoning consistent, and was more than one person involved in each decision?'],
+     ['Cohort readiness as a distribution','Is anybody actually becoming more ready, or is the programme only generating activity?'],
+     ['Progression patterns by gender, geography and age','Is the programme reaching and progressing people fairly?'],
+     ['Participant support by category and total','Is money being spent inside the categories the Board approved?'],
+     ['Safeguarding and complaints, by volume and status','Is anything going wrong that the Board needs to know about?']
+    ].map(r => '<tr><td><strong>' + r[0] + '</strong></td><td>' + r[1] + '</td></tr>').join('') +
+    '</tbody></table></div>' +
+    '<div class="note red"><strong>One category that does not exist.</strong> There is no campaign funding line anywhere in this system, and it cannot be added. Money given to a candidate to promote an election is a controlled donation under electoral law, reportable on that candidate&rsquo;s public expenses return, and charity law does not generally permit a charity to make one. The programme funds development. The absence of the category is what enforces that, rather than a policy nobody reads.</div>' +
+    '<div class="note"><strong>Reviewed, not fixed.</strong> This list is a Board decision and can be changed by the Board. What matters is that it is a decision, recorded with reasons, rather than an accident of how somebody built a spreadsheet.</div></div>';
+  return h;
+}
+</script>
+
+</body>
+</html>

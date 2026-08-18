@@ -136,6 +136,12 @@ footer a:hover{color:#fff}
 .cm-toggle.on .sw i{left:16px}
 .cm{background:#fff;border:1px solid var(--border);border-top:3px solid var(--blue);border-radius:var(--r-sm);padding:13px 15px;font-size:12.3px;line-height:1.65;margin-top:14px;color:var(--navy)}
 .cm .k{font-size:8.5px;font-weight:700;text-transform:uppercase;letter-spacing:.11em;color:var(--blue);margin-bottom:5px}
+
+/* ---- cohort table read as a pyramid, top at the top ---- */
+table.pyr tbody tr:nth-child(1) td:first-child { border-left: 4px solid var(--red) }
+table.pyr tbody tr:nth-child(2) td:first-child { border-left: 4px solid var(--blue) }
+table.pyr tbody tr:nth-child(3) td:first-child { border-left: 4px solid var(--teal) }
+table.pyr tbody td:first-child { font-weight: 600 }
 </style>
 </head>
 <body>
@@ -267,12 +273,13 @@ const CM = {
    ========================================================== */
 const $ = id => document.getElementById(id);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-let PAGE = 'progress', COMMENTARY = false;
+let PAGE = 'progress', COMMENTARY = true;
 
 function checkPw(){
   if ($('pw').value.trim().toLowerCase() === PW.toLowerCase()){
     $('gate').style.display='none'; $('app').style.display='';
     $('bpf-mark').innerHTML = bpfMark(false, 48);
+    $('cm-toggle').classList.toggle('on', COMMENTARY);
     go('progress');
   } else $('gerr').classList.add('on');
 }
@@ -327,11 +334,11 @@ function viewProgress(){
       '<div class="stat"><div class="n">' + v.n + '</div><div class="l">' + esc(v.l) + '</div>' +
       '<div class="src">' + esc(v.src) + '</div></div>').join('') + '</div>' + cm('volumes') + '</div>';
 
-  h += '<div class="card"><h2>Where the first cohort sits</h2><div class="sub">Twelve people in the Explore stage, five carried far enough to be mapped, two with a live opportunity ahead of May 2027.</div>' +
-    '<div class="tw"><table><thead><tr><th>Layer</th><th>Who is in it</th><th style="width:110px">This cohort</th><th>Your Workplan target</th></tr></thead><tbody>' +
-    [['Base','Everyone testing the ambition or building foundations. Open entry.','12','Identify 10 potential candidates'],
+  h += '<div class="card"><h2>Where the first cohort sits</h2><div class="sub">Read it as a pyramid. A broad base, an active middle and a small top. Twelve in the Explore stage, five carried far enough to be mapped, two with a live opportunity ahead of May 2027.</div>' +
+    '<div class="tw"><table class="pyr"><thead><tr><th>Layer</th><th>Who is in it</th><th style="width:110px">This cohort</th><th>Your Workplan target</th></tr></thead><tbody>' +
+    [['Top','Demonstrated readiness and a real, live, plausible opportunity in front of them.','2','Identify top 1 to 2 for progression'],
      ['Middle','Actively pursuing a next stage opportunity, with one to one mentoring.','3','Train 3 to 5 candidates per year'],
-     ['Top','Demonstrated readiness and a real, live, plausible opportunity.','2','Identify top 1 to 2 for progression']
+     ['Base','Everyone testing the ambition or building foundations. Open entry.','12','Identify 10 potential candidates']
     ].map(r => '<tr><td><strong>' + r[0] + '</strong></td><td>' + r[1] + '</td><td><strong style="color:var(--teal);font-size:17px">' + r[2] + '</strong></td><td>' + r[3] + '</td></tr>').join('') +
     '</tbody></table></div>' +
     '<div class="note lime"><strong>These are the Foundation&rsquo;s own numbers.</strong> The Workplan already commits to identifying ten, training three to five, and progressing the top one to two. That is a base, a middle and a top, written down and agreed internally before anybody called it a structure. Nothing here asks the Board to adopt a new target.</div></div>';

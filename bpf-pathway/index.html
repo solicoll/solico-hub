@@ -764,6 +764,44 @@ table.grid tbody tr.active td { background: var(--purple-faint); }
 }
 .handoff-after { margin-top: 13px; font-size: 12px; color: rgba(255,255,255,0.52); line-height: 1.6; }
 .preview-card .preview-lock { background: var(--coral); color: #fff; font-size: 10px; }
+
+/* ---- the 1 to 5 scale ---- */
+table.grid.scale tbody th { white-space: normal; width: 34%; }
+table.grid.scale td { text-align: left; }
+table.grid.scale td:first-child { text-align: center; }
+
+/* ---- worked first pass, styled as a document extract ---- */
+.fp-doc {
+  border: 1px solid var(--purple-border); border-radius: var(--radius-md);
+  overflow: hidden; margin: 4px 0 16px; background: #fff;
+}
+.fp-head { background: var(--black-purple); padding: 15px 20px; }
+.fp-head .fp-t { font-size: 14px; font-weight: 900; color: #fff; letter-spacing: -0.1px; }
+.fp-head .fp-s { font-size: 11px; font-weight: 500; color: rgba(255,255,255,0.5); margin-top: 2px; }
+.fp-body { padding: 18px 20px 20px; }
+.fp-framing {
+  font-size: 13.5px; line-height: 1.7; color: var(--text-mid); font-style: italic;
+  border-left: 3px solid var(--coral); padding-left: 14px; margin-bottom: 14px;
+}
+.fp-looked { font-size: 13px; line-height: 1.65; color: var(--text); margin-bottom: 14px; }
+.fp-next {
+  font-size: 13px; line-height: 1.65; color: var(--text-mid);
+  margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--purple-light);
+}
+table.grid.fp-grid { min-width: 560px; font-size: 12.5px; }
+table.grid.fp-grid tbody th { white-space: normal; width: 26%; vertical-align: top; }
+table.grid.fp-grid td { vertical-align: top; }
+.pos-1 { background: rgba(255,69,112,0.30); color: #8c0a2c; }
+.pos-2 { background: rgba(255,69,112,0.22); color: #a01438; }
+
+/* ---- a position that moved up ---- */
+.pos-up { position: relative; }
+.pos-up::after {
+  content: '\25B2'; font-size: 8px; color: #1a6020;
+  position: absolute; top: -2px; right: -9px;
+}
+.worked.up { border-left-color: #1a6020; }
+.worked.up .worked-tag { color: #1a6020; background: #e6f4e6; }
 </style>
 
 </head>
@@ -830,10 +868,28 @@ table.grid tbody tr.active td { background: var(--purple-faint); }
     <div class="prose" id="where-prose"></div>
   </section>
 
+  <!-- ===== 2: HOW THE MAPPING WORKS ===== -->
+  <section class="section locked" id="s-method">
+    <div class="section-head">
+      <div class="section-circle" id="c-method">2</div>
+      <div class="section-head-copy">
+        <h2>How the mapping works</h2>
+        <p>Seven domains, a position from 1 to 5 in each, and a worked example of where those positions come from.</p>
+      </div>
+    </div>
+    <div class="prose" id="scale-lead"></div>
+    <div class="tbl-scroll" id="scale-table"></div>
+    <div class="note-panel" id="scale-note"></div>
+    <h3 class="sub-head">What a first pass actually looks like</h3>
+    <div class="prose" id="fp-lead"></div>
+    <div class="fp-doc" id="fp-doc"></div>
+    <div class="prose" id="fp-after"></div>
+  </section>
+
   <!-- ===== 2: THE COHORT ===== -->
   <section class="section locked" id="s-cohort">
     <div class="section-head">
-      <div class="section-circle" id="c-cohort">2</div>
+      <div class="section-circle" id="c-cohort">3</div>
       <div class="section-head-copy">
         <h2>The five participants</h2>
         <p>Each in their own character, and what they told us mattered most.</p>
@@ -848,20 +904,6 @@ table.grid tbody tr.active td { background: var(--purple-faint); }
     <div class="note-panel" id="rank-caveat"></div>
   </section>
 
-  <!-- ===== 3: HOW WE GOT HERE ===== -->
-  <section class="section locked" id="s-method">
-    <div class="section-head">
-      <div class="section-circle" id="c-method">3</div>
-      <div class="section-head-copy">
-        <h2>How we arrived at these positions</h2>
-        <p>What the framework did, and what the conversations did to it.</p>
-      </div>
-    </div>
-    <div class="prose" id="method-prose"></div>
-    <div id="worked-examples"></div>
-    <div class="prose" id="method-close"></div>
-  </section>
-
   <!-- ===== 4: THE MAP ===== -->
   <section class="section locked" id="s-map">
     <div class="section-head">
@@ -871,6 +913,10 @@ table.grid tbody tr.active td { background: var(--purple-faint); }
         <p>Select any domain to see how it reads across the whole cohort.</p>
       </div>
     </div>
+    <div class="prose" id="method-prose"></div>
+    <div id="worked-examples"></div>
+    <div class="prose" id="method-close"></div>
+    <h3 class="sub-head">Where the five sit</h3>
     <div class="tbl-scroll" id="matrix-table"></div>
     <p class="swipe-hint">Swipe the table sideways to see every participant.</p>
     <div class="matrix-panel" id="matrix-panel">
@@ -1084,9 +1130,51 @@ const CONFIG = {
   where: [
     'This page shows what a cohort readiness review looks like in practice. The architecture is the one set out in the transferable pathway framework, a three stage Pathway, a managed Pipeline and a three layer Pyramid. The reporting format is the one Solico is currently using on a live commission for an NHS and local authority partnership in Lambeth, where seven organisations are being mapped against a seven domain readiness framework for a commissioner audience.',
     'The illustrative cohort is five participants from a hypothetical first intake. Forty expressions of interest, twelve into the Access stage, five carried far enough to be mapped. They are identified by letter and by role only.',
-    'That is not a shortcut taken for the demonstration. It is how the real thing would need to work. A pipeline that names and positions named individuals in a document that then circulates is a pipeline that will lose the trust of the people inside it, and the framework is explicit that the pipeline must never become a secret ranking list. Anonymised at the point of reporting, identifiable only to the people running the programme, is the discipline that makes the rest of this defensible.',
+    'They appear as letters here, and they would in the real thing too. The programme team knows exactly who each person is. Everybody else, including the Foundation&rsquo;s own trustees, sees a letter and a role.',
+    'That matters because of what a position is. A document that names five people and sets them against each other is a document that will eventually be forwarded, and once it has been forwarded the people in it stop telling you the truth about themselves. Anonymising at the point of reporting is what keeps the rest of it honest.',
     'So this is two things at once. It is a demonstration of a diagnostic, and it is an argument about how a diagnostic ought to behave.'
   ],
+
+  scale: {
+    lead: [
+      'Seven domains, and a position from 1 to 5 in each. The positions describe what can currently be <strong>evidenced</strong> about somebody, not what they are worth and not how much we like them.',
+      'Nobody is asked to rate themselves. We write a first pass from their application and their public record before we have spoken to them, send it to them in full, and then test it in a ninety minute conversation. Each position either survives that or it moves.'
+    ],
+    rows: [
+      ['1', 'Not yet present', 'No evidence of it, or a barrier that currently prevents it.'],
+      ['2', 'Emerging, unevidenced', 'Something is there. Nothing you could show a third party.'],
+      ['3', 'Present but partial or untested', 'Real, and it has not yet met any resistance.'],
+      ['4', 'Strong and evidenced, with a defined gap', 'Demonstrable, with one thing missing that both of us can name.'],
+      ['5', 'Sustained, evidenced and tested under pressure', 'It has survived something. Rare, and it should be.']
+    ],
+    note: '<strong>Most people sit at 3 and 4, and that is the point.</strong> A 5 requires evidence that the thing has already been tested and held, which almost nobody has in more than one or two domains. So a participant with nothing below 2 and nothing above 4, as Participant D has, is a strong participant rather than a middling one. These are not marks out of five.'
+  },
+
+  firstPass: {
+    lead: [
+      'Here is what one looks like. This is the first pass we would have written for Participant D, before meeting her, from her application and what we could find publicly.'
+    ],
+    doc: {
+      title: 'Participant D · first pass mapping',
+      sub: 'For discussion at the readiness conversation',
+      framing: 'This is a first look at where you might sit against the seven domains, put together to get the conversation going before we meet. It is based only on your application and what we could find publicly, so please read it in that spirit. It is a starting point for discussion, not a verdict, and certainly not a pass or fail. None of it is fixed, and it captures a moment rather than a settled view.',
+      looked: 'Your application, your professional profile, the published minutes of your school&rsquo;s governing body, two pieces of local coverage, and your own writing on school exclusions.',
+      rows: [
+        ['Purpose and motivation clarity', 4, 'A specific and consistent account across your application and your published writing, focused on exclusions and their effect on children in Bradford. Coherent and connected to a defined public. What we cannot see is whether it survives being pushed on, or what it would cost at home.'],
+        ['Capacity, finance and resilience', 4, 'A salaried professional role with real autonomy over your diary, and a decade of weekday evening governing body meetings attended without apparent difficulty. We are placing this at 4 on the assumption that the flexibility is genuine and that the people it affects are content with it. Both are assumptions and we would like to test them.'],
+        ['Party process literacy', 3, 'No record of standing for anything and no party office we could find. You have plainly been through a formal appointment process, since school governance is one, but it is not this process. We would expect you to know the published steps and not the preparation that actually decides it.'],
+        ['Local base and selectorate reach', 4, 'A decade on a governing body, a professional network across Bradford, two local pieces quoting you, and a named seat on a local authority panel. That is a real base with institutional as well as community reach. Whether it extends to the people who select candidates is the part we cannot see from outside, and it is the thing we get wrong most often.'],
+        ['Issue focus and delivery record', 3, 'Writing on exclusions sustained over several years, and committee work connected to it. What we could not find is anything that changed as a result. It reads as sustained interest rather than sustained delivery. It is entirely possible the delivery is there and simply not visible to us, and if so we would like to hear about it.'],
+        ['Public voice and visibility', 3, 'You write and you are quoted. We found nothing where you took a position and somebody disagreed with you in public. Well regarded and rarely contradicted is a 3, and that is not a criticism.'],
+        ['Evidence and self-documentation', 2, 'Almost nothing retrievable. The writing exists, but there is no record of the governing body work, the casework or its outcomes in any form a selection panel could weigh. This is the lowest position we have given you and the one we most expect to be told we have wrong.']
+      ],
+      next: 'We will talk all of this through together. Nothing here is set. The aim is to test it against your own experience, change it where it needs changing, and work out where the most useful conversations are.'
+    },
+    after: [
+      'That document went to her before we met, unedited, including every place where it says what we could not see.',
+      'Six of those seven positions survived the conversation. One went up, and it went up for a reason the first pass had already flagged as the thing it could not see. Section 4 has the detail.'
+    ]
+  },
 
   cohort: ['A', 'B', 'C', 'D', 'E'],
 
@@ -1111,8 +1199,8 @@ const CONFIG = {
     },
     {
       name: 'Participant D &middot; Solicitor and school governor, Bradford',
-      body: 'The most evenly balanced and, for that reason, the hardest to place. Nothing below a 2 and nothing above a 4. Not a capability gap but an absence of argument, which is why a decade of encouragement has never converted into a decision.',
-      quote: 'I keep being told I would make a strong candidate. Nobody has yet told me what for.',
+      body: 'The most evenly balanced of the five, and the one our first pass got most wrong. Nothing below a 2 and nothing above a 4, which is a strong position rather than a middling one. She has been quietly effective for a decade and has told almost nobody about it, which is why a good many people have suggested she should stand and nothing has ever come of it.',
+      quote: 'It never occurred to me to write any of it down. It was just the job.',
       who: 'Illustrative &middot; Participant D, readiness conversation'
     },
     {
@@ -1123,7 +1211,7 @@ const CONFIG = {
     }
   ],
 
-  rankLead: 'Before mapping, each participant ranked the seven domains, most important to their own progress first. Nobody saw anyone else&rsquo;s answer.',
+  rankLead: 'Before any mapping, we asked each participant to put the seven domains in order of <strong>which they thought would most determine whether they succeed</strong>. Not where they feel strongest, and not what they enjoy. What will decide it. Nobody saw anyone else&rsquo;s answer.',
 
   rankRows: [
     ['Public voice', 'Party process', 'Party process', 'Party process', 'Party process'],
@@ -1136,20 +1224,20 @@ const CONFIG = {
   ],
 
   rankFindings: [
-    '<strong>Party process literacy is top two for every participant.</strong> Unanimous. It is also the domain where the mapping finds the widest spread, from a 5 down to a 2. Universally wanted and unevenly held is precisely the shape a structured pathway exists to close, and it is the most teachable domain in the framework.',
+    '<strong>Every participant put party process literacy in their top two.</strong> Unanimous, and they are almost certainly right. It is also the domain where the mapping finds the widest spread, from a 5 down to a 2. Something everyone believes will decide their chances, held very unevenly across the cohort, is precisely the gap a structured pathway exists to close.',
     '<strong>Evidence and self-documentation is ranked last by four of the five, and sixth by the other.</strong> It is also a 2 at four of the five. Nobody wants it and almost nobody has it. Section 5 argues that this makes it the programme&rsquo;s first build rather than its last.',
     '<strong>Capacity and resilience splits the cohort, and the split is instructive.</strong> Three participants placed it in their bottom two. The two who ranked it highest are the two whose positions in it are lowest. People being squeezed by capacity name it. People who are not, discount it, and are the ones most likely to be surprised by it six weeks into a selection contest.'
   ],
 
-  rankCaveat: '<strong>How to read these.</strong> The question asked for most important first, and in conversation it became clear that participants answered it differently. Some ranked on importance, some on felt deficit, and in two cases a domain placed low was then described as the thing most likely to stop them. The rankings are directionally useful and the three patterns above hold regardless.',
+  rankCaveat: '<strong>How to read these.</strong> The top of each column is what that person thinks will decide their chances, not what they are best at. Even with the question put that way, two participants answered partly on where they felt weakest rather than on what matters most, which is a natural thing to do. The rankings are directionally useful and the three patterns above hold either way.',
 
   method: {
     lead: [
       'Before any conversation we wrote a first pass reading for each participant, drawn from their application, their public record and whatever they had already published or delivered. It set out where we thought they sat across the seven domains, and it said in its own opening that it was a starting point for discussion rather than a verdict, and not a pass or fail. Nobody was asked to score themselves.',
       'A structured readiness conversation then tested it. Ninety minutes, the participant&rsquo;s own account, and a position that either survived that or did not.',
-      '<strong>Thirty five positions were tested across five participants. Thirty one held. Four moved.</strong> All four moved down, and all four sat with just two participants.',
-      'That ratio is the point, and it is worth being precise about what it does and does not mean. It does not mean the conversations added little. Almost everything useful we understand about these five came out of the conversation rather than off a form. What it means is that the framework&rsquo;s thresholds are doing real work, and that a conversation which adds a great deal of understanding does not automatically move a number. A diagnostic that moved most of its positions after one conversation would not be a diagnostic. It would be an interview with a scoring sheet attached.',
-      'Two worked examples, one of each.'
+      '<strong>Thirty five positions were tested across five participants. Thirty held. Five moved.</strong> Four moved down and one moved up.',
+      'That ratio is the point, and it is worth being precise about what it does and does not mean. It does not mean the conversations added little. Almost everything useful we understand about these five came out of the conversation rather than off a form. What it means is that the thresholds are doing real work, and that a conversation which adds a great deal of understanding does not automatically move a number. A diagnostic that moved most of its positions after one conversation would not be a diagnostic. It would be an interview with a marking sheet attached.',
+      'Three worked examples. One that held, one that moved down, and one that moved up.'
     ],
     examples: [
       {
@@ -1173,6 +1261,18 @@ const CONFIG = {
           'The conversation established that this network and the party selectorate are two different populations with almost no overlap. Standing in the first does not convert into votes in the second, and the participant was considerably clearer about that than our reading had been.',
           'This is not a downgrade of the person. It is a correction of our reading, which is a distinction the format has to keep making if it is going to stay usable. A 5 in this domain requires relationships that reach the people who make the relevant decision, and on the evidence they do not yet. It is also the most fixable position in the cohort, which is why it places C in the middle layer of the pyramid rather than anywhere lower.'
         ]
+      },
+      {
+        tag: 'A position that moved up',
+        title: 'Participant D &middot; Issue focus and delivery record',
+        move: 'First pass 3, now 4',
+        held: 'up',
+        body: [
+          'The first pass found sustained writing on exclusions and committee work connected to it, and nothing that had changed as a result. We said so, and we said we might simply be unable to see it. We could not.',
+          'Over four years she had taken the school from one of the highest exclusion rates in its local authority to one of the lowest, through a reintegration policy she wrote herself and then chaired the panel for. None of it is published anywhere. The governing body minutes record the decisions and not the outcomes, and she had never written it up because, in her words, it was the job.',
+          'That is a 4 rather than a 3. A clear issue focus with an evidenced record of delivering against it for an identifiable public, sustained across more than one year. The evidence existed the entire time. It simply was not anywhere we could reach.',
+          'This is also the case that makes her position in domain seven expensive rather than merely untidy. A selection panel would have had exactly the same problem we did, and no ninety minutes in which to solve it.'
+        ]
       }
     ],
     close: [
@@ -1180,18 +1280,19 @@ const CONFIG = {
     ]
   },
 
-  /* row index : column indexes that moved down */
-  moved: { 1: [1], 2: [1, 2], 3: [2] },
+  /* row index : column indexes that moved. down, then up */
+  moved:   { 1: [1], 2: [1, 2], 3: [2] },
+  movedUp: { 4: [3] },
 
   matrix: [
     {
       domain: 'Purpose and motivation clarity',
       pos: [4, 4, 3, 4, 5],
-      read: 'The strongest domain in the cohort and the one where the framework is least useful, because everyone here has already thought hard about why they want this. The single 3 belongs to the participant who has been told most often that he would make a good candidate and least often what for. That is a different problem from lacking motivation. Being wanted by other people is not the same as having decided something, and it will not survive a hostile selection meeting.'
+      read: 'The strongest domain in the cohort and the one where the framework is least useful, because everyone here has thought hard about why they want this. The single 3 sits with the participant whose account is about wanting to represent his town rather than about anything he wants to change in it. That is not a lack of motivation. It is a decision not yet taken, and it will not survive a hostile selection meeting.'
     },
     {
       domain: 'Capacity, finance and resilience',
-      pos: [3, 2, 5, 3, 2],
+      pos: [3, 2, 5, 4, 2],
       read: 'The widest and most consequential spread in the map. One participant could self fund a contested selection tomorrow. Two could not take three weeks of leave in a May without material consequence, and one of those is on a clinical rota that makes ordinary evening party activity structurally inaccessible rather than merely inconvenient. This is the domain where a programme can act fastest, through practical access support, and the domain where doing nothing quietly selects for wealth and for jobs with flexible hours. It is also the domain most often left out of programme budgets on the grounds that it is not development.'
     },
     {
@@ -1201,13 +1302,13 @@ const CONFIG = {
     },
     {
       domain: 'Local base and relationships',
-      pos: [4, 3, 4, 3, 4],
+      pos: [4, 3, 4, 4, 4],
       read: 'Every participant has a base. Not every base reaches the people who make the decision. The three 4s are held for quite different reasons, one built inside a party over years, one built outside it over decades and only recently pointed at it, one built through delivery rather than membership. The distinction between community standing and selectorate reach is the most common misreading in this domain and it accounts for one of the four movements in the map.'
     },
     {
       domain: 'Issue focus and delivery record',
-      pos: [4, 4, 3, 3, 5],
-      read: 'Consistently solid, and the domain where the cohort would look most credible to an outside observer. The two 3s are not weak records. They are records without a through line, activity that reads as a series of good things done rather than as an argument about what ought to change. That is closer to a communications problem than a delivery one, which is why it tends to move quickly with the right support, and why it is often mistaken for a deeper deficit than it is.'
+      pos: [4, 4, 3, 4, 5],
+      read: 'The domain where the cohort would look most credible to an outside observer, and the one where our first pass was furthest out. The single 3 is not a weak record. It is a record without a through line, activity that reads as a series of good things done rather than as an argument about what ought to change. That is closer to a communications problem than a delivery one. The 4 that arrived here after the conversation is the reverse case, a substantial delivery record that simply was not written down anywhere we could find it.'
     },
     {
       domain: 'Public voice and visibility',
@@ -1222,7 +1323,7 @@ const CONFIG = {
   ],
 
   mapProse: [
-    'The four movements sit with two participants and are marked above. All four moved down. Three of them were corrections to our reading rather than judgements about the person, which is a distinction this format has to keep making explicitly if it is going to stay usable by the people it describes.',
+    'The five movements are marked above. Four went down and one went up. Three of the four downward moves were corrections to our reading rather than judgements about the person, which is a distinction this format has to keep making explicitly if it is going to stay usable by the people it describes. The upward move is the same thing in reverse. We had read an absence of published evidence as an absence of delivery.',
     'Where a domain sits at nearly the same position across the whole cohort, as evidence and self-documentation does, that is five separate readings arriving independently at the same place rather than a default being applied.'
   ],
 
@@ -1378,8 +1479,8 @@ const CONFIG = {
 
 const STEPS_GLIMPSE = [
   ['s-where',   'What this is'],
+  ['s-method',  'How it works'],
   ['s-cohort',  'The five'],
-  ['s-method',  'How we got here'],
   ['s-map',     'The map'],
   ['s-preview', 'Your view'],
   ['s-respond', 'Over to you']
@@ -1387,8 +1488,8 @@ const STEPS_GLIMPSE = [
 
 const STEPS_FULL = [
   ['s-where',   'What this is'],
+  ['s-method',  'How it works'],
   ['s-cohort',  'The five'],
-  ['s-method',  'How we got here'],
   ['s-map',     'The map'],
   ['s-pyramid', 'Where support goes'],
   ['s-holding', 'What is holding'],
@@ -1398,7 +1499,7 @@ const STEPS_FULL = [
 
 const GLIMPSE = CONFIG.MODE !== 'full';
 const STEPS = GLIMPSE ? STEPS_GLIMPSE : STEPS_FULL;
-const ALL_SECTIONS = ['s-where', 's-cohort', 's-method', 's-map', 's-preview', 's-pyramid', 's-holding', 's-neutral', 's-respond'];
+const ALL_SECTIONS = ['s-where', 's-method', 's-cohort', 's-map', 's-preview', 's-pyramid', 's-holding', 's-neutral', 's-respond'];
 
 /* how each section is completed. anything unlisted completes on scroll */
 const COMPLETE_BY = { 's-map': 'interact', 's-neutral': 'choice', 's-respond': 'submit' };
@@ -1523,10 +1624,45 @@ function renderCohort() {
 }
 
 function renderMethod() {
+  document.getElementById('scale-lead').innerHTML =
+    CONFIG.scale.lead.map(function (p) { return '<p>' + p + '</p>'; }).join('');
+  document.getElementById('scale-table').innerHTML =
+    '<table class="grid scale"><thead><tr><th style="width:60px;">Position</th><th style="width:34%;text-align:left;">What it means</th><th style="text-align:left;">In practice</th></tr></thead><tbody>' +
+    CONFIG.scale.rows.map(function (r) {
+      return '<tr><td><span class="pos pos-' + r[0] + '">' + r[0] + '</span></td>' +
+             '<th>' + r[1] + '</th><td style="text-align:left;">' + r[2] + '</td></tr>';
+    }).join('') + '</tbody></table>';
+  document.getElementById('scale-note').innerHTML = CONFIG.scale.note;
+
+  document.getElementById('fp-lead').innerHTML =
+    CONFIG.firstPass.lead.map(function (p) { return '<p>' + p + '</p>'; }).join('');
+
+  var d = CONFIG.firstPass.doc;
+  document.getElementById('fp-doc').innerHTML =
+    '<div class="fp-head"><div class="fp-t">' + d.title + '</div><div class="fp-s">' + d.sub + '</div></div>' +
+    '<div class="fp-body">' +
+      '<p class="fp-framing">' + d.framing + '</p>' +
+      '<p class="fp-looked"><strong>What we looked at.</strong> ' + d.looked + '</p>' +
+      '<div class="tbl-scroll"><table class="grid fp-grid"><thead><tr>' +
+        '<th style="text-align:left;">Domain</th><th style="width:66px;">First pass</th>' +
+        '<th style="text-align:left;">What we could see, and what we could not</th></tr></thead><tbody>' +
+        d.rows.map(function (r) {
+          return '<tr><th>' + r[0] + '</th><td><span class="pos pos-' + r[1] + '">' + r[1] + '</span></td>' +
+                 '<td style="text-align:left;">' + r[2] + '</td></tr>';
+        }).join('') +
+      '</tbody></table></div>' +
+      '<p class="fp-next"><strong>What happens next.</strong> ' + d.next + '</p>' +
+    '</div>';
+
+  document.getElementById('fp-after').innerHTML =
+    CONFIG.firstPass.after.map(function (p) { return '<p>' + p + '</p>'; }).join('');
+}
+
+function renderConversations() {
   document.getElementById('method-prose').innerHTML =
     CONFIG.method.lead.map(function (p) { return '<p>' + p + '</p>'; }).join('');
   document.getElementById('worked-examples').innerHTML = CONFIG.method.examples.map(function (e) {
-    return '<div class="worked' + (e.held ? ' held' : ' moved') + '">' +
+    return '<div class="worked ' + (e.held === true ? 'held' : e.held === 'up' ? 'up' : 'moved') + '">' +
              '<div class="worked-tag">' + e.tag + '</div>' +
              '<h3>' + e.title + '</h3>' +
              '<div class="worked-move">' + e.move + '</div>' +
@@ -1543,11 +1679,13 @@ function renderMatrix() {
     '</tr></thead><tbody>';
   CONFIG.matrix.forEach(function (d, i) {
     const movedCols = CONFIG.moved[i] || [];
+    const upCols = (CONFIG.movedUp || {})[i] || [];
     t += '<tr class="clickable" id="mrow' + i + '" onclick="showDomain(' + i + ')">' +
       '<th>' + d.domain + '</th>' +
       d.pos.map(function (p, j) {
         const m = movedCols.indexOf(j) !== -1;
-        return '<td><span class="pos pos-' + p + (m ? ' pos-moved' : '') + '">' + p + '</span></td>';
+        const u = upCols.indexOf(j) !== -1;
+        return '<td><span class="pos pos-' + p + (m ? ' pos-moved' : u ? ' pos-up' : '') + '">' + p + '</span></td>';
       }).join('') + '</tr>';
   });
   t += '</tbody></table>';
@@ -1736,6 +1874,7 @@ function renderPage() {
   renderWhere();
   renderCohort();
   renderMethod();
+  renderConversations();
   renderMatrix();
   renderPreview();
   renderPyramid();

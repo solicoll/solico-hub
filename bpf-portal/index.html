@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Pathway Portal | Solico</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --purple:#64009b; --coral:#ff4570; --black-purple:#2b0031; --white-purple:#edebf5;
+  --faint:rgba(100,0,155,0.06); --light:rgba(100,0,155,0.12); --mid:rgba(100,0,155,0.22);
+  --border:rgba(100,0,155,0.18); --strong:rgba(100,0,155,0.4);
+  --text:#2b0031; --text-mid:#6a3a78; --muted:#9a70a8;
+  --green:#1a6020; --green-bg:#e6f4e6; --amber:#8a5a00; --amber-bg:#fff4e0;
+  --r-sm:6px; --r-md:10px; --r-lg:16px;
+}
+body{font-family:'Montserrat',-apple-system,BlinkMacSystemFont,sans-serif;font-size:14px;line-height:1.6;color:var(--text);background:#f5f2f9;-webkit-font-smoothing:antialiased}
+sup{font-size:62%;line-height:0}
+button{font-family:inherit}
+
+/* ---- shell ---- */
+.shell{display:grid;grid-template-columns:236px 1fr;min-height:100vh}
+.side{background:var(--black-purple);padding:0 0 30px;position:sticky;top:0;height:100vh;overflow-y:auto}
+.side-head{padding:18px 18px 16px;border-bottom:3px solid var(--coral)}
+.side-head img{height:40px;display:block;margin-bottom:10px}
+.side-head .pname{font-size:13px;font-weight:900;color:#fff;letter-spacing:-.1px}
+.side-head .psub{font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.11em;color:rgba(255,255,255,.42);margin-top:3px}
+
+.whoami{padding:16px 18px;border-bottom:1px solid rgba(255,255,255,.1)}
+.whoami .lbl{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.11em;color:var(--coral);margin-bottom:6px}
+.whoami .nm{font-size:14px;font-weight:700;color:#fff}
+.whoami .rl{font-size:11px;color:rgba(255,255,255,.55);margin-top:2px}
+.btn-switch{margin-top:12px;width:100%;padding:8px;border:1px solid rgba(255,255,255,.22);background:transparent;color:rgba(255,255,255,.8);border-radius:var(--r-sm);font-size:11px;font-weight:600;cursor:pointer}
+.btn-switch:hover{background:rgba(255,255,255,.08);color:#fff}
+
+.nav{padding:14px 10px}
+.nav-lbl{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.11em;color:rgba(255,255,255,.32);padding:10px 8px 6px}
+.nav a{display:flex;align-items:center;gap:9px;padding:9px 10px;border-radius:var(--r-sm);color:rgba(255,255,255,.72);text-decoration:none;font-size:13px;font-weight:500;cursor:pointer;transition:background .12s}
+.nav a:hover{background:rgba(255,255,255,.07);color:#fff}
+.nav a.on{background:var(--purple);color:#fff;font-weight:600}
+.nav a .ic{width:16px;text-align:center;flex-shrink:0;opacity:.85}
+.nav a .pill{margin-left:auto;background:var(--coral);color:#fff;font-size:10px;font-weight:700;padding:1px 7px;border-radius:99px}
+
+.main{padding:0 0 60px;min-width:0}
+.topbar{background:#fff;border-bottom:1px solid var(--border);padding:16px 30px;position:sticky;top:0;z-index:40}
+.topbar h1{font-size:20px;font-weight:900;letter-spacing:-.3px}
+.topbar p{font-size:12px;color:var(--text-mid);margin-top:2px}
+.wrap{padding:22px 30px;max-width:1180px}
+
+/* ---- demo banner ---- */
+.demo{background:#fff8e1;border:1px solid #f0b800;border-radius:var(--r-md);padding:11px 15px;font-size:12px;color:#7a5000;line-height:1.55;margin-bottom:18px}
+.demo strong{color:#5c3c00}
+
+/* ---- cards ---- */
+.card{background:#fff;border:1px solid var(--border);border-radius:var(--r-lg);padding:20px 22px;margin-bottom:16px}
+.card > h2{font-size:15px;font-weight:900;color:var(--black-purple);margin-bottom:3px}
+.card > .sub{font-size:12px;color:var(--text-mid);margin-bottom:15px}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:1fr 1fr}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:1000px){.g3,.g4{grid-template-columns:1fr 1fr}}
+@media(max-width:760px){.shell{grid-template-columns:1fr}.side{position:static;height:auto}.g2,.g3,.g4{grid-template-columns:1fr}.wrap{padding:16px}}
+
+.stat{background:#fff;border:1px solid var(--border);border-radius:var(--r-md);padding:15px 16px}
+.stat .n{font-size:27px;font-weight:900;color:var(--purple);line-height:1}
+.stat .l{font-size:11px;color:var(--text-mid);margin-top:5px;line-height:1.4}
+.stat.warn .n{color:var(--coral)}
+.stat .kpi{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-top:7px;padding-top:6px;border-top:1px solid var(--light)}
+
+/* ---- badges ---- */
+.b{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;padding:3px 9px;border-radius:99px;white-space:nowrap}
+.b-purple{background:var(--light);color:var(--purple)}
+.b-coral{background:rgba(255,69,112,.15);color:#b3244a}
+.b-green{background:var(--green-bg);color:var(--green)}
+.b-amber{background:var(--amber-bg);color:var(--amber)}
+.b-grey{background:#ece7f1;color:var(--text-mid)}
+
+/* ---- tables ---- */
+.tw{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:13px;background:#fff}
+th,td{padding:9px 11px;text-align:left;border:1px solid var(--border);vertical-align:top}
+thead th{background:var(--black-purple);color:#fff;font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.05em}
+tbody tr:nth-child(even) td{background:#faf8fc}
+td.c,th.c{text-align:center}
+.pos{display:inline-block;min-width:26px;padding:3px 0;border-radius:var(--r-sm);font-weight:700;text-align:center;font-size:12px}
+.p1{background:rgba(255,69,112,.32);color:#8c0a2c}
+.p2{background:rgba(255,69,112,.2);color:#a01438}
+.p3{background:rgba(255,69,112,.11);color:#b3244a}
+.p4{background:var(--light);color:var(--purple)}
+.p5{background:var(--purple);color:#fff}
+.moved{position:relative}
+.moved::after{content:'▼';font-size:8px;color:var(--coral);position:absolute;top:-3px;right:-8px}
+tr.clk{cursor:pointer}
+tr.clk:hover td{background:var(--light)}
+tr.act td{background:var(--faint);box-shadow:inset 3px 0 0 var(--purple)}
+
+/* ---- domain rows (candidate) ---- */
+.dom{border:1px solid var(--border);border-radius:var(--r-md);margin-bottom:8px;overflow:hidden}
+.dom-h{display:flex;align-items:center;gap:12px;padding:12px 14px;cursor:pointer;background:#fff}
+.dom-h:hover{background:var(--faint)}
+.dom-n{flex:1;min-width:0}
+.dom-n .t{font-size:13px;font-weight:700}
+.dom-n .d{font-size:11px;color:var(--muted);margin-top:1px}
+.dom-b{display:none;padding:0 14px 14px;background:var(--faint);border-top:1px solid var(--border);font-size:13px;line-height:1.65}
+.dom-b.open{display:block;padding-top:12px}
+.dom-b .row{margin-bottom:9px}
+.dom-b .row:last-child{margin-bottom:0}
+.dom-b .k{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:2px}
+
+/* ---- timeline ---- */
+.tl{border-left:2px solid var(--light);margin-left:7px;padding-left:18px}
+.tl-i{position:relative;padding-bottom:16px}
+.tl-i:last-child{padding-bottom:0}
+.tl-i::before{content:'';position:absolute;left:-25px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--purple);border:2px solid #fff}
+.tl-i.new::before{background:var(--coral)}
+.tl-d{font-size:11px;color:var(--muted);font-weight:600}
+.tl-t{font-size:13px;font-weight:700;margin-top:1px}
+.tl-x{font-size:12px;color:var(--text-mid);margin-top:2px;line-height:1.55}
+
+/* ---- lists ---- */
+.item{display:flex;gap:13px;align-items:flex-start;padding:13px 15px;border:1px solid var(--border);border-radius:var(--r-md);margin-bottom:8px;background:#fff}
+.item .body{flex:1;min-width:0}
+.item .t{font-size:13px;font-weight:700}
+.item .x{font-size:12px;color:var(--text-mid);margin-top:2px;line-height:1.55}
+.item .r{flex-shrink:0;text-align:right}
+
+/* ---- forms ---- */
+label{display:block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}
+input,textarea,select{width:100%;padding:9px 12px;font-family:inherit;font-size:13px;border:1.5px solid var(--border);border-radius:var(--r-md);background:#fff;color:var(--text);outline:none}
+input:focus,textarea:focus,select:focus{border-color:var(--purple)}
+textarea{resize:vertical;min-height:74px}
+.fld{margin-bottom:13px}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:10px 20px;background:var(--coral);color:#fff;border:none;border-radius:var(--r-md);font-size:13px;font-weight:700;cursor:pointer}
+.btn:hover{background:#e0304f}
+.btn:disabled{opacity:.4;cursor:default}
+.btn.sec{background:#fff;color:var(--purple);border:1.5px solid var(--border)}
+.btn.sec:hover{background:var(--faint);border-color:var(--strong)}
+.btn.sm{padding:6px 13px;font-size:11px}
+
+/* ---- notes ---- */
+.note{background:var(--white-purple);border-left:3px solid var(--purple);border-radius:0 8px 8px 0;padding:13px 15px;font-size:12.5px;color:var(--text-mid);line-height:1.6;margin-top:14px}
+.note strong{color:var(--text)}
+.note.lock{background:#faf9fc;border-left-color:var(--muted)}
+.note.warn{background:var(--amber-bg);border-left-color:#f0b800;color:#7a5000}
+.note.warn strong{color:#5c3c00}
+
+/* ---- bars ---- */
+.bar{height:7px;background:var(--light);border-radius:99px;overflow:hidden;margin-top:7px}
+.bar i{display:block;height:100%;background:var(--purple);border-radius:99px}
+.bar i.over{background:var(--green)}
+
+/* ---- toast ---- */
+#toast{position:fixed;right:22px;bottom:22px;z-index:900;display:flex;flex-direction:column;gap:9px;max-width:330px}
+.tst{background:var(--black-purple);color:#fff;padding:13px 16px;border-radius:var(--r-md);font-size:12.5px;line-height:1.5;box-shadow:0 10px 34px rgba(43,0,49,.34);border-left:3px solid var(--coral)}
+.tst b{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--coral);margin-bottom:3px}
+
+/* ---- gate ---- */
+.gate{position:fixed;inset:0;z-index:999;background:var(--black-purple);display:flex;align-items:center;justify-content:center;padding:22px;overflow-y:auto}
+.gate-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:var(--r-lg);max-width:520px;width:100%;padding:32px 30px}
+.gate-card img{height:34px;margin-bottom:18px}
+.gate-card h2{font-size:19px;color:#fff;margin-bottom:7px}
+.gate-card p{font-size:13px;color:rgba(255,255,255,.6);margin-bottom:18px;line-height:1.55}
+.gate-card input{text-align:center;background:rgba(255,255,255,.95);border-color:rgba(255,255,255,.2);margin-bottom:11px}
+.gate-card .btn{width:100%;justify-content:center}
+.gerr{color:var(--coral);font-size:12px;margin-top:9px;display:none}
+.gerr.on{display:block}
+.roles{display:grid;gap:9px;margin-top:4px}
+.role{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.15);border-radius:var(--r-md);padding:14px 16px;text-align:left;cursor:pointer;color:#fff;transition:background .12s}
+.role:hover{background:rgba(255,255,255,.12);border-color:var(--coral)}
+.role .rt{font-size:14px;font-weight:700;margin-bottom:2px}
+.role .rx{font-size:12px;color:rgba(255,255,255,.55);line-height:1.5}
+
+/* ---- progress trackers ---- */
+.track{display:flex;gap:0;margin:4px 0 2px;border-radius:var(--r-md);overflow:hidden;border:1px solid var(--border)}
+.track .st{flex:1;padding:11px 13px;background:#fff;border-right:1px solid var(--border);position:relative}
+.track .st:last-child{border-right:none}
+.track .st.done{background:var(--white-purple)}
+.track .st.now{background:var(--purple);color:#fff}
+.track .st .sn{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.09em;opacity:.65}
+.track .st .sv{font-size:13px;font-weight:800;margin-top:2px}
+.track .st .sd{font-size:10px;margin-top:3px;opacity:.7}
+.track .st.now .sd{opacity:.85}
+.track-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin:16px 0 6px}
+
+/* ---- ladder ---- */
+.rung{border:1px solid var(--border);border-radius:var(--r-md);margin-bottom:8px;overflow:hidden;background:#fff}
+.rung.next{border-color:var(--strong);box-shadow:inset 3px 0 0 var(--coral)}
+.rung.done{opacity:.62}
+.rung-h{display:flex;align-items:center;gap:11px;padding:12px 15px}
+.rung-h .rt{flex:1;font-size:13px;font-weight:700}
+.rung-b{padding:0 15px 14px;font-size:12.5px;line-height:1.6;color:var(--text-mid)}
+.rung-b ol{margin:0 0 0 17px}
+.rung-b li{margin-bottom:7px}
+.rung-b li strong{color:var(--text)}
+
+/* ---- tooltips ---- */
+[data-tip]{position:relative;cursor:help;border-bottom:1px dotted var(--strong)}
+[data-tip]::after{
+  content:attr(data-tip);position:absolute;left:50%;bottom:calc(100% + 8px);transform:translateX(-50%);
+  background:var(--black-purple);color:#fff;font-size:11.5px;font-weight:500;line-height:1.5;
+  padding:9px 12px;border-radius:var(--r-sm);width:270px;text-align:left;
+  opacity:0;visibility:hidden;transition:opacity .13s;z-index:200;pointer-events:none;
+  box-shadow:0 8px 26px rgba(43,0,49,.32);text-transform:none;letter-spacing:0
+}
+[data-tip]:hover::after{opacity:1;visibility:visible}
+.stat [data-tip]{border-bottom:none}
+
+/* ---- source labels ---- */
+.src{font-size:9.5px;color:var(--muted);margin-top:8px;padding-top:6px;border-top:1px solid var(--light);letter-spacing:.02em}
+.stat.link{cursor:pointer;transition:border-color .13s}
+.stat.link:hover{border-color:var(--strong)}
+
+/* ---- filters ---- */
+.filters{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:14px}
+.filters select,.filters input{width:auto;min-width:150px;padding:7px 10px;font-size:12px}
+
+/* ---- action panel ---- */
+.act-panel{border-top:1px solid var(--border);margin-top:12px;padding-top:13px;display:none}
+.act-panel.open{display:block}
+.act-panel .fld{margin-bottom:10px}
+.dist{display:flex;gap:3px}
+.dist span{flex:1;text-align:center;font-size:11px;font-weight:700;padding:4px 0;border-radius:var(--r-sm);background:#f2edf6;color:var(--muted)}
+.dist span.has{background:var(--light);color:var(--purple)}
+.dist span.hot{background:var(--purple);color:#fff}
+
+/* ---- design notes: the second tooltip layer, for the preview only ---- */
+.dn{
+  display:inline-block;margin-left:5px;width:14px;height:14px;line-height:14px;
+  border-radius:50%;background:var(--coral);color:#fff;font-size:9px;font-weight:800;
+  text-align:center;cursor:help;position:relative;vertical-align:middle;flex-shrink:0
+}
+.dn::after{
+  content:attr(data-note);position:absolute;left:50%;bottom:calc(100% + 9px);transform:translateX(-50%);
+  background:#fff;color:var(--text);font-size:11.5px;font-weight:500;line-height:1.55;
+  padding:11px 13px;border-radius:var(--r-sm);width:290px;text-align:left;
+  border:1px solid var(--border);border-top:3px solid var(--coral);
+  opacity:0;visibility:hidden;transition:opacity .13s;z-index:210;pointer-events:none;
+  box-shadow:0 10px 30px rgba(43,0,49,.22);text-transform:none;letter-spacing:0
+}
+.dn::before{
+  content:'Design note, not shown to this user';position:absolute;left:50%;bottom:calc(100% + 9px);
+  transform:translateX(-50%) translateY(-100%);margin-bottom:-11px;
+  font-size:8.5px;font-weight:800;text-transform:uppercase;letter-spacing:.09em;color:var(--coral);
+  white-space:nowrap;opacity:0;visibility:hidden;transition:opacity .13s;z-index:211;pointer-events:none
+}
+.dn:hover::after,.dn:hover::before{opacity:1;visibility:visible}
+.dn-toggle{margin-top:9px;display:flex;align-items:center;gap:8px;font-size:11px;color:rgba(255,255,255,.62);cursor:pointer}
+.dn-toggle .sw{width:30px;height:17px;border-radius:99px;background:rgba(255,255,255,.16);position:relative;transition:background .15s;flex-shrink:0}
+.dn-toggle .sw i{position:absolute;top:2px;left:2px;width:13px;height:13px;border-radius:50%;background:#fff;transition:left .15s}
+.dn-toggle.on .sw{background:var(--coral)}
+.dn-toggle.on .sw i{left:15px}
+
+.movedup{position:relative}
+.movedup::after{content:'▲';font-size:8px;color:var(--green);position:absolute;top:-3px;right:-8px}
+</style>
+</head>
+<body>
+
+<div class="gate" id="gate">
+  <div class="gate-card">
+    <img alt="Solico" src="https://hub.solico.org.uk/assets/logo-on-dark.png">
+    <div id="gate-pw">
+      <h2>Pathway Portal</h2>
+      <p>A working prototype. The password was shared with you separately.</p>
+      <input type="password" id="pw" placeholder="Password" autocomplete="off">
+      <button class="btn" onclick="checkPw()">Continue &rarr;</button>
+      <p class="gerr" id="gerr">That doesn&rsquo;t look right, please try again.</p>
+    </div>
+    <div id="gate-role" style="display:none">
+      <h2>Choose a view</h2>
+      <p>The same system renders differently depending on who is looking at it. That is the point of the prototype. Switch between them at any time from the sidebar.</p>
+      <div class="roles" id="role-list"></div>
+    </div>
+  </div>
+</div>
+
+<div class="shell" id="shell" style="display:none">
+  <aside class="side">
+    <div class="side-head">
+      <img alt="Solico" src="https://hub.solico.org.uk/assets/logo-on-dark.png">
+      <div class="pname">Pathway Portal</div>
+      <div class="psub">Prototype &middot; illustrative data</div>
+    </div>
+    <div class="whoami">
+      <div class="lbl">Signed in as</div>
+      <div class="nm" id="who-name"></div>
+      <div class="rl" id="who-role"></div>
+      <button class="btn-switch" onclick="backToRoles()">Switch view</button>
+      <div class="dn-toggle on" id="dn-toggle" onclick="toggleNotes()"><span class="sw"><i></i></span><span>Design notes</span></div>
+    </div>
+    <nav class="nav" id="nav"></nav>
+  </aside>
+  <main class="main">
+    <div class="topbar"><h1 id="pg-title"></h1><p id="pg-sub"></p></div>
+    <div class="wrap" id="view"></div>
+  </main>
+</div>
+
+<div id="toast"></div>
+<script>
+/* ==========================================================
+   PATHWAY PORTAL — PROTOTYPE
+   hub.solico.org.uk/bpf-portal
+   ----------------------------------------------------------
+   Front end only. All data below is illustrative and held in
+   memory. Nothing is sent anywhere and nothing persists.
+
+   TARGET ARCHITECTURE (not built here)
+   Data          SharePoint lists in Solico's M365 tenancy
+   Identity      Entra ID, with B2B guest access for
+                 participants and mentors
+   Front end     Power Apps, one app per audience, sharing
+                 the same lists
+   Automation    Power Automate for approvals, reminders and
+                 the second reviewer step
+   Audit         Native SharePoint version history plus an
+                 explicit Decisions list
+
+   The four roles below are the access model. The split
+   between PROGRAMME (Solico) and CLIENT (BPF) is the control
+   that keeps individual readiness positions away from
+   trustees. It is not a convenience.
+   ========================================================== */
+
+const PW = 'pathway2027';
+
+const DOMAINS = [
+  { id:1, n:'Purpose and motivation clarity',   dim:'Personal leadership',
+    qYou:'Have you decided something, or are you responding to other people wanting you to?',
+    qThem:'Have they decided something, or are they responding to other people wanting them to?',
+    q:'Has this person decided something, or are they responding to other people wanting them to?',
+    m:'Whether the account of purpose is specific, connected to a defined public, and has been weighed against what it would cost at home.' },
+  { id:2, n:'Capacity, finance and resilience', dim:'Personal leadership',
+    qYou:'Can you absorb what a selection and a campaign actually cost, in time, money and stability?',
+    qThem:'Can they absorb what a selection and a campaign actually cost, in time, money and stability?',
+    q:'Can this person absorb what a selection and a campaign actually cost, in time, money and stability?',
+    m:'Time, money, caring responsibilities, job flexibility and the ability to absorb a bad six weeks.' },
+  { id:3, n:'Party process literacy',           dim:'Institutional and party connection',
+    qYou:'Do you understand how approval and selection actually work in the party you are pursuing?',
+    qThem:'Do they understand how approval and selection actually work in the party they are pursuing?',
+    q:'Do they understand how approval and selection actually work in the party they are pursuing?',
+    m:'The formal steps, the published timetable, and the informal preparation that determines most outcomes.' },
+  { id:4, n:'Local base and selectorate reach', dim:'Institutional and party connection',
+    qYou:'Do your relationships reach the people who take the decision you need?',
+    qThem:'Do their relationships reach the people who take the relevant decision?',
+    q:'Do their relationships reach the people who take the relevant decision?',
+    m:'The difference between community standing and reach into the population that actually selects.' },
+  { id:5, n:'Issue focus and delivery record',  dim:'Community and public impact',
+    qYou:'Is there a through line in what you have done, and has anything actually been delivered?',
+    qThem:'Is there a through line, and has anything actually been delivered?',
+    q:'Is there a through line, and has anything actually been delivered?',
+    m:'Whether the record is an argument about what should change, or a series of good things done.' },
+  { id:6, n:'Public voice and visibility',      dim:'Community and public impact',
+    qYou:'Have you argued publicly for something and been disagreed with in public afterwards?',
+    qThem:'Have they argued publicly for something and been disagreed with in public afterwards?',
+    q:'Have they argued publicly for something and been disagreed with in public afterwards?',
+    m:'Not reach or following. Whether the voice has been tested and held.' },
+  { id:7, n:'Evidence and self-documentation',  dim:'Cross cutting',
+    qYou:'Can any of the above be shown to somebody who was not there?',
+    qThem:'Can any of the above be shown to somebody who was not there?',
+    q:'Can any of the above be shown to a third party who was not there?',
+    m:'Whether a record exists that a selection panel, assessor or funder could actually use.' }
+];
+
+const SCALE = {
+  1:'Not yet present', 2:'Emerging, unevidenced', 3:'Present but partial or untested',
+  4:'Strong and evidenced, with a defined gap', 5:'Sustained, evidenced and tested under pressure'
+};
+
+/* participants. `party` is special category data and is only ever
+   rendered in the PROGRAMME view, for conflict management. */
+const PEOPLE = [
+  { code:'A', name:'Sana R.',  role:'Councillor, second term', place:'West Midlands',
+    stage:'Lead', layer:'Top', party:'Party 1', applied:'2026-09-14', inExplore:'2026-10-15', inPrepare:'2026-12-01', inStage:'2027-02-18', inLayer:'2027-02-18', review:'2027-04-15',
+    pos:[4,3,5,4,4,3,2], first:[4,3,5,4,4,3,2],
+    focus:[6,7], mentor:'M2',
+    goal:'Build a public argument out of eight years of ward work, and get it on the record.' },
+  { code:'B', name:'Bilal K.', role:'NHS clinical lead', place:'Greater Manchester',
+    stage:'Prepare', layer:'Middle', party:'Party 2', applied:'2026-09-21', inExplore:'2026-10-15', inPrepare:'2027-01-20', inStage:'2027-01-20', inLayer:'2027-01-20', review:'2027-04-14',
+    pos:[4,2,2,3,4,3,2], first:[4,3,3,3,4,3,2],
+    focus:[2,3], mentor:'M1',
+    goal:'Find a route into party process that does not require being free on a Tuesday evening.' },
+  { code:'C', name:'Adeel M.', role:'Family business director', place:'Luton',
+    stage:'Prepare', layer:'Middle', party:'Party 3', applied:'2026-09-08', inExplore:'2026-10-15', inPrepare:'2026-12-01', inStage:'2026-12-01', inLayer:'2026-12-01', review:'2027-04-08',
+    pos:[3,5,2,4,3,4,2], first:[3,5,3,5,3,4,2],
+    focus:[3,4], mentor:'M1',
+    goal:'Convert thirty years of standing in the town into relationships that reach the selectorate.' },
+  { code:'D', name:'Nadia H.', role:'Solicitor and school governor', place:'Bradford',
+    stage:'Prepare', layer:'Middle', party:'Undecided', applied:'2026-10-02', inExplore:'2026-10-15', inPrepare:'2027-01-31', inStage:'2027-01-31', inLayer:'2027-01-31', review:'2027-04-22',
+    pos:[4,4,3,4,4,3,2], first:[4,4,3,4,3,3,2],
+    focus:[1,5], mentor:null,
+    goal:'Learn to say out loud what I have already done, which apparently I have never once done.' },
+  { code:'E', name:'Imran S.', role:'Charity chief executive', place:'East London',
+    stage:'Lead', layer:'Top', party:'Party 1', applied:'2026-09-11', inExplore:'2026-10-15', inPrepare:'2026-12-01', inStage:'2027-02-18', inLayer:'2027-02-18', review:'2027-04-15',
+    pos:[5,2,3,4,5,4,3], first:[5,2,3,4,5,4,3],
+    focus:[2,7], mentor:'M3',
+    goal:'Put a financial floor under a contested selection so that standing is actually possible.' }
+];
+
+const MOVED   = { 'B':[2,3], 'C':[3,4] };  /* code -> domain ids that moved down */
+const MOVED_UP = { 'D':[5] };             /* and the one that moved up */
+
+const MENTORS = [
+  { id:'M1', name:'Farah D.', kind:'One to one mentor', field:'Local government and selection',
+    party:'Party 3, disclosed', capacity:'2 of 2', mentees:['B','C'] },
+  { id:'M2', name:'Tom A.',   kind:'One to one mentor', field:'Public service and policy',
+    party:'Party 1, disclosed', capacity:'1 of 2', mentees:['A'] },
+  { id:'M3', name:'Yasmin Q.',kind:'One to one mentor', field:'Campaigns and communications',
+    party:'Party 2, disclosed', capacity:'1 of 3', mentees:['E'] },
+  { id:'M4', name:'Rob N.',   kind:'Masterclass only', field:'Energy and infrastructure policy',
+    party:'None declared', capacity:'n/a', mentees:[] },
+  { id:'M5', name:'Priya V.', kind:'Fireside chat',    field:'First term in elected office',
+    party:'Party 2, disclosed', capacity:'n/a', mentees:[] }
+];
+
+/* activity is the shared spine. Everything written by any role
+   lands here and re-renders in every other role that is
+   permitted to see it. */
+let ACTIVITY = [
+  { d:'2026-09-08', who:'C', t:'Application received', x:'Submitted through the public application route.', vis:'all' },
+  { d:'2026-09-11', who:'E', t:'Application received', x:'Submitted through the public application route.', vis:'all' },
+  { d:'2026-09-14', who:'A', t:'Application received', x:'Submitted through the public application route.', vis:'all' },
+  { d:'2026-09-21', who:'B', t:'Application received', x:'Submitted through the public application route.', vis:'all' },
+  { d:'2026-10-02', who:'D', t:'Application received', x:'Submitted through the public application route.', vis:'all' },
+  { d:'2026-10-15', who:'*', t:'Explore stage opens', x:'Orientation session delivered to the full cohort of twelve.', vis:'all' },
+  { d:'2026-11-03', who:'B', t:'First pass reading issued', x:'Written from public record and application material. Sent to the participant before any conversation.', vis:'all' },
+  { d:'2026-11-19', who:'B', t:'Readiness conversation', x:'Ninety minutes. Two positions moved down, five held.', vis:'all' },
+  { d:'2026-11-19', who:'C', t:'Readiness conversation', x:'Ninety minutes. Two positions moved down, five held.', vis:'all' },
+  { d:'2027-01-12', who:'A', t:'Leadership programme, module one', x:'Purpose and public argument. Full cohort.', vis:'all' },
+  { d:'2027-01-12', who:'B', t:'Leadership programme, module one', x:'Purpose and public argument. Full cohort.', vis:'all' },
+  { d:'2027-02-04', who:'B', t:'Mentoring session', x:'Agreed to map every route into party process that does not sit on a weekday evening.', vis:'all' },
+  { d:'2027-02-18', who:'A', t:'Moved to Top layer', x:'Five part entry test met. Recommended by programme lead, approved by sponsor, two reviewers recorded.', vis:'all' },
+  { d:'2027-02-18', who:'E', t:'Moved to Top layer', x:'Five part entry test met. Recommended by programme lead, approved by sponsor, two reviewers recorded.', vis:'all' },
+  { d:'2027-03-02', who:'E', t:'Access support approved', x:'Travel and childcare to attend three preparation weekends. Development category.', vis:'all' }
+];
+
+/* development categories only. There is no campaign category,
+   and that is deliberate. See the Board note. */
+let SUPPORT = [
+  { who:'E', cat:'Travel and childcare', amt:340, st:'Approved', by:'Programme lead', d:'2027-03-02',
+    note:'Three preparation weekends.' },
+  { who:'B', cat:'Lost income', amt:480, st:'Awaiting approval', by:null, d:'2027-03-11',
+    note:'Two unpaid shifts to attend module two and a mentoring session.' },
+  { who:'C', cat:'Reasonable adjustment', amt:120, st:'Approved', by:'Programme lead', d:'2027-02-20',
+    note:'Accessible venue transfer for the January module.' }
+];
+
+let DECISIONS = [
+  { who:'A', t:'Layer movement, Middle to Top', rec:'Programme lead', app:'Sponsor', d:'2027-02-18',
+    why:'Five part entry test met in full. Live opportunity confirmed for the May cycle. Two reviewers recorded.' },
+  { who:'E', t:'Layer movement, Middle to Top', rec:'Programme lead', app:'Sponsor', d:'2027-02-18',
+    why:'Five part entry test met. Opportunity plausible and evidenced. Capacity risk noted and access support attached.' },
+  { who:'C', t:'Position movement, two domains down', rec:'Programme lead', app:'Second reviewer', d:'2026-11-19',
+    why:'First pass read community standing as selectorate reach. The conversation established these are two populations with almost no overlap. A correction to our reading rather than a judgement on the participant.' },
+  { who:'B', t:'Position movement, two domains down', rec:'Programme lead', app:'Second reviewer', d:'2026-11-19',
+    why:'First pass assumed clinical seniority implied schedule control. It does not. Rota pattern makes conventional evening party activity structurally inaccessible.' }
+];
+
+let PENDING = [
+  { id:'p1', kind:'Second reviewer needed', who:'D', t:'First pass positions ready for review',
+    x:'Seven positions drafted from public record. Needs a second reviewer before it goes to the participant.' },
+  { id:'p2', kind:'Approval needed', who:'B', t:'Access support, £480 lost income',
+    x:'Two unpaid shifts to attend module two and a mentoring session. Development category.' },
+  { id:'p3', kind:'Match needed', who:'D', t:'No mentor assigned',
+    x:'In the Prepare stage for six weeks without a match. Three mentors have capacity.' }
+];
+
+const KPI = [
+  { k:'Identify 10 potential candidates', now:12, tgt:10, unit:'', src:'identify' },
+  { k:'Train 3 to 5 candidates per year', now:5, tgt:5, unit:'', src:'train' },
+  { k:'Deliver 2 leadership programmes annually', now:1, tgt:2, unit:'', src:'prog' },
+  { k:'Support 3 to 5 in campaigns or advancement', now:2, tgt:3, unit:'', src:'support' },
+  { k:'Identify top 1 to 2 for progression', now:2, tgt:2, unit:'', src:'topk' },
+  { k:'Establish a mentoring network', now:5, tgt:5, unit:' contributors', src:'mentors' }
+];
+
+
+/* ----------------------------------------------------------
+   Service standards. In the live build these are the basis
+   for a scheduled flow that raises a flag, not a stored
+   field that somebody has to remember to update.
+   ---------------------------------------------------------- */
+const STANDARDS = {
+  match:   { days:28, what:'A mentor match is made within 28 days of entering the Prepare stage.' },
+  review:  { days:90, what:'Every participant has a stage review at least every 90 days.' },
+  second:  { days:10, what:'A second reviewer signs within 10 working days of a first pass being drafted.' },
+  support: { days:14, what:'A support request is decided within 14 days of being raised.' }
+};
+
+/* where each headline figure comes from. In the live build
+   each of these is a SharePoint list and the tile is a
+   filtered view of it. */
+const SOURCES = {
+  eoi:      'Applications list, all records with status Received or later.',
+  base:     'Participants list, filtered on Layer = Base.',
+  middle:   'Participants list, filtered on Layer = Middle.',
+  top:      'Participants list, filtered on Layer = Top.',
+  identify: 'Applications list, count of records progressed to Explore.',
+  train:    'Participants list, count with at least one completed programme module.',
+  prog:     'Activity list, count of records of type Leadership programme.',
+  support:  'Participants list, count in Middle or Top with an active support package.',
+  topk:     'Participants list, filtered on Layer = Top.',
+  mentors:  'Contributors list, count with status Active.',
+  sessions: 'Activity list, filtered on type Mentoring session.',
+  convo:    'Activity list, filtered on type Readiness conversation.',
+  decisions:'Decisions list, all records.'
+};
+
+/* standard reasons, so routine approvals are consistent and
+   only the genuinely unusual ones need writing out */
+const REASONS_BY_KIND = {
+  'Approval needed': [
+    'Removes a barrier to attending programme activity, within published criteria',
+    'Reasonable adjustment, and a legal duty rather than a discretionary award',
+    'Within the category ceiling and consistent with awards to other participants',
+    'Declined, outside the development categories',
+    'Other, set out below'
+  ],
+  'Second reviewer needed': [
+    'Positions are consistent with the descriptors and with the evidence cited',
+    'Agreed with one amendment, set out below',
+    'Returned to the first reviewer, reasons set out below',
+    'Other, set out below'
+  ],
+  'Match needed': [
+    'Matched against declared field and capacity, no conflict identified',
+    'Matched with a declared conflict and an agreed boundary, set out below',
+    'Deferred, no suitable contributor with capacity',
+    'Other, set out below'
+  ],
+  'Two reviewers needed': [
+    'Conflict recorded, match continues with a declared boundary',
+    'Conflict recorded, match ended and participant rematched',
+    'Other, set out below'
+  ],
+  'Review': [
+    'Accepted and attached to the participant record',
+    'Accepted, with a follow up requested',
+    'Other, set out below'
+  ]
+};
+
+const LADDER = [
+  { layer:'Base', t:'Base to Middle', crit:[
+    ['Completed the Explore stage','Attended orientation, completed the readiness self assessment and agreed a personal development plan.'],
+    ['A first pass and a conversation','A first pass mapping written and a readiness conversation held, so there is an independent reading to work from.'],
+    ['Commitment shown in actions','The actions agreed in the development plan have been done, rather than intended.']
+  ]},
+  { layer:'Middle', t:'Middle to Top', crit:[
+    ['Readiness','A track record, completed actions, feedback absorbed and resilience demonstrated rather than asserted.'],
+    ['Opportunity','A real contest, role or platform with a plausible route to success. Not an aspiration, and not a seat held safely by somebody else.'],
+    ['Commitment','Time, conduct, local engagement and a willingness to be held to what you agreed.'],
+    ['Fit of support','Two separate things. First, that the gap you have is one this programme can actually close, because some gaps it cannot and saying so early is better than a year spent finding out. Second, that intensive support is finite, so it goes where it changes an outcome rather than where it is merely welcome.'],
+    ['Risk and fairness','Conflicts, safeguarding, reputational exposure and equality impact considered and recorded.']
+  ]},
+  { layer:'Top', t:'At the Top layer', crit:[
+    ['Reviewed, not permanent','Entry is time limited and reviewed monthly during a live window. A layer nobody ever leaves becomes a patronage list within one cycle.'],
+    ['Two reviewers on everything','Every resource decision at this layer is recorded with reasons and signed by two people.']
+  ]}
+];
+
+const FIRSTPASS = {
+  how:[
+    'Your first pass was written without you. It is drawn from your application, your public record and anything you have already published or delivered, and nobody on the programme spoke to you while it was being written.',
+    'That is deliberate. A reading you helped produce is a reading you cannot argue with, and the whole method depends on there being something independent for the conversation to test.',
+    'It was then sent to you in full, before the conversation, including the parts where it says what it could not see. You had it in front of you when we met and you were free to take it apart.',
+    'The conversation tests each position. Most survive, which is the point. Where one moves, the reason is recorded and it is as often a correction to our reading as a judgement about you.'
+  ]
+};
+
+const ROLES = [
+  { id:'candidate', t:'Participant', x:'Bilal K., in the Prepare stage. Sees only his own record, including his positions and the reasoning behind them.' },
+  { id:'mentor',    t:'Mentor', x:'Farah D., mentoring two participants, one of whom is the participant view above. Sees her mentees only, and does not see anyone’s positions.' },
+  { id:'programme', t:'Programme team, Solico', x:'Full operational view. The cohort map, decisions awaiting a second reviewer, approvals, and the party spread.' },
+  { id:'client',    t:'Client, British Pakistan Foundation', x:'Board and staff view. Progress against the Workplan KPIs and anonymised decisions. No individual readiness positions.' }
+];
+</script>
+<script>
+/* ==========================================================
+   APP — no content below this line
+   ========================================================== */
+
+let ROLE = null, PAGE = null;
+const ME = { candidate:'B', mentor:'M1' };
+
+const $  = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const P   = c => PEOPLE.find(p => p.code === c);
+const MN  = i => MENTORS.find(m => m.id === i);
+const dom = i => DOMAINS.find(d => d.id === i);
+
+function fdate(s){
+  const [y,m,dd] = s.split('-').map(Number);
+  const mo = ['January','February','March','April','May','June','July','August','September','October','November','December'][m-1];
+  const o = dd%10===1&&dd!==11?'st':dd%10===2&&dd!==12?'nd':dd%10===3&&dd!==13?'rd':'th';
+  return dd + '<sup>' + o + '</sup> ' + mo + ' ' + y;
+}
+function today(){ return '2027-03-14'; }
+
+function toast(title, body){
+  const el = document.createElement('div');
+  el.className = 'tst';
+  el.innerHTML = '<b>' + title + '</b>' + body;
+  $('toast').appendChild(el);
+  setTimeout(() => el.remove(), 7000);
+}
+
+/* ---------- gate ---------- */
+function checkPw(){
+  const v = $('pw').value.trim().toLowerCase();
+  if (v === PW.toLowerCase()) { $('gate-pw').style.display='none'; $('gate-role').style.display=''; renderRoles(); }
+  else $('gerr').classList.add('on');
+}
+$('pw').addEventListener('keydown', e => { if (e.key === 'Enter') checkPw(); });
+
+function renderRoles(){
+  $('role-list').innerHTML = ROLES.map(r =>
+    '<button class="role" onclick="pickRole(\'' + r.id + '\')"><div class="rt">' + r.t + '</div><div class="rx">' + r.x + '</div></button>'
+  ).join('');
+}
+function backToRoles(){ $('shell').style.display='none'; $('gate').style.display='flex'; $('gate-pw').style.display='none'; $('gate-role').style.display=''; }
+
+function pickRole(id){
+  ROLE = id;
+  $('gate').style.display='none';
+  $('shell').style.display='';
+  const r = ROLES.find(x => x.id === id);
+  const who = id==='candidate' ? P(ME.candidate).name : id==='mentor' ? MN(ME.mentor).name
+            : id==='programme' ? 'Christopher French' : 'Zara Khalid';
+  $('who-name').textContent = who;
+  $('who-role').textContent = r.t;
+  buildNav();
+  go(NAV[ROLE][0][0]);
+  window.scrollTo(0,0);
+}
+
+/* ---------- nav ---------- */
+const NAV = {
+  candidate:[['home','Where you are','◎'],['timeline','Your record','▤'],['mentoring','Mentoring','◍'],['evidence','Evidence','⌸'],['support','Support','◈']],
+  mentor:[['home','My mentees','◍'],['log','Log a session','✎'],['agreement','Agreement and conflicts','§']],
+  programme:[['home','Overview','◎'],['map','Cohort map','▦'],['people','Participants','☷'],['decisions','Decisions','⚖'],['support','Approvals','◈'],['mentors','Mentors','◍']],
+  client:[['home','Progress','◎'],['movement','Readiness movement','▦'],['decisions','Decisions log','⚖'],['spend','Spend','◈'],['access','What you cannot see','⌘']]
+};
+
+function buildNav(){
+  const tg = $('dn-toggle'); if (tg) tg.classList.toggle('on', DESIGN_NOTES);
+  const pend = PENDING.length;
+  $('nav').innerHTML = '<div class="nav-lbl">' + (ROLE==='client'?'British Pakistan Foundation':ROLE==='programme'?'Solico programme team':'Pathway programme') + '</div>' +
+    NAV[ROLE].map(n => {
+      const badge = (ROLE==='programme' && n[0]==='home' && pend) ? '<span class="pill">' + pend + '</span>' : '';
+      return '<a id="nv-' + n[0] + '" onclick="go(\'' + n[0] + '\')"><span class="ic">' + n[2] + '</span>' + n[1] + badge + '</a>';
+    }).join('');
+}
+
+function go(p){
+  PAGE = p;
+  document.querySelectorAll('.nav a').forEach(a => a.classList.remove('on'));
+  const n = $('nv-' + p); if (n) n.classList.add('on');
+  const fn = VIEWS[ROLE][p];
+  const out = fn();
+  $('pg-title').textContent = out.t;
+  $('pg-sub').textContent = out.s;
+  $('view').innerHTML = banner() + out.h;
+  window.scrollTo(0,0);
+}
+
+function banner(){
+  let b = '<div class="demo"><strong>Prototype.</strong> Every participant, mentor, position and decision below is illustrative and describes no real person. Data is held in memory only, nothing is sent anywhere and nothing persists when you close the page. What is real is the access model, the data structure and the workflow.';
+  if (DESIGN_NOTES) {
+    b += '<br><br><strong>Two kinds of hover.</strong> Underlined text carries a tooltip written for whoever this persona is, and would exist in a live build. A coral <span class="dn" style="cursor:default" data-note="Like this one. Design notes explain the thinking behind a feature rather than the content on the page, and would be switched off before any participant, mentor or client saw the system.">i</span> carries a design note written for you rather than for the user. Switch them off in the sidebar to see the system exactly as this persona would.';
+  }
+  return b + '</div>';
+}
+
+/* ---------- shared components ---------- */
+function acts(code){
+  return ACTIVITY.filter(a => a.who === code || a.who === '*').slice().sort((a,b) => b.d.localeCompare(a.d));
+}
+function timeline(list){
+  /* titles may already contain entities, bodies never do */
+  return '<div class="tl">' + list.map(a =>
+    '<div class="tl-i' + (a.fresh ? ' new' : '') + '"><div class="tl-d">' + fdate(a.d) + '</div>' +
+    '<div class="tl-t">' + (a.raw ? a.t : esc(a.t)) + '</div><div class="tl-x">' + esc(a.x) + '</div></div>').join('') + '</div>';
+}
+function days(from, to){
+  const a = new Date(from), b = new Date(to || today());
+  return Math.round((b - a) / 86400000);
+}
+function tip(text, tipText){ return '<span data-tip="' + esc(tipText) + '">' + text + '</span>'; }
+
+/* ----------------------------------------------------------
+   Two tooltip layers.
+
+   tip()   speaks to whoever the persona is. A participant is
+           addressed as you, a mentor is addressed about their
+           mentee, the programme team gets the instrument's own
+           clinical wording, the Foundation gets governance
+           language. These would exist in a live build.
+
+   dnote() speaks to whoever is being shown the prototype. It
+           explains the design rather than the content, is
+           visually distinct, and would not exist in a live
+           build. DESIGN_NOTES toggles the whole layer off.
+   ---------------------------------------------------------- */
+let DESIGN_NOTES = true;
+function dnote(text){
+  if (!DESIGN_NOTES) return '';
+  return '<span class="dn" data-note="' + esc(text) + '">i</span>';
+}
+function toggleNotes(){ DESIGN_NOTES = !DESIGN_NOTES; buildNav(); go(PAGE); }
+
+/* per persona voice for the domain question */
+function domQ(d){
+  if (ROLE === 'candidate') return d.qYou;
+  if (ROLE === 'mentor')    return d.qThem;
+  return d.q;
+}
+function posCell(v, moved){
+  return '<span class="pos p' + v + (moved ? ' moved' : '') + '">' + v + '</span>';
+}
+</script>
+<script>
+/* ==========================================================
+   VIEWS
+   ========================================================== */
+
+const READS = {
+ 1:'The strongest domain in the cohort. The single 3 belongs to the participant told most often that she would make a good candidate and least often what for.',
+ 2:'The widest and most consequential spread. One participant could self fund a contested selection tomorrow. Two could not absorb an unpaid month.',
+ 3:'Widest spread of any domain and ranked in the top two by every participant. The most teachable domain in the instrument.',
+ 4:'Every participant has a base. Not every base reaches the people who take the decision. That distinction accounts for one of the four movements.',
+ 5:'The domain where the cohort looks most credible to an outside observer. The 3s are records without a through line rather than weak records.',
+ 6:'Nobody is at 5 and nobody should be at this stage. The 4s have been disagreed with in public and survived it. The 3s are well regarded and rarely tested.',
+ 7:'A 2 at four of the five, and nobody above a 3. The cause is capacity and habit in every case, never intent. One programme level build fixes it for everyone.'
+};
+
+const REASONS = {
+ 'B-2':'First pass read clinical seniority as implying schedule control. The conversation established it does not. A rotational pattern makes conventional evening party activity structurally inaccessible rather than merely inconvenient.',
+ 'B-3':'First pass credited process knowledge that turned out to be second hand and roughly a decade out of date. That is a harder starting point than knowing nothing, because it has to be unlearned first.',
+ 'B-1':'Held. A settled and specific account of purpose, connected to a defined public, which survived questioning.',
+ 'B-4':'Held. Real relationships in the local party built through one route, and community standing not yet tested at a ballot.',
+ 'B-5':'Held. An evidenced delivery record inside the health system sustained across more than one year.',
+ 'B-6':'Held. Has argued positions publicly in professional settings without yet being disagreed with in public.',
+ 'B-7':'Held. Fragments exist, held informally. Nothing that could be assembled at short notice for a selection panel.'
+};
+
+const VIEWS = { candidate:{}, mentor:{}, programme:{}, client:{} };
+
+/* ==========================================================
+   CANDIDATE
+   ========================================================== */
+VIEWS.candidate.home = function(){
+  const p = P(ME.candidate);
+  const STAGES = [['Explore','inExplore'],['Prepare','inPrepare'],['Lead',null]];
+  const LAYERS = [['Base',null],['Middle','inLayer'],['Top',null]];
+
+  function track(items, current, label, tipText){
+    const ix = items.findIndex(i => i[0] === current);
+    return '<div class="track-lbl">' + tip(label, tipText) + '</div><div class="track">' +
+      items.map((i,k) => {
+        const cls = k < ix ? 'done' : k === ix ? 'now' : '';
+        const dt = (k === ix && p[i[1]]) ? 'Since ' + fdate(p[i[1]]) : k < ix ? 'Complete' : 'Not yet';
+        return '<div class="st ' + cls + '"><div class="sn">' + (k+1) + ' of ' + items.length + '</div>' +
+               '<div class="sv">' + i[0] + '</div><div class="sd">' + dt + '</div></div>';
+      }).join('') + '</div>';
+  }
+
+  let h = '<div class="card"><h2>Where you are</h2><div class="sub">Two separate things, tracked separately. Your stage is how far along the pathway you are. Your layer is how much support you receive.</div>' +
+    track(STAGES, p.stage, 'Pathway stage',
+      'Three stages. In Explore you are testing whether you want this. In Prepare you are getting ready for a live process. In Lead you are delivering in a role, or contesting one.') +
+    dnote('Stage and layer are deliberately separate. Stage is how far along the pathway somebody is. Layer is how much support they receive. Conflating the two is what turns a development programme into a ranking.') +
+    track(LAYERS, p.layer, 'Support layer',
+      'Your layer decides how much support you receive, not how good you are. There is a broad base, an active middle, and a small top which is where you go once you have a live opportunity in front of you.') +
+    dnote('Sized to BPF\u2019s own Workplan numbers. Base is the ten identified, middle is the three to five trained, top is the one to two progressing. Nothing here asks the Foundation to adopt a target it has not already agreed.') +
+    '<div class="grid g3" style="margin-top:18px">' +
+      '<div class="stat"><div class="n" style="font-size:17px">' + fdate(p.applied) + '</div><div class="l">You applied</div></div>' +
+      '<div class="stat"><div class="n" style="font-size:17px">' + fdate(p.inStage) + '</div><div class="l">Entered the ' + p.stage + ' stage</div></div>' +
+      '<div class="stat warn"><div class="n" style="font-size:17px">' + fdate(p.review) + '</div><div class="l">Next stage review, ' + (days(today(), p.review)) + ' days away</div></div>' +
+    '</div></div>';
+
+  h += '<div class="card"><h2>Your mapping</h2><div class="sub">Seven domains. Select any one to see the reasoning and what it was read from.' +
+    dnote('A participant seeing their own positions and the reasoning behind them is a rule, not a courtesy. A position the participant has not seen should not exist, and a pipeline that ranks people privately loses their trust within one cycle.') + '</div>';
+  p.pos.forEach((v,i) => {
+    const d = DOMAINS[i];
+    const mv = (MOVED[p.code] || []).indexOf(d.id) !== -1;
+    h += '<div class="dom"><div class="dom-h" onclick="tgl(this)">' +
+      '<span data-tip="' + esc(SCALE[v]) + '">' + posCell(v, mv) + '</span>' +
+      '<div class="dom-n"><div class="t">' + d.n + '</div><div class="d">' + d.dim + ' &middot; ' + SCALE[v] + '</div></div>' +
+      (mv ? '<span class="b b-coral">Moved</span>' : '<span class="b b-grey">Held</span>') +
+      '</div><div class="dom-b">' +
+      '<div class="row"><div class="k">What this domain asks</div>' + esc(domQ(d)) + '</div>' +
+      '<div class="row"><div class="k">Why you sit here</div>' + esc(REASONS[p.code + '-' + d.id] || 'Reasoning recorded at the readiness conversation.') + '</div>' +
+      '<div class="row"><div class="k">First pass, then tested</div>Position ' + p.first[i] + ' from public record, before we met. ' +
+        (mv ? 'Moved to ' + v + ' after the conversation.' : 'Held at ' + v + ' after the conversation.') + '</div>' +
+      '</div></div>';
+  });
+  h += '<div class="note"><strong>These are yours to challenge.</strong> A position describes what can currently be evidenced, not what you are worth. If you think one is wrong, bring what you would use to argue it to your next review. Positions move in both directions and every movement is recorded with a reason.</div></div>';
+
+  /* how the first pass was written */
+  h += '<div class="card"><h2>How your first pass was written</h2><div class="sub">Worth knowing, because it explains why it is allowed to be wrong.' +
+    dnote('This is the same method Solico is running live on the Lambeth Together commission. Thirty five positions tested there, thirty one held. A high hold rate is what tells you the thresholds are doing real work rather than the conversation simply confirming an impression.') + '</div>' +
+    FIRSTPASS.how.map(t => '<div class="item"><div class="body"><div class="x">' + esc(t) + '</div></div></div>').join('') +
+    '<div class="note"><strong>You have the document.</strong> Your full first pass mapping is in your record, dated and unedited. It has not been revised to match what we later found, because a first pass that gets quietly corrected is not evidence of anything.</div></div>';
+
+  /* the ladder, next rung emphasised */
+  const li = LADDER.findIndex(l => l.layer === p.layer);
+  h += '<div class="card"><h2>What moves you</h2><div class="sub">The whole ladder, with your next move opened. Criteria are published, applied to everyone and reviewed by two people.' +
+    dnote('Only the next rung opens. Showing somebody in the base layer the criteria for the top layer is discouraging and slightly dishonest, because those criteria are not available to them yet. The destination stays visible, the demand stays proximate.') + '</div>';
+  LADDER.forEach((l,k) => {
+    const cls = k < li ? 'done' : k === li ? 'next' : '';
+    const open = k === li;
+    h += '<div class="rung ' + cls + '"><div class="rung-h">' +
+      '<span class="b ' + (k===li?'b-coral':'b-grey') + '">' + (k<li?'Passed':k===li?'Your next move':'Later') + '</span>' +
+      '<span class="rt">' + l.t + '</span></div>' +
+      (open ? '<div class="rung-b"><ol>' + l.crit.map(c => '<li><strong>' + c[0] + '.</strong> ' + esc(c[1]) + '</li>').join('') + '</ol></div>' : '') +
+      '</div>';
+  });
+  h += '<div class="note lock"><strong>Why you only see the next rung opened.</strong> Showing somebody in the Base layer the criteria for the Top layer is discouraging and slightly dishonest, because those criteria are not available to them yet. The destination stays visible. The demand stays proximate.</div></div>';
+
+  return { t:'Where you are', s:'Your stage, your layer, your mapping and the reasoning behind it.', h:h };
+};
+
+VIEWS.candidate.timeline = function(){
+  const p = P(ME.candidate);
+  return { t:'Your record', s:'Everything logged about you since your application, in one place.',
+    h:'<div class="card"><h2>From application onwards</h2><div class="sub">You see everything recorded about you. Nothing about you is held that you cannot see here.</div>' + timeline(acts(p.code)) + '</div>' };
+};
+
+VIEWS.candidate.mentoring = function(){
+  const p = P(ME.candidate), m = MN(p.mentor);
+  const logs = acts(p.code).filter(a => a.t.indexOf('Mentoring') === 0);
+  let h = '<div class="card"><h2>' + m.name + '</h2><div class="sub">' + m.field + ' &middot; political affiliation ' + m.party + '</div>' +
+    '<div class="note"><strong>Your goal, in your words.</strong> ' + esc(p.goal) + '</div>' +
+    '<div class="note lock">Your mentor sees this goal, your agreed actions and the two domains you have chosen to focus on. Your mentor does not see your positions.</div></div>';
+  h += '<div class="card"><h2>Session log</h2><div class="sub">Written by your mentor after each session and visible to you immediately.</div>' +
+    (logs.length ? timeline(logs) : '<div class="note lock">No sessions logged yet.</div>') + '</div>';
+  return { t:'Mentoring', s:'Your match, your goal and the record of every session.', h:h };
+};
+
+VIEWS.candidate.evidence = function(){
+  let h = '<div class="card"><h2>Add evidence</h2><div class="sub">This is the fix for the domain everybody sits at lowest on. Log things as they happen rather than assembling them the week before a selection panel.</div>' +
+    '<div class="fld"><label>What was it</label><input id="ev-t" placeholder="Ward surgery, published article, campaign win, media appearance..."></div>' +
+    '<div class="fld"><label>What it shows, and who could verify it</label><textarea id="ev-x" placeholder="One or two sentences. A panel will ask what changed and who else saw it."></textarea></div>' +
+    '<button class="btn" onclick="addEvidence()">Log it &rarr;</button>' +
+    '<div class="note"><strong>Why this matters more than it looks.</strong> Your record is what lets a second review measure movement rather than repeat a first impression. It is also the thing a selection panel asks for and almost nobody has.</div></div>';
+  const ev = acts(P(ME.candidate).code).filter(a => a.t.indexOf('Evidence') === 0);
+  h += '<div class="card"><h2>Logged so far</h2>' + (ev.length ? timeline(ev) : '<div class="note lock">Nothing logged yet. Try adding something above and then switch to the programme team view to see where it lands.</div>') + '</div>';
+  return { t:'Evidence', s:'Build the record as you go.', h:h };
+};
+
+VIEWS.candidate.support = function(){
+  const p = P(ME.candidate);
+  const mine = SUPPORT.filter(s => s.who === p.code);
+  let h = '<div class="card"><h2>Your requests</h2><div class="sub">Development support only. Travel, childcare, lost income and reasonable adjustment.</div>' +
+    (mine.length ? mine.map(s =>
+      '<div class="item"><div class="body"><div class="t">' + s.cat + ', &pound;' + s.amt + '</div><div class="x">' + esc(s.note) + '</div></div>' +
+      '<div class="r"><span class="b ' + (s.st==='Approved'?'b-green':'b-amber') + '">' + s.st + '</span></div></div>').join('')
+      : '<div class="note lock">No requests yet.</div>') +
+    '<div class="note warn"><strong>What this cannot cover.</strong> The programme funds your development, not a campaign. Travel to training, childcare and lost income are in scope. Literature, advertising and agent costs are not, and cannot be, because the Foundation is a charity.</div></div>';
+  return { t:'Support', s:'What you have asked for and where it has got to.', h:h };
+};
+
+/* ==========================================================
+   MENTOR
+   ========================================================== */
+VIEWS.mentor.home = function(){
+  const m = MN(ME.mentor);
+  let h = '<div class="grid g3">' +
+    '<div class="stat"><div class="n">' + m.mentees.length + '</div><div class="l">Current mentees</div></div>' +
+    '<div class="stat"><div class="n">' + m.capacity + '</div><div class="l">Capacity</div></div>' +
+    '<div class="stat"><div class="n">4</div><div class="l">Sessions logged this cycle</div></div></div>';
+  m.mentees.forEach(c => {
+    const p = P(c);
+    h += '<div class="card"><h2>' + p.name + '</h2><div class="sub">' + p.role + ', ' + p.place + ' &middot; ' + p.stage + ' stage</div>' +
+      '<div class="note"><strong>Their goal, in their words.</strong> ' + esc(p.goal) + '</div>' +
+      '<div style="margin-top:14px"><div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:7px">Agreed focus areas, and what they mean' +
+      dnote('The mentor sees the two domains their mentee chose to work on, and the question each one asks, so they have something concrete to work from. They do not see the position in either. A number in the room changes a mentoring relationship into an assessment.') + '</div>' +
+      p.focus.map(f => { const dd = dom(f); return '<div class="item"><span class="b b-purple">' + dd.dim.split(' ')[0] + '</span>' +
+        '<div class="body"><div class="t">' + dd.n + '</div>' +
+        '<div class="x"><em>' + esc(domQ(dd)) + '</em></div>' +
+        '<div class="x" style="margin-top:4px">' + esc(dd.m) + '</div></div></div>'; }).join('') + '</div>' +
+      '<div class="note lock"><strong>What you are not shown.</strong> This participant has a position in each of seven domains. You see the two they have chosen to work on with you and you do not see any of the numbers, including theirs. Numeric positions inform resource decisions, and a mentoring relationship works better without them in the room.</div></div>';
+  });
+  return { t:'My mentees', s:'Two participants, their own goals and the areas they have chosen to work on.', h:h };
+};
+
+VIEWS.mentor.log = function(){
+  const m = MN(ME.mentor);
+  let h = '<div class="card"><h2>Log a session</h2><div class="sub">Visible to the participant immediately and to the programme team as an activity record.</div>' +
+    '<div class="fld"><label>Which mentee</label><select id="ml-who">' +
+      m.mentees.map(c => '<option value="' + c + '">' + P(c).name + '</option>').join('') + '</select></div>' +
+    '<div class="fld"><label>What was agreed</label><textarea id="ml-x" placeholder="Actions, owner and by when. Keep it to what someone else could hold them to."></textarea></div>' +
+    '<button class="btn" onclick="logSession()">Save session &rarr;</button>' +
+    '<div class="note"><strong>Where this goes.</strong> The participant sees it in their own record straight away. The programme team sees an activity entry. The Foundation sees the count and not the content.</div></div>';
+  return { t:'Log a session', s:'One entry, three different levels of visibility.', h:h };
+};
+
+VIEWS.mentor.agreement = function(){
+  let h = '<div class="card"><h2>Your mentoring agreement</h2><div class="sub">Signed at match, reviewed each stage.</div>' +
+    ['The mentee leads. You support, challenge and share relevant experience.',
+     'Confidentiality and its limits, with safeguarding and escalation routes named.',
+     'No control over any formal decision, in the programme or in any party.',
+     'Conflicts of interest declared in writing, including any political affiliation.',
+     'Your affiliation is disclosed to your mentee at match, and is on your record here.'
+    ].map(t => '<div class="item"><div class="body"><div class="x">' + t + '</div></div></div>').join('') + '</div>';
+  h += '<div class="card"><h2>Declare a conflict</h2><div class="sub">Anything that could reasonably be read as a conflict, including a contest in a place you have a relationship with.</div>' +
+    '<div class="fld"><label>What the conflict is</label><textarea id="cf-x" placeholder="What it is, who it involves and what you propose to do about it."></textarea></div>' +
+    '<button class="btn sec" onclick="declareConflict()">Declare it &rarr;</button>' +
+    '<div class="note lock">Declaring a conflict does not end a match. It creates a record and a decision, taken by two people and written down.</div></div>';
+  return { t:'Agreement and conflicts', s:'Your boundaries, and the route for raising a problem.', h:h };
+};
+</script>
+<script>
+/* ==========================================================
+   PROGRAMME TEAM  (Solico)
+   ========================================================== */
+VIEWS.programme.home = function(){
+  const base = 12, mid = PEOPLE.filter(p=>p.layer==='Middle').length, top = PEOPLE.filter(p=>p.layer==='Top').length;
+
+  function tile(n,l,src,page,warn){
+    return '<div class="stat link' + (warn?' warn':'') + '" onclick="go(\'' + page + '\')">' +
+      '<div class="n">' + n + '</div><div class="l">' + l + '</div>' +
+      '<div class="src">' + esc(src) + '</div></div>';
+  }
+  let h = '<div class="grid g4">' +
+    tile(40, 'Expressions of interest', SOURCES.eoi, 'people') +
+    tile(base, 'Base layer, Explore stage', SOURCES.base, 'people') +
+    tile(mid, 'Middle layer, active progression', SOURCES.middle, 'people') +
+    tile(top, 'Top layer, live opportunity', SOURCES.top, 'people', true) + '</div>';
+  h += '<div class="note lock">' + dnote('In the live build each tile is a SharePoint list view in Solico\u2019s M365 tenancy. Because the tile is the view, the headline count and the underlying records cannot disagree, which removes the commonest cause of reporting disputes.') + '<strong>Every figure above is a filtered view of a list, not a number somebody typed.</strong> Select any tile to open the records behind it. In the live build each one is a SharePoint list view, which is why the count and the detail can never disagree.</div>';
+
+  /* derived flags, not stored fields */
+  const flags = PEOPLE.filter(p => p.stage==='Prepare' && !p.mentor).map(p =>
+    ({ p:p, d:days(p.inPrepare) }));
+  if (flags.length) {
+    h += '<div class="card"><h2>Service standards</h2><div class="sub">Derived from dates on the record. Nothing here is a field anybody has to remember to update.</div>' +
+      flags.map(f => '<div class="item"><span class="b b-coral">' + f.d + ' days</span>' +
+        '<div class="body"><div class="t">' + f.p.name + ' has no mentor match</div>' +
+        '<div class="x">Entered the Prepare stage on ' + fdate(f.p.inPrepare) + '. That is ' + f.d + ' days ago against a standard of ' + STANDARDS.match.days + '.</div></div></div>').join('') +
+      '<div class="note"><strong>How this works.</strong> The flag is calculated from the stage entry date on the participant record against the published standard, so it cannot drift out of date. In the live build a scheduled flow runs the comparison each morning and raises the item. ' + esc(STANDARDS.match.what) + '</div></div>';
+  }
+
+  h += '<div class="card"><h2>Waiting on you</h2><div class="sub">Nothing here can be cleared by one person acting alone. Every action records a reason.</div>' +
+    (PENDING.length ? PENDING.map(p => {
+      const rs = REASONS_BY_KIND[p.kind] || REASONS_BY_KIND['Review'];
+      return '<div class="item" style="display:block"><div style="display:flex;gap:13px;align-items:flex-start">' +
+        '<div class="body"><div class="t">' + esc(p.t) + ' &middot; ' + P(p.who).name + '</div><div class="x">' + esc(p.x) + '</div></div>' +
+        '<div class="r"><span class="b b-amber">' + p.kind + '</span><br>' +
+        '<button class="btn sm sec" style="margin-top:7px" onclick="openAction(\'' + p.id + '\')">Action</button></div></div>' +
+        '<div class="act-panel" id="ap-' + p.id + '">' +
+          '<div class="fld"><label>Reason</label><select id="ar-' + p.id + '" onchange="reasonChanged(\'' + p.id + '\')">' +
+            '<option value="">Choose a reason</option>' +
+            rs.map(r => '<option>' + r + '</option>').join('') + '</select></div>' +
+          '<div class="fld"><label id="al-' + p.id + '">Anything to add <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--muted)">optional</span></label>' +
+            '<textarea id="an-' + p.id + '" placeholder="Required only where the standard reasons do not describe what you decided."></textarea></div>' +
+          '<div class="fld"><label>Second reviewer</label><select id="a2-' + p.id + '">' +
+            '<option>Abhishek Mohanty, Solico</option><option>Zara Khalid, BPF</option><option>Independent challenge, unassigned</option></select></div>' +
+          '<button class="btn" onclick="commitAction(\'' + p.id + '\')">Record the decision &rarr;</button> ' +
+          '<button class="btn sec" onclick="openAction(\'' + p.id + '\')">Cancel</button>' +
+        '</div></div>';
+    }).join('') : '<div class="note lock">Nothing outstanding.</div>') + '</div>';
+
+  h += activityFeed();
+  return { t:'Overview', s:'The operational picture. Full identity, full detail.', h:h };
+};
+
+/* filtered activity feed, shared by the programme view */
+let FEED = { who:'', kind:'', since:'' };
+function activityFeed(){
+  const kinds = [...new Set(ACTIVITY.map(a => a.t.split(',')[0]))].sort();
+  let list = ACTIVITY.slice().sort((a,b)=>b.d.localeCompare(a.d));
+  if (FEED.who)   list = list.filter(a => a.who === FEED.who || a.who === '*');
+  if (FEED.kind)  list = list.filter(a => a.t.split(',')[0] === FEED.kind);
+  if (FEED.since) list = list.filter(a => a.d >= FEED.since);
+  const shown = list.slice(0, 12);
+  return '<div class="card"><h2>Activity</h2><div class="sub">Every entry written by any role, in one feed. ' + list.length + ' record' + (list.length===1?'':'s') + ' match, showing ' + shown.length + '.</div>' +
+    '<div class="filters">' +
+      '<select onchange="setFeed(\'who\',this.value)"><option value="">Everyone</option>' +
+        PEOPLE.map(p => '<option value="' + p.code + '"' + (FEED.who===p.code?' selected':'') + '>' + p.name + '</option>').join('') + '</select>' +
+      '<select onchange="setFeed(\'kind\',this.value)"><option value="">Every kind</option>' +
+        kinds.map(k => '<option' + (FEED.kind===k?' selected':'') + '>' + esc(k) + '</option>').join('') + '</select>' +
+      '<select onchange="setFeed(\'since\',this.value)"><option value="">All time</option>' +
+        '<option value="2027-02-12"' + (FEED.since==='2027-02-12'?' selected':'') + '>Last 30 days</option>' +
+        '<option value="2026-12-14"' + (FEED.since==='2026-12-14'?' selected':'') + '>Last 90 days</option>' +
+        '<option value="2027-01-01"' + (FEED.since==='2027-01-01'?' selected':'') + '>This year</option></select>' +
+      (FEED.who||FEED.kind||FEED.since ? '<button class="btn sm sec" onclick="clearFeed()">Clear filters</button>' : '') +
+    '</div>' +
+    (shown.length ? timeline(shown.map(a => ({ d:a.d, raw:true,
+      t:'<span style="color:var(--purple)">' + esc(a.who==='*'?'Whole cohort':P(a.who).name) + '</span> &middot; ' + esc(a.t),
+      x:a.x, fresh:a.fresh }))) : '<div class="note lock">Nothing matches those filters.</div>') +
+    '<div class="src" style="margin-top:14px">' + esc(SOURCES.sessions.replace('filtered on type Mentoring session','all records, filtered in the view above')) + '</div></div>';
+}
+function setFeed(k,v){ FEED[k]=v; go('home'); }
+function clearFeed(){ FEED={who:'',kind:'',since:''}; go('home'); }
+
+VIEWS.programme.map = function(){
+  let t = '<div class="tw"><table><thead><tr><th>Domain</th>' +
+    PEOPLE.map(p => '<th class="c">' + p.code + '</th>').join('') + '</tr></thead><tbody>';
+  DOMAINS.forEach((d,i) => {
+    t += '<tr class="clk" id="mr' + i + '" onclick="showRead(' + i + ')"><td><strong data-tip="' + esc(d.q) + '">' + d.n + '</strong></td>' +
+      PEOPLE.map(p => { const mv = (MOVED[p.code]||[]).indexOf(d.id)!==-1;
+        const up = (MOVED_UP[p.code]||[]).indexOf(d.id)!==-1;
+        const tipTxt = SCALE[p.pos[i]] + (mv ? '. Moved down from ' + p.first[i] + ' after the readiness conversation.'
+          : up ? '. Moved up from ' + p.first[i] + ' after the readiness conversation, once evidence appeared that no public record carried.'
+          : '. Held after the readiness conversation.');
+        return '<td class="c"><span data-tip="' + esc(tipTxt) + '">' +
+          '<span class="pos p' + p.pos[i] + (mv ? ' moved' : up ? ' movedup' : '') + '">' + p.pos[i] + '</span></span></td>'; }).join('') + '</tr>';
+  });
+  t += '</tbody></table></div>';
+  let h = '<div class="card"><h2>Cohort mapping</h2><div class="sub">Thirty five positions tested. Thirty held, five moved. Four down and one up. Select a row to read across the cohort.' +
+    dnote('This table exists in exactly one place. The Foundation sees a distribution with no names. Mentors see none of it. Participants see their own row and nobody else\u2019s. The access model is the product here, as much as the mapping is.') + '</div>' +
+    t + '<div class="note" id="read"><strong>Select a domain</strong> to read how it sits across the whole cohort.</div>' +
+    '<div class="note lock">This table exists in exactly one place and only this role sees it. The Foundation sees movement in aggregate. Mentors see none of it. Participants see their own column and nobody else&rsquo;s.</div></div>';
+  return { t:'Cohort map', s:'Seven domains, five participants, thirty five positions.', h:h };
+};
+
+VIEWS.programme.people = function(){
+  let h = '<div class="card"><h2>Participants</h2><div class="sub">Identity, stage, layer and party. This is the only view in which the party column is rendered.</div>' +
+    '<div class="tw"><table><thead><tr><th>Code</th><th>Name</th><th>Role and place</th><th>Stage</th><th>Layer</th><th>Party</th><th>Mentor</th></tr></thead><tbody>' +
+    PEOPLE.map(p => '<tr><td><strong>' + p.code + '</strong></td><td>' + p.name + '</td><td>' + p.role + ', ' + p.place + '</td>' +
+      '<td><span class="b b-purple" data-tip="Pathway stage. Explore is testing the ambition, Prepare is getting ready for a live process, Lead is delivering in or contesting a role. Entered ' + fdate(p.inStage).replace(/<[^>]+>/g,'') + '.">' + p.stage + '</span></td>' +
+      '<td><span class="b ' + (p.layer==='Top'?'b-coral':'b-grey') + '" data-tip="Support layer. How much support this participant receives, not how good they are. Entered ' + fdate(p.inLayer).replace(/<[^>]+>/g,'') + '.">' + p.layer + '</span></td>' +
+      '<td>' + p.party + '</td><td>' + (p.mentor ? MN(p.mentor).name : '<span class="b b-amber">None</span>') + '</td></tr>').join('') +
+    '</tbody></table></div>' +
+    '<div class="note warn"><strong>Special category data.</strong> Party affiliation is a political opinion and is special category data under Article 9 of the UK GDPR. It is held for conflict management and for evidencing that support is party independent. It is not visible to trustees or mentors, it is not published, and a participant may decline to state it without that affecting their access.</div></div>';
+  return { t:'Participants', s:'Five mapped, twelve in the Explore stage behind them.', h:h };
+};
+
+VIEWS.programme.decisions = function(){
+  let h = '<div class="card"><h2>Decisions</h2><div class="sub">Every decision affecting a layer or a resource, with the reasoning that produced it.</div>' +
+    DECISIONS.slice().sort((a,b)=>b.d.localeCompare(a.d)).map(x =>
+      '<div class="item"><div class="body"><div class="t">' + P(x.who).name + ' &middot; ' + esc(x.t) + '</div>' +
+      '<div class="x">' + esc(x.why) + '</div>' +
+      '<div class="x" style="margin-top:5px;color:var(--muted)">Recommended by ' + x.rec + ', approved by ' + x.app + '.</div></div>' +
+      '<div class="r"><span class="b b-grey">' + fdate(x.d).replace(/<sup>.*?<\/sup>/,'') + '</span></div></div>').join('') +
+    '<div class="note"><strong>This is the protection.</strong> Both Charity Commission cases we examined where charities were cleared survived because the trustees could produce a documented decision. A decisions log that records the reasoning, not just the outcome, is the same protection applied to individuals.</div></div>';
+  return { t:'Decisions', s:'What was decided, by whom, and why.', h:h };
+};
+
+VIEWS.programme.support = function(){
+  let h = '<div class="card"><h2>Support requests</h2><div class="sub">Development categories only. There is no campaign category and there cannot be one.</div>' +
+    SUPPORT.map((s,i) => {
+      const rs = REASONS_BY_KIND['Approval needed'];
+      const done = s.st !== 'Awaiting approval';
+      return '<div class="item" style="display:block"><div style="display:flex;gap:13px;align-items:flex-start">' +
+        '<div class="body"><div class="t">' + P(s.who).name + ' &middot; ' + s.cat + ', &pound;' + s.amt + '</div>' +
+        '<div class="x">' + esc(s.note) + '</div>' +
+        (done ? '<div class="x" style="margin-top:4px;color:var(--muted)">Decided ' + fdate(s.d) + ' by ' + s.by + '.</div>' : '') + '</div>' +
+        '<div class="r"><span class="b ' + (s.st==='Approved'?'b-green':s.st==='Declined'?'b-coral':'b-amber') + '">' + s.st + '</span>' +
+        (!done ? '<br><button class="btn sm" style="margin-top:7px" onclick="openAction(\'s' + i + '\')">Decide</button>' : '') + '</div></div>' +
+        (!done ? '<div class="act-panel" id="ap-s' + i + '">' +
+          '<div class="fld"><label>Reason</label><select id="ar-s' + i + '" onchange="reasonChanged(\'s' + i + '\')">' +
+            '<option value="">Choose a reason</option>' + rs.map(r => '<option>' + r + '</option>').join('') + '</select></div>' +
+          '<div class="fld"><label id="al-s' + i + '">Anything to add <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--muted)">optional</span></label>' +
+            '<textarea id="an-s' + i + '" placeholder="Required only where the standard reasons do not describe what you decided."></textarea></div>' +
+          '<div class="fld"><label>Second reviewer</label><select id="a2-s' + i + '">' +
+            '<option>Abhishek Mohanty, Solico</option><option>Zara Khalid, BPF</option><option>Independent challenge, unassigned</option></select></div>' +
+          '<button class="btn" onclick="commitSupport(' + i + ')">Record the decision &rarr;</button> ' +
+          '<button class="btn sec" onclick="openAction(\'s' + i + '\')">Cancel</button></div>' : '') +
+        '</div>';
+    }).join('') +
+    '<div class="note"><strong>Routine decisions get standard reasons.</strong> Most support requests are the same decision made repeatedly, so the reason list keeps them consistent and quick. Choosing the option that ends "set out below" makes the free text required, which is how the unusual ones get properly explained rather than waved through with a tick.</div>' +
+    '<div class="note warn"><strong>The line the categories enforce.</strong> Travel, childcare, lost income and reasonable adjustment remove barriers to taking part. Literature, advertising and agent costs promote an election. Money given to a candidate for the second is a controlled donation, reportable on a public return, and charity law does not generally permit a charity to make it. The category list is where that rule lives, rather than in a policy nobody reads.</div></div>';
+  return { t:'Approvals', s:'Requests waiting, and the rule the categories carry.', h:h };
+};
+
+VIEWS.programme.mentors = function(){
+  let h = '<div class="card"><h2>Contributor network</h2><div class="sub">One recruitment effort, three levels of commitment. The pyramid applied to contributors rather than participants.</div>' +
+    '<div class="tw"><table><thead><tr><th>Name</th><th>Contribution</th><th>Field</th><th>Affiliation</th><th>Capacity</th><th>Matched to</th></tr></thead><tbody>' +
+    MENTORS.map(m => '<tr><td><strong>' + m.name + '</strong></td><td>' + m.kind + '</td><td>' + m.field + '</td>' +
+      '<td>' + m.party + '</td><td>' + m.capacity + '</td><td>' + (m.mentees.length ? m.mentees.map(c=>P(c).name).join(', ') : '&mdash;') + '</td></tr>').join('') +
+    '</tbody></table></div>' +
+    '<div class="note"><strong>Two pools, one effort.</strong> The Foundation&rsquo;s expert panel under Objective 1 is British Pakistani by design, because its purpose is establishing British Pakistani voices as authoritative. This contributor network has no ethnicity condition, because the best mentor for a participant may be anyone. The public voice is British Pakistani. The developmental input is open.</div>' +
+    '<div class="note lock"><strong>Affiliation is disclosed, not filtered.</strong> A pool drawn from one party turns the programme into that party&rsquo;s recruitment vehicle whatever the paperwork says. Three parties are represented here and every affiliation is on the record.</div></div>';
+  return { t:'Mentors', s:'Contributors, their commitment level and their declared affiliations.', h:h };
+};
+
+/* ==========================================================
+   CLIENT  (British Pakistan Foundation)
+   ========================================================== */
+VIEWS.client.home = function(){
+  let h = '<div class="card"><h2>Progress against the Workplan</h2><div class="sub">Your own KPIs, counted from the pipeline rather than reported separately.</div>' +
+    '<div class="grid g3">' + KPI.map(k => {
+      const pct = Math.min(100, Math.round(k.now / k.tgt * 100));
+      return '<div class="stat"><div class="n">' + k.now + k.unit + '</div><div class="l">' + k.k + '</div>' +
+        '<div class="bar"><i class="' + (k.now>=k.tgt?'over':'') + '" style="width:' + pct + '%"></i></div>' +
+        '<div class="src">' + esc(SOURCES[k.src]) + '</div></div>';
+    }).join('') + '</div>' +
+    '<div class="note lock"><strong>Where these come from.</strong> Every figure is counted from the pipeline itself rather than reported separately, so there is no version of the numbers that differs from the records behind them. The source of each is named under the tile.</div>' +
+    '<div class="note"><strong>The measure the Workplan does not have.</strong> Everything above counts activity. None of it shows whether anybody became more ready. That is the next tab, and it is the difference between reporting what was done and evidencing what changed.</div></div>';
+  h += '<div class="card"><h2>Activity this cycle</h2><div class="sub">Volumes only. Content sits with the programme team.</div>' +
+    '<div class="grid g4">' +
+    '<div class="stat"><div class="n">' + ACTIVITY.filter(a=>a.t.indexOf('Mentoring')===0).length + '</div><div class="l">Mentoring sessions logged</div><div class="src">' + SOURCES.sessions + '</div></div>' +
+    '<div class="stat"><div class="n">' + ACTIVITY.filter(a=>a.t.indexOf('Readiness')===0).length + '</div><div class="l">Readiness conversations held</div><div class="src">' + SOURCES.convo + '</div></div>' +
+    '<div class="stat"><div class="n">1</div><div class="l">Leadership programmes delivered</div><div class="src">' + SOURCES.prog + '</div></div>' +
+    '<div class="stat"><div class="n">' + DECISIONS.length + '</div><div class="l">Recorded decisions</div><div class="src">' + SOURCES.decisions + '</div></div></div></div>';
+  return { t:'Progress', s:'Board and staff view. Aggregate throughout.', h:h };
+};
+
+VIEWS.client.movement = function(){
+  let h = '<div class="card"><h2>Mapping across the cohort</h2><div class="sub">Five participants, seven domains, shown as a distribution. No individual is identifiable here and that is by design.</div>' +
+    '<div class="tw"><table><thead><tr><th>Domain</th><th class="c">How the five sit</th><th>Spread</th><th class="c">Moved</th></tr></thead><tbody>' +
+    DOMAINS.map((d,i) => {
+      const counts = [1,2,3,4,5].map(n => PEOPLE.filter(p => p.pos[i] === n).length);
+      const most = Math.max.apply(null, counts);
+      const lo = Math.min.apply(null, PEOPLE.map(p=>p.pos[i])), hi = Math.max.apply(null, PEOPLE.map(p=>p.pos[i]));
+      const mv = PEOPLE.filter(p => (MOVED[p.code]||[]).indexOf(d.id) !== -1).length;
+      const up = PEOPLE.filter(p => (MOVED_UP[p.code]||[]).indexOf(d.id) !== -1).length;
+      return '<tr><td><strong>' + d.n + '</strong></td>' +
+        '<td><div class="dist">' + counts.map((c,k) => '<span class="' + (c===0?'':(c===most?'hot':'has')) + '" data-tip="' + c + ' of the five sit at position ' + (k+1) + '. ' + esc(SCALE[k+1]) + '">' + (k+1) + '<br>' + (c||'&mdash;') + '</span>').join('') + '</div></td>' +
+        '<td>' + (lo===hi ? 'All five at ' + lo + ' <span class="b b-grey">uniform</span>' : 'Position ' + lo + ' to ' + hi) + '</td>' +
+        '<td class="c">' + (mv ? '<span class="b b-coral">' + mv + ' down</span>' : up ? '<span class="b b-green">' + up + ' up</span>' : '<span class="b b-grey">none</span>') + '</td></tr>';
+    }).join('') + '</tbody></table></div>' +
+    '<div class="note">' + dnote('The instrument\u2019s own rule is that positions are never summed or averaged. A mean of five positions describes nobody, and it collapses a seven domain mapping into one figure per person, which is the ranking list the whole method exists to avoid.') + '<strong>Why there are no averages here.</strong> A position is a description, not a quantity, so adding positions together and dividing produces a number that describes nobody. It also turns the mapping into a single figure per person, which is the ranking list the whole method exists to avoid. The distribution shows the same information and cannot be misread as a grade.</div>' +
+    '<div class="note"><strong>The one finding worth acting on.</strong> Evidence and self-documentation sits at position 2 for four of the five and nobody exceeds 3. Everybody is doing things and almost nobody can show it. It is the only domain where one cheap programme level build serves every layer at once, and it is the domain that makes a second mapping a measurement of movement rather than another first impression.</div>' +
+    '<div class="note lock"><strong>Why there are no names on this page.</strong> Individual positions are held by the programme team and shown to the participant. They are not shown to trustees. A board that can see individual positions is a board that can be lobbied about them, and the pipeline stops being trusted by the people in it within one cycle.</div></div>';
+  return { t:'Readiness movement', s:'Distribution across the cohort, deliberately without names.', h:h };
+};
+
+VIEWS.client.decisions = function(){
+  let h = '<div class="card"><h2>Decisions log</h2><div class="sub">Anonymised. Every decision affecting a layer or a resource, with its reasoning.</div>' +
+    DECISIONS.slice().sort((a,b)=>b.d.localeCompare(a.d)).map(x =>
+      '<div class="item"><div class="body"><div class="t">Participant ' + x.who + ' &middot; ' + esc(x.t) + '</div>' +
+      '<div class="x">' + esc(x.why) + '</div>' +
+      '<div class="x" style="margin-top:5px;color:var(--muted)">Recommended by ' + x.rec + ', approved by ' + x.app + '.</div></div></div>').join('') +
+    '<div class="note">' + dnote('Trustees carry the accountability, so the instinct is to give them everything. That instinct is what breaks programmes of this kind. This page lets a board discharge its duties on consistency, process and equity without holding information it has no purpose for.') + '<strong>What the Board should look for here.</strong> Not the outcomes. Whether the reasoning is consistent, whether two people were involved, and whether progression patterns show any drift by gender, geography or age. Those are the trustee questions, and they can all be answered without knowing who anybody is.</div></div>';
+  return { t:'Decisions log', s:'Reasoning without identity.', h:h };
+};
+
+VIEWS.client.spend = function(){
+  const tot = SUPPORT.filter(s=>s.st==='Approved').reduce((a,b)=>a+b.amt,0);
+  let h = '<div class="grid g3">' +
+    '<div class="stat"><div class="n">&pound;' + tot + '</div><div class="l">Participant support approved this cycle</div></div>' +
+    '<div class="stat"><div class="n">&pound;480</div><div class="l">Awaiting approval</div></div>' +
+    '<div class="stat"><div class="n">&pound;0</div><div class="l">Campaign funding, and this figure cannot change</div></div></div>';
+  h += '<div class="card"><h2>Participant support by category</h2><div class="sub">Development categories only.</div>' +
+    '<div class="tw"><table><thead><tr><th>Category</th><th class="c">Approved</th><th>In scope because</th></tr></thead><tbody>' +
+    [['Travel and childcare','&pound;340','It removes a barrier to attending programme activity and is available to every participant against published criteria.'],
+     ['Reasonable adjustment','&pound;120','A legal duty as much as a programme choice.'],
+     ['Lost income','&pound;0','In scope for programme activity. The arguable case is a live selection window, on which the Board should take advice.'],
+     ['Campaign costs','&mdash;','Not in scope. Money given to a candidate to promote an election is a controlled donation, reportable on a public return, and charity law does not generally permit a charity to make one.']
+    ].map(r => '<tr><td><strong>' + r[0] + '</strong></td><td class="c">' + r[1] + '</td><td>' + r[2] + '</td></tr>').join('') +
+    '</tbody></table></div>' +
+    '<div class="note warn">' + dnote('There is no campaign category in the data model, so it cannot be selected. Money given to a candidate to promote an election is a controlled donation under the Representation of the People Act, reportable on a public return, and charity law does not generally permit a charity to make one. A category list is a far more reliable control than a paragraph in a handbook.') + '<strong>The system enforces this, not a policy document.</strong> There is no campaign category to select. A category list is a considerably more reliable control than a paragraph in a handbook.</div></div>';
+  return { t:'Spend', s:'Participant support, and the category that does not exist.', h:h };
+};
+
+VIEWS.client.access = function(){
+  let h = '<div class="card"><h2>What this view does not show you</h2><div class="sub">Written down rather than left to be discovered.</div>' +
+    '<div class="tw"><table><thead><tr><th>Not shown</th><th>Who does see it</th><th>Why</th></tr></thead><tbody>' +
+    [['Individual readiness positions','Programme team, and the participant for their own','A board that can see individual positions can be lobbied about them. The pipeline stops being trusted by the people in it within one cycle.'],
+     ['Participant party affiliation','Programme team only','Special category data under Article 9. Held for conflict management and for evidencing party independence. Never published.'],
+     ['Mentoring session content','Mentor and participant','A mentoring relationship in which the notes travel upwards is not a mentoring relationship.'],
+     ['Participant contact details','Programme team only','Data minimisation. There is no purpose that requires trustees to hold them.'],
+     ['Which participant is which','Programme team only','Anonymisation at the point of reporting is what makes the rest of this defensible.']
+    ].map(r => '<tr><td><strong>' + r[0] + '</strong></td><td>' + r[1] + '</td><td>' + r[2] + '</td></tr>').join('') +
+    '</tbody></table></div>' +
+    '<div class="note"><strong>This page is a feature.</strong> Trustees carry the accountability, so the easy instinct is to give them everything. That instinct is what breaks programmes of this kind. Setting out what is withheld and why, in the system itself, is what lets a board discharge its duties without holding information it has no purpose for.</div></div>';
+  return { t:'What you cannot see', s:'And the reason for each.', h:h };
+};
+</script>
+<script>
+/* ==========================================================
+   ACTIONS
+   Every action captures a reason and a second reviewer before
+   it can be recorded, and writes to the Decisions log. That is
+   the whole point of the pattern, so there is no path through
+   the interface that changes a participant's position without
+   leaving a reason behind it.
+   ========================================================== */
+
+function tgl(el){ el.nextElementSibling.classList.toggle('open'); }
+
+function showRead(i){
+  DOMAINS.forEach((d,k) => { const r = $('mr'+k); if (r) r.classList.toggle('act', k===i); });
+  $('read').innerHTML = '<strong>' + DOMAINS[i].n + '.</strong> ' + READS[DOMAINS[i].id];
+}
+
+/* ---------- generic action panel ---------- */
+function openAction(id){ const p = $('ap-' + id); if (p) p.classList.toggle('open'); }
+
+function reasonChanged(id){
+  const v = $('ar-' + id).value;
+  const other = /set out below/i.test(v);
+  $('al-' + id).innerHTML = other
+    ? 'Set out what you decided and why <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--coral)">required</span>'
+    : 'Anything to add <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--muted)">optional</span>';
+  $('an-' + id).placeholder = other
+    ? 'Required. The standard reasons did not describe this one, so it needs writing out.'
+    : 'Optional. The standard reason is enough for a routine decision.';
+}
+
+function readAction(id){
+  const r = $('ar-' + id).value, n = $('an-' + id).value.trim(), rev = $('a2-' + id).value;
+  if (!r) { toast('Reason needed', 'Every decision is recorded with a reason. Choose one before recording it.'); $('ar-'+id).focus(); return null; }
+  if (/set out below/i.test(r) && !n) { toast('Detail needed', 'You have chosen a reason that requires writing out. The standard reasons exist so that the unusual ones get explained.'); $('an-'+id).focus(); return null; }
+  return { reason:r, note:n, reviewer:rev, full: r + (n ? '. ' + n : '.') };
+}
+
+function commitAction(id){
+  const p = PENDING.find(x => x.id === id);
+  if (!p) return;
+  const a = readAction(id);
+  if (!a) return;
+  PENDING = PENDING.filter(x => x.id !== id);
+  applyEffect(p);
+  ACTIVITY.push({ d:today(), who:p.who, t:p.t + ', decided', x:a.full, vis:'all', fresh:true });
+  DECISIONS.push({ who:p.who, t:p.t, rec:'Programme lead', app:a.reviewer, d:today(), why:a.full });
+  buildNav();
+  toast('Recorded', p.t + ' for ' + P(p.who).name + '. The reason and the second reviewer are on the decisions log, the participant can see it in their own record, and the Foundation sees it without their name.');
+  go('home');
+}
+
+/* what each kind of pending item actually changes */
+function applyEffect(p){
+  if (p.kind === 'Match needed') {
+    const free = MENTORS.find(m => m.kind === 'One to one mentor' && m.mentees.length < 2);
+    if (free) { free.mentees.push(p.who); P(p.who).mentor = free.id; }
+  }
+  if (p.kind === 'Approval needed') {
+    const s = SUPPORT.find(x => x.who === p.who && x.st !== 'Approved');
+    if (s) { s.st = 'Approved'; s.by = 'Programme lead'; s.d = today(); }
+  }
+}
+
+/* ---------- support approvals, same pattern ---------- */
+function commitSupport(i){
+  const s = SUPPORT[i];
+  const a = readAction('s' + i);
+  if (!a) return;
+  s.st = /Declined/i.test(a.reason) ? 'Declined' : 'Approved';
+  s.by = 'Programme lead'; s.d = today();
+  ACTIVITY.push({ d:today(), who:s.who, t:'Access support ' + s.st.toLowerCase(), x:s.cat + ', £' + s.amt + '. ' + a.full, vis:'all', fresh:true });
+  DECISIONS.push({ who:s.who, t:'Participant support, ' + s.cat, rec:'Programme lead', app:a.reviewer, d:today(), why:a.full });
+  PENDING = PENDING.filter(p => !(p.kind === 'Approval needed' && p.who === s.who));
+  buildNav();
+  toast('Recorded', P(s.who).name + ' sees it in their own record. It appears in the Foundation&rsquo;s spend page as a category total with no name attached, and the reason is on the decisions log.');
+  go('support');
+}
+
+/* ---------- participant and mentor writes ---------- */
+function addEvidence(){
+  const t = $('ev-t').value.trim(), x = $('ev-x').value.trim();
+  if (!t) { $('ev-t').focus(); return; }
+  ACTIVITY.push({ d:today(), who:ME.candidate, t:'Evidence logged, ' + t, x:x || 'No detail given.', vis:'all', fresh:true });
+  PENDING.push({ id:'e'+Date.now(), kind:'Review', who:ME.candidate, t:'New evidence submitted', x:t });
+  buildNav();
+  toast('Logged', 'It is in your record now, and it has appeared in the programme team&rsquo;s queue. Switch view to see it land.');
+  go('evidence');
+}
+
+function logSession(){
+  const who = $('ml-who').value, x = $('ml-x').value.trim();
+  if (!x) { $('ml-x').focus(); return; }
+  ACTIVITY.push({ d:today(), who:who, t:'Mentoring session', x:x, vis:'all', fresh:true });
+  toast('Session saved', P(who).name + ' can see this immediately. The programme team sees an activity entry. The Foundation sees the count go up by one and not the content.');
+  go('log');
+}
+
+function declareConflict(){
+  const x = $('cf-x').value.trim();
+  if (!x) { $('cf-x').focus(); return; }
+  const who = MN(ME.mentor).mentees[0];
+  ACTIVITY.push({ d:today(), who:who, t:'Conflict declared by mentor', x:x, vis:'all', fresh:true });
+  PENDING.push({ id:'c'+Date.now(), kind:'Two reviewers needed', who:who, t:'Mentor conflict declared', x:x });
+  buildNav();
+  toast('Declared', 'Recorded and sent for a two person decision. Declaring a conflict does not end a match, it creates a record.');
+  go('agreement');
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thriving Communities Engagement Review</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pp:#64009b; --rc:#ff4570; --bp:#2b0031; --wp:#edebf5; --bg:#f9f8fc;
+  --t1:#ff4570; --t1bg:#ffe3ea; --t2:#64009b; --t2bg:#f1e3fb; --t3:#009982; --t3bg:#daf5f0;
+  --headerh:78px; --bch:49px;
+}
+*{box-sizing:border-box;}
+body{margin:0;font-family:'Montserrat',sans-serif;background:var(--bg);color:var(--bp);line-height:1.6;}
+img{max-width:100%;}
+header.top{background:#fff;border-bottom:1px solid #e3ddef;padding:14px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;position:sticky;top:0;z-index:60;height:var(--headerh);}
+.brandrow{display:flex;align-items:center;gap:18px;flex-wrap:wrap;}
+.brandrow img.solico{height:36px;}
+.solicowordmark{font-size:19px;font-weight:800;color:var(--pp);letter-spacing:.02em;}
+.solicowordmark span{color:var(--rc);}
+.titleblock h1{font-size:19px;margin:0;color:var(--pp);font-weight:800;}
+.titleblock p{margin:2px 0 0;font-size:12px;color:#6b5c7a;}
+.partnership{display:flex;align-items:center;gap:10px;font-size:11px;color:#8b7d97;text-transform:uppercase;letter-spacing:.06em;}
+.partnership img{height:30px;}
+.pdfbtn{background:var(--pp);color:#fff;border:none;padding:10px 18px;border-radius:24px;font-family:inherit;font-weight:700;font-size:12.5px;cursor:pointer;letter-spacing:.02em;}
+.pdfbtn:hover{background:var(--rc);}
+.layout{display:flex;align-items:flex-start;}
+nav.breadcrumb{position:sticky;top:var(--headerh);z-index:50;background:#fff;border-right:1px solid #e3ddef;display:flex;flex-direction:column;width:230px;flex-shrink:0;height:calc(100vh - var(--headerh));overflow-y:auto;padding:14px 0;box-shadow:2px 0 8px rgba(100,0,155,.04);}
+nav.breadcrumb button{background:none;border:none;border-left:3px solid transparent;font-family:inherit;font-size:12px;font-weight:600;color:#9c8caa;padding:11px 18px;cursor:pointer;text-align:left;white-space:normal;display:flex;align-items:center;gap:10px;}
+nav.breadcrumb button .num{width:20px;height:20px;flex-shrink:0;border-radius:50%;background:#e3ddef;color:#7a6a89;display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;}
+nav.breadcrumb button.active{color:var(--pp);border-left-color:var(--pp);background:var(--wp);}
+nav.breadcrumb button.active .num{background:var(--pp);color:#fff;}
+main{max-width:1120px;margin:0;padding:36px 36px 20px;flex:1;min-width:0;}
+@media(max-width:860px){
+  .layout{display:block;}
+  nav.breadcrumb{position:sticky;top:var(--headerh);width:auto;height:auto;flex-direction:row;overflow-x:auto;overflow-y:visible;border-right:none;border-bottom:1px solid #e3ddef;padding:0 10px;}
+  nav.breadcrumb button{border-left:none;border-bottom:3px solid transparent;padding:12px 10px;white-space:nowrap;}
+  nav.breadcrumb button.active{border-left-color:transparent;border-bottom-color:var(--pp);background:none;}
+}
+.page{display:none;}
+.page.active{display:block;animation:fadein .25s ease;}
+@keyframes fadein{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+h2.sectitle{font-size:26px;color:var(--pp);margin:0 0 6px;font-weight:800;}
+.sectag{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--rc);font-weight:700;margin-bottom:6px;}
+p{margin:0 0 14px;font-size:14.5px;max-width:740px;}
+h3{color:var(--pp);font-size:16.5px;margin:26px 0 10px;}
+h4{color:var(--bp);font-size:14px;margin:18px 0 8px;}
+.lead{font-size:16px;color:var(--bp);font-weight:500;max-width:740px;}
+ul,ol{padding-left:20px;font-size:14.5px;max-width:740px;}
+li{margin-bottom:8px;}
+.callout{background:var(--wp);border-left:4px solid var(--pp);padding:16px 18px;border-radius:6px;margin:16px 0;font-size:14px;}
+.callout.ph{border-left-color:#c9bcd6;background:#f4f1f9;color:#7a6a89;font-style:italic;}
+.callout.warn{border-left-color:var(--rc);background:#fff0f2;}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13px;table-layout:fixed;}
+th{background:var(--wp);color:var(--pp);text-align:left;padding:10px 12px;font-size:11px;text-transform:uppercase;letter-spacing:.04em;border-bottom:2px solid #d9cfe6;}
+td{padding:10px 12px;border-bottom:1px solid #ece7f2;vertical-align:top;}
+.badge{display:inline-block;padding:4px 10px;border-radius:12px;font-size:10.5px;font-weight:700;letter-spacing:.02em;}
+.badge.complete{background:#e3f6ea;color:#1e7e42;}
+.badge.received{background:#e3f6ea;color:#1e7e42;}
+.badge.progress{background:#fff3d6;color:#9a6a00;}
+.badge.stage1{background:#eee7f7;color:var(--pp);}
+.badge.na{background:#f0eef4;color:#a396ae;}
+.tierbadge{display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:14px;font-size:11px;font-weight:800;letter-spacing:.02em;color:#fff;}
+.tierbadge.t3{background:var(--t3);}
+.tierbadge.t2{background:var(--t2);}
+.tierbadge.t1plus{background:linear-gradient(90deg,var(--t1),var(--t2));}
+.tierbadge.t2plus{background:linear-gradient(90deg,var(--t2),var(--t3));}
+.tierbadge.t3plus{background:linear-gradient(90deg,var(--t3),#c9a227);}
+.tierbadge.t1{background:var(--t1);}
+.changebox{background:#fff;border:1px solid var(--t2);border-left:5px solid var(--t2);border-radius:8px;padding:14px 18px;margin:16px 0;font-size:13.5px;max-width:740px;}
+.changebox .lbl{font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--t2);font-weight:800;margin-bottom:6px;}
+.domaingrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:18px 0;}
+.domaincard{background:#fff;border:1px solid #e3ddef;border-radius:12px;padding:18px;display:flex;gap:14px;}
+.domaincard .dhex{flex-shrink:0;width:56px;height:64px;background:var(--wp);clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;color:var(--pp);}
+.domaincard h4{margin:0 0 6px;color:var(--pp);font-size:14px;}
+.domaincard p{font-size:12.5px;margin:0;}
+.rankgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin:16px 0;}
+.orgtile{background:#fff;border:1px solid #e3ddef;border-radius:12px;padding:0;overflow:hidden;}
+.orgtile h4{margin:0;font-size:13.5px;font-weight:800;color:#fff;background:var(--pp);padding:10px 16px;}
+.orgtile ol.stack{padding:12px 16px 14px 34px;font-size:11.5px;margin:0;}
+.orgtile ol.stack li{margin-bottom:6px;}
+.orgtile ol.stack li:first-child{font-weight:700;color:var(--pp);}
+.orggrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-top:16px;}
+.orgcard{background:#fff;border:1px solid #e3ddef;border-radius:12px;padding:18px;margin-bottom:0;}
+.orgcard .ohead{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:4px;}
+.orgcard h3{margin:0;font-size:15px;font-weight:800;}
+.orgstage{font-size:10px;font-weight:700;padding:3px 9px;border-radius:3px;letter-spacing:.05em;text-transform:uppercase;display:inline-block;margin-bottom:10px;}
+.orgstage.s2{background:rgba(0,153,130,.1);color:#009982;border:1px solid rgba(0,153,130,.25);}
+.orgstage.s1{background:rgba(220,120,0,.1);color:#dc7800;border:1px solid rgba(220,120,0,.25);}
+.orgscore{font-size:24px;font-weight:800;color:var(--pp);}
+.orgscore span{font-size:11px;font-weight:600;color:#9c8caa;}
+.br{display:flex;align-items:center;gap:7px;margin:5px 0;font-size:10.5px;}
+.br .lbl{width:130px;flex-shrink:0;color:#7a6a89;font-weight:600;}
+.br .bar{flex:1;height:6px;background:#ece7f2;border-radius:3px;overflow:hidden;}
+.br .bar span{display:block;height:100%;background:var(--pp);border-radius:3px;}
+.br .val{width:14px;text-align:right;font-weight:700;color:var(--bp);font-size:10.5px;}
+.ethno{margin-top:10px;padding-top:10px;border-top:1px solid #e3ddef;font-size:11px;color:#7a6a89;font-style:italic;}
+.metricsgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin:16px 0;align-items:start;}
+.metricstile{background:#fff;border:1px solid #e3ddef;border-radius:12px;padding:18px;}
+.metricstile h4{margin:0 0 4px;font-size:15px;font-weight:800;color:var(--bp);border-top:4px solid var(--rc);padding-top:10px;}
+.metricstile .mtimeframe{display:inline-block;font-size:10px;font-weight:700;color:#fff;background:var(--rc);border-radius:10px;padding:3px 10px;margin-bottom:10px;}
+.metricstile .mrow{padding:8px 0;border-bottom:1px solid #f0eef4;}
+.metricstile .mrow:first-of-type{border-top:2px solid var(--wp);}
+.metricstile .mrow:last-child{border-bottom:none;}
+.metricstile .mrow .mdom{font-weight:800;color:var(--rc);display:block;font-size:10px;text-transform:uppercase;letter-spacing:.04em;margin-bottom:5px;}
+.metricstile .mpick{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:6px 10px;font-size:11.5px;color:#5c4d6b;margin-bottom:6px;}
+.metricstile .mpick:last-child{margin-bottom:0;}
+.metricstile .mpick .mwhat{flex:1 1 160px;min-width:0;}
+.metricstile .mtarget{flex-shrink:0;font-size:10.5px;font-weight:800;color:#fff;background:var(--pp);border-radius:10px;padding:3px 10px;white-space:nowrap;}
+.pullquote{background:var(--wp);border-radius:8px;padding:14px 16px;margin-top:12px;font-style:italic;font-size:13.5px;color:var(--bp);}
+.pqattr{display:block;margin-top:6px;color:var(--pp);font-style:normal;font-weight:700;font-size:11px;}
+.ethgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.ethcard{background:#fff;border:1px solid #e3ddef;border-radius:12px;padding:18px;}
+.ethcard h4{margin-top:0;color:var(--pp);font-size:14.5px;}
+.ethcard .tag{font-size:10.5px;text-transform:uppercase;color:var(--rc);font-weight:700;letter-spacing:.04em;}
+.metricgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.metriccard{background:#fff;border:1px solid #e3ddef;border-radius:10px;padding:16px 18px;}
+.metriccard .dom{font-size:11px;text-transform:uppercase;color:var(--pp);font-weight:800;letter-spacing:.03em;margin-bottom:6px;}
+.metriccard .met{font-weight:700;font-size:13.5px;margin-bottom:4px;}
+.metriccard .note{font-size:12.5px;color:#7a6a89;}
+.fundcard{background:#fff;border:1px solid #e3ddef;border-left:5px solid var(--pp);border-radius:10px;padding:18px 20px;margin-bottom:16px;max-width:740px;}
+.fundcard.pos{border-left-color:#1e7e42;}
+.fundcard h4{margin:0 0 8px;font-size:15px;color:var(--bp);}
+.fundcard .amt{font-size:22px;font-weight:800;color:var(--pp);margin-bottom:6px;}
+.priobox{background:#fff;border:1px solid #e3ddef;border-radius:10px;padding:16px 18px;margin-bottom:12px;max-width:740px;}
+.priobox h4{margin:0 0 6px;color:var(--pp);font-size:14px;}
+.scalewrap{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:16px 0;}
+.scalecell{background:#fff;border:1px solid #e3ddef;border-radius:8px;padding:12px 10px;text-align:center;}
+.scalecell .n{font-size:20px;font-weight:800;color:var(--pp);}
+.scalecell .lbl{font-size:11px;font-weight:700;color:var(--bp);margin:4px 0 6px;}
+.scalecell .desc{font-size:10.5px;color:#7a6a89;line-height:1.4;}
+.tierstep{display:flex;align-items:stretch;margin:20px 0;border-radius:10px;overflow:hidden;max-width:740px;}
+.tierstep .seg{flex:1;padding:16px 14px;text-align:center;position:relative;color:#fff;}
+.tierstep .seg.t1{background:var(--t1);}
+.tierstep .seg.t2{background:var(--t2);}
+.tierstep .seg.t3{background:var(--t3);}
+.tierstep .seg .tn{font-size:24px;font-weight:800;color:#fff;}
+.tierstep .seg .tname{font-size:12px;font-weight:700;color:#fff;opacity:.9;}
+.hexrow{display:flex;justify-content:center;gap:6px;margin:18px 0;flex-wrap:wrap;}
+.hex{width:70px;height:80px;background:var(--wp);clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);display:flex;align-items:center;justify-content:center;font-size:9.5px;text-align:center;color:var(--pp);font-weight:700;padding:6px;}
+.reflect{margin-top:34px;border-top:2px dashed #d9cfe6;padding-top:16px;}
+.reflect summary{cursor:pointer;font-size:12.5px;font-weight:700;color:var(--pp);list-style:none;display:flex;align-items:center;gap:6px;}
+.reflect summary::before{content:"+";font-size:16px;}
+.reflect[open] summary::before{content:"\2212";}
+.reflect .rf{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;}
+.reflect input,.reflect select,.reflect textarea{width:100%;font-family:inherit;font-size:13px;padding:8px 10px;border:1px solid #d9cfe6;border-radius:6px;background:#fff;}
+.reflect textarea{grid-column:1/3;min-height:60px;resize:vertical;}
+.sendform{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0;max-width:520px;}
+.sendform input{width:100%;font-family:inherit;font-size:13px;padding:8px 10px;border:1px solid #d9cfe6;border-radius:6px;background:#fff;}
+.sendform input.invalid{border-color:#c0392b;}
+.reflect button{grid-column:1/3;justify-self:start;background:var(--pp);color:#fff;border:none;padding:8px 16px;border-radius:20px;font-family:inherit;font-weight:700;font-size:12px;cursor:pointer;}
+.reflect .logged{grid-column:1/3;font-size:12px;color:#1e7e42;font-weight:700;display:none;}
+.navrow{display:flex;justify-content:space-between;margin:34px 0 10px;}
+.navbtn{background:#fff;border:1px solid #d9cfe6;color:var(--pp);padding:10px 20px;border-radius:24px;font-family:inherit;font-weight:700;font-size:12.5px;cursor:pointer;}
+.navbtn:hover{background:var(--wp);}
+.navbtn:disabled{opacity:.35;cursor:default;}
+.navbtn.primary{background:var(--pp);color:#fff;border-color:var(--pp);}
+.navbtn.primary:hover{background:var(--rc);border-color:var(--rc);}
+footer.pagefoot{text-align:center;font-size:11px;color:#b0a3bd;padding:20px 0 40px;}
+.reflectSummaryList .item{background:#fff;border:1px solid #e3ddef;border-radius:8px;padding:12px 14px;margin-bottom:8px;font-size:13px;}
+.reflectSummaryList .item .meta{font-size:11px;color:#9c8caa;margin-bottom:4px;}
+.emailbtn{background:var(--rc);color:#fff;border:none;padding:11px 22px;border-radius:24px;font-family:inherit;font-weight:700;font-size:13px;cursor:pointer;margin-top:10px;}
+@media print{
+  nav.breadcrumb,.navrow,.pdfbtn,.reflect,footer.pagefoot{display:none !important;}
+  .page{display:block !important;page-break-after:always;}
+  main{max-width:100%;padding:20px 40px;}
+  body{background:#fff;}
+  header.top{position:static;height:auto;}
+}
+@media(max-width:720px){
+  .ethgrid,.metricgrid,.metricsgrid,.rankgrid,.orggrid,.reflect .rf,.sendform{grid-template-columns:1fr;}
+  .reflect textarea,.reflect button{grid-column:1;}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="brandrow">
+    <img class="solico" id="solicoLogo" src="" alt="Solico">
+    <div class="titleblock">
+      <h1>Thriving Communities Engagement Review</h1>
+      <p>Final report, prepared for Lambeth Together</p>
+    </div>
+  </div>
+  <div class="brandrow">
+    <div class="partnership">In partnership with <img id="ltLogo" src="" alt="Lambeth Together"></div>
+    <button class="pdfbtn" onclick="window.print()">Download as PDF</button>
+  </div>
+</header>
+<div class="layout">
+<nav class="breadcrumb" id="breadcrumb"></nav>
+<main>
+  <div class="pagewrap" id="pagewrap"></div>
+</main>
+</div>
+<script>
+const solicoLogoSrc = "data:image/png;base64,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";
+document.getElementById('solicoLogo').src = solicoLogoSrc;
+const ltLogoSrc = "data:image/png;base64,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";
+document.getElementById('ltLogo').src = ltLogoSrc;
+
+let current = 0;
+let reflections = [];
+
+const SUBMIT = {
+  url: 'https://default84502d55185e46909ad3cdecaa6893.e7.environment.api.powerplatform.com:443/powerautomate/automations/direct/cu/04/workflows/9e2317c511a34c8eb884ceff9d859508/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=H0D602V3hfz6O-oHfyd53T5OODCUCqfKjrFue03TvD4',
+  token: 'solico-hub-k7m2'
+};
+
+function reflectBox(idx, title){
+  return `
+  <details class="reflect">
+    <summary>Add your thoughts on this section</summary>
+    <div class="rf">
+      <input type="text" id="rn${idx}" placeholder="Your name (optional)">
+      <select id="rr${idx}">
+        <option value="">Role (optional)</option>
+        <option>Programme Lead</option>
+        <option>Commissioner</option>
+        <option>System partner</option>
+        <option>Other</option>
+      </select>
+      <textarea id="rt${idx}" placeholder="Your reflections on ${title}"></textarea>
+      <button onclick="addReflection(${idx}, '${title}')">Log this thought</button>
+      <div class="logged" id="rl${idx}">Logged. Carry on reading, it is saved for the summary at the end.</div>
+    </div>
+  </details>`;
+}
+
+function addReflection(idx, title){
+  const name = document.getElementById('rn'+idx).value || 'Anonymous';
+  const role = document.getElementById('rr'+idx).value || '';
+  const text = document.getElementById('rt'+idx).value;
+  if(!text.trim()) return;
+  reflections.push({section:title, name, role, text, time:new Date().toLocaleString('en-GB')});
+  document.getElementById('rt'+idx).value = '';
+  const logged = document.getElementById('rl'+idx);
+  logged.style.display = 'block';
+  renderReflectSummary();
+}
+
+function renderReflectSummary(){
+  const el = document.getElementById('reflectSummaryList');
+  if(!el) return;
+  if(reflections.length === 0){
+    el.innerHTML = '<p style="color:#9c8caa;font-size:13px;">Nothing logged yet. Thoughts you add on any page will appear here as you go.</p>';
+    return;
+  }
+  el.innerHTML = reflections.map(r => `
+    <div class="item">
+      <div class="meta">${r.name}${r.role ? ', ' + r.role : ''} on ${r.section}, ${r.time}</div>
+      ${r.text}
+    </div>`).join('');
+}
+
+function isValidEmail(v){
+  return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+}
+
+function submitReflections(){
+  if(reflections.length === 0){ alert('Nothing logged yet.'); return; }
+  const nameEl = document.getElementById('sendName');
+  const emailEl = document.getElementById('sendEmail');
+  const name = nameEl.value.trim();
+  const email = emailEl.value.trim();
+  const status = document.getElementById('submitStatus');
+  const emailOk = isValidEmail(email);
+  emailEl.classList.toggle('invalid', !emailOk);
+  if(!name || !emailOk){
+    status.textContent = 'Please add your name and a valid email before sending.';
+    status.style.color = '#c0392b';
+    return;
+  }
+  const body = reflections.map(r => `${r.section} (${r.name}${r.role ? ', ' + r.role : ''}):\n${r.text}\n`).join('\n');
+  const payload = {
+    token: SUBMIT.token,
+    website: '',
+    organisation: 'Thriving Communities Engagement Review, final report',
+    name,
+    email,
+    reflection: body
+  };
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+  status.textContent = '';
+  /* Sent as text/plain so the browser skips the CORS preflight,
+     which the Power Automate HTTP trigger cannot answer. The flow
+     re-parses the body with json(triggerBody()). */
+  fetch(SUBMIT.url, {
+    method: 'POST',
+    headers: { 'Content-Type': 'text/plain' },
+    body: JSON.stringify(payload)
+  })
+  .then(function(r){
+    if(!r.ok) throw new Error('HTTP ' + r.status);
+    btn.textContent = 'Sent';
+    status.textContent = 'Thank you, your reflections have been sent.';
+    status.style.color = '#1e7e42';
+  })
+  .catch(function(){
+    btn.disabled = false;
+    btn.textContent = 'Send your reflections';
+    status.textContent = 'Something went wrong sending this. Please try again.';
+    status.style.color = '#c0392b';
+  });
+}
+
+const sections = [
+{
+  id:'overview', title:'Overview',
+  html:`
+  <div class="sectag">Section 1 of 14</div>
+  <h2 class="sectitle">Overview</h2>
+  <p class="lead">This is the final report for the Thriving Communities Engagement Review, a commission carried out by Solico for Lambeth Together between June and August 2026.</p>
+  <p>The commission asked how the borough's Thriving Community organisations, a set of trusted, resident-facing voluntary and community groups, engage with Integrated Neighbourhood Teams, and what would help that engagement deepen. Seven organisations sit at the centre of this work.</p>
+  <ul>
+    <li><strong>Black Prince Trust</strong>, running from its own dedicated site</li>
+    <li><strong>Clapham Park Project</strong>, currently reinventing its own identity and offer</li>
+    <li><strong>Thriving Fiveways</strong>, hosted by Loughborough Junction Action Group</li>
+    <li><strong>Thriving Stockwell</strong>, coordinated through Stockwell Partnership and the PCN</li>
+    <li><strong>Clear Community Web</strong>, a borough-wide digital inclusion specialist</li>
+    <li><strong>Thriving Norwood</strong>, working towards its own distinct legal identity</li>
+    <li><strong>Thriving Streatham</strong>, the least formed of the seven at this stage</li>
+  </ul>
+  <p>Solico built and applied a bespoke maturity matrix across seven domains of organisational readiness, paired every mapping with an ethnographic reading of what each organisation is actually like on the ground, and worked with five of the seven organisations through a full deep dive session. Two, Thriving Fiveways and Thriving Streatham, did not complete a deep dive. Fiveways' Chief Executive is early in his tenure and felt he did not yet have the institutional knowledge to take part fully this cycle, a fair position given the timing. A Streatham deep dive could not be landed within this commission, which, as the least formed of the seven organisations at this stage, is itself a reasonable explanation rather than a gap to apologise for. Both are shown throughout this report clearly marked as Stage 1, first pass only, so the two kinds of evidence are never presented as equivalent. Section 2 sets out exactly what that distinction means.</p>
+  <p>This report is built to be read in whichever order is most useful. Use the trail across the top to move between sections, or step through in order using the buttons at the bottom of each page. A PDF version is available at any point using the button in the header. Wherever the option appears, a reader is welcome to leave a thought or reflection on that section directly, with no need for a separate email.</p>
+  <h3>What this report covers</h3>
+  <ul>
+    <li>Our methodology, and how the two stages of work fit together</li>
+    <li>The seven maturity domains that sit behind every position in this report</li>
+    <li>An explanation of the maturity tiers</li>
+    <li>Each of the seven organisations in turn</li>
+    <li>What ethnographic observation added to the picture</li>
+    <li>The metrics each organisation is working towards</li>
+    <li>How the matrix has been applied, and what the seven organisations tell us together</li>
+    <li>What the organisations themselves said about the process, and where the matrix can extend further</li>
+    <li>Funding examples where this evidence base already has real applicability</li>
+    <li>Potential integration with wider council infrastructure</li>
+    <li>What Alex told us directly</li>
+    <li>Recommendations for what comes next</li>
+  </ul>
+  ${reflectBox(0,'Overview')}
+  `
+},
+{
+  id:'methodology', title:'Methodology',
+  html:`
+  <div class="sectag">Section 2 of 14</div>
+  <h2 class="sectitle">Methodology</h2>
+  <p class="lead">The commission was delivered in two stages per organisation.</p>
+  <p><strong>Stage 1, system level maturity mapping,</strong> is a first pass assessment undertaken by Solico from public sources and contextual briefing. It is framed from the outset as a starting point for conversation, not a final judgement. Every organisation received this first pass before anything else happened.</p>
+  <p><strong>Stage 2, the Thriving deep dive,</strong> is a paid two to three hour session per organisation using a structured Business Model Canvas approach. Each session opens with framing, walks through the maturity matrix and the first pass mapping together, moves into a conversation about future ambition, feasibility and what stands in the way, and closes with metric co-production and a follow-up reflection.</p>
+  <p>Five organisations have now been through both stages, Black Prince Trust, Clapham Park Project, Thriving Stockwell, Clear Community Web and Thriving Norwood. Thriving Fiveways and Thriving Streatham did not complete a deep dive within this commission, and are shown throughout this report clearly marked as Stage 1, first pass, so the two kinds of evidence are never presented as equivalent.</p>
+  <p>Two further sections sit behind everything that follows. The next section sets out the seven domains the matrix maps against. The section after that explains the three maturity tiers those domains build towards. Both are worth reading before the organisation profiles, and easy to come back to using the trail above.</p>
+  <h3>Where each organisation stands</h3>
+  <table>
+    <colgroup><col style="width:24%"><col style="width:19%"><col style="width:19%"><col style="width:19%"><col style="width:19%"></colgroup>
+    <thead><tr><th>Organisation</th><th>First pass</th><th>Deep dive</th><th>Reflection</th><th>Metrics selection</th></tr></thead>
+    <tbody>
+      <tr><td>Thriving Stockwell</td><td><span class="badge complete">Complete</span></td><td><span class="badge complete">Complete</span></td><td><span class="badge received">Received</span></td><td><span class="badge complete">Complete, 7 of 7</span></td></tr>
+      <tr><td>Black Prince Trust</td><td><span class="badge complete">Complete</span></td><td><span class="badge complete">Complete</span></td><td><span class="badge received">Received</span></td><td><span class="badge complete">Complete, 7 of 7</span></td></tr>
+      <tr><td>Clapham Park Project</td><td><span class="badge complete">Complete</span></td><td><span class="badge complete">Complete</span></td><td><span class="badge received">Received</span></td><td><span class="badge complete">Complete, 7 of 7</span></td></tr>
+      <tr><td>Clear Community Web</td><td><span class="badge complete">Complete</span></td><td><span class="badge complete">Complete</span></td><td><span class="badge received">Received</span></td><td><span class="badge complete">Complete, 7 of 7</span></td></tr>
+      <tr><td>Thriving Norwood</td><td><span class="badge complete">Complete</span></td><td><span class="badge complete">Complete</span></td><td><span class="badge received">Received</span></td><td><span class="badge complete">Complete, 7 of 7</span></td></tr>
+      <tr><td>Thriving Fiveways</td><td><span class="badge complete">Complete</span></td><td><span class="badge stage1">Stage 1 only</span></td><td><span class="badge na">N/A</span></td><td><span class="badge na">N/A</span></td></tr>
+      <tr><td>Thriving Streatham</td><td><span class="badge complete">Complete</span></td><td><span class="badge stage1">Stage 1 only</span></td><td><span class="badge na">N/A</span></td><td><span class="badge na">N/A</span></td></tr>
+    </tbody>
+  </table>
+  <p>A note on language. Throughout this report, a domain sits at a position, or maps to a position, rather than scoring points. The matrix is a positioning tool built to start a conversation about support, not a mark of performance.</p>
+  ${reflectBox(1,'Methodology')}
+  `
+},
+{
+  id:'domains', title:'The domains',
+  html:`
+  <div class="sectag">Section 3 of 14</div>
+  <h2 class="sectitle">The seven domains</h2>
+  <p class="lead">Every position in this report, every tier, every organisation profile, traces back to the same seven domains. This section sets them out on their own, before any organisation-specific detail.</p>
+  <div class="domaingrid">
+    <div class="domaincard"><div class="dhex">G</div><div><h4>Governance and structure</h4><p>How the Thriving is organised and coordinated, including leadership, decision-making and accountability.</p></div></div>
+    <div class="domaincard"><div class="dhex">R</div><div><h4>Resident engagement and trust</h4><p>The extent to which residents shape priorities, participate in activity and trust the Thriving as a neighbourhood space.</p></div></div>
+    <div class="domaincard"><div class="dhex">V</div><div><h4>VCSE and partner connections</h4><p>Relationships with local VCSE organisations, faith groups, social enterprises and statutory partners.</p></div></div>
+    <div class="domaincard"><div class="dhex">H</div><div><h4>Health and wellbeing programme delivery</h4><p>The ability to generate, design and support activity that improves health and wellbeing.</p></div></div>
+    <div class="domaincard"><div class="dhex">D</div><div><h4>Data and learning</h4><p>How the Thriving understands local need, captures learning and reflects on impact.</p></div></div>
+    <div class="domaincard"><div class="dhex">S</div><div><h4>Sustainability and funding</h4><p>The ability to sustain Thriving activity beyond short-term funding.</p></div></div>
+    <div class="domaincard"><div class="dhex">I</div><div><h4>Shared vision and identity</h4><p>The clarity, shared ownership and local recognition of the Thriving's purpose and role within the neighbourhood.</p></div></div>
+  </div>
+  <p>Each domain is mapped against the same five point scale, reproduced below. A position of 1 or 2 broadly reflects an emerging stage, 3 reflects developing, and 4 or 5 reflects established. These narrative stages are there to support shared understanding, not to imply exact measurement.</p>
+  <div class="scalewrap">
+    <div class="scalecell"><div class="n">1</div><div class="lbl">Nascent or forming</div><div class="desc">Activity is informal or sporadic. Roles, purpose or processes are not set. Delivery relies on individuals rather than systems.</div></div>
+    <div class="scalecell"><div class="n">2</div><div class="lbl">Emerging</div><div class="desc">Early structures and partnerships in place. Some shared understanding of purpose, but delivery and engagement are inconsistent.</div></div>
+    <div class="scalecell"><div class="n">3</div><div class="lbl">Developing</div><div class="desc">Clear intent and direction agreed. Regular activity taking place. Systems are functional but not yet embedded or consistent.</div></div>
+    <div class="scalecell"><div class="n">4</div><div class="lbl">Established</div><div class="desc">Strong foundations. Consistent delivery, trusted locally, with learning and sustainability actively considered.</div></div>
+    <div class="scalecell"><div class="n">5</div><div class="lbl">Mature</div><div class="desc">Widely recognised neighbourhood anchor. Shared vision and ownership, high quality delivery, and influence beyond the local area.</div></div>
+  </div>
+  <p>Every organisation is mapped 1 to 5 against all seven domains, giving a composite out of 35. That composite is what places an organisation in a tier, explained next. A few principles sit behind how we use the domains, worth keeping in mind throughout this report.</p>
+  <ul>
+    <li>Maturity is not linear. A Thriving may be more developed in some domains than others, and that unevenness is normal rather than a concern in itself.</li>
+    <li>Context matters. Neighbourhood history, demographics and existing infrastructure all shape where an organisation sits.</li>
+    <li>Maturity is relational. Progress depends as much on system behaviour, assumptions and engagement models as it does on the Thriving's own capacity. The domains support reflection on system readiness as much as community readiness.</li>
+  </ul>
+  ${reflectBox(2,'The domains')}
+  `
+},
+{
+  id:'tiers', title:'The maturity tiers',
+  html:`
+  <div class="sectag">Section 4 of 14</div>
+  <h2 class="sectitle">The maturity tiers explained</h2>
+  <p class="lead">The three tiers below are a Solico output, built from this commission's evidence. They did not exist before this review, and no organisation was previously sorted into them by anyone else.</p>
+  <p>Each organisation's seven domain positions are added together to give a composite out of 35. That composite places the organisation in one of three tiers. The tiers are not simply a scoreboard. They are personas, a qualitative shorthand for what kind of support and conversation an organisation is likely to need next, built from the same evidence that produced the domain positions. Within a tier, we also use a "+" mark where the domain detail shows a meaningful distinction worth flagging on its own, explained further below.</p>
+  <div class="tierstep">
+    <div class="seg t1"><div class="tn">Tier 1</div><div class="tname">The Emerging Advocate</div></div>
+    <div class="seg t2"><div class="tn">Tier 2</div><div class="tname">The Developing Partner</div></div>
+    <div class="seg t3"><div class="tn">Tier 3</div><div class="tname">The Established Anchor</div></div>
+  </div>
+  <div class="changebox">
+    <div class="lbl">A change of thinking</div>
+    <p style="margin:0;">We number the tiers so that they climb with maturity, Tier 3 is the most established, Tier 1 is the earliest stage. We considered numbering it the other way, with Tier 1 as the most established. We changed our minds deliberately. Numbering the least mature organisation as Tier 3 reads too easily as third class, when every one of these seven organisations is doing valued, trusted work in its community. Climbing numbers sit better with what the tiers are actually for, marking a stage in a journey, not a ranking of worth.</p>
+  </div>
+  <h3>What each tier suggests</h3>
+  <div class="priobox">
+    <h4>Tier 3 - the Established Anchor</h4>
+    <p>Strong foundations, consistent delivery of quality health and wellbeing programmes, trusted local relationships, active pursuit of learning, and a clear emphasis on sustainability. Residents, partners and stakeholders are likely to recognise this organisation as a legitimate and dependable local leader with a widely shared vision. These organisations can act as a convener or coordinator within the communities they engage with, and can be exemplars for the others.</p>
+  </div>
+  <div class="priobox">
+    <h4>Tier 2 - the Developing Partner</h4>
+    <p>Clear intent, regular health and wellbeing activity, and real investment in processes and systems. Credible and growing, but not yet consistent enough, or not yet focused enough on longer term sustainability, to be seen as fully established. Residents, partners and stakeholders are likely to see this as a capable and promising organisation in transition, one that recognises the need for further investment and consistency.</p>
+  </div>
+  <div class="priobox">
+    <h4>Tier 1 - the Emerging Advocate</h4>
+    <p>Important aspects of organisational maturity remain emerging, particularly where delivery still depends on a small number of individuals rather than established protocols or systems. Valuable in its contribution, but likely inconsistent, and not yet inspiring full trust around its longer term sustainability. Residents, partners and stakeholders are likely to see this as an early stage community initiative rather than an organisation with a settled longer term future.</p>
+  </div>
+  <h3>The composite is not the whole story</h3>
+  <p>A total of 28 or more places an organisation in Tier 3. A total of 21 up to 27 places it in Tier 2. A total under 21 would place it in Tier 1. Two of our seven organisations show why that arithmetic alone is not enough.</p>
+  <table>
+    <colgroup><col style="width:26%"><col style="width:16%"><col style="width:58%"></colgroup>
+    <thead><tr><th>Organisation</th><th>Composite</th><th>What the total alone would suggest, and what is actually true</th></tr></thead>
+    <tbody>
+      <tr><td>Black Prince Trust</td><td>28, Tier 3</td><td>An even position of 4 across every domain. In fact it sits at 3 on data and learning, and makes up the difference with a 5 on health and wellbeing delivery.</td></tr>
+      <tr><td>Thriving Streatham</td><td>22, Tier 2</td><td>An even position of at least 3 on every domain. In fact two domains sit at 2, and three sit at 4.</td></tr>
+    </tbody>
+  </table>
+  <p>In both cases, the composite is the right basis for the tier. It is the domain detail underneath it that explains the placement, rather than overriding it. Read the tier as the headline and the organisation profile as the reason why.</p>
+  <h3>A closer look - the +</h3>
+  <p>We use it whenever the domain detail behind a composite shows a distinction worth flagging on its own, one that a plain tier number would otherwise flatten. It can sit at the top of any of the three tiers.</p>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px;">
+    <span class="tierbadge t1plus">Tier 1+</span>
+    <span class="tierbadge t2plus">Tier 2+</span>
+    <span class="tierbadge t3plus">Tier 3+</span>
+  </div>
+  <p><strong>Tier 1+</strong> would mark an Emerging Advocate organisation that has built one or two domains close to Tier 2 strength, most likely resident trust or a specific delivery relationship, while the rest of its profile still sits at an early stage. No organisation in this review sits in Tier 1 at all currently, so this remains a reserved marker rather than one in active use, but it is there for a future cycle.</p>
+  <p><strong>Tier 2+</strong> is the one this cohort actually uses. Thriving Stockwell is the clearest example. Its composite of 26 places it at the top of Tier 2, and its profile includes the input of an engaged local GP, a genuine asset that most Tier 2 organisations do not have. What it does not have is a dedicated site of its own, the kind Black Prince Trust runs its Tier 3 programmes from. The "+" exists to hold both of those things at once, real strength, and a specific, identifiable gap from Tier 3, rather than rounding one way or the other.</p>
+  <p>This is also the clearest answer to a fair question, why Thriving Stockwell and Thriving Streatham both sit in Tier 2 when their profiles read so differently. Streatham's composite of 22 and Stockwell's composite of 26 already tell most of that story. Marking Stockwell as "Tier 2+" makes the distance between them visible on the page itself, without inventing a whole new tier band for a difference the domain detail already explains.</p>
+  <p>A second, fair question follows from that. Clapham Park Project's composite is 27, one point higher than Stockwell's 26, yet Clapham Park carries no "+" while Stockwell does. That is not an inconsistency. A "+" is never a reward for a higher total. It marks a specific, named asset or gap that the composite itself does not show. Stockwell's engaged local GP sits outside the domain positions entirely, and the absence of a dedicated site is a precise, identifiable distance from Tier 3. Clapham Park's profile is strong and consistent across all seven domains, but nothing in the detail behind it points to a comparable standout worth flagging on its own, its work is currently more about settling an identity it already has than closing one specific gap. A higher composite carries an organisation further up a tier. On its own, it does not earn a "+".</p>
+  <p><strong>Tier 3+</strong> is a reserved band above Tier 3 itself, for the rare organisation that would sit at or near the maximum across all seven domains, the kind of long established, widely cited exemplar you might see referenced nationally, Bromley by Bow is the usual comparator. None of the seven organisations in this review sit there yet, including Black Prince Trust, and that is a useful marker rather than a criticism. It keeps Tier 3+ meaningful as a genuine stretch goal rather than a label anyone gets by default.</p>
+  <h3>Why nobody sits in Tier 1</h3>
+  <p>No organisation in this review currently falls in Tier 1. That is a genuinely positive finding, not a generous one. Every one of the seven has a traceable history of delivery, real partner relationships, and evidence of resident trust, which is precisely what keeps an organisation out of the earliest tier.</p>
+  <p>It is fair to ask how robust that judgement is, and how it should be kept honest over time. Our answer has two parts.</p>
+  <ul>
+    <li>The evidence behind every position has a time horizon. Recent delivery and current relationships carry more weight than activity from several years ago, so the matrix does not credit an organisation indefinitely for past work.</li>
+    <li>We would recommend the mapping is refreshed on a regular cycle, once every 12 to 18 months feels right, so a tier placement always reflects where an organisation stands now rather than where it stood at a single point in time.</li>
+  </ul>
+  <h3>One more important point</h3>
+  <p>Tier placement is neither fixed nor a ladder every organisation is expected to climb. An organisation may invest heavily across every domain and, because circumstances change at the same time, remain in the same tier. That is not failure, and the tiers should not be read that way. They are a heuristic, a way of organising the kind of support Lambeth Together or the Council might usefully provide, not a verdict on an organisation's worth to its community.</p>
+  ${reflectBox(3,'The maturity tiers')}
+  `
+},
+{
+  id:'organisations', title:'The organisations',
+  html:`
+  <div class="sectag">Section 5 of 14</div>
+  <h2 class="sectitle">The organisations</h2>
+  <p class="lead">Seven Thriving Community organisations sit at the centre of this review. Five have been through a full deep dive, two currently hold a first pass position only.</p>
+  <h3>How each organisation ranked its own priorities</h3>
+  <p>All seven organisations were invited to complete a short self-ranking exercise ahead of any conversation with us, ordering the seven domains from their own strongest ground at the top, to where they have the most room to grow at the bottom, using a neutral starting order rather than a suggested one. Six took part. Only Thriving Fiveways did not, which coincided with its host organisation's departing interim Chief Executive and incoming new Chief Executive, a genuine gap in continuity rather than a decision not to take part.</p>
+  <p>This matters because it lets us check our external reading against how an organisation sees its own strengths, and it directly shapes where we suggest support should focus later in this report, the domains an organisation places towards the bottom of its own stack are exactly where support is likely to land best.</p>
+  <div class="rankgrid">
+  <div class="orgtile">
+    <h4>Thriving Stockwell</h4>
+    <ol class="stack"><li>VCSE and partner connections</li><li>Resident engagement and trust</li><li>Health and wellbeing delivery</li><li>Shared vision and identity</li><li>Governance and structure</li><li>Data and learning</li><li>Sustainability and funding</li></ol>
+  </div>
+  <div class="orgtile">
+    <h4>Black Prince Trust</h4>
+    <ol class="stack"><li>Resident engagement and trust</li><li>Health and wellbeing delivery</li><li>VCSE and partner connections</li><li>Shared vision and identity</li><li>Governance and structure</li><li>Sustainability and funding</li><li>Data and learning</li></ol>
+  </div>
+  <div class="orgtile">
+    <h4>Clapham Park Project</h4>
+    <ol class="stack"><li>Resident engagement and trust</li><li>Governance and structure</li><li>Shared vision and identity</li><li>Health and wellbeing delivery</li><li>VCSE and partner connections</li><li>Data and learning</li><li>Sustainability and funding</li></ol>
+  </div>
+  <div class="orgtile">
+    <h4>Clear Community Web</h4>
+    <ol class="stack"><li>Resident engagement and trust</li><li>VCSE and partner connections</li><li>Data and learning</li><li>Health and wellbeing delivery</li><li>Shared vision and identity</li><li>Governance and structure</li><li>Sustainability and funding</li></ol>
+  </div>
+  <div class="orgtile">
+    <h4>Thriving Norwood</h4>
+    <ol class="stack"><li>VCSE and partner connections</li><li>Resident engagement and trust</li><li>Health and wellbeing delivery</li><li>Data and learning</li><li>Sustainability and funding</li><li>Shared vision and identity</li><li>Governance and structure</li></ol>
+  </div>
+  <div class="orgtile">
+    <h4>Thriving Streatham</h4>
+    <ol class="stack"><li>Governance and structure</li><li>Resident engagement and trust</li><li>Health and wellbeing delivery</li><li>Shared vision and identity</li><li>Sustainability and funding</li><li>VCSE and partner connections</li><li>Data and learning</li></ol>
+  </div>
+  </div>
+  <p>A pattern worth noting. Five of the six put resident engagement and trust or VCSE and partner connections at the very top of their own stack, data and learning sits at or near the bottom for five of the six. Streatham reads differently, placing governance and structure first and VCSE and partner connections second from bottom, a genuinely distinct self-view worth holding onto once a deep dive is possible. Our own reading of these organisations as system coordinators, set out later in this report, follows from the pattern the other five share.</p>
+  <h3>First pass overview</h3>
+  <p>The positions below cover all seven organisations, including Thriving Fiveways and Thriving Streatham. Where a deep dive has taken place, the note beneath each organisation reflects what the fuller conversation confirmed, added, or in a small number of cases adjusted. This is a summary rather than a verbatim account, some detail shared with us in session is held in confidence and is not relayed here, in line with what each organisation agreed to.</p>
+  <div class="orggrid">
+    <div class="orgcard">
+      <div class="ohead"><h3>Black Prince Trust</h3><span class="tierbadge t3">Tier 3</span></div>
+      <div class="orgstage s2">Stage 2, deep dive</div>
+      <div class="orgscore">28<span> / 35</span></div>
+      <div class="bars">
+        <div class="br"><span class="lbl">Governance</span><div class="bar"><span style="width:80%"></span></div><span class="val">4</span></div>
+        <div class="br"><span class="lbl">Resident engagement</span><div class="bar"><span style="width:80%"></span></div><span class="val">4</span></div>
+        <div class="br"><span class="lbl">VCSE connections</span><div class="bar"><span style="width:80%"></span></div><span class="val">4</span></div>
+        <div class="br"><span class="lbl">Programme delivery</span><div class="bar"><span style="width:100%"></span></div><span class="val">5</span></div>
+        <div class="br"><span class="lbl">Data and learning</span><div class="bar"><span style="width:60%"></span></div><span class="val">3</span></div>
+        <div class="br"><span class="lbl">Sustainability</span><div class="bar"><span style="width:80%"></span></div><span class="val">4</span></div>
+        <div class="br"><span class="lbl">Shared vision</span><div class="bar"><span style="width:80%"></span></div><span class="val">4</span></div>
+      </div>
+      <div class="ethno">Ethnographic theme, space as engendering socialities. Its own dedicated site underpins almost everything else on this list.</div>
+    </div>
+    <div class="orgcard">
+      <div class="ohead"><h3>Clapham Park Project</h3><span class="tierbadge t2">Tier 2</span></div>
+      <div class="orgstage s2">Stage 2, deep dive</div>
+      <div class="orgscore">27<span> / 35</span></div>
+      <div class="bars">
+        <div class="br"><span class="lbl">Governance</span><div class="bar"><span style="width:100%"></span></div><span class="val">5</span></div>
+        <div class="br"><span class="lbl">Resident engagement</span><div class="bar"><span style="width:80%"></span></div><span class="val">4</span></div>
+        <div class="br"><span class="lbl">VCSE connections</span><div class="bar"><span style="width:80%"></span></div><span class="val">4</span></div>
+        <div class="br"><span class="lbl">Programme delivery</span><div class="bar"><span style="width:80%"></span></div><span class="val">4</span></div>
+        <div class="br"><span class="lbl">Data and learning</span><div class="bar"><span style="width:60%"></span></div><span class="val">3</span></div>
+        <div class="br"><span class="lbl">Sustainability</span><div class="bar"><span style="width:60%"></span></div><span class="val">3</span></div>
+        <div class="br"><span class="lbl">Shared vision</span><div class="bar"><span style="width:80%"></span></div><span class="val">4</span></div>
+      </div>
+      <div class="ethno">Ethnographic theme, liminality as an underlying condition. Neither its old nor its new identity is fully settled yet.</div>
+    </div>
+    <div class="orgcard">
+      <div class="ohead"><h3>Thriving Stockwell</h3><span class="tierbadge t2plus">Tier 2+</span></div>
+      <div class="orgstage s2">Stage 2, deep dive, reference example</div>
+      <div class="orgscore">26<span> / 35</span></div>
+      <div class="bars">
+        <div class="br"><span class="lbl">Governance</span><div class="bar"><span style="width:80%"></span></div><span class="val">4</span></div>
+        <div class="br"><span class="lbl">Resident engagement</span><div class="bar"><span style="width:80%"></span></div><span class="val">4</span></div>
+        <div class="br"><span class="lbl">VCSE connections</span><div class="bar"><span style="width:80%"></span></div><span class="val">4</span></div>
+        <div class="br"><span class="lbl">Programme delivery</span><div class="bar"><span style="width:80%"></span></div><span class="val">4</span></div>
+        <div class="br"><span class="lbl">Data and learning</span><div class="bar"><span style="width:60%"></span></div><span class="val">3</span></div>
+        <div class="br"><span class="lbl">Sustainability</span><div class="bar"><span style="width:60%"></span></div><span class="val">3</span></div>
+        <div class="br"><span class="lbl">Shared vision</span><div class="bar"><span style="width:80%"></span></div><span class="val">4</span></div>
+      </div>
+      <div class="ethno">Ethnographic theme, a boundary object shared across communities. Nothing moved between first pass and deep dive, the value of the session was depth rather than correction.</div>
+    </div>
+    <div class="orgcard">
+      <div class="ohead"><h3>Clear Community Web</h3><span class="tierbadge t2">Tier 2</span></div>
+      <div class="orgstage s2">Stage 2, deep dive</div>
+      <div class="orgscore">25<span> / 35</span></div>
+      <div class="bars">
+        <div class="br"><span class="lbl">Governance</span><div class="bar"><span style="width:60%"></span></div><span class="val">3</span></div>
+        <div class="br"><span class="lbl">Resident engagement</span><div class="bar"><span style="width:80%"></span></div><span class="val">4</span></div>
+        <div class="br"><span class="lbl">VCSE connections</span><div class="bar"><span style="width:80%"></span></div><span class="val">4</span></div>
+        <div class="br"><span class="lbl">Programme delivery</span><div class="bar"><span style="width:80%"></span></div><span class="val">4</span></div>
+        <div class="br"><span class="lbl">Data and learning</span><div class="bar"><span style="width:60%"></span></div><span class="val">3</span></div>
+        <div class="br"><span class="lbl">Sustainability</span><div class="bar"><span style="width:60%"></span></div><span class="val">3</span></div>
+        <div class="br"><span class="lbl">Shared vision</span><div class="bar"><span style="width:80%"></span></div><span class="val">4</span></div>
+      </div>
+      <div class="ethno">Ethnographic theme, practice or doing, as ways of knowing. Data and learning came back higher in its own stack than our first pass suggested.</div>
+    </div>
+    <div class="orgcard">
+      <div class="ohead"><h3>Thriving Norwood</h3><span class="tierbadge t2">Tier 2</span></div>
+      <div class="orgstage s2">Stage 2, deep dive</div>
+      <div class="orgscore">23<span> / 35</span></div>
+      <div class="bars">
+        <div class="br"><span class="lbl">Governance</span><div class="bar"><span style="width:60%"></span></div><span class="val">3</span></div>
+        <div class="br"><span class="lbl">Resident engagement</span><div class="bar"><span style="width:80%"></span></div><span class="val">4</span></div>
+        <div class="br"><span class="lbl">VCSE connections</span><div class="bar"><span style="width:80%"></span></div><span class="val">4</span></div>
+        <div class="br"><span class="lbl">Programme delivery</span><div class="bar"><span style="width:60%"></span></div><span class="val">3</span></div>
+        <div class="br"><span class="lbl">Data and learning</span><div class="bar"><span style="width:60%"></span></div><span class="val">3</span></div>
+        <div class="br"><span class="lbl">Sustainability</span><div class="bar"><span style="width:60%"></span></div><span class="val">3</span></div>
+        <div class="br"><span class="lbl">Shared vision</span><div class="bar"><span style="width:60%"></span></div><span class="val">3</span></div>
+      </div>
+      <div class="ethno">Ethnographic theme, aspiring for a placeness. Working towards its own distinct legal identity, which shows up across several domains at once.</div>
+    </div>
+    <div class="orgcard">
+      <div class="ohead"><h3>Thriving Fiveways</h3><span class="tierbadge t2">Tier 2</span></div>
+      <div class="orgstage s1">Stage 1, first pass only</div>
+      <div class="orgscore">27<span> / 35</span></div>
+      <div class="bars">
+        <div class="br"><span class="lbl">Governance</span><div class="bar"><span style="width:80%"></span></div><span class="val">4</span></div>
+        <div class="br"><span class="lbl">Resident engagement</span><div class="bar"><span style="width:80%"></span></div><span class="val">4</span></div>
+        <div class="br"><span class="lbl">VCSE connections</span><div class="bar"><span style="width:100%"></span></div><span class="val">5</span></div>
+        <div class="br"><span class="lbl">Programme delivery</span><div class="bar"><span style="width:80%"></span></div><span class="val">4</span></div>
+        <div class="br"><span class="lbl">Data and learning</span><div class="bar"><span style="width:60%"></span></div><span class="val">3</span></div>
+        <div class="br"><span class="lbl">Sustainability</span><div class="bar"><span style="width:80%"></span></div><span class="val">4</span></div>
+        <div class="br"><span class="lbl">Shared vision</span><div class="bar"><span style="width:60%"></span></div><span class="val">3</span></div>
+      </div>
+      <div class="ethno">Not applicable, no deep dive held. Loughborough Junction Action Group's Chief Executive is early in his tenure, a fair reason to hold at Stage 1 this cycle.</div>
+    </div>
+    <div class="orgcard">
+      <div class="ohead"><h3>Thriving Streatham</h3><span class="tierbadge t2">Tier 2</span></div>
+      <div class="orgstage s1">Stage 1, first pass only</div>
+      <div class="orgscore">22<span> / 35</span></div>
+      <div class="bars">
+        <div class="br"><span class="lbl">Governance</span><div class="bar"><span style="width:60%"></span></div><span class="val">3</span></div>
+        <div class="br"><span class="lbl">Resident engagement</span><div class="bar"><span style="width:80%"></span></div><span class="val">4</span></div>
+        <div class="br"><span class="lbl">VCSE connections</span><div class="bar"><span style="width:80%"></span></div><span class="val">4</span></div>
+        <div class="br"><span class="lbl">Programme delivery</span><div class="bar"><span style="width:60%"></span></div><span class="val">3</span></div>
+        <div class="br"><span class="lbl">Data and learning</span><div class="bar"><span style="width:40%"></span></div><span class="val">2</span></div>
+        <div class="br"><span class="lbl">Sustainability</span><div class="bar"><span style="width:40%"></span></div><span class="val">2</span></div>
+        <div class="br"><span class="lbl">Shared vision</span><div class="bar"><span style="width:80%"></span></div><span class="val">4</span></div>
+      </div>
+      <div class="ethno">Not applicable, no deep dive held. Data and learning, and sustainability and funding, are the clearest areas a future conversation would focus on.</div>
+    </div>
+  </div>
+  ${reflectBox(4,'The organisations')}
+  `
+},
+{
+  id:'ethnographic', title:'Ethnographic observations',
+  html:`
+  <div class="sectag">Section 6 of 14</div>
+  <h2 class="sectitle">Ethnographic observations</h2>
+  <p class="lead">Alongside the maturity matrix, our anthropologist Dr Abhishek Mohanty carried out ethnographic observation during each deep dive session. This section explains what that means and what it added.</p>
+  <p>Ethnography is the documentation of how people actually live and work. It is built from close attention to a session itself, not only to direct answers to direct questions. During each deep dive we watched for what was emphasised or implicitly hinted at. We paid attention to where a session was held and who we were speaking with. We noticed the artefacts in the room, flyers, signage, paperwork. We listened for the networks and timelines each organisation spoke about. None of this replaces the matrix. It sits alongside it, adding texture that a domain position on its own cannot carry.</p>
+  <p>This matters because people often struggle to frame what they know in the vocabulary a formal assessment expects. A great deal can be missed if we only listen for direct answers. Ethnographic observation is designed to surface what would otherwise stay unsaid. It strengthens the qualitative judgement behind every tier placement in this report.</p>
+  <h3>How an ethnographic theme becomes a recommendation</h3>
+  <p>Each organisation's dominant ethnographic theme feeds three practical things. Which domains to prioritise for support. How any funding should best be managed. What a meaningful measure of success looks like. Two worked examples show how this runs in practice.</p>
+  <div class="priobox">
+    <h4>Black Prince Trust</h4>
+    <p>The ethnographic theme here is space as engendering socialities, the sense that Black Prince Trust's own dedicated site is what makes so much of its other strength possible. As a Tier 3 organisation, support should focus on data and learning, its one comparatively lower domain, and on capturing what makes its site-based model work so well. Funding tied to this theme is best spent wholly or partially on developing or leveraging physical space. Success is best read as social, attributed to investment in space, rather than as a simple count of sessions delivered.</p>
+  </div>
+  <div class="priobox">
+    <h4>Clear Community Web</h4>
+    <p>The ethnographic theme here is practice or doing, as ways of knowing, the sense that Clear Community Web's expertise lives in hands-on digital support rather than in formal documentation of it. Cross-referenced against its own stack ranking, governance and structure and sustainability and funding sit lowest, so these are the two domains we would prioritise for support, the right roles on its board and team, and proactive investment in longer term funding. Funding here is best spent supporting experiential interventions rooted in digital use, not merely knowledge transfer. Success is more meaningful read processually, participant engagement and reach, than as a simple count of app downloads.</p>
+  </div>
+  <p>Where more than two domains might plausibly need attention, we prioritise using an organisation's own stack ranking, so support centres on what the organisation itself experiences as having the most room to grow, not only on what desk research suggests from the outside. We deliberately hold this to at most two priority domains per organisation. Support that tries to fix everything at once tends to fix nothing well.</p>
+  <h3>Themes across the five deep dives</h3>
+  <div class="ethgrid">
+    <div class="ethcard"><div class="tag">Black Prince Trust</div><h4>Space as engendering socialities</h4><p>Its own dedicated site is the foundation underneath almost every other strength, from consistent delivery to the trust built specifically with young people.</p></div>
+    <div class="ethcard"><div class="tag">Clapham Park Project</div><h4>Liminality as an underlying condition</h4><p>An organisation in the middle of actively reinventing its own identity and offer. Neither its old nor its new form is fully settled yet.</p></div>
+    <div class="ethcard"><div class="tag">Thriving Stockwell</div><h4>A boundary object, shared across communities</h4><p>Thriving Stockwell operates as a brand in its own right without needing to be its own legal entity. Flexible enough to hold local nuance, rooted in placeness, while carrying real system legitimacy.</p></div>
+    <div class="ethcard"><div class="tag">Clear Community Web</div><h4>Practice or doing, as ways of knowing</h4><p>Expertise expressed through hands-on digital support and repeat, practical contact, rather than through formal documentation of what is known.</p></div>
+    <div class="ethcard"><div class="tag">Thriving Norwood</div><h4>Aspiring for a placeness</h4><p>Actively working towards its own distinct legal identity and physical footing. A driver behind several domains moving together rather than any single weak spot.</p></div>
+    <div class="ethcard"><div class="tag">Thriving Fiveways and Thriving Streatham</div><h4>Not yet observed</h4><p>Neither organisation completed a deep dive within this commission, so no ethnographic theme has been recorded for either.</p></div>
+  </div>
+  ${reflectBox(5,'Ethnographic observations')}
+  `
+},
+{
+  id:'metrics', title:'Metrics',
+  html:`
+  <div class="sectag">Section 7 of 14</div>
+  <h2 class="sectitle">Metrics</h2>
+  <p class="lead">Metrics were not part of our original plan for this commission. We developed them iteratively as the programme progressed, one more example of the approach adapting as it learned rather than sticking rigidly to an initial design.</p>
+  <p>The exercise itself was never about tracking a fixed target over time for its own sake. It was a way of getting each organisation to self-assess where it stands right now, in its own words and against its own domains, at the close of its deep dive session. Each organisation was asked to choose at least one metric per domain, and up to two where it had more than one thing worth measuring. Below is the full set, one tile per organisation.</p>
+  <div class="metricsgrid">
+  <div class="metricstile">
+    <h4>Thriving Stockwell</h4>
+    <div class="mrow"><span class="mdom">Governance and structure</span>
+      <div class="mpick"><span class="mwhat">A defining document in place, charter style rather than a constitution</span><span class="mtarget">Within 6 months</span></div>
+    </div>
+    <div class="mrow"><span class="mdom">Resident engagement and trust</span>
+      <div class="mpick"><span class="mwhat">Proportion of active engagement from underserved or protected groups</span><span class="mtarget">80 to 90%</span></div>
+    </div>
+    <div class="mrow"><span class="mdom">VCSE and partner connections</span>
+      <div class="mpick"><span class="mwhat">Proportion of programmes reaching different communities</span><span class="mtarget">~80% underserved, 20 to 25% cross community</span></div>
+    </div>
+    <div class="mrow"><span class="mdom">Health and wellbeing delivery</span>
+      <div class="mpick"><span class="mwhat">Promoter style, recommend us position</span><span class="mtarget">75%</span></div>
+    </div>
+    <div class="mrow"><span class="mdom">Data and learning</span>
+      <div class="mpick"><span class="mwhat">Proportion of core delivery partners with relevant training or CPD</span><span class="mtarget">~50%</span></div>
+    </div>
+    <div class="mrow"><span class="mdom">Sustainability and funding</span>
+      <div class="mpick"><span class="mwhat">Proportion of funding running three years or longer</span><span class="mtarget">75%</span></div>
+    </div>
+    <div class="mrow"><span class="mdom">Shared vision and identity</span>
+      <div class="mpick"><span class="mwhat">A refreshed shared vision agreed with partners</span><span class="mtarget">Within 6 to 12 months</span></div>
+    </div>
+  </div>
+  <div class="metricstile">
+    <h4>Black Prince Trust</h4>
+    <div class="mrow"><span class="mdom">Governance and structure</span>
+      <div class="mpick"><span class="mwhat">Proportion of trustees with relevant, necessary skills appointed</span><span class="mtarget">3 areas, HR, safeguarding, legal</span></div>
+    </div>
+    <div class="mrow"><span class="mdom">Resident engagement and trust</span>
+      <div class="mpick"><span class="mwhat">Proportion of active residents from underserved groups with protected characteristics</span><span class="mtarget">75%</span></div>
+    </div>
+    <div class="mrow"><span class="mdom">VCSE and partner connections</span>
+      <div class="mpick"><span class="mwhat">Quality and number of genuinely joint delivery projects with partners</span><span class="mtarget">10, 7 currently running</span></div>
+    </div>
+    <div class="mrow"><span class="mdom">Health and wellbeing delivery</span>
+      <div class="mpick"><span class="mwhat">Recommend us, promoter style position</span><span class="mtarget">75%</span></div>
+    </div>
+    <div class="mrow"><span class="mdom">Data and learning</span>
+      <div class="mpick"><span class="mwhat">Frequency and use of internal reporting</span><span class="mtarget">Twice-yearly cycle</span></div>
+    </div>
+    <div class="mrow"><span class="mdom">Sustainability and funding</span>
+      <div class="mpick"><span class="mwhat">Proportion of funding secured longer term</span><span class="mtarget">50%, on 3 to 5 year programmes</span></div>
+    </div>
+    <div class="mrow"><span class="mdom">Shared vision and identity</span>
+      <div class="mpick"><span class="mwhat">Rollout and embedding of the new strategy</span><span class="mtarget">In progress</span></div>
+    </div>
+  </div>
+  <div class="metricstile">
+    <h4>Clapham Park Project</h4>
+    <div class="mrow"><span class="mdom">Governance and structure</span>
+      <div class="mpick"><span class="mwhat">Number of decision-makers, directors, trustees or their equivalent</span><span class="mtarget">8 people</span></div>
+    </div>
+    <div class="mrow"><span class="mdom">Resident engagement and trust</span>
+      <div class="mpick"><span class="mwhat">Number of residents reached</span><span class="mtarget">450 residents</span></div>
+    </div>
+    <div class="mrow"><span class="mdom">VCSE and partner connections</span>
+      <div class="mpick"><span class="mwhat">Number of joint projects</span><span class="mtarget">3 projects</span></div>
+    </div>
+    <div class="mrow"><span class="mdom">Health and wellbeing delivery</span>
+      <div class="mpick"><span class="mwhat">Number of programmes delivered</span><span class="mtarget">4 programmes</span></div>
+    </div>
+    <div class="mrow"><span class="mdom">Data and learning</span>
+      <div class="mpick"><span class="mwhat">Number of relevant datasets used or requested</span><span class="mtarget">1 dataset</span></div>
+    </div>
+    <div class="mrow"><span class="mdom">Sustainability and funding</span>
+      <div class="mpick"><span class="mwhat">Number of months of reserves held</span><span class="mtarget">72 months</span></div>
+    </div>
+    <div class="mrow"><span class="mdom">Shared vision and identity</span>
+      <div class="mpick"><span class="mwhat">A time-bound goal to put a shared vision in place</span><span class="mtarget">By March 2027</span></div>
+    </div>
+  </div>
+  <div class="metricstile">
+    <h4>Thriving Norwood</h4>
+    <div class="mrow"><span class="mdom">Governance and structure</span>
+      <div class="mpick"><span class="mwhat">Number of decision-makers, directors, trustees or their equivalent</span><span class="mtarget">6 decision-makers</span></div>
+      <div class="mpick"><span class="mwhat">Proportion of necessary skills represented on the board</span><span class="mtarget">100%</span></div>
+    </div>
+    <div class="mrow"><span class="mdom">Resident engagement and trust</span>
+      <div class="mpick"><span class="mwhat">Proportion actively engaged, rather than simply on a list</span><span class="mtarget">30%</span></div>
+      <div class="mpick"><span class="mwhat">Proportion of active residents from underserved or protected groups</span><span class="mtarget">50%</span></div>
+    </div>
+    <div class="mrow"><span class="mdom">VCSE and partner connections</span>
+      <div class="mpick"><span class="mwhat">Learning shared through forums, seminars, talks or documents</span><span class="mtarget">10 instances</span></div>
+      <div class="mpick"><span class="mwhat">Proportion of programmes reaching different communities</span><span class="mtarget">50%</span></div>
+    </div>
+    <div class="mrow"><span class="mdom">Health and wellbeing delivery</span>
+      <div class="mpick"><span class="mwhat">Proportion of people enrolled against reach</span><span class="mtarget">30%</span></div>
+      <div class="mpick"><span class="mwhat">Proportion who complete the programme</span><span class="mtarget">70%</span></div>
+    </div>
+    <div class="mrow"><span class="mdom">Data and learning</span>
+      <div class="mpick"><span class="mwhat">Number of relevant datasets used or requested</span><span class="mtarget">4 datasets</span></div>
+      <div class="mpick"><span class="mwhat">Number of reports produced</span><span class="mtarget">4 reports</span></div>
+    </div>
+    <div class="mrow"><span class="mdom">Sustainability and funding</span>
+      <div class="mpick"><span class="mwhat">Number of months of reserves held</span><span class="mtarget">18 months</span></div>
+      <div class="mpick"><span class="mwhat">Proportion of funding that is longer term</span><span class="mtarget">25%</span></div>
+    </div>
+    <div class="mrow"><span class="mdom">Shared vision and identity</span>
+      <div class="mpick"><span class="mwhat">A time-bound goal to put a shared vision in place, which matters most where one is still forming</span><span class="mtarget">By Spring 2027</span></div>
+      <div class="mpick"><span class="mwhat">An external resident or community survey on recognition and how well the vision is understood</span><span class="mtarget">Engagement run, priority plan drawn up</span></div>
+    </div>
+  </div>
+  <div class="metricstile">
+    <h4>Clear Community Web</h4>
+    <div class="mrow"><span class="mdom">Governance and structure</span>
+      <div class="mpick"><span class="mwhat">Proportion of necessary skills represented on the board or decision-making body</span><span class="mtarget">No board yet, direction set</span></div>
+    </div>
+    <div class="mrow"><span class="mdom">Resident engagement and trust</span>
+      <div class="mpick"><span class="mwhat">Proportion actively engaged, at least monthly or three times over three months</span><span class="mtarget">Maintain ~80%, a floor</span></div>
+    </div>
+    <div class="mrow"><span class="mdom">VCSE and partner connections</span>
+      <div class="mpick"><span class="mwhat">Number of genuinely joint, evolving delivery projects with partners</span><span class="mtarget">6, up from 3</span></div>
+    </div>
+    <div class="mrow"><span class="mdom">Health and wellbeing delivery</span>
+      <div class="mpick"><span class="mwhat">Proportion of promoters, NPS style 1 to 10 scale</span><span class="mtarget">Not yet finalised</span></div>
+    </div>
+    <div class="mrow"><span class="mdom">Data and learning</span>
+      <div class="mpick"><span class="mwhat">Number of externally facing learning pieces published per year</span><span class="mtarget">3, up from none tracked</span></div>
+    </div>
+    <div class="mrow"><span class="mdom">Sustainability and funding</span>
+      <div class="mpick"><span class="mwhat">Proportion of funding that is multi-year</span><span class="mtarget">30% this year, rising</span></div>
+    </div>
+    <div class="mrow"><span class="mdom">Shared vision and identity</span>
+      <div class="mpick"><span class="mwhat">External partner and community perception survey</span><span class="mtarget">By Christmas 2026</span></div>
+    </div>
+  </div>
+  </div>
+  ${reflectBox(6,'Metrics')}
+  `
+},
+{
+  id:'matrixapplied', title:'The matrix applied',
+  html:`
+  <div class="sectag">Section 8 of 14</div>
+  <h2 class="sectitle">The matrix applied</h2>
+  <p class="lead">This section shows how the seven domains actually build up into a tier, then what the resulting picture suggests for each organisation.</p>
+  <p>Every organisation's seven domain positions are added together to give a composite out of 35. Black Prince Trust's four domains at position 4, one at position 3, one at position 5, and one further at position 4, add to 28, placing it in Tier 3. Thriving Stockwell's mix of four domains at 4 and three at 3 adds to 26, placing it at the top of Tier 2. It is this domain-by-domain arithmetic, not a single overall impression, that produces every tier placement in this report. The full detail behind each organisation's composite sits in the organisations section above. The composite alone does not decide a "+" either, Clapham Park Project's composite of 27 is a point higher than Stockwell's yet carries no "+", for the reasons set out in the maturity tiers section.</p>
+  <table>
+    <colgroup><col style="width:30%"><col style="width:15%"><col style="width:55%"></colgroup>
+    <thead><tr><th>Tier</th><th>Organisations</th><th>What this suggests for action and support</th></tr></thead>
+    <tbody>
+      <tr><td><span class="tierbadge t3">Tier 3</span></td><td>Black Prince Trust</td><td>Its position rests heavily on having its own dedicated site, from which it already runs established, health and wellbeing focused programmes. That is a genuine strength, but not one that transfers easily, an organisation without a site of its own cannot simply copy this model. Support is best focused on its one lower domain, data and learning, and on properly evidencing the impact its site-based delivery already achieves.</td></tr>
+      <tr><td><span class="tierbadge t2plus">Tier 2+</span></td><td>Thriving Stockwell</td><td>Its position rests on a strong track record of health and wellbeing community work and the added value of an engaged local GP, achieved without a dedicated site of its own. Site-based support would not suit Stockwell's model. Support is better targeted at its own two lowest domains, data and learning, and sustainability and funding, where formalising what already works informally would do the most good.</td></tr>
+      <tr><td><span class="tierbadge t2">Tier 2</span></td><td>Clapham Park Project, Thriving Fiveways, Clear Community Web, Thriving Norwood, Thriving Streatham</td><td>Driving consistency in areas such as operations, communications or strategy. Within this, the specific domain or domains to prioritise differ by organisation, set out in the ethnographic observations section.</td></tr>
+      <tr><td><span class="tierbadge t1plus">Tier 1+</span></td><td>None currently</td><td>A reserved marker rather than one in active use today, since no organisation in this cohort sits in Tier 1 at all. If a future Emerging Advocate organisation built one or two domains, most likely resident trust or a specific delivery relationship, up near Tier 2 strength while the rest of its profile remained early stage, this is the marking that would capture it. Support would still need to start with the foundational work set out in the Tier 1 row below, but with clear recognition of the specific strength already in place, rather than treating the organisation as uniformly early stage.</td></tr>
+      <tr><td><span class="tierbadge t1">Tier 1</span></td><td>None currently</td><td>Drawing on what we know from this cohort, an Emerging Advocate organisation would benefit from foundational capacity building alongside programme-level metrics from the outset, not instead of them, help setting up the most basic governance and record-keeping, and a deliberate reduction of key-person dependency, spreading knowledge and relationships across more than one or two individuals. The same matrix and metrics approach applies here as it does across every tier.</td></tr>
+    </tbody>
+  </table>
+  <p>Two organisations in Tier 2, Clapham Park Project and Thriving Norwood, are a useful illustration of why the tier alone is never the full picture. Both sit in the same band, but Norwood's work is substantially about establishing its own distinct legal identity from a standing start, while Clapham Park is in the middle of reinventing an identity it already has. Same tier, different conversation, exactly what the domain detail and the ethnographic read are there to surface.</p>
+  <h3>What this means in practice</h3>
+  <p>For a funder or system partner, the tiers translate into different postures. An Established Anchor organisation is worth resourcing for what its model already proves, not necessarily as a template every other organisation can copy directly. Developing Partner organisations, the majority of this cohort, benefit most from support targeted at one or two specific domains rather than spread thin across all seven. An Emerging Advocate organisation, where one appears in a future cycle, would receive the same matrix and metrics approach as every organisation in this report, alongside the foundational support set out in the table above.</p>
+  ${reflectBox(7,'The matrix applied')}
+  `
+},
+{
+  id:'extending', title:'What the organisations told us, and extending the matrix',
+  html:`
+  <div class="sectag">Section 9 of 14</div>
+  <h2 class="sectitle">What the organisations told us, and extending the matrix</h2>
+  <p class="lead">Every organisation that completed a deep dive was asked to reflect on the process itself, not just the findings. Their responses speak to the value of the approach as much as the output, and they are the clearest evidence we have for why this matrix is worth extending further.</p>
+  <h3>What the organisations told us about the process</h3>
+  <div class="pullquote">This is an excellent summary of the conversation, reflecting the way that TS has flourished through shared values and trust as opposed to a more restrictive governance-led approach.<span class="pqattr">Steve Griffin, Thriving Stockwell</span></div>
+  <div class="pullquote">I've taken for granted the advantage of having a dedicated site. For me, good programme delivery is not just about how many people attend. It is about whether people feel welcomed, whether the activity meets a genuine need, and whether they want to come back.<span class="pqattr">Beverley de Valmency, Black Prince Trust</span></div>
+  <div class="pullquote">I think this is really fair and a very kind reflection of our efforts that gets to the heart of what we are about and under the skin of the facts and figures of what we do.<span class="pqattr">Richard Joyce, Chief Executive, Black Prince Trust</span></div>
+  <div class="pullquote">This was a really nice, honest overview which tackles some of the scary points without them being overwhelming. We both found this to be a very valuable experience with a lot to reflect on.<span class="pqattr">Caspar Kennerdale, Clear Community Web</span></div>
+  <div class="pullquote">Tremendously helpful process to enable us to really reflect on the way forward for Thriving Norwood.<span class="pqattr">Kim Hart, Thriving Norwood</span></div>
+  <div class="pullquote">The report captures what was discussed during the visit and it reads well.<span class="pqattr">Angus Johnson, Clapham Park Project</span></div>
+  <p>Richard Joyce's reflection added something beyond validation. He flagged that short-term funding is becoming more critical, with very few funds available so far this financial year against Black Prince Trust's usual run rate of applications, and pointed to a UCL evaluation, funded through City Bridge, that demonstrated real impact but which funders are typically reluctant to fund directly. That is a concrete, evidenced example of the sustainability and funding domain in practice, and strengthens the case for the funding conversation set out later in this report.</p>
+  <p>Beverley's own reflection went further than a comment on accuracy too. She described being able to name, for the first time in a formal document, why Black Prince Trust's dedicated site matters as much as it does, and noted that a visiting journalist had independently remarked on the same trust the review captured. That kind of validation is not something a matrix alone can produce, which is precisely why we pair it with ethnographic observation rather than relying on domain positions in isolation.</p>
+  <h3>Extending the matrix</h3>
+  <p>Seven organisations is a real, substantive body of evidence, gathered through structured sessions, cross-checked against public sources, and tested against how each organisation sees itself. It is also a foundation we are confident can extend well beyond this cohort.</p>
+  <p>The matrix, the tier structure, and the ethnographic method behind them were built as a reusable Solico asset from the outset, not as a one-off exercise for these seven. The same seven domains, the same five point scale, and the same combination of desk-based first pass and in-person deep dive can be applied to any VCFSE organisation, whether inside or outside the current Thriving Communities cohort.</p>
+  <h3>Where this could go next</h3>
+  <ul>
+    <li>Apply the same first pass to further VCFSE organisations across the borough, well beyond the seven Thriving Communities, to build a wider picture of the sector.</li>
+    <li>Refresh the mapping for these seven on a regular cycle, so tier placement reflects current reality rather than a single point in time.</li>
+    <li>Use the matrix as a shared reference point in funding conversations, so organisations and funders are working from the same language and the same evidence base.</li>
+  </ul>
+  ${reflectBox(8,'Extending the matrix')}
+  `
+},
+{
+  id:'funding', title:'Funding in practice',
+  html:`
+  <div class="sectag">Section 10 of 14</div>
+  <h2 class="sectitle">Funding in practice</h2>
+  <p class="lead">Three live funding examples show how the matrix and the first pass evidence behind it can sharpen a real funding decision.</p>
+  <div class="fundcard pos">
+    <h4>The £10,000 example, five organisations, one amount, four different approaches</h4>
+    <div class="amt">£10,000 each</div>
+    <p>Five Thriving organisations have each been allocated £10,000 through the NWDA. One is using it to establish a CIC and begin delivery through that new structure. Two are running straightforward, well-established exercise programmes. One is focused on resident engagement and information gathering rather than direct delivery. Same amount, genuinely different maturity, genuinely different use. That was a deliberate, informed choice, signed off knowing exactly what it was, and it stands as strong evidence that trusting organisations to decide how to spend against their own stage of development works. Lambeth Together and the NWDA deserve real credit for that flexibility.</p>
+  </div>
+  <div class="fundcard">
+    <h4>The VCFSE neighbourhood health workstream</h4>
+    <div class="amt">£250,000 recurrent</div>
+    <p>Lambeth Together has identified recurrent funding to develop VCFSE neighbourhood health coordination, capacity building and leadership, indicatively split between five neighbourhood coordination leads at approximately £45,000 each, roughly £225,000 in total, and a further £25,000 for a borough-wide leadership and capacity function. This review sits directly upstream of that work. The workstream's own timeline names the Thriving Communities Maturity Matrix outputs as the evidence base intended to identify gaps and inform support requirements this same month, ahead of co-design in the autumn and a selection process later in the year. In practical terms, the tier picture and the domain detail in this report are intended as a working input into how that £250,000 of coordination and capacity funding gets designed and targeted across Lambeth's five neighbourhoods.</p>
+  </div>
+  <div class="fundcard">
+    <h4>The Healthier Neighbourhoods grant scheme</h4>
+    <div class="amt">£450,000</div>
+    <p>An open expression of interest scheme of this size is a useful live test of what this review can offer. The matrix gives a shared, structured way to understand where an applicant organisation already stands, and the first pass detail behind it means that understanding does not require a lengthy new due diligence exercise for every applicant, much of the groundwork already exists. Where a scheme like this has room for it, our first pass and deep dive evidence could also help shape a more useful question than delivery volume alone, specifically, whether an award can be structured to fund an organisation's own capacity, its governance, its data practice, its board, alongside the health and wellbeing activity itself. Growth and delivery are not the same ask, and a maturity read like this one helps a funder see which one a given organisation most needs.</p>
+  </div>
+  ${reflectBox(9,'Funding in practice')}
+  `
+},
+{
+  id:'integration', title:'Potential integration',
+  html:`
+  <div class="sectag">Section 11 of 14</div>
+  <h2 class="sectitle">Potential integration</h2>
+  <p class="lead">Beyond individual funding decisions, this matrix has a role to play in how VCFSE infrastructure is commissioned across Lambeth more broadly.</p>
+  <p>The Council's voluntary and community sector infrastructure and capacity building provision is currently divided into three lots; leadership and advocacy, capacity building, and mapping, none of which is health and wellbeing specific. That is precisely the gap this review speaks to. The three lots map reasonably closely onto the tier structure itself. Leadership and advocacy sits closest to Tier 3 organisations. Capacity building sits closest to Tier 2. Funding and resource questions sit closest to Tier 1. We want to be careful with that connection. It is illustrative rather than a rule. Capacity building has real value for an Established Anchor organisation too. But it is a useful way of seeing how a maturity read like this one could inform how the three lots are resourced and targeted, including the mapping provision that sits within them.</p>
+  <p>The natural next step is a direct conversation about how the Thriving Communities Maturity Matrix, or a method built on the same approach, could inform that mapping provision going forward. We would want a short conversation about how it is used before that happens, nothing more complicated than that.</p>
+  <h3>How this could be used in procurement</h3>
+  <p>We would not suggest the matrix as a fit for a full, formal procurement process on its own. Where a lighter touch process is used instead, an expression of interest or a similar route, it is well suited as a shared diagnostic that both the Council and applicant organisations can refer to. Exactly where and how it is used is worth a direct conversation once the appetite for this is clearer.</p>
+  ${reflectBox(10,'Potential integration')}
+  `
+},
+{
+  id:'alextoldus', title:'What you told us',
+  html:`
+  <div class="sectag">Section 12 of 14</div>
+  <h2 class="sectitle">What you told us</h2>
+  <p class="lead">You completed your own reflection alongside the seven organisations. This section responds directly to what you raised, point by point, using the second person throughout since this part of the report is addressed to you specifically.</p>
+  <h3>Your theme priorities, in order</h3>
+  <ol>
+    <li><strong>Key person dependency across the cohort.</strong> This shows up clearly in our ethnographic read, one of the patterns holding across four or five of the five deep dive sessions. Several organisations, Stockwell most visibly, run on relationships that sit with one or two individuals rather than embedded systems. You raised this concern directly yourself, and linked it explicitly to the funding you have set aside to develop capacity, coordination and leadership at neighbourhood level, precisely to move away from relying on well placed, well intentioned individuals. That is exactly why tier placement in this report is treated as a snapshot rather than a permanent judgement.</li>
+    <li><strong>Data, and the patient journey between VCFSE organisations and the system.</strong> This is one of two findings arriving from opposite directions, your own system-level view against what the organisations themselves say. It is also, in its own right, what the Lambeth Ecology Group, these seven organisations acting collectively, independently chose as the focus for their own interaction with the NWDA, so at a strategic level your priority and theirs already align. Where a genuine gap remains is at the individual level, set against their own stack rankings. Not one of the six organisations that completed a self-ranking placed data and learning above fourth out of seven, and three placed it last. Each organisation does not yet experience data and the patient journey as its own strongest individual ground, even where the group has chosen to prioritise it collectively. That mismatch is worth a direct conversation, not because either read is wrong, but because closing it is likely to need the system, not the organisations alone, to lead.</li>
+    <li><strong>Sustainability, and the gap between where risk sits and where organisations can act.</strong> Visible in Black Prince Trust's own reflection on funders investing in interconnected needs rather than single narrow services, and in Richard Joyce's point about how few funds are currently available against Black Prince Trust's usual application rate.</li>
+    <li><strong>How residents describe health, and the framing gap that follows.</strong> Consistent with our ethnographic themes. Several organisations describe health in terms of belonging, trust and identity well before anything clinical. Stockwell's boundary object theme and Norwood's aspiring for placeness both speak to this directly.</li>
+    <li><strong>Estate and space as a constraint on delivery.</strong> Close to the clearest single finding in the whole review. Black Prince Trust's Tier 3 placement and Beverley's own reflection both point to a dedicated site as close to a precondition for reaching that top tier, while Stockwell reaches Tier 2+ without one.</li>
+    <li><strong>The PCN digital transformation lead model, and whether it can be replicated.</strong> Addressed directly below.</li>
+  </ol>
+  <h3>On Clear Community Web's role and neighbourhood footprint</h3>
+  <p>You asked specifically about CCW, noting its needs are likely quite different and asking what opportunities exist for it given the focus on neighbourhood footprint. Our calibration notes describe CCW as a credible, well connected digital inclusion specialist with a strong Lambeth-wide presence, rather than a single-neighbourhood anchor in the way Stockwell or Black Prince Trust are. It sits within Lambeth's Digital Inclusion Network, delivers across multiple locations, and its most substantive health-facing work is already digital, running Healthy Digital workshops and direct support on the NHS App, MyChart and My Care portal, helping residents manage appointments, prescriptions and records online. That is not neighbourhood delivery in the geographic sense the other Thrivings offer, but it is a genuinely borough-wide capability that complements it, and a natural fit for a coordination or specialist support role across neighbourhoods rather than a footprint confined to one.</p>
+  <h3>On the PCN digital transformation lead model</h3>
+  <p>You flagged you were not sure what this model involves and ranked it low pending that understanding, a fair position to hold before a conversation happens. In broad terms, a PCN digital transformation lead role typically drives adoption of patient-facing digital tools, online booking, the NHS App, digital triage, within a primary care network. What is striking is that CCW is already doing a version of this work at community level, helping digitally excluded residents actually use the NHS App and patient portals rather than simply promoting them. That makes CCW a live, practical example worth bringing into a conversation about whether a formal digital transformation lead model could be replicated or complemented through the VCFSE sector.</p>
+  <h3>On coordination, and seeing these organisations as coordinators</h3>
+  <p>You describe wanting to understand these organisations' willingness to take on a central, coordinating role within your five neighbourhoods. That reading is consistent with how the tier personas in this report are framed, an Established Anchor organisation is described as one that may act as a convener or coordinator within the communities it engages with, and several of the Tier 2 organisations are already moving in that direction. You are right to flag nuance too, the VCSE sector is wider than the seven Thrivings, some organisations outside this cohort may already be playing that leadership role in practice, and any coordination model should be built to recognise that rather than assume the Thrivings are the only candidates.</p>
+  <h3>On the one diagnostic, two readers question</h3>
+  <p>You agreed the split holds, that the Thrivings are most effective delivering and adding value at neighbourhood level, principally through health and wellbeing delivery and resident trust, while a broader question remains about how they become part of the wider health system's leadership, capacity and partnership structures. That is precisely the distinction the tier structure is built to hold, rather than one that has to be resolved by moving every organisation towards a single model.</p>
+  ${reflectBox(11,'What you told us')}
+  `
+},
+{
+  id:'nextsteps', title:'Next steps and recommendations',
+  html:`
+  <div class="sectag">Section 13 of 14</div>
+  <h2 class="sectitle">Next steps and recommendations</h2>
+  <p class="lead">This review was never intended to end with a report. What follows are our recommendations for how it should be used.</p>
+  <h3>What we'd recommend, organisation by organisation</h3>
+  <p>Each organisation told us, in its own self-ranking, where it has the most room to grow. That is the most direct evidence we have of what support each one would actually value, so we have used it to set out something more specific than a general direction of travel.</p>
+  <table>
+    <colgroup><col style="width:18%"><col style="width:22%"><col style="width:60%"></colgroup>
+    <thead><tr><th>Organisation</th><th>Most room to grow</th><th>What we'd recommend</th></tr></thead>
+    <tbody>
+      <tr><td>Thriving Stockwell</td><td>Sustainability and funding</td><td>Help Stockwell move beyond project by project grants. A practical first step is support to put together one genuinely multi-year funding bid rather than another twelve-month award, alongside a simple shared record of who funds what and when it ends, so that knowledge stops sitting with one or two people.</td></tr>
+      <tr><td>Black Prince Trust</td><td>Data and learning</td><td>Black Prince Trust's delivery is strong. The gap is in showing it. Support a proper write-up of the impact evidence it already holds, and help it move from ad hoc reporting to the twice-yearly cycle it has already set as its own metric.</td></tr>
+      <tr><td>Clapham Park Project</td><td>Sustainability and funding</td><td>Clapham Park already holds strong reserves, 72 months by its own metric, so this is less about crisis funding and more about building a diversified income pipeline alongside its rebrand, before those reserves become its only safety net.</td></tr>
+      <tr><td>Clear Community Web</td><td>Sustainability and funding</td><td>CCW's funding is currently around 30% multi-year by its own metric. Support it to build a business case that ties its digital inclusion offer to health outcomes, NHS App uptake and prescription management, so it can make the case for longer term, health-facing funding rather than short digital inclusion grants alone.</td></tr>
+      <tr><td>Thriving Norwood</td><td>Governance and structure</td><td>Norwood is establishing its own legal identity from a standing start. The most useful support is direct: help it choose a structure, recruit a board with the skills it needs, and put a constitution in place, on the same timeline as the shared vision work it has already set for itself.</td></tr>
+      <tr><td>Thriving Streatham</td><td>Data and learning</td><td>Streatham has not yet had a deep dive, so this reflects first pass evidence only. Once one is convened, the practical starting point is basic activity recording, who it reaches and how, before more sophisticated data work is worth attempting.</td></tr>
+      <tr><td>Thriving Fiveways</td><td>Not established</td><td>Fiveways did not complete a self-ranking, coinciding with a change in its host's leadership. Its first pass domains point to data and learning and shared vision and identity as furthest from Tier 3 strength. We would recommend prioritising a deep dive with Fiveways to build a fuller picture before targeting support.</td></tr>
+    </tbody>
+  </table>
+  <h3>What this suggests for support across the wider VCFSE sector</h3>
+  <p>Set alongside each other, these organisation-specific recommendations point to two patterns worth acting on beyond this cohort of seven.</p>
+  <ul>
+    <li><strong>Sustainability and funding is the most common gap.</strong> Three of the six organisations that completed a self-ranking place it last, and a fourth places it second to last. A single, shared offer, help preparing genuinely multi-year funding bids, and a common way of tracking who funds what and when it ends, is likely to help several organisations at once rather than needing five separate conversations.</li>
+    <li><strong>Data and learning is the second most common gap.</strong> Two organisations place it last, and it is also one of the two domains Thriving Fiveways' first pass evidence points to. A shared, light-touch approach to basic activity recording and regular reporting, rather than each organisation building its own system from scratch, is likely to close this gap faster than individual support alone. The South East London VCSE Strategic Alliance's London Neighbourhood Public Data Explorer is a useful existing example, free, neighbourhood-level population, deprivation and health data, already built and already available. Having the data is only half the need. Helping organisations actually interpret it, what a given pattern means for their own delivery, is likely to matter just as much as access to the tool itself.</li>
+  </ul>
+  <p>Both patterns point to the same conclusion as elsewhere in this report. Some of what individual organisations need most is more efficiently built once and shared across the cohort, rather than resourced separately for each of the seven.</p>
+  <ol>
+    <li><strong>Establish a refresh cycle.</strong> We recommend the mapping is repeated every 12 to 18 months, so tier placement continues to reflect current reality rather than a single point in time, and so the process itself becomes a trusted, recurring feature of how Lambeth Together understands this sector.</li>
+    <li><strong>Feed this evidence directly into the VCFSE neighbourhood health workstream.</strong> The workstream's own timeline names this review's outputs as the intended input for identifying gaps ahead of co-design in the autumn. We would recommend a working session with the Steering Group to walk through the domain and ethnographic detail behind each organisation before that co-design work begins.</li>
+    <li><strong>Extend the first pass approach to a wider set of VCFSE organisations.</strong> The seven Thriving Communities are a strong starting cohort, but the same method can be applied borough-wide to build a fuller picture of the sector, including organisations already playing a coordinating role outside this cohort.</li>
+    <li><strong>Open a short conversation on how the matrix is used going forward.</strong> Before it informs the Council's VCS infrastructure and capacity building contract, or any wider procurement route, we would want a brief conversation with Alex about how it is used.</li>
+    <li><strong>Open direct conversations flagged by Alex.</strong> Specifically, Clear Community Web's role and footprint across neighbourhoods, and whether the PCN digital transformation lead model could be replicated or complemented through the VCFSE sector.</li>
+    <li><strong>Consider funding structures that separate growth from delivery.</strong> Across all three funding examples in this report, the clearest opportunity is to let organisations use funding to build their own capacity, governance and data practice, not only to deliver programmes. We would recommend this is made explicit in future funding criteria wherever possible.</li>
+    <li><strong>Use the seats these organisations already hold.</strong> The seven organisations collectively make up the Lambeth Ecology Group, and already have a place on the NWDA board. Rather than a separate reporting exercise, the most useful next step is to bring this review back to the Ecology Group in its own right, letting the organisations that took part reflect on the process directly, alongside a report to the NWDA Leadership Board setting out background, process and next steps, and a briefing to the emerging VCFSE steering group so it has a shared, current picture of where the seven Thrivings stand.</li>
+  </ol>
+  ${reflectBox(12,'Next steps and recommendations')}
+  `
+},
+{
+  id:'closing', title:'Thank you',
+  html:`
+  <div class="sectag">Section 14 of 14</div>
+  <h2 class="sectitle">Thank you</h2>
+  <p class="lead">Thank you for reading this report. It represents a substantial piece of work by Solico, and by the seven organisations who gave us their time, their honesty and a genuinely enjoyable time along the way.</p>
+  <p>There has been the chance to log reflections as you moved through each section. Anything added appears below. Add your name and email once below, then send everything logged in a single go, rather than composing separate messages along the way.</p>
+  <div class="reflectSummaryList" id="reflectSummaryList"></div>
+  <div class="sendform">
+    <input type="text" id="sendName" placeholder="Your name">
+    <input type="email" id="sendEmail" placeholder="Your email">
+  </div>
+  <button class="emailbtn" id="submitBtn" onclick="submitReflections()">Send your reflections</button>
+  <div id="submitStatus" style="margin-top:10px;font-size:13px;font-weight:600;"></div>
+  <p style="margin-top:30px;">We look forward to bringing this into the Ecology Group, the NWDA Leadership Board and the VCFSE steering group, and to using it as the starting point for the neighbourhood health workstream over the months ahead.</p>
+  ${reflectBox(13,'Thank you')}
+  `
+},
+
+];
+
+function renderBreadcrumb(){
+  const bc = document.getElementById('breadcrumb');
+  bc.innerHTML = sections.map((s,i) => `<button class="${i===current?'active':''}" onclick="jump(${i})"><span class="num">${i+1}</span>${s.title}</button>`).join('');
+}
+
+function render(){
+  const wrap = document.getElementById('pagewrap');
+  wrap.innerHTML = sections.map((s,i) => `<div class="page ${i===current?'active':''}" id="pg-${i}">${s.html}
+  <div class="navrow">
+    <button class="navbtn" onclick="go(-1)" ${i===0?'disabled':''}>Previous</button>
+    <button class="navbtn primary" onclick="go(1)" ${i===sections.length-1?'disabled':''}>Next</button>
+  </div>
+  </div>`).join('') + '<footer class="pagefoot">Solico, for Lambeth Together. Thriving Communities Engagement Review.</footer>';
+  renderBreadcrumb();
+  renderReflectSummary();
+  window.scrollTo(0,0);
+}
+
+function go(delta){
+  const next = current + delta;
+  if(next < 0 || next >= sections.length) return;
+  current = next;
+  render();
+}
+
+function jump(i){
+  current = i;
+  render();
+}
+
+render();
+</script>
+</body>
+</html>
